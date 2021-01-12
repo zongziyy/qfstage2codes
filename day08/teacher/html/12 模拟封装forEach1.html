@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 遍历 数组,每次循环执行特定的操作(fn)
+    // function fn(item, index, array) {  // 形式参数
+    //     // console.log(item, index, array);
+    //     document.write(item);
+    // }
+
+    // var list = [13, 92, 60, 52, 66, 54];
+    // for (var i = 0; i < list.length; i++) {
+    //     var item = list[i]; // 循环的当前元素
+    //     var index = i;      // 循环的当前下标
+    //     var array = list;   // 原数组
+
+    //     fn(item, index, array);
+    // }
+
+
+    // function myEach(list) {
+    //     // fn 每次循环要执行的操作 => 现在此处是定死的只能执行固定操作  
+    //     // 怎么让它更加灵活
+    //     function fn(item, index, array) {  // 形式参数    
+    //         // console.log(item, index, array);
+    //         document.write(item + "<br>");
+    //     }
+
+    //     // var list = [13, 92, 60, 52, 66, 54];
+    //     for (var i = 0; i < list.length; i++) {
+    //         var item = list[i]; // 循环的当前元素
+    //         var index = i;      // 循环的当前下标
+    //         var array = list;   // 原数组
+
+    //         fn(item, index, array);
+    //     }
+    // }
+
+    // var arr = [13, 92, 60, 52, 66, 54];
+    // myEach(arr);
+
+
+    // -------------------------------------------
+    // list  想循环遍历的数组
+    // fn    每次循环遍历向执行的函数
+    function myEach(list, fn) {
+        // fn 每次循环要执行的操作 => 现在此处是定死的只能执行固定操作  
+        // 怎么让它更加灵活?  
+        // 把 fn 提取为形式参数(函数)
+
+        // var list = arr;
+        // var fn = function (item, index, array) {  // arr每次循环时,执行的内容
+        //     return item + 10;    // 每个元素加10
+        // }
+
+        // var list = [13, 92, 60, 52, 66, 54];
+        var all = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            var result = fn(item, index, array);  // 实际参数
+            all.push(result);
+        }
+        return all;
+
+    }
+
+    var arr = [13, 92, 60, 52, 66, 54];
+
+    console.log(arr);
+
+    var result = myEach(arr, function (item, index, array) {  // arr每次循环时,执行的内容
+        return item + 10;
+    });
+    console.log(result);
+
+
+
+
+
+</script>
+
+</html>

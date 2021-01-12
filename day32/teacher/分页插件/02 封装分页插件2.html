@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        em,
+        i {
+            font-style: normal;
+        }
+
+        .page {
+            width: max-content;
+            font-size: 14px;
+            margin: 0 auto;
+            user-select: none;
+        }
+
+        .page::after {
+            content: "";
+            display: block;
+            width: 0;
+            clear: both;
+            overflow: hidden;
+            visibility: hidden;
+        }
+
+        .page .page_num,
+        .page .page_skip {
+            float: left;
+            /* height: 36px; */
+            line-height: 36px;
+        }
+
+        .page .page_num {
+            display: flex;
+        }
+
+        .page .prev,
+        .page .next {
+            color: #333;
+            border: 1px solid #ddd;
+            background-color: #f7f7f7;
+            background-repeat: repeat-x;
+            background-image: linear-gradient(top, #f7f7f7, #f2f2f2);
+            height: 36px;
+            line-height: 36px;
+            padding: 0 14px;
+            margin-right: 5px;
+            font-size: 14px;
+            border-radius: 2px;
+        }
+
+        .page .page_num .pageBox {
+            display: flex;
+        }
+
+        .page .page_num .pageBox li {
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            margin-right: 5px;
+            color: #333;
+            border: 1px solid #ddd;
+            background-color: #f7f7f7;
+            background-repeat: repeat-x;
+            background-image: linear-gradient(top, #f7f7f7, #f2f2f2);
+            border-radius: 2px;
+        }
+
+        .page .page_num .pageBox .active {
+            border: 1px solid transparent;
+            background: 0 0;
+            -webkit-filter: none;
+            filter: none;
+            color: #e4393c;
+            cursor: default;
+        }
+
+        .page_skip {
+            float: left;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .page .page_skip em {
+            float: left;
+            line-height: 38px;
+            font-size: 14px;
+            /* margin-left: 15px; */
+        }
+
+        .page .page_skip .skip {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 0 3px;
+            line-height: 30px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 2px;
+            border: 1px solid #999;
+            outline: none;
+        }
+
+        /* 下边两行是去掉input 输入框右边的上下箭头按钮 */
+        .skip::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .skip::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .page .page_skip .btn {
+            float: left;
+            height: 27px;
+            margin-left: 10px;
+            font-size: 14px;
+            line-height: 27px;
+            border: 1px solid #DDD;
+            padding: 4px 13px 5px;
+            color: #333;
+            background-color: #f7f7f7;
+            background-repeat: repeat-x;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- <div class="page_num">
+            <span class="prev">
+                <i>&lt;</i>
+                <em>上一页</em>
+            </span>
+            <ul class="pageBox">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            <span class="next">
+                <em>下一页</em>
+                <i>&gt;</i>
+            </span>
+        </div>
+        <div class="page_skip">
+            <em>
+                共<b>53</b>页&nbsp;到第
+            </em>
+            <input class="skip" type="number">
+            <em>页</em>
+            <a class="btn" href="javascript:;">确定</a>
+        </div> -->
+    </div>
+</body>
+
+<script>
+
+    // 分页插件需要知道哪些信息
+
+    // count   数据的总条数
+    // showNum  每页显示多少条
+    // pageIndex   用来记录页码(默认1)
+    // showPage   页码超出时,默认显示几个页码(假如有两千页,只显示5页)
+
+    // count,showNum => 推算出 maxPage
+    // maxPage = Math.ceil(count/showNum)  最大页码   
+
+
+    // 生成分页的盒子
+    var target = document.getElementsByClassName("page")[0];
+
+    var count = 50;
+    var showNum = 5;
+    var pageIndex = 1;
+    var showPage = 6; //如有两千页,只显示5页
+
+    function callback(pageIndex) {
+        console.log(pageIndex);
+    }
+
+    createHTML();
+    // bindEvent
+    createPage();
+    function createHTML() {
+        var maxPage = Math.ceil(count / showNum);  //最大页码
+
+        // 动态生成 分页的html结构放到目标元素中
+        // 左边的page_num
+        var pageNum = document.createElement("div");
+        pageNum.className = "page_num";
+
+        // 上一页
+        var prev = document.createElement("span");
+        prev.className = "prev";
+        prev.textContent = "上一页";
+
+        prev.onclick = function () {
+            pageIndex--;
+
+            createPage();
+
+        }
+
+        pageNum.appendChild(prev);
+
+        // 页码的盒子
+        var pageBox = document.createElement("ul");
+        pageBox.className = "pageBox";
+        pageNum.appendChild(pageBox);
+
+        // 下一页
+        var next = document.createElement("span");
+        next.className = "next";
+        next.textContent = "下一页";
+
+        next.onclick = function () {
+            pageIndex++;
+
+            createPage();
+        }
+
+        pageNum.appendChild(next);
+
+        target.appendChild(pageNum);
+
+
+        // 右边的page_skip
+        var pageSkip = document.createElement("div");
+        pageSkip.className = "page_skip";
+
+        var em = document.createElement("em");
+        em.innerHTML = `共<b>${maxPage}</b>页&nbsp;到第`;
+        pageSkip.appendChild(em);
+
+        var skipInp = document.createElement("input");
+        skipInp.className = "skip";
+        skipInp.type = "number";
+        skipInp.value = 1;
+        skipInp.min = 1;
+        skipInp.max = maxPage;
+        pageSkip.appendChild(skipInp);
+        skipInp.onchange = function () {
+            var val = this.value;
+            if (val < 1) {
+                this.value = 1;
+            }
+            if (val > maxPage) {
+                this.value = maxPage;
+            }
+        }
+
+        var em = document.createElement("em");
+        em.innerHTML = `页`;
+        pageSkip.appendChild(em);
+
+        var btn = document.createElement("a");
+        btn.href = "javascript:;";
+        btn.textContent = "确定";
+        btn.className = "btn";
+        pageSkip.appendChild(btn);
+
+        btn.onclick = function () {
+            pageIndex = skipInp.value * 1;
+            createPage();
+        }
+
+        target.appendChild(pageSkip);
+
+    }
+
+    // 生成页码
+    // var count = 100;
+    // var showNum = 5;
+    // var pageIndex = 1;
+    // var showPage = 5;
+
+    // 细节  数据比较多的时候 maxPage 可能是几千 (页码太多了 比较难看)
+    // 怎么解决?
+
+
+
+
+    function createPage() {
+        pageBox.innerHTML = "";  // 每次生成之前  清空上一次
+
+
+        var maxPage = Math.ceil(count / showNum);  //最大页码
+
+        if (pageIndex < 1) {
+            pageIndex = 1;
+        }
+        if (pageIndex > maxPage) {
+            pageIndex = maxPage;
+        }
+        skipInp.value = pageIndex;
+        console.log(pageIndex);
+
+        var mid = Math.floor(showPage / 2); // 2
+
+        if (pageIndex <= mid) {   //pageIndex <=2
+            var start = 1;   // 页码的起始位置
+            var end = showPage <= maxPage ? showPage : maxPage;  // 页码的终止位置
+        } else if (pageIndex > mid && pageIndex <= maxPage - mid) {
+            var start = pageIndex - mid;
+            var end = pageIndex + mid;
+
+            if (showPage % 2 == 0) {
+                // start++;   中心页码前移  
+                end--;       // 中心页码后移
+            }
+
+        } else {
+            var start = maxPage - showPage + 1;
+            var end = maxPage;
+        }
+
+        start = start < 1 ? 1 : start; // 如果showPage 和 maxPage相差不大可能出现0 和 负数
+
+        for (var i = start; i <= end; i++) {
+            var li = document.createElement("li");
+            if (i == pageIndex) {   //对应下标的页码改为活跃状态
+                li.classList.add("active");
+            }
+            li.textContent = i;
+            pageBox.appendChild(li);
+
+            li.onclick = function () {
+                pageIndex = this.textContent * 1;
+                createPage();
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米帐号-注册</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2170186_o6kl0golgml.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/cookie.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="h"></div>
+        <div class="register">
+            <h1 class="logo"></h1>
+            <h2>注册小米帐号</h2>
+            <div class="inps">
+                <label for="phone">手机号码</label>
+                <p class="phone">
+                    <input type="text" id="phone" placeholder="邮箱/手机号码/小米ID" class="inp">
+                </p>
+                <span id="phoneSpan"></span>
+            </div>
+            <div class="inps">
+                <label for="pwd">密码</label>
+                <p class="pwd">
+                    <input type="password" id="pwd" placeholder="密码" class="inp">
+                </p>
+                <span id="pwdSpan"></span>
+            </div>
+            <div class="inps">
+                <label for="createCode">验证码 (点击图案刷新)</label>
+                <p class="createCode">
+                    <input type="text" class="inp" id="createCode">
+                    <span id="randomCreateCode">W1sd</span>
+                </p>
+                <span id="createCodeSpan"></span>
+            </div>
+            <!-- 提交按钮 -->
+            <div class="inps">
+                <button id="register" class="inp">立即注册</button>
+            </div>
+            <div class="privacy_box">
+                <div class="msg">
+                    <input type="checkbox" class="readAgree">已阅读并同意：小米 <a href="javascript:;" class="inspect_link agreement_link" title="用户协议">用户协议</a>和<a href="javascript:;" class="inspect_link privacy_link" title=" 隐私政策 "> 隐私政策 </a>
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            <p class="font">
+                <a href="javascript:;">简体</a>丨
+                <a href="javascript:;">繁体</a>丨
+                <a href="javascript:;">English</a>丨
+                <a href="javascript:;">常见问题</a>丨
+                <a href="javascript:;">隐私政策</a>
+            </p>
+            <p class="copyRight">小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+        </footer>
+    </div>
+</body>
+<script>
+    $("#randomCreateCode").text(randCode()).click(function() {
+        $("#randomCreateCode").text(randCode());
+    });
+    $(function() {
+        var isPhoneRight = false;
+        var isPwdRight = false;
+        var isCodeRight = false;
+
+        $("#phone").change(function() {
+            var phone = this.value.trim();
+            var reg = /^1[2-9]\d{9}$/;
+            var tipsSpan = $("#phoneSpan")[0];
+            var inputting = this;
+
+            judgeRuler(phone, reg, tipsSpan, inputting, `<i class="iconfont icon-jinggao"></i>手机号格式不正确`, function() {
+                $.ajax({
+                    type: "get",
+                    url: "../php/isExistPhone.php",
+                    data: {
+                        phone
+                    },
+                    dataType: "json",
+                    success(result) {
+                        if (result.status) {
+                            isPhoneRight = true;
+                            $(inputting).removeClass("inputerr");
+                        } else {
+                            tipsSpan.innerHTML = `<i class="
+                            iconfont icon-jinggao "></i>${result.msg}`;
+                            tipsSpan.className = "wrong";
+                            $(inputting).addClass("inputerr");
+                            isPhoneRight = false;
+                        }
+                    }
+                })
+            })
+        })
+
+        $("#pwd").change(function() {
+            isPwdRight = false;
+            var pwd = this.value.trim();
+            var reg = /^[\w$/./+/-/*//]{6,20}$/;
+            var tipsSpan = $("#pwdSpan")[0];
+            var inputting = this;
+
+            judgeRuler(pwd, reg, tipsSpan, inputting, "由中文,英文,数字_ $.+-*/组成,6-20位", function() {
+                // console.log("验证成功");
+                isPwdRight = true;
+                $(inputting).removeClass("inputerr");
+
+                // 密码格式正确  判断密码强度
+                var numReg = /[0-9]/;
+                var smallReg = /[a-z]/;
+                var bigReg = /[A-Z]/;
+                var speReg = /[_$/.]/;
+
+                var numFlag = false;
+                var smallFlag = false;
+                var bigFlag = false;
+                var speFlag = false;
+
+                if (numReg.test(pwd)) {
+                    numFlag = true;
+                }
+                if (smallReg.test(pwd)) {
+                    smallFlag = true;
+                }
+                if (bigReg.test(pwd)) {
+                    bigFlag = true;
+                }
+                if (speReg.test(pwd)) {
+                    speFlag = true;
+                }
+                var sum = numFlag + smallFlag + bigFlag + speFlag;
+                console.log(sum);
+                switch (sum) {
+                    case 1:
+                        tipsSpan.innerHTML = "密码强度:弱";
+                        break;
+                    case 2:
+                        tipsSpan.innerHTML = "密码强度:中";
+                        break;
+                    case 3:
+                        tipsSpan.innerHTML = "密码强度:强";
+                        break;
+                    case 4:
+                        tipsSpan.innerHTML = "密码强度:超强";
+                        break;
+                }
+
+
+            });
+        })
+
+        $("#createCode").change(function() {
+            isCodeRight = false;
+
+            var code = this.value.trim(); // 用户输入的验证码
+            var codeCon = $("#randomCreateCode").text(); // 随机生成的验证码
+            var reg = new RegExp(codeCon, "i");
+            var tipsSpan = $("#createCodeSpan")[0];
+            var inputting = this;
+
+            judgeRuler(code, reg, tipsSpan, inputting, "验证码有误", function() {
+                $(inputting).removeClass("inputerr");
+                // console.log("验证成功");
+                isCodeRight = true;
+            });
+        })
+
+
+        $("#register").click(function() {
+            if (isPhoneRight && isPwdRight && isCodeRight) {
+                if ($(".readAgree:checked").length == 0) {
+                    alert("请阅读同意小米用户协议和隐私政策");
+                } else {
+                    var phone = $("#phone").val();
+                    var pwd = $("#pwd").val();
+                    register({
+                        phone,
+                        pwd
+                    }).then(data => {
+                        if (data.status) {
+                            setCookie("logUser", phone, 7);
+                            setCookie("pwd", pwd, 7);
+                            location.href = "./index.html";
+                        } else {
+                            alert(data.msg);
+                        }
+                    }).catch(err => {
+                        throw err;
+                    })
+
+                }
+            } else {
+                alert("请输入完整内容");
+            }
+        })
+
+
+    })
+
+    function judgeRuler(con, reg, tipsSpan, inputting, tips, fn) {
+        if (con) {
+            if (reg.test(con)) {
+                tipsSpan.innerHTML = "√";
+                tipsSpan.className = "right";
+                if (fn) { // 如果传入了函数 就执行
+                    fn();
+                }
+            } else {
+                tipsSpan.innerHTML = tips;
+                tipsSpan.className = "wrong";
+                $(inputting).addClass("inputerr");
+            }
+        } else {
+            tipsSpan.innerHTML = "*";
+            tipsSpan.className = "wrong";
+            $(inputting).removeClass("inputerr");
+        }
+    }
+</script>
+
+</html>

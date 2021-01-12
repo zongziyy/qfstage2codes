@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+
+    // 工厂模式 创建对象  (给定既定的参数 产出对象 )
+    // function Cat(name, color) {
+    //     var obj = {   // new Object();
+    //         name: name,
+    //         color: color,
+    //         call() {
+    //             console.log("喵喵");
+    //         },
+    //         skill() {
+    //             console.log("捉老鼠");
+    //         }
+    //     }
+
+    //     return obj;
+    // }
+
+    // 1. 通过此方法创建的对象 和 函数没有关系(对比构造函数)
+    // var arr = new Array();
+    // var obj = new Object();
+    // console.log(arr instanceof Array); // true;
+    // console.log(obj instanceof Object); // true;
+
+    // 2. 共有的属性和方法重复创建  => 浪费内存
+
+
+
+
+    // 自定义构造函数
+    // !!! 构造函数中的this,指向函数调用过程中创建的实例化对象
+
+    function Cat(name, color) {
+        // {}
+        // this-> {}
+
+        // 把需要的属性和方法绑定到创建的对象(实例化对象)
+        this.name = name;
+        this.color = color;
+        this.species = "猫";
+        this.call = function () {
+            console.log("喵喵");
+        }
+        this.skill = function () {
+            console.log("捉老鼠");
+        }
+        // return this;
+    }
+
+    var Tom = new Cat("Tom", "black");
+    console.log(Tom, Tom instanceof Cat);
+
+    var Kitty = new Cat("Kitty", "Pink");
+    console.log(Kitty, Kitty instanceof Cat);
+
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+    console.log(new Cat("Jerry", "orange"))
+
+
+
+
+</script>
+
+</html>

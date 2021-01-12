@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    年:<input type="text" id="year">
+    月:<input type="text" id="month">
+    日:<input type="text" id="day">
+    <button id="btn">判断</button>
+    <input type="text" id="result">
+</body>
+<script>
+
+    // 今天的案例敲两遍  =>特别是 闰年输入验证/简易计算器
+
+
+    // 2.  年月日判断正确的前提下  判断输入日期是该年的第多少天
+    // 2020-5-10
+    // 31 + (29) + 31 + 30 + 10 
+
+    // 断点(debugger)   作用:让js代码执行到特定位置就停止,之后可以手动控制代码一行一行向后执行
+
+    // 如何触发断点
+    // 1. 如果代码在页面加载的时候执行   =>f5属性页面
+    // 2. 如果代码在点击事件中执行      =>  点击触发事件 (此时变量等会有默认提示)
+
+
+    var a = 100;
+
+    // 1. 获取元素
+    var yearInp = document.getElementById("year");
+    var monthInp = document.getElementById("month");
+    var dayInp = document.getElementById("day");
+    var btn = document.getElementById("btn");
+    var resultInp = document.getElementById("result");
+    console.log(yearInp, monthInp, dayInp, btn, resultInp);
+
+    // 2. 给btn绑定点击事件
+    btn.onclick = function () {
+        // alert(1111);
+
+        // 3. 点击取值 (字符串类型)
+        var year = yearInp.value;
+        var month = monthInp.value * 1;
+        var day = dayInp.value * 1;
+        console.log(year, month, day);
+
+        var sum = 0;
+        switch (month) {
+            case 1:
+                sum = day;
+                break;
+            case 2:
+                sum = 31 + day;
+                break;
+            case 3:
+                var febDay = 28;  // 默认 2 => 28
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    febDay = 29; // 闰年29
+                }
+                sum = 31 + febDay + day;
+                break;
+            case 4:
+                var febDay = 28;  // 默认 2 => 28
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    febDay = 29; // 闰年29
+                }
+                sum = 31 + febDay + 31 + day;
+                break;
+            case 5:
+                var febDay = 28;  // 默认 2 => 28
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    febDay = 29; // 闰年29
+                }
+                sum = 31 + febDay + 31 + 30 + day;
+                break;
+        }
+        console.log(sum);
+
+
+
+    }
+</script>
+
+</html>

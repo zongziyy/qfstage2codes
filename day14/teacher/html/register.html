@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form action="./login.html">
+        <h2>表单提交</h2>
+        <p><label for="">用户名:</label><input name="user" type="text"></p>
+        <p><label for="">密码:</label><input name="pwd" type="text"></p>
+        <p><label for="">手机号:</label><input name="phone" type="text"></p>
+        <p><label for="">邮箱:</label><input name="email" type="text"></p>
+        <p><input type="submit" value="提交"></p>
+    </form> -->
+
+    <div class="form">
+        <h2>js提交</h2>
+        <p><label for="">用户名:</label><input name="user" type="text"></p>
+        <p><label for="">密码:</label><input name="pwd" type="text"></p>
+        <p><label for="">手机号:</label><input name="phone" type="text"></p>
+        <p><label for="">邮箱:</label><input name="email" type="text"></p>
+        <p><input type="submit" value="提交"></p>
+    </div>
+</body>
+
+<script>
+    var userInp = document.getElementsByName("user")[0];
+    var pwdInp = document.getElementsByName("pwd")[0];
+    var phoneInp = document.getElementsByName("phone")[0];
+    var emailInp = document.getElementsByName("email")[0];
+
+    var btn = document.querySelector("[type='submit']");
+    btn.onclick = function () {
+        var user = userInp.value;
+        var pwd = pwdInp.value;
+        var phone = phoneInp.value;
+        var email = emailInp.value;
+
+
+        if (user && pwd && phone && email) {
+            // ?user=a123123&pwd=123123&phone=17386141517&email=1272071495%40qq.com
+            // location.href = "login.html?user=" + user + "&pwd=" + pwd + "&phone=" + phone + "&email=" + email;
+
+            location.href = `login.html?user=${user}&pwd=${pwd}&phone=${phone}&email=${email}`;
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 了解 !!!!!!!!!!!!
+
+    var zhangSan = {};
+
+    // 一次定义一个
+    // Object.defineProperty(obj,key,options)
+    Object.defineProperty(zhangSan, "name", {
+        value: "张三",
+        writable: false,
+        enumerable: false,
+        configurable: false,
+    });
+
+    // 一次定义多个    
+    // Object.defineProperties(obj,options);
+    Object.defineProperties(zhangSan, {
+        age: {
+            value: 18,
+            writable: false,
+            enumerable: false,
+            configurable: false,
+        },
+        chinese: {
+            value: 55,
+            writable: false,
+            enumerable: false,
+            configurable: false,
+        },
+        math: {
+            value: 66,
+            writable: false,
+            enumerable: false,
+            configurable: false,
+        }
+    })
+    console.log(zhangSan);
+
+    for (var key in zhangSan) {
+        console.log(key);
+    }
+
+
+
+
+</script>
+
+</html>

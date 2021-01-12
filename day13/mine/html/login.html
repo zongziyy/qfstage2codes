@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <p><label for="">用户名:</label><input name="user" type="text"></p>
+        <p><label for="">密&emsp;码:</label><input name="pwd" type="text"></p>
+        <p><input type="submit" value="登录"></p>
+    </form>
+</body>
+<script>
+    // 数据拆分 解析
+    // 从登录页  获取注册传递的数据  (参数数据)  生成一个对应的对象 
+
+    // "user=a123123&pwd=123123&phone=17386141517&email=1272071495%40qq.com"
+
+    // var data = {
+    //     user: "a123123",
+    //     pwd: "123123",
+    //     phone: "12312312311",
+    //     emial: "123123@qq.com"
+    // }
+
+    var search = location.search;   //获取地址栏的search
+    // console.log(search);
+    
+    var search1 = search.substr(1,search.length-1); //去掉问号
+    // console.log(search1);
+
+    var searchList = search1.split("&");    //获取每个参数
+    // console.log(searchList);
+    
+    var data = {}       //新建对象用于接收
+    var keyName = [];
+    var keyValue = [];
+    for(let i=0;i<searchList.length;i++){
+        keyName[i] = mySplit(searchList[i])[0];
+        keyValue[i] = mySplit(searchList[i])[1];
+        data[keyName[i]] = keyValue[i];
+    }
+    console.log(data);
+    
+
+    function mySplit(str){      //封装函数分隔键名 键值
+        var list = str.split("=");
+        return list;
+    }
+    // mySplit(searchList[0]);
+    // console.log(mySplit(searchList[0]));
+</script>
+
+</html>

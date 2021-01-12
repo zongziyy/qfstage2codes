@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 字符串 
+    // str.search
+    // str.match
+    // str.replace
+
+
+    // 正则的常用方法
+    // test()   判断字符串中是否包含符合规则的某个或某段字符  存在=>true,不存在返回false
+    // exec()
+
+
+    // test()   判断字符串中是否包含符合规则的某个或某段字符  存在=>true,不存在返回false     (包含!!!!!!!!!!!!!!!!!!!!)
+    var str = "good good study , dAy Day up";
+    var reg = /day/;    //false
+    var reg = /day/i;   //true
+    var reg = /da/i;       //true
+
+    var result = reg.test(str);
+
+    console.log(result);
+
+    // exec()  检索字符串中指定的值(将匹配的内容放到数组中)   只匹配一个
+    //         弱化版match
+
+    var str = "good good study , dAy Day up";
+
+    var reg = /day/ig;
+
+    var arr = reg.exec(str);
+    console.log(arr);
+
+
+
+
+</script>
+
+</html>

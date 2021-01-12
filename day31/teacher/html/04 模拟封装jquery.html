@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #list {
+            padding: 20px 0;
+        }
+
+        #list li {
+            line-height: 45px;
+            border: 1px dashed #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>10</li>
+    </div>
+</body>
+<script>
+
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // attr()  (attribute HTML属性)  prop() (property 节点的属性)
+    // css()
+    // eq()   siblings()
+
+
+    var listBox = document.getElementById("list");  //单元素
+    var liList = document.getElementsByTagName("li"); //多元素
+
+    // html()
+    // 单元素
+    // listBox.innerHTML = 123123;
+
+    // 多元素
+    // for (var i = 0; i < liList.length; i++) {
+    //     var ele = liList[i];
+    //     ele.innerHTML = "123123";
+    // }
+
+    // var getEle = {
+    //     // eles存储操作元素的集合 
+    //     eles: document.querySelectorAll("#list li"),   // 以选择器的形式获取元素 无论是单元素还是多元素  统一放到集合中
+    //     setHtml(con) {
+    //         for (var i = 0; i < this.eles.length; i++) {
+    //             var ele = this.eles[i];
+    //             ele.innerHTML = con;
+    //         }
+    //     },
+    //     getHtml() {
+    //         // 如果是多元素 默认返回集合中的第一个(jquery)
+    //         return this.eles[0].innerHTML;
+    //     },
+    //     // html()   获取和设置元素的html结构
+    //     // html(con)有参数,就设置
+    //     // html()   没有参数,就获取
+
+    //     html(con) {
+    //         if (arguments.length >= 1) {   // 至少一个 有参数
+    //             // 有参数,就设置
+    //             for (var i = 0; i < this.eles.length; i++) {
+    //                 var ele = this.eles[i];
+    //                 ele.innerHTML = con;
+    //             }
+    //         } else {
+    //             return this.eles[0].innerHTML;
+    //         }
+    //     }
+    // }
+    // getEle.setHtml("adaasdasd");
+    // getEle.html("adaasdasd");
+    // getEle.html("<h2>hello</h2>");
+
+
+
+
+    function GetEle(selector) {
+
+        return {
+            // eles存储操作元素的集合 
+            eles: document.querySelectorAll(selector),   // 以选择器的形式获取元素 无论是单元素还是多元素  统一放到集合中
+            // setHtml(con) {
+            //     for (var i = 0; i < this.eles.length; i++) {
+            //         var ele = this.eles[i];
+            //         ele.innerHTML = con;
+            //     }
+            // },
+            // getHtml() {
+            //     // 如果是多元素 默认返回集合中的第一个(jquery)
+            //     return this.eles[0].innerHTML;
+            // },
+            // html()   获取和设置元素的html结构
+            // html(con)有参数,就设置
+            // html()   没有参数,就获取
+
+            html(con) {
+                if (arguments.length >= 1) {   // 至少一个 有参数
+                    // 有参数,就设置
+                    for (var i = 0; i < this.eles.length; i++) {
+                        var ele = this.eles[i];
+                        ele.innerHTML = con;
+                    }
+                } else {
+                    return this.eles[0].innerHTML;
+                }
+            }
+        }
+    }
+
+
+</script>
+
+</html>

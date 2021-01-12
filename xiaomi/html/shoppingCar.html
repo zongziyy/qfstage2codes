@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的购物车-小米商城</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2170186_2a5pwon7jz4.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/shoppingCar.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/cookie.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="w cl">
+            <h1 class="logo cl">
+                <a href="./index.html"><img src="../images/milogo.png" alt=""></a>
+            </h1>
+            <h2>
+                我的购物车
+            </h2>
+
+            <div class="topbar-info">
+                <!-- 未登录 -->
+                <a href="javascript:;" class="longinfrom" id="loginfrom">登录</a>
+                丨
+                <a href="./register.html" class="longinfrom">注册</a>
+
+                <!-- 已登陆 -->
+                <!-- <li class="loginUser" style="overflow: hidden;">
+                    <a href="javascript:;" class="userName">17371420646 <i class="iconfont icon-jiantou-copy"></i></a>
+                    <div class="userInfo" style="height: 0px;">
+                        <p style="height: 0px;"><a href="javascript:;">个人中心</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">评价晒单</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">我的喜欢</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">小米账户</a></p>
+                        <p class="loginOut" style="height: 0px;">退出登录</p>
+                    </div>
+                </li> -->
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <div class="mi-cart page-main">
+        <div class="container w">
+            <!-- 未登录 -->
+            <div class="empty-cart-top cl">
+                <h2 class="login-tip">您还没有登陆</h2>
+                <a href="javascript:;" id="btn-primary" class="btn-primary">去登陆</a>
+                <a href="./index.html" class="btn-primary">去逛逛</a>
+            </div>
+
+
+            <!-- 购物车空 -->
+            <!-- <div class="empty-cart-top cl">
+                <h2 class="login-tip">您的购物车还是空的！</h2>
+                <a href="./index.html" class="btn-primary">马上去购物</a>
+            </div> -->
+
+
+            <!-- 购物车有物品 -->
+            <!-- <div class="cart-goods-list">
+                <div class="list-head cl">
+                    <div class="col col-check">
+                        <input type="checkbox" class="check-all" id="check-all" hidden checked>
+                        <label for="check-all">
+                            <i class="iconfont icon-duigou"></i>
+                        </label>
+                        <span> 全选</span>
+                    </div>
+                    <div class="col col-img">&nbsp;</div>
+                    <div class="col col-name">商品名称</div>
+                    <div class="col col-price">单价</div>
+                    <div class="col col-num">数量</div>
+                    <div class="col col-total">小计</div>
+                    <div class="col col-action">操作</div>
+                </div>
+                <ul class="goodsList">
+                    <li>
+                        <div class="col col-check">
+                            <input type="checkbox" class="check-one" id="check-one-123" hidden>
+                            <label for="check-one-123">
+                                <i class="iconfont icon-duigou"></i>
+                            </label>
+                        </div>
+                        <div class="col col-img">
+                            <img src="../images/redmiK30zhizhenbigpic.jpg" alt="" class="goodsImg">
+                        </div>
+                        <div class="col col-name">
+                            <h3 class="goodsName">黑鲨</h3>
+                        </div>
+                        <div class="col col-price"><span>99元</span></div>
+                        <div class="col col-num">
+                            <div class="numberChange">
+                                <span class="numAdd">-</span><input type="text" class="goodsNum" value="1"><span class="numRemove">+ </span>
+                            </div>
+                        </div>
+                        <div class="col col-total">99元</div>
+                        <div class="col col-action">
+                            <a href="javascript:;">
+                                <i class="iconfont icon-cha"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="cart-bar cl w">
+                    <div class="section-left">
+                        <a href="../html/index.html">继续购物</a><span class="selectGoods">共5件商品，已选择0件</span>
+                    </div>
+                    <div class="section-right">
+                        <a href="javascript:;" class="jiesuan">去结算</a>
+                        <p class="total-all">合计：<span>0</span>元</p>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div>
+
+
+    <!-- foot s -->
+    <footer>
+        <div class="site-footer">
+            <div class="w footer-service">
+                <ul class="list-service">
+                    <li><a href="javascript:;"><i class="iconfont icon-banshou"></i>&ensp;预约维修服务</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-7tiantuihuanhuo"></i>&ensp;7天无理由退货</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-15tianwuliyoutuihuo"></i>
+                            &ensp;15天免费换货</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-liwu"></i>&ensp;满99元包邮</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-weizhi"></i>&ensp;520余家售后网点</a></li>
+                </ul>
+            </div>
+            <div class="footer-links w cl">
+                <dl class="col-links">
+                    <dt>帮助中心</dt>
+                    <dd><a href="javascript:;">账户管理</a></dd>
+                    <dd><a href="javascript:;">购物指南</a></dd>
+                    <dd><a href="javascript:;">订单操作</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>服务支持</dt>
+                    <dd><a href="javascript:;">售后政策</a></dd>
+                    <dd><a href="javascript:;">自助服务</a></dd>
+                    <dd><a href="javascript:;">相关下载</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>线下门店</dt>
+                    <dd><a href="javascript:;">小米之家</a></dd>
+                    <dd><a href="javascript:;">服务网点</a></dd>
+                    <dd><a href="javascript:;">授权体验店</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关于小米</dt>
+                    <dd><a href="javascript:;">了解小米</a></dd>
+                    <dd><a href="javascript:;">加入小米</a></dd>
+                    <dd><a href="javascript:;">投资者关系</a></dd>
+                    <dd><a href="javascript:;">企业社会责任</a></dd>
+                    <dd><a href="javascript:;">廉洁举报</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关注我们</dt>
+                    <dd><a href="javascript:;">新浪微博</a></dd>
+                    <dd><a href="javascript:;">官方微信</a></dd>
+                    <dd><a href="javascript:;">联系我们</a></dd>
+                    <dd><a href="javascript:;">公益基金会</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>特色服务</dt>
+                    <dd><a href="javascript:;">F码通道</a></dd>
+                    <dd><a href="javascript:;">礼物码</a></dd>
+                    <dd><a href="javascript:;">防伪查询</a></dd>
+                </dl>
+                <div class="col-contact">
+                    <p class="phone">400-100-5678</p>
+                    <p>8:00-18:00（仅收市话费）</p>
+                    <a href="javascript:void(0);" class="btn btn-line-primary btn-small J_contactBtn"><i class="iconfont icon-kefu"></i> 人工客服</a>
+                    <div class="follow">关注小米：<i class="iconfont icon-weibo"></i><i class="iconfont icon-weixin"></i><img src="//cdn.cnbj1.fds.api.mi-img.com/staticsfile/global/wx-img.png" id="J_followWxImg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- foot e -->
+</body>
+<script>
+    var cookie = document.cookie;
+    if (cookie) {
+        var logUser = getCookie("logUser");
+        if (logUser) {
+            $(".topbar-info").html(
+                `<li class="loginUser" style="overflow: hidden;">
+                    <a href="javascript:;" class="userName">${logUser}&ensp;<i class="iconfont icon-jiantou-copy"></i></a>
+                    <div class="userInfo" style="height: 0px;">
+                        <p style="height: 0px;"><a href="javascript:;">个人中心</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">评价晒单</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">我的喜欢</a></p>
+                        <p style="height: 0px;"><a href="javascript:;">小米账户</a></p>
+                        <p class="loginOut" style="height: 0px;">退出登录</p>
+                    </div>
+                </li> `
+            );
+
+            writeShoppingCar();
+        }
+    } else {
+        $(".topbar-info").html(
+            `<a href="javascript:;" class="loginfrom" id="loginfrom">登录</a>
+                丨
+            <a href="./register.html" class="longinfrom">注册</a>`
+        );
+        $(".container").html(
+            `<div class="empty-cart-top cl">
+                <h2 class="login-tip">您还没有登陆</h2>
+                <a href="javascript:;" id="btn-primary" class="btn-primary">去登陆</a>
+                <a href="./index.html" class="btn-primary">去逛逛</a>
+            </div>`
+        )
+        writeShoppingCar();
+    }
+
+
+    // 事件委托
+    $(document).on("click", "#btn-primary,#loginfrom", function() {
+        var url = encodeURIComponent(location.href);
+        location.href = "./login.html?returnUrl=" + url;
+    }).on("click", ".check-all", function() {
+        var checkAll = $(".list-head .check-all").prop("checked");
+        if (checkAll) {
+            $(".check-one").prop("checked", true);
+        } else {
+            $(".check-one").prop("checked", false);
+        }
+        settlement();
+    }).on("click", ".numAdd,.numRemove", function() {
+        if ($(this).prop("class") == "numAdd") {
+            if ($(this).next().val() <= 1) {
+                return false;
+            }
+            $(this).next()[0].value--;
+            var buyNum = $(this).next().val();
+            var id = $(this).parent().attr("id");
+            changeBuyNumByGoodsId({ buyNum, id }).then(data => {
+                if (data.status) {
+                    $(this).parents("li").find(".col-total").text(data.total);
+                    settlement();
+                }
+            }).catch(err => {
+                throw err;
+            })
+        } else if ($(this).prop("class") == "numRemove") {
+            $(this).prev()[0].value++;
+            var buyNum = $(this).prev().val();
+            var id = $(this).parent().attr("id");
+            changeBuyNumByGoodsId({ buyNum, id }).then(data => {
+                if (data.status) {
+                    console.log(data.total)
+                    $(this).parents("li").find(".col-total").text(data.total);
+                    settlement();
+                }
+            }).catch(err => {
+                throw err;
+            })
+        }
+    }).on("click", ".check-one", function() {
+        isCheckAll();
+        settlement();
+    }).on("click", ".col-action .iconfont", function() {
+        var ids = $(this).attr("data-id")
+        deleteGoodsByIds(ids);
+        isCheckAll();
+        settlement();
+    }).on("click", ".delete-all", function() {
+        var list = $(".check-one:checked").map(function(index, item) {
+            return $(this).attr("data-id");
+        }).get();
+        var ids = list.join(",");
+        deleteGoodsByIds(ids);
+        settlement();
+    }).on("click", ".jiesuan", function() {
+        var list = $(".check-one:checked").map(function(index, item) {
+            return $(this).attr("data-id");
+        }).get();
+        var ids = list.join(",");
+        deleteGoodsByIds(ids);
+    }).on("change blur", ".goodsNum", function() {
+        var buyNum = $(this).val();
+        if (buyNum < 1) {
+            alert("购买数量不能小于1");
+            $(this).val("1");
+            return false;
+        } else {
+            buyNum = $(this).val();
+            var id = $(this).parent().attr("id");
+            changeBuyNumByGoodsId({ buyNum, id }).then(data => {
+                if (data.status) {
+                    $(this).parents("li").find(".col-total").text(data.total);
+                }
+                settlement();
+            }).catch(err => {
+                throw err;
+            })
+        }
+    }).on("mouseenter", ".loginUser", function() {
+        $(this).addClass("bgcActive").css({ overflow: "visible" }).find("p").height(30).end().children(".userInfo").height(150);
+    }).on("mouseleave", ".loginUser", function() {
+        $(this).removeClass("bgcActive").css({ overflow: "hidden" }).find("p").height(0).end().children(".userInfo").height(0);
+    }).on("click", ".loginOut", function() {
+        $(".topbar-info").html(
+            `<a href="./login.html" class="longinfrom" id="loginfrom">登录</a>
+                丨
+            <a href="./register.html" class="longinfrom">注册</a>`
+        );
+        delCookie("logUser");
+        location.href = "./index.html";
+    })
+
+
+
+
+    function settlement() {
+        var priceAll = 0;
+        var num = 0;
+        var selectNum = 0;
+        $(".check-one").each(function(item, index) {
+            let price = $(this).parents("li").find(".col-total").text() * 1;
+            let buyNum = $(this).parents("li").find(".goodsNum").val() * 1;
+            num++;
+            if ($(this).prop("checked")) {
+                priceAll += price;
+                selectNum++;
+            }
+        })
+        $(".selectGoods").html(`共${num}件商品，已选择${selectNum}件`);
+        $(".total-all-span").html(priceAll);
+    }
+
+    function isCheckAll() {
+        if ($(".check-one:not(:checked)").length == 0) {
+            $(".check-all").prop("checked", true)
+        } else {
+            $(".check-all").prop("checked", false)
+        }
+    }
+
+    function writeShoppingCar() {
+        searchShoppingCarByUser({ phone: logUser }).then(list => {
+            if (list.length == 0) {
+                $(".container").html(
+                    ` <div class="empty-cart-top cl">
+                                    <h2 class="login-tip">您的购物车还是空的！</h2>
+                                    <a href="./index.html" class="btn-primary">马上去购物</a>
+                                </div>`
+                );
+            } else {
+                var html = ` <div class="cart-goods-list">
+                                <div class="list-head cl">
+                                    <div class="col col-check">
+                                        <input type="checkbox" class="check-all" id="check-all-1" hidden>
+                                        <label for="check-all-1" class="check-all-label">
+                                            <i class="iconfont icon-duigou"></i>
+                                        </label>
+                                        <span> 全选</span>
+                                    </div>
+                                    <div class="col col-img">&nbsp;</div>
+                                    <div class="col col-name">商品名称</div>
+                                    <div class="col col-price">单价</div>
+                                    <div class="col col-num">数量</div>
+                                    <div class="col col-total">小计</div>
+                                    <div class="col col-action">操作</div>
+                                </div>
+                                <ul class="goodsList">`;
+
+                list.forEach(function({ id, gid, goodsName, buyNum, bigPicList, total, buyEdition, buyPrice, buyColor }, index) {
+                    html += `<li>
+                        <div class="col col-check">
+                            <input type="checkbox" class="check-one" id="check-one-${index}" hidden data-id="${id}">
+                            <label for="check-one-${index}" class="check-one-label">
+                                <i class="iconfont icon-duigou"></i>
+                            </label>
+                        </div>
+                        <div class="col col-img">
+                            <img src="${bigPicList}" alt="" class="goodsImg">
+                        </div>
+                        <div class="col col-name">
+                            <h3 class="goodsName">${goodsName} ${buyColor} ${buyEdition}</h3>
+                        </div>
+                        <div class="col col-price"><span>${(buyPrice*1).toFixed(0)}元</span></div>
+                        <div class="col col-num">
+                            <div class="numberChange" id="${id}">
+                                <span class="numAdd">-</span><input type="text" class="goodsNum" value="${buyNum}"><span class="numRemove">+</span>
+                            </div>
+                        </div>
+                        <div class="col col-total">${total}</div>
+                        <div class="col col-action">
+                            <a href="javascript:;">
+                                <i class="iconfont icon-cha" data-id="${id}"></i>
+                            </a>
+                        </div>
+                    </li>`
+                })
+                html += `</ul>
+                        <div class="cart-bar cl w">
+                            <div class="section-left">
+                                <a href="javascript:;" class="delete-all">删除</a><a href="../html/index.html">继续购物</a><span class="selectGoods">共${list.length}件商品，已选择0件</span>
+                            </div>
+                            <div class="section-right">
+                                <a href="javascript:;" class="jiesuan">去结算</a>
+                                <p class="total-all">合计：<span class="total-all-span">0</span>元</p>
+                            </div>
+                        </div>
+                    </div>`
+
+                $(".container").html(html);
+            }
+        }).catch(err => {
+            throw err;
+        })
+    }
+
+    function deleteGoodsByIds(ids) {
+        deleteShoppingCarById({ ids }).then(data => {
+            if (data.status) {
+                writeShoppingCar();
+            } else {
+                console.log(data.msg);
+            }
+        }).catch(err => {
+            throw err;
+        });
+    }
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 面向对象的封装    
+    function Fn(name, age) {
+        // {}   构造函数创建的实例化对象
+        // this -> {}
+
+        this.name = name;
+        this.age = age;
+
+        // this.__proto__ = Fn.prototype
+        // return this;
+    }
+    console.dir(Fn);
+
+    // 将所有实例的共有的属性和方法存到prototype(原型对象)上
+    // Fn.prototype.a = 1;
+    // Fn.prototype.b = 2;
+    // Fn.prototype.say = function () {
+    //     console.log(this.name, this.age);
+    // };
+
+    // constructor 构造器属性 
+    console.log(Fn.prototype.constructor);
+
+
+
+    // new Fn()
+    var zhang = new Fn("张三", 18);  // 创建实例化对象赋值给变量zhang
+    console.log(zhang, zhang instanceof Fn);
+
+    // __proto__   (隐式原型|原型属性)
+
+    // console.log(zhang.name);
+    // console.log(zhang.age);
+    // console.log(zhang.a);
+    // console.log(zhang.b);
+    // console.log(zhang.say);
+
+    // zhang.say(); //  say方法在调用时属于zhang(调用此方法的实例化对象)
+    // zhang.__proto__.say(); //  say方法在调用时属于zhang.__proto__ => Fn.prototype
+
+
+
+</script>
+
+</html>

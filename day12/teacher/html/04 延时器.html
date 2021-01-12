@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .adBox {
+            width: 300px;
+            height: 400px;
+            background-color: #6ff;
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="adBox">
+        <div class="title">距离广告关闭还有10秒</div>
+    </div>
+</body>
+<script>
+    // 计时器   每隔一段时间执行特定的操作(如果不停止会一直执行)
+    // setInterval(callback,interval,arg1,arg2...argN)
+
+
+    // 延时器  延迟一段时间执行特定的操作(只执行一次) 
+    // setTimeout(callback,interval,arg1,arg2...argN)
+
+    // 返回值  延时器的编号
+
+    // 清除延时器  
+    // clearTimeout(id) 
+
+    // 注意:计时器不能嵌套计时器, 如果遇到需要计时器嵌套的情况, 可以把延时器改为计时器  
+
+    var adBox = document.getElementsByClassName("adBox")[0];
+    setTimeout(function () {
+        console.log("hello");
+        adBox.style.display = "block";
+    }, 5000);
+
+
+
+
+</script>
+
+</html>

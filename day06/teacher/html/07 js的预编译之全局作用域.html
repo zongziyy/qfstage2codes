@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var a, b, c;  //undefined  把变量的声明提升到当前script标签的最前面(此处只是为了方便理解,手写的,实际是浏览器默认操作,看不到)
+
+    // function fn() {  // 确定函数体  =>  把整个函数提升到最前面  (此处只是为了方便理解,手写的,实际是浏览器默认操作,看不到)
+    //     console.log("我是函数中执行的代码");
+    // }
+
+    console.log(a, b, c, fn);   //undefined undefined undefined
+    // fn  通过函数名 可以打印整个函数的内容   =>     把整个函数提升到最前面
+
+
+    // JavaScript运行三部曲  (js从加载完毕到开始执行经历了哪些流程)
+
+    // 1. 语法解析    => 通篇检查当前script标签的js语法,如果语法有误 则报错  (SyntaxError)      
+    // 2. 预编译      => 发生在代码执行之前,为代码执行提前做的一些准备工作
+
+    // 全局作用域
+    //  a. 变量提升   把变量的声明提升到当前作用域(script标签的)最前面,赋值还是在对应位置赋值
+    //  b. 确定函数体   把整个函数(命名函数)的声明提前 (把函数整体提升到当前script标签的最前面)
+
+    // 3. 解释执行   =>  按照代码流程从上到下开始执行  
+
+
+
+    fn();
+
+    // var a = 10px; 语法错误演示
+    var a = 10;
+    var b = 20;
+    var c = a + b;
+
+    console.log(a, b, c);
+
+
+    function fn() {  // 命名函数
+        console.log("我是函数中执行的代码");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

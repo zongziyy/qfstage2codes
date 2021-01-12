@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+    <!-- 引入资源 不受同源策略的影响 -->
+    <!-- <script src="http://192.168.60.94/2009_php/jsonp/1.js"></script> -->
+
+
+</head>
+
+<body>
+
+</body>
+<script>
+    // 前端提供函数的声明  
+    // 后端返回函数的调用    callback({})  实际参数就是你要传递的数据
+
+    function callback(data) {
+        console.log(data);
+    }
+
+    // jsonp  (不是ajax)
+    // 原理:  引入资源(css,js,图片) 不受同源策略的影响  
+
+
+</script>
+
+<!-- callback({}) -->
+<script src="http://192.168.60.94/2009_php/jsonp/data.js"></script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            border: 1px dashed #333;
+            line-height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="box">
+        <div class="list">
+            <li class="first">我是01</li>
+            <li>我是02</li>
+            <li>我是03</li>
+            <li>我是04</li>
+            <li>我是05</li>
+            <li>我是06</li>
+            <li>我是07</li>
+            <li>我是08</li>
+            <li>我是09</li>
+            <li>我是10</li>
+        </div>
+    </div>
+</body>
+<script>
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // css()
+    // attr()  (attribute HTML属性)  prop() (property 节点的属性)
+    // eq()   siblings()
+
+    // 原生
+    // var liList = document.querySelectorAll(".list li");
+    // var liList = document.querySelectorAll(".wrap");
+    // var liList = document.querySelectorAll("#box");
+
+    // liList.forEach(function (item) {
+    //     item.textContent = "hello world";
+    // });
+
+    function GetEle(selector) {
+        // 为什么用querySelectorAll  (无论是获取的 单个元素还是多个元素  都会放到集合中  => 操作集合)
+        // 用来存放  获取元素的结合
+        this.eles = document.querySelectorAll(selector);
+
+        // setHtml("123123")
+        // 设置 html
+        // 接收一个参数  把所有的的元素的innerHTML  改为对应的参数值
+        // this.setHtml = function (con) {
+        //     // 遍历集合 修改每个元素的内容
+        //     for (var i = 0; i < this.eles.length; i++) {
+        //         var ele = this.eles[i];
+        //         ele.innerHTML = con;
+        //     }
+        // }
+
+        // 获取 html
+        // 在jquery中 多元素获取  默认返回 第一个
+        // this.getHtml = function () {
+        //     return this.eles[0].innerHTML;
+        // }
+
+
+        // 既可以设置 html  又可以获取 html
+        // html(1231231)  有参数  就设置
+        // html()         没有  就获取
+        this.html = function (con) {
+            if (arguments.length >= 1) {  //有参数  就设置
+                for (var i = 0; i < this.eles.length; i++) {
+                    var ele = this.eles[i];
+                    ele.innerHTML = con;
+                }
+            } else {  // 没有  就获取
+                return this.eles[0].innerHTML;
+            }
+        }
+    }
+
+
+    function $(selector) {  // 接收一个字符串的选择器   =>   GetEle 的实例化对象
+        return new GetEle(selector);
+    }
+
+    // 实例化对象
+    // var liList = new GetEle(".list li");
+    // console.log(liList);
+    // liList.setHtml("123123");
+
+    // new GetEle(".first").html("我是first");
+
+</script>
+
+</html>

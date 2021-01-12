@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 封装一个方法includes(list, char) 判断数组中是否能包含某个元素  包含 => true, 否则返回false
+    // 判断 是否存在 是否包含  是否都大于  => 两种状态的切换 (等所有的数都判断完毕之后才能得到结果) 
+
+    // var list = [1, 2, 3, 4];
+    // var char = "1";
+    // console.log(list);
+
+    // var flag = false;  // 假设不存在
+
+    // for (var i = 0; i < list.length; i++) {
+    //     var item = list[i];  // 循环的每一个元素
+    //     if (item === char) {  //存在
+    //         flag = true;
+    //         break;
+    //     }
+    // }
+
+    // console.log(flag);
+
+    // 模拟数组的includes方法
+    function includes(list, char) {
+        // var list = [1, 2, 3, 4];
+        // var char = "1";
+        // console.log(list);
+
+        var flag = false;  // 假设不存在
+
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];  // 循环的每一个元素
+            if (item === char) {  //存在
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    function indexOf(list, char) {
+        // var list = [1, 2, 3, 4];
+        // var char = "1";
+        // console.log(list);
+
+        var index = -1;  // 假设不存在
+
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];  // 循环的每一个元素
+            if (item === char) {  //存在
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    var arr = [1, 2, 3, 4];
+    console.log(includes(arr, 1));
+    console.log(includes(arr, "1"));
+
+</script>
+
+</html>

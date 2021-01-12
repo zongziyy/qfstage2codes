@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 面向对象之多态
+
+    // JS是若类型的语言,是无态的,天生支持多态
+
+    // 多态 通过不同类(构造函数)的创建的对象 在调用同一个方法 会显示不同的结果
+
+    class Cat {
+        constructor(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+        call() {
+            console.log("喵喵");
+        }
+    }
+
+
+    class Dog {
+        constructor(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+        call() {
+            console.log("旺旺");
+        }
+    }
+
+    class Pig {
+        constructor(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+        call() {
+            console.log("哼哼");
+        }
+    }
+
+    function AnimallCall(animal) {
+        animal.call();
+    }
+
+    var kitty = new Cat("Kitty", "pink");
+    var wangCai = new Dog("wangCai", "black");
+    var peiQi = new Pig("peiQi", "green");
+    console.log(kitty)
+    console.log(wangCai)
+    console.log(peiQi)
+
+    AnimallCall(kitty);
+    AnimallCall(wangCai);
+    AnimallCall(peiQi);
+
+
+</script>
+
+</html>

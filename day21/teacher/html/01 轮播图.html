@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .wrapAll {
+            width: 1226px;
+            height: 460px;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+
+        .slideBar {
+            /* 父元素的宽度  == 所有子元素的宽度和 */
+            width: max-content;
+            height: 460px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slideBar li {
+            float: left;
+        }
+
+        .dotList {
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+            display: flex;
+        }
+
+        .dotList li {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            margin: 5px;
+            border-radius: 50%;
+        }
+
+        .dotList .active {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapAll">
+        <ul class="slideBar">
+            <li class="active"><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpg" alt=""></li>
+            <li><img src="../images/4.jpg" alt=""></li>
+        </ul>
+        <ul class="dotList">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var wrapAll = document.querySelector(".wrapAll");
+        var slideBar = document.querySelector(".slideBar");
+        var liList = document.querySelectorAll(".dotList li");
+        var slideList = document.querySelectorAll(".slideBar li");
+
+        var index = 0; // 记录自动轮播的下标
+
+        // animate(slideBar, "left", -1226 * 2, "linear");
+
+        var swiperWidth = slideList[0].clientWidth;
+        console.log(swiperWidth);
+
+        for (let i = 0; i < liList.length; i++) {
+            let li = liList[i];
+            li.onclick = function () {
+
+                for (var j = 0; j < liList.length; j++) {
+                    liList[j].className = "";
+                }
+                liList[i].className = "active";
+
+
+                animate(slideBar, "left", -swiperWidth * i, "ease-out");
+            }
+        }
+
+
+
+        timer = setInterval(function () {
+            index++;
+            // 注意
+            // 此种写法 第四张反向滚动到第一张  不好看 
+            // 如何解决  
+
+            // if (index >= liList.length) {
+            //     index = 0;
+            // }
+
+
+            for (var j = 0; j < liList.length; j++) {
+                liList[j].className = "";
+            }
+            liList[index].className = "active";
+            animate(slideBar, "left", -swiperWidth * index, "ease-out");
+
+
+        }, 3000);
+
+
+    }
+
+
+
+
+
+</script>
+
+</html>

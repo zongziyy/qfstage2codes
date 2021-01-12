@@ -1,0 +1,155 @@
+body {
+    background: #f9f9f9;
+    color: #666;
+}
+
+.wrap {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.h {
+    min-height: 0px;
+    width: 100%;
+}
+
+.register {
+    margin: 0 auto;
+    width: 854px;
+    height: 550px;
+    padding: 0 34px 30px;
+    background-color: #fff;
+    flex-shrink: 0;
+}
+
+.register .logo {
+    height: 49px;
+    width: 49px;
+    margin: 0 auto;
+    background: url(../images/milogo.png) no-repeat center center;
+    background-size: contain;
+}
+
+.register h2 {
+    font-size: 30px;
+    color: #333333;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.register .inps {
+    width: 332px;
+    margin: 0 auto;
+}
+
+.register .inp {
+    width: 100%;
+    height: 42px;
+    padding: 13px 16px;
+    box-sizing: border-box;
+    border: #DFDFDF 1px solid;
+    outline: none;
+}
+
+.register label {
+    display: block;
+    font-size: 14px;
+    padding: 0 0 4px;
+}
+
+
+
+.register span {
+    display: block;
+    font-size: 14px;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 4px;
+}
+
+.register .wrong {
+    color: #f56600;
+}
+
+.register .inputerr {
+    border-color: #f56600;
+}
+
+.register .right {
+    color: #35c228;
+}
+
+.register .createCodeSpan {
+    margin-bottom: 14px;
+}
+
+.register #register {
+    width: 100%;
+    color: #fff;
+    cursor: pointer;
+    background-color: #FF6700;
+    border: 0px;
+}
+
+.register .createCode {
+    display: flex;
+    justify-content: space-between;
+}
+
+#createCode {
+    width: 60%;
+    flex-shrink: 0;
+}
+
+#randomCreateCode {
+    display: inline-block;
+    width: 38%;
+    height: 42px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 42px;
+    font-size: 30px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    border: #DFDFDF 1px solid;
+    user-select: none;
+}
+
+
+.privacy_box {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.privacy_box a {
+    color: #000;
+    font-weight: bold;
+}
+
+footer {
+    width: 100%;
+    height: 80px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+footer .font {
+    color: #333;
+    height: 20px;
+    line-height: 20px;
+}
+
+footer .copyRight {
+    color: #757575;
+    height: 24px;
+    padding: 10px;
+}

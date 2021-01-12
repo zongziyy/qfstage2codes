@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // String()  //函数
+
+    // String(100);       //作为一个普通函数使用
+
+    // new String(1000);  //作为构造函数使用
+
+    // console.log(new Array(1, 2, 3));
+    // console.log(new Object());
+
+
+    // function fn() {
+    //     console.log("this", this);
+    // }
+
+    //作为一个普通函数使用
+    // var result = fn();   // this ->window   返回值:undefined
+    // console.log(result);
+
+
+    // 使用了new关键词,函数做了什么操作?
+    // 1. 创建了一个纯净的空对象  (this instanceOf Fn) => true 
+    // 2. 将this指向创建的空对象  this -> {}  
+
+    // 3. 给创建的对象添加了一个原型属性(__proto__)指向了构造函数的原型对象(prototype) 
+    // this.__proto__ = Fn.prototype; 
+
+    // 4. 默认返回创建的对象  this 
+
+    // 自定义构造函数  (!!!   规范:为了区分普通函数和构造函数,构造函数的首字母大写)
+    function Fn() {
+        // 1. 创建了一个纯净的空对象   {};
+        // 2. this 指向创建的对象   (通过this 引用对象)
+
+        console.log("this", this, this instanceof Fn);  // this => {}
+
+        // this.__proto__ = Fn.prototype;  //   给创建的对象添加了一个原型属性(__proto__)指向了构造函数的原型对象(prototype) 
+
+        // return this;    // 4. 默认返回创建的对象  this 
+
+        // 可以自己定义返回值
+        // 值类型  => 默认还是返回 this
+        // 引用类型  =>  返回该引用类型
+        // return 1;
+        // return [1, 2, 3];
+
+    }
+
+    // 作为构造函数使用
+    var result = new Fn();   //  this => {}    返回值:{}
+    console.log("result", result);
+    console.log(result.__proto__ === Fn.prototype);
+
+</script>
+
+</html>

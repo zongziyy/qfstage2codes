@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+    var mid = document.getElementsByClassName("mid")[0];
+    var list = document.querySelectorAll(".first,.last");
+
+    // children()   匹配所有的子元素
+    // children(selector)   接收一个字符串作为筛选子元素的限制
+
+    // console.log($(".list").children());
+    // console.log($(".list").children(".mid"));
+
+    // contents()   匹配所有的子节点
+    // contents(selector)   接收一个字符串作为筛选子元素的限制
+    // console.log($(".list").contents());
+    // console.log($(".list").contents(".mid"));
+
+    // parent()   返回匹配元素的父元素
+    // console.log($(".first").parent())
+
+    // parents()   返回匹配元素的父元素的集合
+    // parents(selector)   接收一个字符串作为筛选父元素的限制
+    // console.log($(".first").parents());
+    // console.log($(".first").parents(".wrap"));
+
+    // parentsUntil()  查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止。
+    // console.log($(".first").parentsUntil("body"));
+
+
+
+    // prev()
+    // prevAll()
+    // prevAll(selector)
+    // prevUntil()
+
+    // console.log($(".last").prev().css({ background: "red" }));
+    // console.log($(".last").prevAll().css({ background: "red" }));
+    // console.log($(".last").prevAll(".mid").css({ background: "red" }));
+    // console.log($(".last").prevUntil(".first").css({ background: "red" }));
+
+
+    // next()
+    // nextAll()
+    // nextAll(selector)
+    // nextUntil()
+
+    // console.log($(".first").next().css({ background: "red" }));
+    // console.log($(".first").nextAll().css({ background: "red" }));
+    // console.log($(".first").nextAll(".mid").css({ background: "blue" }));
+    // console.log($(".first").nextUntil(".last").css({ background: "red" }));
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 转义字符 
+    // 字符本身在正则表达式中已经有特殊意义, 如果想匹配该字符对应的普通字符  需要转义
+
+    var reg = /a/
+
+    // {     转义   \{
+    // }     转义   \}
+    // *     转义   \*
+    // +     转义   \+ 
+    // ?     转义   \?
+    // ^     转义   \^  
+    // $     转义   \$
+    // [     转义   \[
+    // ^     转义   \^ 
+    // -     转义   \- 
+    // ]     转义   \]
+    // .     转义   \.
+    // |     转义   \|
+    // /     转义   \/  
+    // \     转义   \\
+    // (     转义   \(
+    // )     转义   \)
+
+
+    // url   匹配域名
+    // https://www.baidu.com
+
+    // 协议  http|https
+    // 域名后缀  .com .cn  .net  .xyz
+    // baidu  以及域名
+    // www    可有可无
+
+    var reg = /^(http|https):\/\/(www\.)?\w{1,}(\.com|\.cn|\.net|\.xyz){1,2}$/;
+
+    var url = "https://www.baidu.com.cn";
+    console.log(reg.test(url));
+
+
+
+</script>
+
+</html>

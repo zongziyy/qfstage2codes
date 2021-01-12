@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: #6ff;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: url(../images/longlong1_01.jpg);
+        background-size: 100%;
+        transition: 1s;
+        z-index: 1000;
+    }
+    
+    .box:hover {
+        transform: skewX(30deg);
+    }
+    
+    .foods {
+        width: 50px;
+        height: 50px;
+        background: url(../images/jitui1_03.jpg);
+        font-size: 30px;
+        background-size: 100%;
+        position: absolute;
+    }
+</style>
+
+<body>
+    <div class="box" title="吃"></div>
+    <div class="foods"></div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var foods = document.getElementsByClassName("foods")[0];
+    var timer = null;
+    var foodsX = Math.floor(Math.random() * 1000 + 100);
+    var foodsY = Math.floor(Math.random() * 600 + 100);
+    // console.log(foodsX, foodsY)
+    foods.style.left = foodsX + 'px';
+    foods.style.top = foodsY + 'px';
+    document.onkeydown = function(e) {
+        var e = e || window.event;
+        var keyCode = e.which || e.keyCode;
+        // console.log(keyCode);
+        if (keyCode == 37) {
+            animate(box, "left", "0px", "linear");
+            box.style.transform = 'none'
+            box.style.transform = 'RotateY(-45deg)';
+
+        }
+        if (keyCode == 39) {
+            var maxW = document.body.clientWidth || document.documentElement.clientWidth;
+            var maxW = maxW - parseFloat(getStyle(box, "width"));
+            animate(box, "left", String(maxW) + "px", "linear")
+            box.style.transform = 'none'
+            box.style.transform = 'RotateY(45deg)';
+
+        }
+        if (keyCode == 38) {
+            var maxH = document.body.clientHeight || document.documentElement.clientHeight;
+            var maxH = maxH - 100;
+            animate(box, "top", "0px", "linear")
+            box.style.transform = 'none'
+            box.style.transform = 'RotateX(-45deg)';
+        }
+        if (keyCode == 40) {
+            var maxH = document.body.clientHeight || document.documentElement.clientHeight;
+            var maxH = maxH - parseFloat(getStyle(box, "height"));
+            animate(box, "top", String(maxH) + "px", "linear")
+            box.style.transform = 'none'
+            box.style.transform = 'RotateX(45deg)';
+        }
+        if (keyCode == 32) {
+            clearInterval(timer);
+        }
+
+    }
+    box.addEventListener("click", function() {
+        console.log("box被点击");
+    });
+
+
+
+
+
+
+
+    // 多个属性
+
+    function animate(ele, attr, end, aniType, fn) {
+        // var cur = ele.offsetLeft;   //  点击时盒子的当前值 (初始的位置)
+        var cur = parseFloat(getStyle(ele, attr)); //  点击时盒子的当前值 (初始的位置)
+        // var end = 1000;
+        // console.log(cur);
+        end = parseFloat(end);
+
+        var speed = 0;
+
+        clearInterval(timer); // 下一次启动前清除上一个
+
+        timer = setInterval(function() {
+            if (aniType == "linear") {
+                // 匀速运动
+                speed = end > cur ? 10 : -10;
+            } else if (aniType == "ease-in") {
+                end > cur ? (speed += 5) : (speed -= 5);
+            } else if (aniType == "ease-out") {
+                speed = (end - cur) / 12;
+                speed = end > cur ? Math.ceil(speed) : Math.floor(speed);
+            }
+
+            cur += speed;
+
+            ele.style[attr] = cur + "px";
+            // console.log(cur);
+            if (Math.abs(end - cur) < Math.abs(speed)) {
+                // 临界值的判断  (理想条件  cur==end) => 误差允许范围(speed)
+                ele.style[attr] = end + "px";
+                clearInterval(timer);
+
+
+            }
+            if (foodsX - cur < 2 && foodsX - cur > -2 || foodsY - cur < 2 && foodsY - cur > -2) {
+                ele.style.transform = 'scale(2)';
+                foodsX = Math.floor(Math.random() * 1000 + 100);
+                foodsY = Math.floor(Math.random() * 600 + 1);
+                foods.style.left = foodsX + 'px';
+                foods.style.top = foodsY + 'px';
+            }
+        }, 100);
+    }
+
+
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+</script>
+
+</html>

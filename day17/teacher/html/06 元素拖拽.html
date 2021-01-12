@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .shadow {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        /* margin  translate  position */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="shadow">
+
+    </div>
+</body>
+<script>
+    // 拖拽
+    // 1. onmousedown   鼠标按下=>记录按下的位置
+    // 2. onmousemove   a. 先按下,在移动(文档中 可移动范围)  b.始终相对于按下的位置移动
+    // 3. onmouseup     鼠标抬起  清除移动事件
+
+    var shadow = document.getElementsByClassName("shadow")[0];
+
+    var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+    var maxLeft = clientWidth - shadow.clientWidth;
+    var maxTop = clientHeight - shadow.clientHeight;
+
+    //1. onmousedown   鼠标按下=>记录按下的位置
+    shadow.onmousedown = function (e) {
+        var e = e || window.event;
+
+        // 自己算
+        var posX = e.pageX - shadow.offsetLeft;
+        var posY = e.pageY - shadow.offsetTop;
+        console.log(posX, posY);
+
+        // 快捷获取
+        var posX = e.offsetX;
+        var posY = e.offsetY;
+        console.log(posX, posY);
+
+        //  2. onmousemove   a. 先按下,在移动(文档中 可移动范围)  b.始终相对于按下的位置移动
+        document.onmousemove = function (e) {
+            console.log(e);
+            var e = e || window.event;
+            var x = e.pageX - posX;
+            var y = e.pageY - posY;
+
+            if (x < 0) x = 0;
+            if (x >= maxLeft) x = maxLeft;
+            if (y < 0) y = 0;
+            if (y > maxTop) y = maxTop;
+
+
+            shadow.style.left = x + "px";
+            shadow.style.top = y + "px";
+
+        }
+
+        // 3.  onmouseup     鼠标抬起  清除移动事件
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+
+    }
+</script>
+
+</html>

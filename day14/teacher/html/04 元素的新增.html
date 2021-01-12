@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn">新增</button>
+        <div class="list">
+            <li>01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var list = document.getElementsByClassName("list")[0];
+    var second = document.getElementsByClassName("second")[0];
+    // console.log(btn);
+
+    // 点击按钮  新增一个li元素  放到list中
+    // document.createElement("标签名")  //创建一个元素节点
+    // document.createTextNode("文本内容")  //创建一个文本节点
+
+
+    // 把创建的节点 (文本节点/元素节点) 放到某个元素(父元素)内
+    // parent.appendChild(ele)     向指定元素(父元素)内 追加 一个新的元素( 放在父元素的最后面)  
+    // parent.append(ele)          用法同appendChild
+    // parent.prepend(ele)          向指定元素(父元素)内 预追加 一个新的元素( 放在父元素的最前面)  
+
+    // 把创建的节点 (文本节点/元素节点)  放到某个元素(同级元素)的前面
+    // parent.insertBefore(newNode,oldNode)       由父元素统筹(喜新厌旧)
+
+    // 怎么样放后面?
+    // 放到后一个元素的前面
+
+    // 新增元素节点  放到父元素中
+    btn.onclick = function () {
+        var li = document.createElement("li");  //元素节点
+        li.innerText = "我是新增的li";
+        console.log(li);
+
+        // list.appendChild(li); 
+        // list.append(li);
+        list.prepend(li);
+
+    }
+
+    //  新增元素节点  放到同级元素中
+    // btn.onclick = function () {
+    //     var li = document.createElement("li");  //元素节点
+    //     li.innerText = "我是新增的li";
+    //     console.log(li);
+
+    //     // list.insertBefore(li, second);
+
+    //     // 放在second的后面  => 放在second后一个元素的前面
+    //     list.insertBefore(li, second.nextElementSibling);
+
+    // }
+
+    btn.onclick = function () {
+        // 创建文本节点  => 放到新增的li中
+        // var li = document.createElement("li");
+        // var text = document.createTextNode("我是新增的li");
+        // console.log(text, typeof text);
+
+        // li.appendChild(text);
+        // li.append(text);
+        // list.appendChild(li);
+
+        //创建文本节点  => 放到second的前面 
+        var text = document.createTextNode("我是新增的li");
+        list.insertBefore(text, second);
+
+    }
+
+
+
+
+</script>
+
+</html>

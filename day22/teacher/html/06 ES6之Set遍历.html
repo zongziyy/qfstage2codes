@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="list">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>10</li>
+    </div>
+</body>
+<script>
+    // ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+
+    // 构造函数创建 set结构
+    var s = new Set();
+    console.log(s);
+
+    s.add(1);   //成员都是唯一的  不能重复
+    s.add("2");
+    s.add(true);
+    s.add(NaN);  // 在 Set 内部，两个NaN是相等的。
+    console.log(s);
+
+
+    // 遍历操作   
+    // keys() ：返回键名的遍历器
+    // values() ：返回键值的遍历器
+    // entries() ：返回键值对的遍历器
+    // forEach() ：使用回调函数遍历每个成员
+    // 由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致。
+
+    // var obj = s.keys();
+    // var obj = s.values();
+    // var obj = s.entries();
+    // console.log(obj);
+
+    // var result = obj.next();
+    // console.log(result);
+
+    // var result = obj.next();
+    // console.log(result);
+
+    // var result = obj.next();
+    // console.log(result);
+
+    // var result = obj.next();
+    // console.log(result);
+
+    // var result = obj.next();
+    // console.log(result);
+
+
+    // 配合 for...of
+    for (var index of s.keys()) {
+        console.log(index);
+    }
+
+    for (var index of s.values()) {
+        console.log(index);
+    }
+
+    for (var arr of s.entries()) {
+        console.log(arr);
+    }
+
+    s.forEach(function (item, index) {
+        console.log(item, index);
+    })
+
+
+    // nodeList  
+    // keys() ：返回键名的遍历器
+    // values() ：返回键值的遍历器
+    // entries() ：返回键值对的遍历器
+    // forEach() ：使用回调函数遍历每个成员
+
+    var liList = document.querySelectorAll(".list li");
+    console.log(liList);
+
+    liList.forEach(ele => console.log(ele));
+</script>
+
+</html>

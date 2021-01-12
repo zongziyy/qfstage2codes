@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div">
+        <ul class="box" id="id1" name="name1" style="color:#010" >
+            <li class="a1">01</li>
+            <li class="a2">02</li>
+            <li class="a3">03</li>
+            <li class="a4">04</li>
+            <li class="a5">05</li>
+            <li class="a6">06</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var ul = document.querySelectorAll("ul")[0];
+
+    var cls = ul.getAttribute("class");
+    console.log(cls);
+
+    var id1 = ul.setAttribute("id","id2")
+</script>
+</html>

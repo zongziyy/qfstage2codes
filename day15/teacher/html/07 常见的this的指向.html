@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">
+        点击
+    </button>
+</body>
+<script>
+    // this -> 函数内置的参数 (函数在调用时依存的对象)
+    // 1. 普通函数 (命名函数和匿名函数) => 指向window
+    // 2. 函数在调用时,属于谁就指向谁   (1. 事件)
+
+    // 函数在调用时  如果有依存的对象,就指向该对象,如果没有依存的对象(默认指向window)
+
+
+    function fn() {
+        // console.log(arguments); // 每个函数都有
+        console.log(this);      // 每个函数都有
+    }
+
+    fn(1, 2, 3, 4, 5, 6);   // window.fn()  => 函数依存于window
+
+
+    // 2. 函数在调用时,属于谁就指向谁
+    // a.  事件     给谁绑定 事件触发时就指向谁
+    console.dir(btn);
+    btn.onclick = function () {
+        console.log(btn);
+        console.log(this);
+        console.log(this === btn);
+    }
+
+    // b. 对象   方法在调用时  属于谁就指向谁
+    var zhangSan = {
+        name: "张三",
+        age: 18,
+        say: function () {
+            console.log("this", this);
+            console.log(this.name, this.age);
+        }
+    }
+
+    // zhangSan.say();
+    window.zhangSan.say();
+
+</script>
+
+</html>

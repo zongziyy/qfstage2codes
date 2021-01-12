@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/cookie.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // cookie 的修改 
+    // 对应键名重新赋值即可
+
+    // setCookie("user", "b123123");
+
+    // cookie 的删除
+    // 1. 手动删除  (仅供测试)
+
+    // 2. 通过设置有效时间删除 (将有效时间设置为已经过去的事件)
+
+    // setCookie("user", "", -1);
+
+    function delCookie(key) {
+        setCookie(key, "", -1);
+    }
+
+
+</script>
+
+</html>

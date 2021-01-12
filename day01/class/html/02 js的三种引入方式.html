@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href=""> -->
+    <!-- 外部引入   a. 提取共有的js方法   b. 结构表现和行为 分离  -->
+    <script src="../js/demo.js">
+        // script  引入外部js时 标签内不能写js代码  不会生效
+        // alert("hello world");
+    </script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 内联JS  写在标签内部(现在用的少  了解) -->
+    <!-- 1.  绑定内联事件   onclick 点击事件  点击对应元素时执行js代码  -->
+    <!-- 2.  a标签点击 =>执行js     阻止a标签的默认行为(跳转/刷新)   -->
+
+    <!-- 双引号不能嵌套双引号  一般是 单套双  双套单 -->
+    <div class="box" onclick="alert(1111)"></div>
+    <div class="box" onclick="alert('hello')"></div>
+
+    <a href="">点击 </a>
+    <a href="javascript:alert(11111);">点击a</a>
+    <!--  阻止a标签的默认行为 -->
+    <a href="javascript:;">点击 </a>
+
+</body>
+<!-- 内部引入 -->
+<script>
+    document.write("我是内部引入的JS");
+</script>
+
+</html>

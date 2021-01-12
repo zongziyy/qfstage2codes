@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/cookie.js"></script>
+</head>
+
+<body>
+    <div class="tips">
+        <a href="./login.html">登录</a>
+        <a href="./03 register.html">注册</a>
+    </div>
+</body>
+<script>
+    var tips = document.getElementsByClassName("tips")[0];
+    // 标识用户身份  
+    var cookie = document.cookie;
+    if (cookie) {
+        var logUser = getCookie("logUser");
+        if (logUser) {
+            tips.innerHTML = `欢迎您,${logUser} <button onclick="exit()">退出</button>`;
+        }
+    }
+
+
+    function exit() {
+        delCookie("logUser");
+        location.reload();
+    }
+
+</script>
+
+</html>

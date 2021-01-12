@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .phone {
+            width: 300px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .phone .bar {
+            width: 100%;
+            height: 50px;
+            background-color: #6ff;
+            position: absolute;
+            top: 60%;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+            left: 125px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <div class="bar">
+            <div class="ball"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+    var phone = document.querySelector(".phone");
+    var bar = document.querySelector(".bar");
+    var ball = document.querySelector(".ball");
+
+    var maxLeft = bar.clientWidth - ball.clientWidth;
+
+    ball.onmousedown = function (e) {
+        var e = e || window.event;
+        var posX = e.offsetX;
+        var posY = e.offsetY;
+        console.log(posX, posY);
+
+        document.onmousemove = function (e) {
+            var e = e || window.event;
+
+            var x = e.pageX - posX - phone.offsetLeft;
+
+            if (x < 0) x = 0;
+            if (x > maxLeft) x = maxLeft;
+
+            ball.style.left = x + "px";
+
+            // 移动的过程中(滑动时验证)  判断是否到达最左边(0)  最右边(maxLeft)
+
+            // console.log(ball.style.left, ball.offsetLeft);
+
+            // 到达最右边(0)
+            if (ball.offsetLeft >= maxLeft) {
+                location.href = "https://jd.com";
+            }
+
+            if (ball.offsetLeft == 0) {
+                location.href = "https://baidu.com";
+            }
+
+
+
+
+        }
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            if (ball.offsetLeft != 0 && ball.offsetLeft != maxLeft) {
+                ball.style.left = "125px";
+            }
+        }
+
+
+
+    }
+
+
+
+</script>
+
+</html>

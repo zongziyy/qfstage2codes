@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四天作业</title>
+    <style>
+        body {
+            line-height: 1.5;
+            letter-spacing: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    function check(m) {
+        switch (m % 4) {
+            case 1: word = "<span style='color:#008fa8'>浩</span>"; break;     
+            case 2: word = "<span style='color:#c17eff'>文</span>"; break;
+            case 3: word = "<span style='color:#bd3ff0'>傻</span>"; break;
+            case 0: word = "<span style='color:#033fad'>狗</span>"; break;
+        }
+        // return word;
+    }
+
+    var i = 1;
+    var n = 16;   //四边形边长
+    while (i <= n) {
+        var j = 1;
+        while (j <= n - i) {
+            document.write("&emsp;")
+            j++;
+        }
+        var k = 1;
+        while (k <= 2 * i - 1) {
+            var word = null;
+            check(k);
+            document.write(word);
+            k++;
+        }
+        i++;
+        document.write("<br>");
+    }
+    document.write("<br>");
+
+    var i = 1;
+    var n = 16;   //四边形边长
+    while (i <= n) {
+        var j = 1;
+        while (j <= n - i) {
+            document.write("&emsp;")
+            j++;
+        }
+        var k = 1;
+        while (k <= 2 * i - 1) {
+            var word = null;
+            check(k);
+            document.write(word);
+            k++;
+        }
+        i++;
+        document.write("<br>");
+    }
+
+
+    var i = n - 1;
+    while (i >= 1) {
+        var j = 1;
+        while (j <= n - i) {
+            document.write("&emsp;")
+            j++;
+        }
+        var k = 1;
+        while (k <= 2 * i - 1) {
+            check(k);
+            document.write(word);
+            k++;
+        }
+        i--;
+        document.write("<br>");
+    }
+
+    
+</script>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var zhangSan = {
+        name: "张三",
+        age: 18,
+        height: 178,
+        weight: 78,
+        sex: "男",
+        say() {
+            console.log(this.name, this.age);
+        }
+    }
+
+    // zhangSan.say();
+    // ES5  
+    // var name = zhangSan.name;
+    // var age = zhangSan.age;
+
+    // 解构赋值之对象解构
+
+    // 1. 对应属性名解构 (快速解构)
+    var {
+        name,
+        age,
+        height,
+        weight,
+        sex,
+        say
+    } = zhangSan;
+    console.log(name, age, height, weight, sex, say);
+
+
+    var {
+        name: name,
+        age: age,
+        height: height,
+        weight: weight,
+        sex: sex,
+        say: say
+    } = zhangSan;
+    console.log(name, age, height, weight, sex, say);
+
+    // 2. 解构过程中 修改变量名  (变量名太复杂,或者变量名冲突 => 修改变量名)
+    var {
+        name: a,
+        age: b,
+        height: c,
+        weight: d,
+        sex: e,
+        say: f
+    } = zhangSan;
+    console.log(a, b, c, d, e, f);
+
+
+    // 对象解构  配合 扩展运算符
+    var obj = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+    }
+
+    var {
+        a,
+        c,
+        ...sub
+    } = obj; // a=>1   c=> 3  ...sub=>{b,d}
+    console.log(a, c, sub);
+
+
+    // 对象解构    如果解构不成功，变量的值就等于undefined。
+    var {
+        a,
+        b,
+        c,
+        d
+    } = {};
+    console.log(a, b, c, d);
+
+    // 对象解构 和 默认值
+    var {
+        a = 1, b = 2, c = 3, d = 4
+    } = {
+        a: null
+    }; //a = a===undefined ?1:a;
+    console.log(a, b, c, d);
+</script>
+
+</html>

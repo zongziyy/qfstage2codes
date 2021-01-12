@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7天作业</title>
+    <style>
+        body,ul,ol,dl,dd,p,h1,h2,h3,h4,h5,h6 {
+            margin: 0;
+            padding: 0;
+            /* reset.css   common.css   global.css */
+        }
+
+        h3 {
+            line-height: 1.5;
+            height: 30px;
+            font-size: 20px;
+        }
+
+        p {
+            line-height: 1.5;
+            font-size: 16px;
+            height: 24px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h3>斐波那契兔子问题:</h3>
+    <input type="text" id="inp1" placeholder="请输入月份数">
+    <button id="btn1">兔子数</button>
+    <p id="pid1"></p>
+    <br>
+    <h3>欧几里得辗转相除:</h3>
+    <input type="text" id="ogldInp1" placeholder="请输入第一个数">
+    <input type="text" id="ogldInp2" placeholder="请输入第二个数">
+    <button id="btn2">最大公约数</button>
+    <button id="btn3">最小公倍数</button>
+    <p id="pid2"></p>
+    <br>
+    <h3>查找数组中的某个数:</h3>
+    <button id="btn4">点击生成随机数组</button>
+    <input type="text" id="searchInp" placeholder="请输入要查找的数">
+    <button id="btn5">点击查询</button>
+    <p id="pid3"></p>
+    <p id="pid4"></p>
+    <br>
+
+</body>
+
+<script>
+    // 斐波那契数列
+    function fn(n) {
+        if (n <= 2) {
+            return 1;
+        } else {
+            return fn(n - 1) + fn(n - 2);
+        }
+    }
+
+
+    // 欧几里得辗转相除法
+    function getMax(m, n) {
+        if (m % n == 0) {
+            return n;
+        } else {
+            return getMax(n, m % n);
+        }
+    }
+
+
+    // 斐波那契
+    var inp = document.getElementById("inp1");
+    var btn1 = document.getElementById("btn1");
+    var p1 = document.getElementById("pid1");
+    btn1.onclick = function () {
+        document.getElementById("pid1").innerHTML = "兔子数为:" + fn(inp.value);
+    }
+
+    // 欧几里得
+    var inp1 = document.getElementById("ogldInp1");
+    var inp2 = document.getElementById("ogldInp2");
+    var btn2 = document.getElementById("btn2");
+    var p2 = document.getElementById("pid2");
+    btn2.onclick = function () {
+        document.getElementById("pid2").innerHTML = "最大公约数为:" + getMax(ogldInp1.value, ogldInp2.value);
+    }
+    btn3.onclick = function () {
+        document.getElementById("pid2").innerHTML = "最小公倍数为:" + ogldInp1.value * ogldInp2.value / getMax(ogldInp1
+            .value, ogldInp2.value);
+    }
+
+
+    // 数组中找某个值    
+    var searchInp = document.getElementById("searchInp");
+    // var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+    var p2 = document.getElementById("pid2");
+    var arr = [];
+    for (i = 0; i < 10; i++) {
+        arr[arr.length] = Math.round(Math.random() * 10);
+    }
+    console.log(arr);
+
+    function checkNumber(arr, num) {
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // var flag = checkNumber(arr, 3);
+    // if (flag) {
+    //     console.log("存在");
+    // } else {
+    //     console.log("不存在");
+    // }
+
+</script>
+
+</html>

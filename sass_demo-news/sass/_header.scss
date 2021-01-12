@@ -1,0 +1,175 @@
+
+/* 普通注释  会保留到编译后的文件*/
+// 静默注释  只保留在SASS源文件中，编译后被省略。   
+// 今天吃了什么?
+
+// 变量
+// 计算
+// 嵌套语法   
+// 父选择器修饰 &  
+// 子选择器修饰 >  
+// 同级        + ~
+
+// 变量 
+$warm:#FFCCCC;
+$hot:#e1251b;
+$fontDefault:#666;
+$lively:#FFCC99;
+$centerWidth:1140px;
+
+$sider:left;
+
+// 函数 
+@function pxToRem($val){   // 100px/100px 1rem
+    @return #{($val/100px)}rem;
+}
+
+// 定义mixin 混合代码块
+@mixin partCenter {
+    width: $centerWidth;
+    margin: 0 auto;
+}
+
+// 过渡属性定死的
+@mixin trans {
+    -ms-transition: all 0.5s 0s linear;
+    -moz-transition: all 0.5s 0s linear;
+    -webkit-transition: all 0.5s 0s linear;
+    transition: all 0.5s 0s linear;
+}
+
+// mixin的强大之处，在于可以指定参数和缺省值
+@mixin trans_arg($attr:all,$dur:0.5s,$delay:0s,$type:linear) {
+    -ms-transition: $attr $dur $delay $type;
+    -moz-transition: $attr $dur $delay $type;
+    -webkit-transition: $attr $dur $delay $type;
+    transition: $attr $dur $delay $type;
+}
+
+@mixin comp($attr,$val) {
+    // -ms-transition: all 0.5s 0s linear;
+    // -moz-transition: all 0.5s 0s linear;
+    // -webkit-transition: all 0.5s 0s linear;
+    // transition: all 0.5s 0s linear;
+    @if($val== flex){
+        #{$attr}: -ms-#{$val};
+        #{$attr}: -moz-#{$val};
+        #{$attr}: -webkit-#{$val};
+        #{$attr}: #{$val};
+    }@else{
+        -ms-#{$attr}: $val;
+        -moz-#{$attr}: $val;
+        -webkit-#{$attr}: $val;
+        #{$attr}: $val;
+    }
+
+}
+
+
+// 在一个sass文件中引入另一个sass文件
+// @import "./reset.scss";
+
+
+body{
+    color:$fontDefault;
+}
+
+.app{
+    width: pxToRem(750px);
+    height: 70px*2;
+    // @include trans;
+
+    @include comp(box-shadow,1px 1px 1px 2px inset rgba(0,0,0,0.5));
+    @include comp(display,flex);
+}
+
+.w{
+    width: $centerWidth;
+    margin: 0 auto;
+}
+
+
+.swiper{
+    width:$centerWidth*5;
+}
+.header{
+
+    @include partCenter;
+
+    height: 45px;
+    background-color: $warm;
+
+    // 插值语句  变量拼接css
+    border-#{$sider}: 1px solid #000;
+
+    .navBar{
+        float: left;
+        // .navBar>li
+        // 子选择器修饰符  ( & > + ~)
+        & .nav >li{
+            float: left;
+            line-height: 45px;
+            padding: 0 20px;
+            position: relative;
+
+            // 属性嵌套 (复合属性  border:1px solid #000)
+            // border: {
+            //     width:1px;
+            //     style:dashed;
+            //     color:#000;
+            // }
+
+            // 父选择器修饰符 (& => li)    li:hover 
+            &:hover{
+                background-color: aqua;
+
+                // li:hover .subNav{}
+                .subNav{
+                    height: 120px;
+                }
+            }
+
+            .subNav{
+                position: absolute;
+                left: 0;
+                width: 200px;
+                line-height: 30px;
+                height: 0;
+                overflow: hidden;
+                background-color: aqua;
+                padding-left: 20px;
+
+                // -ms-transition: all 0.5s 0s linear;
+                // -moz-transition: all 0.5s 0s linear;
+                // -webkit-transition: all 0.5s 0s linear;
+                // transition: all 0.5s 0s linear;
+
+                // @include trans;
+                @include trans_arg(all, 1s, 0.5s, ease-in);
+
+            }
+            
+        }
+    }
+    .searchBar{
+        float: right;
+    }
+
+}
+
+// .header .navBar li:hover{
+//     background-color: aqua;
+// }
+
+
+.banner,.swiper,.main{
+    @extend .w;  //继承
+}
+
+.banner{
+    @include partCenter();
+}
+
+
+
+

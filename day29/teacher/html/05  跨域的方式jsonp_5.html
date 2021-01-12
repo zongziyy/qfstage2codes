@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+    <!-- 引入资源 不受同源策略的影响 -->
+    <!-- <script src="http://192.168.60.94/2009_php/jsonp/1.js"></script> -->
+
+
+</head>
+
+<body>
+
+</body>
+<script>
+    // 前端提供函数的声明  
+    // 后端返回函数的调用    callback({})  实际参数就是你要传递的数据
+
+    function fn(data) {
+        console.log(data);
+    }
+
+    // jsonp  (不是ajax)
+    // 原理:  引入资源(css,js,图片) 不受同源策略的影响  
+
+    // 原理: 引入资源不受同源策略的限制.
+
+    // 因为script标签支持跨域访问，所以我们可以创建script标签，src指向一个跨域文件。
+
+    // 那么，该跨域文件的响应内容，就变成script标签内的内容了。
+
+    // 所以，该内容也可以被理解成是正在被执行的js代码。
+
+    // 如果该代码中有一个正在被执行的函数，该函数中又有参数。
+
+    // 我们就可以把这个参数理解成服务器传给客户端的数据(函数的调用) 。
+
+    // 客户端去定义这个函数，我们就能够对参数做任意处理了
+
+    // 优点: 请求速度比较快  
+    // 缺点: 只能进行get请求(保密性不高数据),不能进行post请求 
+
+
+</script>
+
+<!-- callback([{},{}]) -->
+<!-- 接口返回的确实是文本  =>只不过被script标签引入之后 按照js语法解析之后  就是 函数的调用 -->
+<script type="text/javascript"
+    src="https://floor.jd.com/user-v20/feed/get?page=1&pagesize=50&area=21_1827_0_0&source=pc-home&callback=fn&_=1608811872545"></script>
+
+</html>

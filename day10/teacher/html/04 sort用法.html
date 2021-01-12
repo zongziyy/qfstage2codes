@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    //  var list = [["张三", 77, 88, 99], ["李四", 68, 90, 78], ["王五", 55, 92, 93]];
+    // var zhang = {
+    //     name: "张三",
+    //     chinese: 77,
+    //     math: 88,
+    //     english: 99
+    // }
+
+    // JSON (数据类型)
+    // var list = [{
+    //     name: "张三",
+    //     chinese: 77,
+    //     math: 88,
+    //     english: 99
+    // }, {
+    //     name: "李四",
+    //     chinese: 60,
+    //     math: 90,
+    //     english: 78
+    // }, {
+    //     name: "王五",
+    //     chinese: 55,
+    //     math: 92,
+    //     english: 93
+    // }]
+
+    // var goodsList = [{
+    //     goodsId: "A001",
+    //     goodsName: "啄木鸟（TUCANO）羽绒服男2020冬季商务休闲短款纯色立领保暖上衣男装羽绒外套 黑色 3XL",
+    //     goodsImg: "https://img13.360buyimg.com/n1/jfs/t1/130056/1/8301/159665/5f461414E2050ca8b/9c2467c47ccefe0b.jpg",
+    //     goodsPrice: 438.00,
+    // }, {
+    //     goodsId: "A001",
+    //     goodsName: "啄木鸟（TUCANO）羽绒服男2020冬季商务休闲短款纯色立领保暖上衣男装羽绒外套 黑色 3XL",
+    //     goodsImg: "https://img13.360buyimg.com/n1/jfs/t1/130056/1/8301/159665/5f461414E2050ca8b/9c2467c47ccefe0b.jpg",
+    //     goodsPrice: 438.00,
+    // }, {
+    //     goodsId: "A001",
+    //     goodsName: "啄木鸟（TUCANO）羽绒服男2020冬季商务休闲短款纯色立领保暖上衣男装羽绒外套 黑色 3XL",
+    //     goodsImg: "https://img13.360buyimg.com/n1/jfs/t1/130056/1/8301/159665/5f461414E2050ca8b/9c2467c47ccefe0b.jpg",
+    //     goodsPrice: 438.00,
+    // }, {
+    //     goodsId: "A001",
+    //     goodsName: "啄木鸟（TUCANO）羽绒服男2020冬季商务休闲短款纯色立领保暖上衣男装羽绒外套 黑色 3XL",
+    //     goodsImg: "https://img13.360buyimg.com/n1/jfs/t1/130056/1/8301/159665/5f461414E2050ca8b/9c2467c47ccefe0b.jpg",
+    //     goodsPrice: 438.00,
+    // }]
+    var list = [{
+        name: "张三",
+        chinese: 77,
+        math: 88,
+        english: 99
+    }, {
+        name: "李四",
+        chinese: 60,
+        math: 90,
+        english: 78
+    }, {
+        name: "王五",
+        chinese: 55,
+        math: 92,
+        english: 93
+    }]
+    list.sort(function (a, b) {
+        // console.log(a, b);
+        // return a.chinese - b.chinese;
+        // return a.math - b.math;
+        return (a.chinese + a.math + a.english) - (b.chinese + b.math + b.english);
+    });
+    console.log(list);
+
+
+
+
+
+
+</script>
+
+</html>

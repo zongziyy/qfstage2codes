@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // cookie初识
+    // cookie 是浏览器 为了 标识用户身份  或者 长时间存储一些信息  而保存在用户本地的数据(其本质是 为了提升用户体验  而存储来用户本地的数据)
+
+    // 在学习cookie过程中 必须使用live Server 打开(需要有服务器环境)
+
+    // 特征:
+    // - cookie 的存取都依赖于 document.cookie   (类型  字符串类型)
+    // - cookie 存储的时候是一条一条的的存的
+    // - cookie 可以设置存储路径  和  过期时间(默认浏览器关闭 过期)\
+
+
+    // 一 cookie 的增删改查
+
+    // 如何创建cookie?
+    // 1. cookie 的存取都依赖于 document.cookie
+    // 2. cookie也是以键值对形式存在的(key=value)  =>本质 字符串
+    // 3. cookie 存储的时候是一条一条的的存的
+    // 4. cookie 可以设置存储路径  和  过期时间(默认浏览器关闭 过期)
+
+    // 默认浏览器关闭
+    // document.cookie = "user=a123123";
+    // document.cookie = "pwd=123123";
+
+
+    // a. cookie的时效性
+    // cookie可以设置过期时间 (默认 默认浏览器关闭 过期)
+    // 如果想设置有效时间  需要借助 expires 属性 设置有效时间(世界时,格林威志时间)
+
+    // var date = new Date();
+    // date.setDate(date.getDate() + 7); // 7天后
+    // console.log(date.toString()); //中国标准时间
+    // console.log(date.toUTCString()); // 中国标准时间  转为世界时
+
+    // document.cookie = "user=a123123;expires=" + date.toUTCString();
+    // document.cookie = "pwd=123123;expires=" + date.toUTCString();
+
+
+    // b. cookie可以跨页面(同服务器)访问, cookie默认存储在当前文件所在的目录(只有当前文件所在的目录及其子目录 所在的文件,可以访问cookie)
+    // 如果想设置存储路径(让同服务器的其他目录的文件也可以访问),需要借助 path 
+
+    var date = new Date();
+    date.setDate(date.getDate() + 7); // 7天后
+    console.log(date.toString()); //中国标准时间
+    console.log(date.toUTCString()); // 中国标准时间  转为世界时
+
+    document.cookie = "user=a123123;expires=" + date.toUTCString() + ";path=/";
+    document.cookie = "pwd=a123123;expires=" + date.toUTCString() + ";path=/";
+
+
+
+    // 如何获取cookie  ? 
+    // 1. cookie 的存取都依赖于 document.cookie   => 获取的是所有的cookie的字符串
+    // console.log(document.cookie);
+
+
+
+    // 封装两个函数
+    // setCookie(key, val, day)
+    // 如果day   手动设置过期时间
+    // 如果没有 day   浏览器关闭就过期
+    // document.cookie = "user=a123123;expires=" + date.toUTCString() + ";path=/";
+    // document.cookie = "pwd=a123123;expires=" + date.toUTCString() + ";path=/";
+
+    // 存 用户名 密码 手机号 邮箱   
+    // 取 对应键名
+
+    // getCookie(key)    根据cookie的键名获取对应的值 
+    // getCookie("user")  => a123123 
+    // getCookie("pwd")  => 123123 
+
+
+    "__jdv=122270672|direct|-|none|-|1608024849147; __jdu=16080248491331987649588; shshshfpb=qd5SlQwbozBIWYt7HfHV7kQ%3D%3D; shshshfpa=9c159b21-d858-71bc-6a19-8ecb163f36fd-1607909352; areaId=17; ipLoc-djd=17-1432-1435-0; PCSYCityID=CN_360000_360100_0; shshshfp=5e81358b17b83112e032b0420ede2119; __jda=76161171.16080248491331987649588.1608024849.1608024849.1608030533.2; __jdb=76161171.1.16080248491331987649588|2.1608030533; __jdc=76161171; shshshsID=02a112e0362b1b08dcc5114c124d3f86_1_1608030536392"
+
+    // 拆分
+
+
+    // cookie 模拟注册登录
+    // 注册 存cookie=> 用户名 密码 手机号 邮箱 
+    // 登录 取cookie => 用户名 密码
+    // 用户输入的用户名和密码   和  cookie中存储的用户名和密码   =>一致 成功
+    //                                                       =>不一致 失败  
+</script>
+
+</html>

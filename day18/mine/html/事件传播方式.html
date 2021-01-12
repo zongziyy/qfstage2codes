@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 500px;
+            height: 500px;
+            background-color: #f0f;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .b {
+            width: 400px;
+            height: 400px;
+            background-color: #ff0;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .c {
+            width: 300px;
+            height: 300px;
+            background-color: #0f0;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="b">
+            <div class="c"></div>
+        </div>
+    </div>
+</body>
+<script>
+    // 事件流
+    // 1. 捕获阶段
+    // 2. 目标阶段
+    // 3. 冒泡阶段
+
+    var a = document.getElementsByClassName("a")[0];
+    var b = document.getElementsByClassName("b")[0];
+    var c = document.getElementsByClassName("c")[0];
+
+    a.onclick = function () {
+        console.log("a被点击 冒泡");
+    }
+    b.onclick = function () {
+        console.log("b被点击 冒泡");
+    }
+    c.onclick = function () {
+        console.log("c被点击 冒泡");
+    }
+    a.addEventListener("click", function () {
+        console.log("a被点击 捕获");
+    }, true)
+    b.addEventListener("click", function () {
+        console.log("b被点击 捕获");
+    }, true)
+    c.addEventListener("click", function () {
+        console.log("c被点击 捕获");
+    }, true)
+</script>
+
+</html>

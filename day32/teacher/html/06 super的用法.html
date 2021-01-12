@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Person(name, age) { //  构造函数中 实例的属性和方法
+        // {}   this->{}
+        this.name = name;    // 构造函数Person在执行时 this-> Person创建的实例化对象
+        this.age = age;
+    }
+    // 原型对象上的属性和方法
+    Person.prototype.species = "human";
+    Person.prototype.say = function () {
+        console.log(this.name, this.age);
+    }
+    Person.prototype.skill = function () {
+        console.log("thinking");
+    }
+
+    // super的用法
+    // 1. 作为函数使用  => 调用父类构造函数 Person.call(this,name,age)
+    // 2. 作为一个对象使用
+    //   取值 super.species:  super 代表 父类构造函数的原型对象 Person.prototype
+    //   赋值 ->this   调用构造函数创建的实例化对象
+
+
+    //如何定义自己YellowPerson 的 构造函数的相关属性和方法   以及 原型对象上的相关属性和方法
+    class YellowPerson extends Person {
+
+        // 默认继承父类构造函数 实例的相关属性和方
+        // constructor(name, age) {
+        //     super(name, age);   // 调用父类构造函数  Person.call(this,name,age)
+        // }    
+
+        // 自定义YellowPerson构造函数的内容
+        constructor(name, age, hobby) {
+            super(name, age);    // 先调用父类构造函数 Person.call(this,name,age)
+            this.hobby = hobby;  // 在定义自己的
+            this.count = 0;
+        }
+
+        skin = "yellow";
+        // 定义自己原型对象上的方法
+        speak() {
+            console.log("chinese");
+        }
+        saySpecies() {
+            // console.log(this.species);  // 顺着原型链找
+            console.log(super.species);  //  Person.prototype.species
+            console.log(super.skill === Person.prototype.skill);  //  Person.prototype.species
+        }
+        add() {
+            // super.count++  ->  super.count = super.count+1
+            super.count = 100; // this.count = 100;
+            console.log(this);
+        }
+    };
+
+    // console.log(YellowPerson);
+    // console.dir(YellowPerson);
+
+    var p1 = new YellowPerson("李四", 22, "唱歌");
+    console.log(p1);
+
+    p1.saySpecies();
+    p1.add();
+
+
+
+
+</script>
+
+</html>

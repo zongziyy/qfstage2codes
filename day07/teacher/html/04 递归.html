@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 函数的嵌套
+    // function fn() {
+    //     console.log("hello");
+    //     function one() {
+    //         console.log("world");
+    //     }
+    //     one();
+    // }
+
+    // fn();
+
+    // 递归  =>函数在执行的过程中调用了自身(类似循环 重复的执行函数自身的内容)
+
+    // 超出了最大调用堆栈大小  
+    // function fn() {
+    //     console.log("hello");
+    //     fn();
+    // }
+
+    // fn();
+
+    // 在满足特定条件的情况下  重复的执行某个代码段 直到条件不满足为止
+    // var sum = 0;
+    // for (var i = 1; i <= 10; i++) {
+    //     sum += i;
+    // }
+    // console.log(sum);  // 55
+
+
+    // 对比for循环  改写的递归
+    var sum = 0;
+    var i = 1;
+    function fn() {
+        sum += i;
+        console.log(i);
+        i++;
+
+        if (i > 5) {   // 临界值  (如果大于临界值 =>停止递归)
+            console.log(sum);
+            return sum;   // 55  return 之后的语句不执行
+        } else {   // i<=5  满足条件的情况下   =>递归
+            fn();   // 调用了自身 =>递归
+        }
+
+    }
+
+    fn();
+
+
+    // fn() => i=1  sum+=i;    i++ => 2    => fn()
+    // fn() => i=2  sum+=2;    i++ => 3    => fn()
+    // fn() => i=3  sum+=3;    i++ => 4    => fn()
+    // fn() => i=4  sum+=4;    i++ => 5    => fn()
+    // fn() => i=5  sum+=5;    i++ => 6    => return sum  不在递归调用自身 (递归就结束了)
+
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var name = "张三";
+    var age = 18;
+    var height = 178
+    var weight = 78;
+    var say = function () {
+        console.log(this.name, this.age);
+    }
+
+    // ES5  将变量 放到对象中,作为对象的属性值
+    var zhangSan = {
+        name: name,
+        age: age,
+        height: height,
+        weight: weight,
+        say: say,
+        sayHello: function () {
+            console.log("hello");
+        }
+    }
+
+    // ES6 中 
+    // 1. 如果属性名和属性值的变量 名称相同时可以简写
+    // 2. es6 中函数也可以简写 (省略:function)
+    // var zhangSan = { name, age, height, weight, say };
+
+    var zhangSan = {
+        name, // name:name
+        age,
+        height,
+        weight,
+        say,
+        sayHello() {
+            console.log("hello")
+        }
+    };
+</script>
+
+</html>

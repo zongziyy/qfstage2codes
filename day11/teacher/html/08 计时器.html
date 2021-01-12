@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">停止1</button>
+    <button id="btn2">停止2</button>
+</body>
+<script>
+
+    // 每隔固定的时间执行特定的操作
+    // setInterval(callback,interval,arg1,arg2,...arg3)
+    // callback  执行的回调函数 => 向执行的内容放到回调函数中
+    // interval  间隔时间 ( 单位  ms)
+    // arg1,arg2,...arg3   (可选)如果回调函数想要接收参数,从setInterval第三参数开始依次向后传
+
+    // 返回值  计时器的编号
+
+    // 清除计时器  
+    // clearInterval(id)
+    // id  计时器的编号 
+
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+
+    btn1.onclick = function () {
+        clearInterval(timer1);
+    }
+    btn2.onclick = function () {
+        clearInterval(timer2);
+    }
+
+
+    var timer1 = setInterval(function () {
+        console.log("计时器_1");
+    }, 1000);
+
+    var timer2 = setInterval(function (a, b) {
+        console.log("计时器_2", a, b);
+    }, 1000, 1, 2);
+
+    console.log("计时器编号", timer1, timer2);
+
+
+</script>
+
+</html>

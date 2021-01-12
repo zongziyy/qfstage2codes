@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 400px;
+            height: 400px;
+            background-color: #f00;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        .sub {
+            width: 300px;
+            height: 300px;
+            background-color: #0f0;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="sub">
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+<script>
+    //  事件冒泡和事件捕获 (父子元素绑定相同类型的事件)
+
+    // 事件传播机制 (两种方式)    事件冒泡和事件捕获
+
+    // 历史
+    // 事件捕获 从最不特定的元素 到最特定的元素  由外到内(网景)    wrap => sub  => box
+    // 事件冒泡 从最特定的元素 到 最不特定的元素   由内到外(IE)   box => sub  => wrap
+
+    //  =>  事件冒泡(从内到外) 
+
+    // dom 一级事件  只能触发事件冒泡(不能捕获)
+
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var sub = document.getElementsByClassName("sub")[0];
+    var box = document.getElementsByClassName("box")[0];
+
+    window.onclick = function () {
+        console.log("window 被点击", "onclick");
+    }
+    document.onclick = function () {
+        console.log("document 被点击", "onclick");
+    }
+    document.documentElement.onclick = function () {
+        console.log("html 被点击", "onclick");
+    }
+    document.body.onclick = function () {
+        console.log("body 被点击", "onclick");
+    }
+
+    wrap.onclick = function () {
+        console.log("wrap 被点击", "onclick");
+    }
+    sub.onclick = function () {
+        console.log("sub 被点击", "onclick");
+    }
+    box.onclick = function () {
+        console.log("box 被点击", "onclick");
+    }
+
+
+    window.onmousedown = function () {
+        console.log("window 被点击", "onmousedown");
+    }
+    document.onmousedown = function () {
+        console.log("document 被点击", "onmousedown");
+    }
+    document.documentElement.onmousedown = function () {
+        console.log("html 被点击", "onmousedown");
+    }
+    document.body.onmousedown = function () {
+        console.log("body 被点击", "onmousedown");
+    }
+
+    wrap.onmousedown = function () {
+        console.log("wrap 被点击", "onmousedown");
+    }
+    sub.onmousedown = function () {
+        console.log("sub 被点击", "onmousedown");
+    }
+    box.onmousedown = function () {
+        console.log("box 被点击", "onmousedown");
+    }
+
+
+
+</script>
+
+</html>

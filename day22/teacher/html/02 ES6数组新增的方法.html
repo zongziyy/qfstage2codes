@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // find()  
+
+    var list = [55, 66, 77, 88, 99, 100];
+
+    // find 遍历数字 每次循环 执行回调函数,回调函数接受一个条件 返回满足条件的第一个元素,不存在则返回undefined
+    // var index = list.find(function (item, index, array) {
+    //     console.log(item, index, array);
+    //     return item > 60;
+    // })
+    // console.log(index);
+
+    var index = list.find((item, index, array) => {
+        console.log(item, index, array);
+        return item > 60;
+    })
+    console.log(index)
+
+    // var index = list.find((item) => {
+    //     return item > 60;
+    // })
+    // var index = list.find(item => item > 60);
+    // console.log(index)
+
+
+    // findIndex 遍历数字 每次循环 执行回调函数,回调函数接受一个条件 返回满足条件的第一个元素的下标,不存在则返回 -1
+    var index = list.findIndex(function (item, index, array) {
+        console.log(item, index, array);
+        return item > 600;
+    })
+    console.log(index);
+
+
+    // fill() 方法使用给定值，填充一个数组。
+    // fill方法还可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置。
+    var list = [55, 66, 77, 88, 99, 100];
+
+    var arr = new Array(100).fill(false);
+    console.log(arr);
+
+    var result = ['a', 'b', 'c'].fill(7, 1, 2)
+    // ['a', 7, 'c']
+
+    // includes() 判断数组中是否存在某个元素 (可以用来判断数组中是否存在 NaN)
+
+    var list = [55, 66, 77, 88, NaN, 99, 100];
+
+    var result = list.includes(NaN);
+    console.log(result);
+
+
+    // flat()   用于将嵌套的数组“拉平”，变成一维的数组。该方法返回一个新数组，对原数据没有影响。
+    // 默认拉平一次   如果想自定义拉平此处 需要手动传参 ,如果想全都拉平 传 Infinity
+
+    var list = [1, 2, [3, 4, [5]]];
+    // var arr = list.flat();  // 默认拉平一次
+    // console.log(arr);
+
+    // var arr = list.flat(2);  // 拉平2次
+    // console.log(arr);
+
+
+    // var list = [1, 2, [3, 4, [5, [6]]]];
+    // var arr = list.flat(Infinity);
+    // console.log(arr);
+
+    // flatMap() flat和map的组合版  先通过map返回一个新数组,在将新数组拉平(只能拉平一次)
+    // var list = [55, 66, 77, 88, 99, 100];
+    // var newArr = list.map(function (item, index) {
+    //     return [item, index];
+    // })
+    // console.log(newArr);
+
+    // var newArr = list.flatMap(function (item, index) {
+    //     return [item, index];
+    // })
+    // console.log(newArr);
+</script>
+
+</html>

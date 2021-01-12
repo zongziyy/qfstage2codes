@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数封装练习</title>
+    <style>
+        p {
+            font-size: 18px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        h3 {
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>第一题：</h3>
+    <input type="text" name="" id="scoreIpt1" placeholder="请输入成绩">
+    <button id="btn1">点此评分</button>
+    <input type="text" name="" id="resultIpt" disabled>
+
+    <h2>第二题:</h2>
+    <label for="year">输入年：</label>
+    <input type="text" name="" id="year" placeholder="输入年份(1000-9999)">
+    <br>
+    <label for="month">输入月：</label>
+    <input type="text" name="" id="month" placeholder="输入月份">
+    <br>
+    <label for="day">输入日：</label>
+    <input type="text" name="" id="day" placeholder="输入日期">
+    <br>
+    <button id="btn2">判断是否合理</button>
+    <br>
+    <label for="result">结果为：</label>
+    <input type="text" id="result" disabled>
+    <br>
+</body>
+
+<script>
+    // 第一题
+    function leave(score) {
+        var result = score >= 90 ? "优秀" : (score >= 80 ? "良好" : (score >= 70 ? "一般" : score >= 60 ? "及格" : "不及格"))
+        return result;
+    }
+    var btn1 = document.getElementById("btn1");
+    btn1.onclick = function () {
+        var score = document.getElementById("scoreIpt1");
+        var result1 = document.getElementById("resultIpt");
+        if(score.value>=0&&score.value<=100&&score.value!=""){
+            result1.value = leave(score.value);
+        }else{
+            alert("请输入正确的分数（0-100）");
+        }
+    }
+
+    // 第二题
+    function isYearOk(year){
+        
+    }
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = [["张三", 77, 88, 99], ["李四", 68, 90, 78], ["王五", 55, 92, 93]];
+
+    // 用数组可以一次性的存多个数据  => 对数据的描述不够详细
+    var zhang = ["张三", 77, 88, 99];
+    var li = ["李四", 68, 90, 78];
+    var wang = ["王五", 55, 92, 93];
+
+    // 对象(数据形式)   对一个或一类事物特征(属性)和行为(方法)的描述 
+
+    // a. 对象是以键值(key:value)对形式存在的数据,键(key 键名 属性名)和值(value 键值 属性值)  之间用冒号分隔
+    // b. 键值对之间逗号分隔
+
+    // 对一个人 姓名 年龄 身高 体重 做一个描述
+
+    // 对象的创建方法 
+    // 1. 字面量创建
+    // var zhangSan = {};  // 空对象
+
+    // var zhangSan = {  //声明对象的同时并赋值
+    //     name: "张三",  // 对张三的名字的描述
+    //     age: 18,
+    //     height: "179cm",
+    //     weight: "80kg",
+    //     say: function () {
+    //         console.log("hello");
+    //     }
+    // };
+
+    // console.log(zhangSan);
+
+    // 2. 构造函数创建  Object()
+    // var zhangSan = new Object();  // 空对象
+    // console.log(zhangSan);
+    var zhangSan = new Object({
+        name: "张三",
+        age: 18,
+        height: "179cm",
+        weight: "80kg",
+        say: function () {
+            console.log("hello");
+        }
+    });
+    console.log(zhangSan);
+
+
+
+
+
+
+</script>
+
+</html>

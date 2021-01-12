@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>JS+CSS3黑色创意时钟代码</title>
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+	<div class="clock">
+
+		<div class="hour">
+			<div class="hr" id="hr"></div>
+		</div>
+
+		<div class="min">
+			<div class="mn" id="mn"></div>
+		</div>
+
+		<div class="sec">
+			<div class="sc" id="sc"></div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		// 设置表针动一下为多少
+		const deg = 6;
+
+		// 获取元素
+		// 		querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
+		// 注意： querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+		const hr = document.querySelector('#hr');
+		const mn = document.querySelector('#mn');
+		const sc = document.querySelector('#sc');
+
+
+		// 原方法 箭头函数不带时间参数；
+
+		// 箭头函数：
+		// 	var test = function(params){     return params; }
+		// 它等价于
+		//  var test = params => params;
+
+
+		// setInterval(() => {
+
+		// 	let day = new Date();
+		// 	let hh = day.getHours() * 30;
+		// 	let mm = day.getMinutes() * deg;
+		// 	let ss = day.getSeconds() * deg;
+
+		// 	hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+		// 	mn.style.transform = `rotateZ(${mm}deg)`;
+		// 	sc.style.transform = `rotateZ(${ss}deg)`;
+
+		// })
+
+		// 带时间参数
+		setInterval((function () {
+
+			let day = new Date();
+			let hh = day.getHours() * 30;
+			let mm = day.getMinutes() * deg;
+			let ss = day.getSeconds() * deg;
+
+				// 符号：`（1旁边的符号） 不是单引号；
+				// ${} 变量赋值
+			hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+			mn.style.transform = `rotateZ(${mm}deg)`;
+			sc.style.transform = `rotateZ(${ss}deg)`;
+
+		}), 1000)
+
+	</script>
+
+
+
+</body>
+
+</html>

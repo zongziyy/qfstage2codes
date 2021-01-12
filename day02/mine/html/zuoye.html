@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day02作业</title>
+    <style>
+        p {
+            height: 25px;
+            line-height: 25px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>第一题：</h2>
+    <input type="button" onclick="getNumber()" value="叮咚">
+    <!-- <button onclick="getNumber()">叮咚</button> -->
+    <p id="pid1"></p>
+    <p id="pid2"></p>
+    <br>
+    <h2>第二题：</h2>
+    <input type="button" onclick="getTwoNumber()" value="唵叭咪叭咪哄，变！">
+    <!-- <button onclick="getTwoNumber()">唵叭咪叭咪哄，变！</button> -->
+    <p id="pid3"></p>
+    <p id="pid4"></p>
+    <br>
+    <h2>第三题：</h2>
+    <input type="button" onclick="getYear()" value="点此开始穿越">
+    <!-- <button onclick="getYear()">点此开始穿越</button> -->
+    <p id="pid5"></p>
+    <p id="pid6"></p>
+    <br>
+    <h2>第四题：</h2>
+    <input type="button" onclick="getX()" value="来抽个签">
+    <!-- <button onclick="getYear()">点此开始穿越</button> -->
+    <p id="pid7"></p>
+    <p id="pid8"></p>
+
+
+</body>
+
+<script>
+    // 第一题
+    function getNumber() {
+        var pidNum = Math.round(Math.random() * 100);
+        document.getElementById("pid1")["innerHTML"] = "随机的数为：" + pidNum;
+        if (pidNum % 2 == 0) {
+            document.getElementById("pid2").innerHTML = "这是一个偶数";
+        } else {
+            document.getElementById("pid2").innerHTML = "这是一个奇数";
+        }
+    }
+
+    // 第二题
+    function getTwoNumber() {
+        var num1 = Math.round(Math.random() * 100);
+        var num2 = Math.round(Math.random() * 100);
+        document.getElementById("pid3").innerHTML = "第一个数为：" + num1 + "&emsp;&emsp;&emsp;第二个数为：" + num2;
+        if (num1 > num2) {
+            document.getElementById("pid4").innerHTML = "其中" + num1 + "&gt" + num2 + "&emsp;&emsp;&emsp;最大数为：" + num1;
+        } else if (num1 == num2) {
+            document.getElementById("pid4").innerHTML = "其中" + num1 + "=" + num2 + "&emsp;&emsp;&emsp;两个数相等";
+        } else {
+            document.getElementById("pid4").innerHTML = "其中" + num1 + "&lt" + num2 + "&emsp;&emsp;&emsp;最大数为：" + num2;
+        }
+    }
+
+
+    // 第三题
+    function getYear() {
+        var year = parseInt(Math.random() * 8999 + 1000);
+        document.getElementById("pid5").innerHTML = "恭喜穿越到了" + year + "年";
+        if (year % 4 == 0) {
+            document.getElementById("pid6").innerHTML = "今年是闰年";
+        } else {
+            document.getElementById("pid6").innerHTML = "今年是平年";
+        }
+    }
+
+    // 第四题
+    function getX() {
+        var x = Math.round(Math.random() * 200 - 100);
+        document.getElementById("pid7").innerHTML = "恭喜抽到了x=" + x;
+        var y;
+        if (x < 1) {
+            y = x;
+            document.getElementById("pid8").innerHTML = "y=" + y;
+        } else if (x >= 1 && x < 10) {
+            y = 2 * x + 1;
+            document.getElementById("pid8").innerHTML = "y=" + y;
+        } else {
+            y = 5 * x - 17;
+            document.getElementById("pid8").innerHTML = "y=" + y;
+        }
+    }
+</script>
+
+</html>

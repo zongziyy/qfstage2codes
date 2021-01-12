@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var list = [];
+
+    // for (var i = 0; i < 6; i++) {
+    //     var num = Math.round(Math.random() * 100);
+    //     list[list.length] = num;  // 递增赋值
+    // }
+    // console.log(list);
+
+    // var list = [92, 52, 60, 13, 66, 54];
+
+    // var min = list[0];
+    // for (var i = 1; i < list.length; i++) {
+    //     if (list[i] < min) {
+    //         min = list[i];
+    //     }
+    // }
+    // console.log(min);
+
+
+    var list = [92, 52, 60, 13, 66, 54];
+    console.log("原数组", list);
+
+    // 第一轮  拿第一个数 和后面所有的数 作比较,如果存在比第一个数还要小的数,交换两个数的位置
+    // => 最小值  放在第一位
+
+    // [92, 52, 60, 13, 66, 54]
+    //  13 [92, 60, 52, 66, 54]        // 13, 92, 60, 52, 66, 54
+
+    for (var i = 1; i < list.length; i++) {  // 后面的所有值
+        if (list[i] < list[0]) {
+            var temp = list[0];
+            list[0] = list[i];
+            list[i] = temp;
+        }
+    }
+    console.log(list);
+
+    // 第二轮  拿第二个数 和后面所有的数 作比较,如果存在比第二个数还要小的数,交换两个数的位置
+    // => 得到第二小的数 放在第二个位置
+
+    // [13, 92, 60, 52, 66, 54]
+    // 13 52 [92, 60, 66, 54]    => [13, 52, 92, 60, 66, 54]
+
+    for (var i = 2; i < list.length; i++) {  // 后面的所有值
+        if (list[i] < list[1]) {
+            var temp = list[1];
+            list[1] = list[i];
+            list[i] = temp;
+        }
+    }
+    console.log(list);
+
+    // 第三轮
+    for (var i = 3; i < list.length; i++) {  // 后面的所有值
+        if (list[i] < list[2]) {
+            var temp = list[2];
+            list[2] = list[i];
+            list[i] = temp;
+        }
+    }
+    console.log(list);
+
+    // 第四轮
+    for (var i = 4; i < list.length; i++) {  // 后面的所有值
+        if (list[i] < list[3]) {
+            var temp = list[3];
+            list[3] = list[i];
+            list[i] = temp;
+        }
+    }
+    console.log(list);
+
+    // 第五轮
+    for (var i = 5; i < list.length; i++) {  // 后面的所有值
+        if (list[i] < list[4]) {
+            var temp = list[4];
+            list[4] = list[i];
+            list[i] = temp;
+        }
+    }
+    console.log(list);
+
+
+
+
+
+
+
+</script>
+
+</html>

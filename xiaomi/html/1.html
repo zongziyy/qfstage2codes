@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="">
+    $(document).scroll(function() {
+        var top = $(document).scrollTop();
+        // console.log(top)
+        if (top >= 800) {
+            $(".backTop").css({
+                display: "block"
+            });
+        } else {
+            $(".backTop").css({
+                display: "none"
+            });
+        }
+    })
+    $(".backTop").click(function() {
+        $(document).scrollTop(0);
+    })
+
+    var index = 0;
+    var timer = null;
+    autoplay();
+
+    $(".banner .w").mouseenter(function() {
+        clearInterval(timer);
+    })
+
+    $(".banner .w").mouseleave(function() {
+        autoplay();
+    })
+
+    $(".left").click(function() {
+        if ($(".autoplay:animated").length != 0) {
+            return false;
+        }
+        index--;
+        move();
+    })
+
+    $(".right").click(function() {
+        if ($(".autoplay:animated").length != 0) {
+            return false;
+        }
+        index++;
+        move();
+    })
+
+    $(document).on("click", ".ind li", function() {
+        if ($(".autoplay:animated").length != 0) {
+            return false;
+        }
+        $(this).addClass("li-active").siblings().removeClass("li-active");
+        index = $(this).index();
+        $(".autoplay").animate({ left: `-${$(".autoplay li").width() * index}px` });
+    })
+
+
+    //自动轮播
+    function autoplay() {
+        timer = setInterval(function() {
+            index++;
+            move();
+        }, 3000)
+    }
+
+    function move() {
+        if (index < 0) {
+            $(".autoplay").css({ left: `${-$(".autoplay li").width() * ($(".autoplay li").length - 1)}px` });
+            index = $(".autoplay li").length - 1;
+            index--;
+        }
+        if (index > $(".autoplay li").length - 1) {
+            $(".autoplay").css({ left: 0 });
+            index = 1;
+        }
+        $(".autoplay").animate({ left: `-${$(".autoplay li").width() * index}px` });
+        $(".ind li").eq(index > $(".ind li").length - 1 ? 0 : index).addClass("li-active").siblings().removeClass("li-active");
+    }
+</script>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六天作业</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 第2题:
+    document.write("<h3>第二题</h3>");
+    var list = [];
+
+    for (let i = 0; i < 10; i++) {
+        list[list.length] = Math.round(Math.random() * 100);
+    }
+    document.write("生成的数为: " + list);
+    console.log(list)
+    document.write("<br>");
+    document.write("<br>");
+
+    // 第3题:    
+    document.write("<h3>第三题</h3>");
+
+    function getMaxNum(list) { //打擂台
+        var max = list[0];
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] >= max) {
+                max = list[i];
+            }
+        }
+        return max;
+    }
+    document.write("最大的数为：" + getMaxNum(list));
+    document.write("<br>");
+    document.write("<br>");
+
+    // 第4题：
+    document.write("<h3>第四题</h3>");
+
+    function getSum(list) { //  求和求平均数函数
+        var sum = 0;
+        for (var i = 0; i < list.length; i++) {
+            sum += list[i];
+        }
+        var meanNumber = sum / list.length;
+        return [sum, meanNumber];
+        s
+    }
+    var meanValue = getSum(list)[1]
+    document.write("这些数的和为：" + getSum(list)[0] + "<br>");
+    document.write("这些数的平均值为：" + meanValue + "<br><br>");
+
+    // 第五题：
+    document.write("<h3>第五题</h3>");
+
+    function getLargeNum(list, meanValue) { //求大于平均数的数
+        var newList = [];
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] > meanValue) {
+                newList[newList.length] = list[i];
+            }
+        }
+        return newList;
+    }
+    document.write("大于平均数的数有：" + getLargeNum(list, meanValue) + "<br><br>");
+
+    // 第六题:
+    document.write("<h3>第六题</h3>");
+    var flag = true; //假设全部都大于60
+    for (i = 0; i < list.length; i++) {
+        if (list[i] < 60) {
+            flag = false;
+            var a = list[i];
+            break;
+        }
+    }
+    if (flag) {
+        document.write("全部都大于60");
+    } else {
+        document.write("不是全部都大于60,其中" + a + "小于60<br><br>");
+    }
+
+    // 第七题：
+    document.write("<h3>第七题</h3>");
+    var change = list[0];
+    list[0] = list[1];
+    list[1] = change;
+    document.write("交换前两个数字的位置：" + list[0] + " " + list[1] + "<br><br>");
+
+    // 第八题：
+    document.write("<h3>第八题</h3>");
+    function maoPaoPaiXu(list) {
+        var changeNum, j;
+        var i = list.length;
+        var count = 0;
+        while (i > 0) {
+            for (j = 0; j < i - 1; j++) {
+                if (list[j] > list[j + 1]) {
+                    changeNum = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = changeNum;
+                }
+                count++;
+            }
+            i--;
+        }
+        console.log(count);
+        return list;
+    }
+    document.write(maoPaoPaiXu(list));
+</script>
+
+</html>

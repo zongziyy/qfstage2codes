@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1. 获取当前时间
+    // 2. 设置一个时间
+    // 3. 获取一个日期对应的  年月日 时分秒 毫秒
+    // 4. 设置一个日期对应的  年月日 时分秒 毫秒
+    // 5. 计时器  延时器 
+    // 6. 清除  计时器  延时器 
+
+    // data   数据
+    // date   日期
+
+    // 1. 获取当前时间(日期)  通过官方提供的构造函数Date
+    var d = new Date();
+    console.log(d);
+
+    // 2. 设置一个时间(日期)
+    // 2.1 接收一整个字符串 作为参数   (以传统的格式设置时间)  
+    var d = new Date("2021-1-1 00:00:00");
+    var d = new Date("2021-1-1 12:12:12");
+    console.log(d);
+
+    // 缺点  必须在有效范围内(否则 => Invalid Date)
+    var d = new Date("2020-13-1 12:12:12");   // Invalid Date
+    console.log(d);
+
+
+    // 2.2  多参数设置日期(年月日,时分秒)   
+    // 注意 :  此种方式设置时间时, 月份是从0开始的(0-11)   设置时 月份 = 期望中的月份-1
+    var d = new Date(2021, 0, 1, 12, 12, 12);
+    console.log(d);
+
+    // 优点  日期超出有效范围时,会自动换算 (超出最大值  就向上换算,小于最小值,就向下换算)
+    var d = new Date(2020, 10, 31, 14, 31, 30); // 2020-11-31 => 2020-12-1
+    console.log(d);
+
+    var d = new Date(2020, 10, 0, 14, 31, 30); // 2020-11-31 => 2020-12-1
+    console.log(d);
+
+    // 本月的第零天  就是上个月的最后一天
+    // 下个月的第零天  就是本月的最后一天
+
+
+    // 2.3 传入一个毫秒数
+    // var d = new Date(0);
+    var d = new Date(1234567891000);
+    console.log(d);
+
+    // 2.4 传入一个日期对象  (得到一个与原日期相同的新日期)
+    var d1 = new Date(); // 一个日期
+    var d = new Date(d1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

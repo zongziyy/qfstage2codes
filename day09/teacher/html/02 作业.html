@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = [1, 2, 3, 2, 2, 3, 2, 3, 1, 2, 2, 3, 1, 2] // => [1,2,3]
+
+    //  index   0  1  2  3  4  5  6 
+    var list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+    // 下标为0 的  和后面所有的做比较
+
+    // 数组去重  
+
+    for (var i = 0; i < list.length; i++) {
+        for (var j = i + 1; j < list.length; j++) {
+            if (list[j] === list[i]) {
+                list.splice(j, 1);
+                j--;   // 元素删除之后 由于数组坍塌,后面元素会过来占据被删除的位置, 为了防止有漏网之鱼的出现  选择再来一遍
+            }
+        }
+    }
+
+    console.log(list);
+
+
+
+
+</script>
+
+</html>

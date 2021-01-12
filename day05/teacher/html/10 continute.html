@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    //  continue  只能在循环语句中使用
+    //  跳过本次 进入下一次循环
+    //  注意
+    //  a. continue之后的语句不执行
+    //  b. 当continue在while和do..while中使用时,需要把 i++提到前面
+
+    // 打印1-100的奇数
+
+    // for (var i = 1; i <= 100; i++) {
+    //     if (i % 2 == 0) {
+    //         continue;  //跳过本次 进入下一次循环
+    //     }
+    //     document.write(i + "<br>");
+    // }
+
+    // var i = 0;
+    // while (i < 100) {
+    //     i++;
+    //     if (i % 2 == 0) {
+    //         continue;  //跳过本次 进入下一次循环
+    //     }
+    //     document.write(i + "<br>");
+    // }
+
+    // 求整数1～100的累加值，但要求跳过所有个位为3的数。
+
+    var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+        if (i % 10 == 3) {
+            continue;
+        }
+        sum += i;
+    }
+
+    // 03 13 23 33 43 53 63 73 83 93
+
+
+
+</script>
+
+</html>

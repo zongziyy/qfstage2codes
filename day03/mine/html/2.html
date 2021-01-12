@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <input type="text" id="inp" placeholder="来说说你考了几多分">
+    <button id="i">测试</button>
+</body>
+<script>
+    var w = document.getElementById("inp").value;
+    w = Math.round(w);
+    document.getElementById("i").onclick = function () {
+        switch (true) {
+            case w <= 59:
+                document.write("你很牛吗？");
+                break;
+            case w >= 60 && w < 90:
+                document.write("你在牛什么，怎么敢的呀？");
+                break;
+            case w >= 90:
+                document.write("可以你真的很牛");
+                break;
+            default:
+                document.write("牛爆了！");
+                break;
+        }
+    }
+</script>
+
+</html>

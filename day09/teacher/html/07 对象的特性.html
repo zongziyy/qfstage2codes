@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    // length
+    // 下标取值和赋值    arr[0] arr[1]  arr.length 
+    // for  for...in  for...of
+
+
+
+    // 对象的特性
+    // 1. 对象的取值和赋值依赖于 键名, 
+    // a. 点语法       对象.属性名              => 一般都习惯用  点语法
+    // b. 中括号语法   对象["属性名"]           => 遇到变量/字符串 用中括号语法  
+
+    // 注意
+    // 对象取值时,如果获取一个不存在的键名(属性名),默认返回undefined
+    // 对象赋值时,如果赋值一个不存在的键名(属性名),新增该属性到对象中
+
+
+    var zhangSan = {  //声明对象的同时并赋值
+        name: "张三",  // 对张三的名字的描述
+        age: 18,
+        height: "179cm",
+        weight: "80kg",
+        say: function (a, b) {
+            console.log("hello", a, b);
+        },
+        skill: function () {
+            console.log("恰饭");
+        }
+    };
+
+
+    // console.log(zhangSan);
+
+    // 取值
+    // console.log(zhangSan.name);
+    // console.log(zhangSan.age);
+    // console.log(zhangSan.height);
+    // console.log(zhangSan.weight);
+    // console.log(zhangSan.say);
+    // zhangSan.say(1, 2);
+    // console.log(zhangSan.hobby);  //undefined
+
+    // 赋值(对原对象进行修改,也可以添加新的属性)
+    // zhangSan.name = "Tom";
+    // zhangSan.age = 30;
+    // zhangSan.hobby = "写代码";
+    // console.log(zhangSan);
+
+
+    // 中括号语法
+
+    // 取值
+    // console.log(zhangSan);
+    // console.log(zhangSan["name"]);
+    // console.log(zhangSan["age"]);
+    // console.log(zhangSan["height"]);
+    // console.log(zhangSan["weight"]);
+    // console.log(zhangSan["say"]);
+
+    // zhangSan["say"](1, 2);
+    // console.log(zhangSan["hobby"]);
+
+    // 赋值(对原对象进行修改,也可以添加新的属性)
+
+    zhangSan["name"] = "Jerry";
+    zhangSan["age"] = 28;
+    zhangSan["hobby"] = "唱歌";
+
+
+    console.log(zhangSan);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

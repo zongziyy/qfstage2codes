@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <!-- style="display:none" -->
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    // find()  搜索所有与指定表达式匹配的元素。通过父元素找子代元素的方法
+
+    // $(".wrap").find(".list")
+    // $(".wrap").mouseenter(function () {
+    //     $(this).find(".list").show();
+    // }).mouseleave(function () {
+    //     $(this).find(".list").hide();
+    // })
+
+    // $(".list .first").css({ background: "red" })
+    // $(".list .mid").css({ background: "green" })
+    // $(".list .last").css({ background: "blue" })
+
+    // end()    回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。(花里胡哨)
+
+    console.log($(".list").find(".first"));
+    console.log($(".list").find(".first").end());
+
+    // .list -> .first -> .list ->.mid ->.list -> .last
+
+    $(".list").find(".first").css({ background: "red" }).end().find(".mid").css({ background: "green" }).end().find(".last").css({ background: "blue" })
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

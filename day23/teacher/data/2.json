@@ -1,0 +1,13 @@
+{
+    "name": "张三",
+    "age": 18,
+    "sex": "男",
+    "height": "177cm",
+    "weight": "70kg",
+    "isStudy": true,
+    "hobby": [
+        "唱歌",
+        "跳舞"
+    ],
+    "money": null
+}

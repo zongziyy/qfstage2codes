@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = "hello";
+    var str = new String("hello");
+
+    // new Function()
+
+    // 特性
+    // length  
+    // 下标取值,但是不能通过下标赋值  下标的最大值 = length -1
+    // 循环遍历  for  for...in   for...of
+
+    // 常用方法
+    // charAt()    下标取值
+    // charCodeAt()  对应下标的字符的编码
+    // String.fromCharCode()   根据编码返回对应的字符
+
+    // indexOf()   
+    // lastIndexOf()
+
+    // search()   
+    // match()   
+    // replace()
+
+    var reg = /e/g;
+    var str = "hello every day";
+    // var index = str.search(reg);
+    // console.log(index);
+    // var arr = str.match(reg);
+    // console.log(arr);
+    var newStr = str.replace(reg, "E");
+    console.log(newStr);
+
+    // 
+    // concat()
+    // slice(startIndex=0,endIndex=str.length)    substring(startIndex,endIndex)     substr(startIndex=0,length= length-startIndex)
+
+    var str = "hello every day";
+    var str1 = str.substr(6);
+    console.log(str1);
+
+    // split()  
+    var str = "hello every day";
+    var str1 = str.split(" ");
+    var str1 = str.split("");
+    console.log(str1);
+
+    // 
+    var str = "hello every day";
+    var str1 = str.toUpperCase();
+    var str2 = str1.toLowerCase();
+    console.log(str1, str2);
+
+    // trim()
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 400px;
+            height: 400px;
+            background-color: grey;
+            margin: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sub {
+            width: 300px;
+            height: 300px;
+            background-color: #f00;
+            margin: 50px;
+            overflow: hidden;
+            /* position: relative; */
+            /* position: absolute;
+            left: 50px;
+            top: 50px; */
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            margin: 100px;
+            /* position: absolute;
+            left: 100px;
+            top: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="box">
+    </div> -->
+
+    <div class="wrap">
+        <div class="sub">
+            <div class="box"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    // 传统的方法  (content)
+    // var left = parseFloat(getStyle(box, "margin-left"));
+    // var top1 = parseFloat(getStyle(box, "margin-top"));
+    // console.log(left, top1);
+
+
+    // 快捷获取元素的相对于参照物父元素的偏移(margin-left/margin-top   left/top)
+
+    // 如何查找参照物父元素  offsetParent
+    // 1. 自当前元素的父元素开始查找各种定位属性(relative,absolute,fixed),如果找到则该父元素就是当前元素的参照物父元素,如果找不到,继续向上一层查找,以此类推,最终都找不到则相对于文档左上角
+
+
+    console.log(box.offsetLeft, box.offsetTop);
+    console.log(box.offsetParent);  //box的参照物父元素
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

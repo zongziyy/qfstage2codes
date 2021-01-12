@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box one two three" id="box" title="haha">
+        <span>123123</span>
+    </div>
+</body>
+<script>
+    // HTML DOM  
+    // html元素的增删改查  
+
+    var box = document.getElementsByClassName("box")[0];
+    console.log(box); //元素节点  => 对象(对一个或一类事物特征(属性)和行为(方法)的描述)
+
+    // 元素节点的属性
+    // 元素节点  => 对象(对一个或一类事物特征(属性)和行为(方法)的描述)  => 存在修饰该元素的属性和方法
+    console.dir(box);
+
+    // innerHTML    获取和设置 元素的html结构 
+    // innerText    获取和设置 元素的文本结构 
+    // textContent  获取和设置 元素的文本结构 
+
+    // outerHTML    获取和设置 元素本身及其内部的html结构 
+
+    // console.log(box.innerHTML);
+    // console.log(box.outerHTML);
+
+    // box.outerHTML = "123123"
+
+    // box.innerText = "123123";
+    // box["innerText"] = "asdasd";
+
+
+    // tagName  返回元素的标签名 (大写的字符串)
+    console.log(box.tagName); //"DIV" 
+
+    // className   获取和设置 元素的class名
+    // console.log(box.className);
+    // box.className = "Box"
+
+    // id    获取和设置 元素的id名
+    console.log(box.id);
+    box.id = "wrapBox"
+
+    // title    获取和设置 元素的title
+    console.log(box.title);
+    // box.title = "你好"
+
+    // style    获取和设置 元素的内样样式
+    // JS操作元素改变样式时,都是通过修改内联样式实现的
+    console.log(box.style);
+
+    box.style["background-color"] = "blue";   //设置 (内样样式权重比较高 没什么影响)
+
+    // 取值  只获取内联样式 
+    console.log(box.style.backgroundColor);
+    console.log(box.style.width);
+    console.log(box.style.height);
+
+
+
+
+
+
+</script>
+
+</html>

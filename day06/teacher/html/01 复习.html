@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="list">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>10</li>
+    </div> -->
+</body>
+<script>
+    // 函数 / 方法    完成某个特定功能的工具
+
+    // 函数封装的流程
+    // 1. 写特定功能的代码 (先把需要封装的功能按正常的逻辑流程写出来)
+    // 2. 将完成特定功能的代码抽离出来,放到函数中(让它形成一个独立的实体),起一个名字
+    // 3. 将可变参数改为形式参数 (function 的 () 中)
+    // 4. 设置函数的返回值  (用户可以自己通过return值定义函数执行的结果,如果不设置return  默认返回undefined )
+    // 5. 函数的使用  =>调用  函数名()
+
+    //  关于函数的调用 ,每次调用函数  都会按顺序执行函数函数的上下文
+    //   函数的return值只能有一个  ,一旦遇到return函数就结束了 ,且return之后的语句不执行
+
+
+    // 形式参数 实际参数
+    // 形式参数 代码在执行过程中的假设性参数
+    // 实际参数 函数在调用过程中 实际传入的值(实际值是可以变化的)
+    // 形式参数 和  实际参数  一一对应
+
+    // 函数封装的优点
+    // 使程序变得更简短而清晰
+    // 有利于程序维护
+    // 可以提高程序开发的效率
+    // 提高了代码的重用性(复用性)
+
+
+    // function level(grade) {   //形式参数 (函数封装过程中的假设性参数)
+    //     // var grade = Math.round(Math.random() * 100);  
+    //     // var grade = 100;
+    //     console.log(grade);
+    //     if (grade >= 90) {
+    //         document.write("A<br>");
+    //     } else if (grade >= 80) {
+    //         document.write("B<br>");
+    //     } else if (grade >= 70) {
+    //         document.write("C<br>");
+    //     } else if (grade >= 60) {
+    //         document.write("D<br>");
+    //     } else {
+    //         document.write("E<br>");
+    //     }
+    // }
+
+
+    function level(grade) {   //形式参数 (函数封装过程中的假设性参数)
+        // var grade = Math.round(Math.random() * 100);  
+        // var grade = 100;
+        // console.log(grade);
+        if (grade >= 90) {
+            return "A";
+        } else if (grade >= 80) {
+            return "B";
+        } else if (grade >= 70) {
+            return "C";
+        } else if (grade >= 60) {
+            return "D";
+        } else {
+            return "E";
+        }
+    }
+
+    // 形式参数和实际参数一一对应
+
+    var result = level(100);  // "A" 实际参数, 函数调用时 实际传入的值
+    document.write(result);
+    console.log(level(90));  // 调用函数  打印结果
+    level(80);
+    level(70);
+    level(60);
+    level(50);
+
+    "a";
+
+
+
+</script>
+
+</html>

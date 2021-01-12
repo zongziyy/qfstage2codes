@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var d = new Date();   //1970-1-1  
+    console.log(d * 1);
+
+    // var d = new Date("0099/11/1");
+    // var d = new Date(2021, 0, 1,);
+    // var d = new Date(0);
+    // console.log(d);
+
+    // var d1 = new Date(d);  // 得到一个与原日期相同的新日期
+    // d1.setDate(10);
+    // console.log(d1);
+    // console.log(d);   
+
+
+    // console.log(d * 1);
+    // console.log(d.getTime());
+
+    // d.getFullYear();
+    // d.getMonth();
+    // d.getDate();
+    // d.getDay();
+    // d.getHours();
+    // d.getMinutes();
+    // d.getSeconds();
+    // d.getMilliseconds();
+    // d.getTime();
+
+    // d.setFullYear();
+    // d.setMonth();
+    // d.setDate();
+    // d.setDay();
+    // d.setHours();
+    // d.setMinutes();
+    // d.setSeconds();
+    // d.setMilliseconds();
+    // d.setTime();
+
+
+    var timer1 = setInterval(console.log, 1000, 1, 2, 3);
+    var timer2 = setInterval(function () {
+        console.log(4, 5, 6)
+    }, 1000);
+
+    console.log(timer1, timer2);
+
+
+
+
+
+    // Date  构造函数的方法     (Array.isArray()   String.fromCharCode())
+    // Date.now()   获取当前时间对应的毫秒数
+    // Date.parse();   接收一个日期(字符串,多参数,日期对象)  =>  返回日期对应的毫秒数
+
+    // console.log(Date.now());
+
+    // console.log(Date.parse("2021-1-1 12:12:12:111"));
+    // console.log(Date.parse(2021, 0, 1));
+    // console.log(Date.parse(d));
+
+
+
+
+
+
+</script>
+
+</html>

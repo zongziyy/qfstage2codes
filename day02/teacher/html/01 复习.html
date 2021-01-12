@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="../js/"></script> -->
+</head>
+
+<body>
+    hello&nbsp;world
+    你&emsp;好
+    <div class="box" onclick=""></div>
+    <a href="javascript:alert();"></a>
+</body>
+<script>
+    // JS 组成
+    // ECMAScript  BOM  DOM 
+
+
+    // 三个打印语法
+    // document.write()
+    // console.log()
+    // alert()
+
+    // &nbsp;  一个英文字符大小的空格
+    // &emsp;  全角空格(一个中文大小)
+    // &ensp;  半角空格(半个中文大小)
+
+    // &lt;   <
+    // &gt;   >
+
+    // document.write()  正常情况下也会将传入的html结构输出到页面,如果想原样输出可以转义
+
+    // document.write("<h2>我是h2</h2>");  // 输出html结构
+    // document.write("&lt;h2&gt;我是h2&lt;/h2&gt;");  // 以文本形式 原样输出
+
+    // 2. js的三种引入方式
+
+
+    // 常量/字面量/直接量  100,"100",true,false
+
+    // 3. 变量声明的三种方式   
+    // var a;
+    // a = 100;
+
+    // var a = 100;
+
+    // var a = 100, b, c, d;
+
+    // var 嘿 = 100;
+    // var 哈 = 200;
+    // console.log(嘿, 哈);
+
+    // var  if  else    
+
+    // 4. 7中数据类型
+    // number string  boolean  null undefined  array object
+
+    console.log(typeof undefined);  // undefined  => "undefined"
+    console.log(typeof null);      // null -> "object"
+    console.log(typeof [1, 2, 3, 4]);  // "object"
+
+
+    // 算术运算符 
+    // + - * / %        * / %  大于 + -
+
+    // 隐式类型转换
+
+    // a.字符串
+    // 遇到 + 会拼接形成新的字符串
+    // 遇到 - * / %   会转化为数字在计算 
+    //      纯数字类型的字符串("100")  => 100
+    //      非纯数字类型的字符串("a100a")  => NaN
+
+    // b. 布尔值
+    // true -> 1
+    // false -> 0
+
+    // null 转化为数字  0  
+    // undefined 转化为数字  NaN  
+
+    // 关系运算符
+    // > >=  <  <=   ==  ===  !=  !==
+
+
+
+
+
+
+</script>
+
+</html>

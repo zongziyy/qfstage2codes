@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // -------------------------------------------
+    // list  想循环遍历的数组
+    // fn    每次循环遍历向执行的函数
+    function myEach(list, fn) {
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            fn(item, index, array);  // 实际参数
+        }
+    }
+
+    function myMap(list, fn) {
+        var all = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            var result = fn(item, index, array);  // 实际参数
+            all.push(result);
+        }
+        return all;
+    }
+
+
+    function myFilter(list, fn) {
+        var all = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            var result = fn(item, index, array);  // 实际参数
+            if (result) {
+                all.push(item);
+            }
+        }
+        return all;
+    }
+
+    function mySome(list, fn) {
+        var all = [];
+        var flag = false; // 假设不含有
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            var result = fn(item, index, array);  // 实际参数
+            if (result) {  // 满足条件 result => true
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    function myEvery(list, fn) {
+        var all = [];
+        var flag = true; // 假设全都满足某个条件
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i]; // 循环的当前元素
+            var index = i;      // 循环的当前下标
+            var array = list;   // 原数组
+
+            var result = fn(item, index, array);  // 实际参数
+            // if (result) {  
+
+            // } else {  // 只要有一个不满足条件 result => false
+            //     flag = false;
+            //     break;
+            // }
+
+            if (!result) { // 只要有一个不满足条件 result => false
+                flag = false;
+                break;
+            }
+
+        }
+        return flag;
+    }
+
+
+
+
+    var arr = [13, 92, 60, 52, 66, 54];
+    console.log("原数组", arr);
+
+    // var sum = 0;
+    // var result = myEach(arr, function (item, index, array) {  // arr每次循环时,执行的内容
+    //     // item 每次循环的当前元素
+
+    //     // console.log(item, index, array);
+    //     sum += item;
+    // });
+    // console.log(sum);
+    // console.log(result);
+
+    // myMap
+
+    // var resList = myMap(arr, function (item, index, array) {
+    //     return item;
+    // })
+    // console.log(resList, resList === arr);
+    // console.log(resList[6] === arr[6]);
+
+
+    // var resList = myFilter(arr, function (item, index, array) {
+    //     // return item >= 60;
+    //     return item % 2 == 1;
+    //     return item % 2;  // 0  1   (如果返回的不是条件,会隐式转化为bool值在判断)
+    // })
+    // console.log(resList);
+
+    // var flag = mySome(arr, function (item, index, array) {
+    //     return item >= 60;
+    // })
+    // console.log(flag);
+
+    var flag = myEvery(arr, function (item, index, array) {
+        return item >= 10;
+    })
+    console.log(flag);
+
+
+
+
+
+
+
+
+</script>
+
+</html>

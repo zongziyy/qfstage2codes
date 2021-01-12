@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <!-- style="display:none" -->
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    // insertBefore  将一个元素插入到指定的元素前面 
+    // insertAfter  将一个元素插入到指定的元素后面 
+
+    // $("<li/>", {
+    //     text: "123123",
+    //     class: "newLi",
+    //     id: "li",
+    //     style: "background:red;width:200px",
+    //     click() {
+    //         alert($(this).index());
+    //     }
+    // }).insertBefore(".mid");
+    // $("<li/>", {
+    //     text: "asdasd",
+    //     class: "newLi",
+    //     id: "li",
+    //     style: "background:red;width:200px",
+    //     click() {
+    //         alert($(this).index());
+    //     }
+    // }).insertAfter(".mid");
+
+
+
+
+    // before  向匹配的元素前插入一个元素
+    // after   向匹配的元素后插入一个元素
+    $li = $("<li/>", {
+        text: "123123",
+        class: "newLi",
+        id: "li",
+        style: "background:red;width:200px",
+        click() {
+            alert($(this).index());
+        }
+    })
+    $(".mid").before($li);
+    $(".mid").after($li);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

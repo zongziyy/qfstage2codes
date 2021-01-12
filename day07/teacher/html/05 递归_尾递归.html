@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 对比for循环  改写的递归
+    // var sum = 0;
+    // var i = 1;
+    // function fn() {
+    //     sum += i;
+    //     console.log(i);
+    //     i++;
+
+    //     if (i > 5) {   // 临界值  (如果大于临界值 =>停止递归)
+    //         console.log(sum);
+    //         return sum;   // 55  return 之后的语句不执行
+    //     } else {   // i<=5  满足条件的情况下   =>递归
+    //         fn();   // 调用了自身 =>递归
+    //     }
+
+    // }
+
+    // fn();
+
+
+
+    // function fn(i, sum) {
+    //     sum += i;
+    //     console.log(i);
+    //     i++;
+
+    //     if (i > 5) {   // 临界值  (如果大于临界值 =>停止递归)
+    //         console.log(sum);
+    //         return sum;   // 55  return 之后的语句不执行
+    //     } else {   // i<=5  满足条件的情况下   =>递归
+    //         fn(i, sum);   // 调用了自身 =>递归
+    //     }
+
+    // }
+
+    // fn(1, 0);   // 1-9
+
+
+    // function fn(i, sum) {
+    //     sum += i;
+    //     // console.log(i);
+    //     i--;
+
+    //     if (i < 1) {   // 临界值  (如果大于临界值 =>停止递归)
+    //         // console.log(sum);
+    //         return sum;   // 55  return 之后的语句不执行
+    //     } else {   // i<=5  满足条件的情况下   =>递归
+    //         fn(i, sum);   // 调用了自身 =>递归
+    //     }
+
+    // }
+
+    // fn(5, 100);
+
+    // 递归   先传递,在回归
+    // 尾递归  => 在递归的结尾(临界值)得到确切的结果,再回传  
+
+    function fn(i, sum) {  // 2  0
+        sum += i;
+        // console.log(i);
+        if (i <= 1) {   // 临界值  (如果大于临界值 =>停止递归)
+            // console.log(sum);
+            return sum;   // 55  return 之后的语句不执行
+        } else {   // i<=5  满足条件的情况下   =>递归
+            return fn(i - 1, sum);   // 调用了自身 =>递归
+
+        }
+
+    }
+    var result = fn(5, 0);
+    console.log(result);
+    // fn(5, 0);  => sum += 5 => fn(4, 5)
+    // fn(4, 5);  => sum += 4 => fn(3, 9)
+    // fn(3, 9);  => sum += 3 => fn(2, 12)
+    // fn(2, 12);  => sum += 2 => fn(1, 14)
+    // fn(1, 14);  => sum += 1 =>  return sum;
+
+    // fn(5, 0)=> fn(4, 5)=> fn(3, 9)=> fn(2, 12)=> fn(1, 14)
+    //                                                 ||
+    //   15   <=    15   <=    15    <=   15     <=    15
+
+
+
+    // 六块钱买皮肤
+    //  你  =>  同桌A => 同桌B =>  同桌C =>  同桌D
+    //                                       ||
+    //  6   <=   6   <=   6  <=   6   <=   6(手上)
+
+
+</script>
+
+</html>

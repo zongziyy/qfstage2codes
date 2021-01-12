@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        .preview-intro {
+            margin-top: 100px;
+        }
+
+        .preview-intro .preview-wrap {
+            width: 400px;
+            float: left;
+            margin-right: 100px;
+            background-color: coral;
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview .shadow {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+
+        .preview-intro .preview-wrap .preview img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-scale {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(125, 255, 255, 0.5);
+            position: absolute;
+            left: 500px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .preview-scale img {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        .preview-intro .itemInfo {
+            overflow: hidden;
+            background-color: pink;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preview-intro w">
+        <div class="preview-wrap left">
+            <div class="preview">
+                <div class="shadow"></div>
+                <img class="smallImg" src="../images/girlsmall1.jpg" alt="">
+            </div>
+            <div class="preview-scale">
+                <img class="bigImg" src="../images/girlbig1.jpg" alt="">
+            </div>
+            <div class="previewList">
+                <li><img src="../images/girlsmall1.jpg" bigImg="../images/girlbig1.jpg" alt=""></li>
+                <li><img src="../images/girlsmall2.jpg" bigImg="../images/girlbig2.jpg" alt=""></li>
+                <li><img src="../images/girlsmall3.jpg" bigImg="../images/girlbig3.jpg" alt=""></li>
+                <li><img src="../images/girlsmall4.jpg" bigImg="../images/girlbig4.jpg" alt=""></li>
+            </div> bigImg="../images/girlbig1.jpg"
+        </div>
+        <!-- <div class="itemInfo right"></div> -->
+    </div>
+</body>
+<script>
+
+    // 放大镜
+
+    // 1. 等比例缩放(放大时 也是等比例的)  => 布局
+    //     shadow         smallImg
+    // ------------  =  ----------
+    //  previewScale       bigImg
+
+    // 2. 左边 移动的shadow  右边移动的是图片(定位)
+
+    // 3. shadow 和 右边大图片移动的方向是相反的,shadow移动的距离和大图片移动的距离也是等比例的
+
+
+    // smallImgList = []
+    // bigImgList = []
+
+    // // 下标对应
+
+    var previewWrap = document.getElementsByClassName("preview-wrap")[0];
+    var preview = document.getElementsByClassName("preview")[0];
+    var shadow = document.getElementsByClassName("shadow")[0];
+    var previewScale = document.getElementsByClassName("preview-scale")[0];
+    var smallImg = document.getElementsByClassName("smallImg")[0];
+    var bigImg = document.getElementsByClassName("bigImg")[0];
+
+    var maxLeft = preview.clientWidth - shadow.clientWidth;
+    var maxTop = preview.clientHeight - shadow.clientHeight;
+
+    var scale = previewScale.clientWidth / shadow.clientWidth;
+    // console.log(scale);
+
+    preview.onmousemove = function (e) {
+        var e = e || window.event;
+
+        shadow.style.display = "block";
+        previewScale.style.display = "block";
+
+        // 为什么找preview的offsetLeft,offsetTop 值为0;
+        // 因为布局影响 previewWrap 设置了position:relative,所以此时preview返回的是相对于previewWrap的偏移 0 0 , 为了找到真正偏移 所以我们向外跳了一层 找previewWrap相对于文档左边和上边的偏移
+
+        var x = e.pageX - previewWrap.offsetLeft - shadow.clientWidth / 2;
+        var y = e.pageY - previewWrap.offsetTop - shadow.clientHeight / 2;
+
+        if (x < 0) x = 0;
+        if (x >= maxLeft) x = maxLeft;
+        if (y < 0) y = 0;
+        if (y > maxTop) y = maxTop;
+
+        // console.log(previewWrap.offsetLeft, previewWrap.offsetTop);
+        shadow.style.left = x + "px";
+        shadow.style.top = y + "px";
+
+        // 右边移动的是大图片
+        bigImg.style.left = -scale * x + "px";
+        bigImg.style.top = -scale * y + "px";
+
+    }
+
+
+</script>
+
+</html>

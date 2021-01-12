@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            <label for="">用户名:</label>
+            <input type="text" id="user">
+            <!-- style="color: red;font-size: 14px;" -->
+            <span id="user_span"></span>
+        </p>
+        <p>
+            <input id="btn" type="submit" value="注册">
+        </p>
+
+    </div>
+</body>
+<script>
+    // 用户名
+    // 由数字 大小写字母 _ $ 组成 , 6-12位,且不能以数字开头
+
+    // 判断的流程  从易到难的顺序 
+    // a. 长度  6-12位 
+    // b. 不能以数字开头
+    // c. 由数字 大小写字母 _ $ 组成  (所有的字符都必须在合法字符的范围内,只要有一个不是合法的字符 报错   => 判断字符串中是否能含有非法字符)
+
+
+    //  innerHTML   用于非表单元素 => 获取/设置 元素的html结构(文本也可以)
+    //  innerText   用于非表单元素 => 获取/设置 元素的文本内容(仅限于文本,如果赋值html结构,会转义成文本)
+
+    // JS操作元素改变css样式时,通过通过内联样式实现的
+
+
+    // 合法字符
+    // 数字        48-57              charCode>=48&&charCode<=57
+    // 大写字母     65-90              charCode>=65&&charCode<=90
+    // 小写字母     97 - 122           charCode>=97&&charCode<=122
+    // _   95                         charCode==95
+    // $    36                        charCode==36
+
+    // 合法字符
+    // charCode>=48&&charCode<=57||charCode>=65&&charCode<=90||charCode>=97&&charCode<=122||charCode==95||charCode==36
+
+    // 非法字符
+    // !(charCode>=48&&charCode<=57||charCode>=65&&charCode<=90||charCode>=97&&charCode<=122||charCode==95||charCode==36)
+
+
+    var userInp = document.getElementById("user");
+    var userSpan = document.getElementById("user_span");
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function () {
+        var user = userInp.value;  //字符串
+        console.log(user);
+
+        //  长度  6-12位 
+        if (user.length >= 6 && user.length <= 12) {
+
+
+            // b. 不能以数字开头    
+            var firstCharCode = user.charCodeAt(0);  // 获取第一个字符串对应的编码
+
+            // 数字   48-57   
+
+            console.log(firstCharCode);
+            if (!(firstCharCode >= 48 && firstCharCode <= 57)) { // 是数字
+
+                // c.  由数字 大小写字母 _ $ 组成  (遍历所有的字符  判断是否含有非法字符)
+                var flag = true; // 假设没有非法字符  => 只要找到一个就可以推翻假设
+                for (var i = 0; i < user.length; i++) {
+                    var charCode = user.charCodeAt(i); // 每一个字符的编码
+                    if (!(charCode >= 48 && charCode <= 57 || charCode >= 65 && charCode <= 90 || charCode >= 97 && charCode <= 122 || charCode == 95 || charCode == 36)) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    userSpan.innerText = "√";
+                    userSpan.style.color = "green";
+                    userSpan.style.fontSize = "12px";
+                } else {
+                    userSpan.innerText = "用户名由数字 大小写字母 _ $ 组成 ";
+                    userSpan.style.color = "red";
+                    userSpan.style.fontSize = "12px";
+                }
+
+
+
+            } else {
+                userSpan.innerText = "用户名不能以数字开头";
+                userSpan.style.color = "red";
+                userSpan.style.fontSize = "12px";
+            }
+
+
+
+
+        } else {
+            // userSpan.innerHTML = "<b>用户名长度需要在6-12位之间</b>";
+            userSpan.innerText = "用户名长度需要在6-12位之间";
+            userSpan.style.color = "red";
+            // userSpan.style.fontSize = "12px";  
+            userSpan.style["font-size"] = "12px";
+        }
+    }
+
+
+
+
+
+</script>
+
+
+</html>

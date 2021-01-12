@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+<script>
+
+    // $(".box").click(function () {
+    //     console.log($(this).width());
+    // })
+
+    // 普通绑定
+    // on(eventType,data,callback)    事件监听绑定 => 一个元素可以绑定多个事件
+    // eventType  事件类型 
+    // data       事件绑定是传递的数据(可选)
+    // callback   事件触发时执行的回调函数
+
+    $(".box").on("click", { a: 1, b: 2 }, function (e) {
+        // console.log($(this).width());
+        console.log(e);
+        console.log(e.data);
+    })
+
+    $(".box").on("click", { a: 3, b: 4 }, function (e) {
+        console.log($(this).width());
+    })
+
+
+
+
+</script>
+
+</html>

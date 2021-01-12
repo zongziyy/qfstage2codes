@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 函数/方法    完成某个特定功能的工具
+
+    // 系统内置方法  (官方给的)
+
+    // 1. 可以直接看到效果的   => 不需要特定返回某个结果(默认返回undefined)
+    // document.write()
+    // console.log()
+    // alert()
+    var result = document.write("hello");
+    console.log(result);
+
+    // 2. 方法返回新的结果
+    // Number()
+    // String()
+    // Boolean()
+    // parseInt()
+    // parseFloat()
+
+    // Math.random();
+
+    var result = Number("100");
+    console.log(result);
+
+    // 新增 
+    // eval();   接收一个字符串,将该字符串作为js语句执行
+
+    // var str = "1+1";
+    // var num = eval(str);
+    // console.log(num);
+
+    // eval("alert(1111)");
+
+
+    // isNaN()  判断是否是非数字(如果是不是number类型, 先隐式类型转换number类型,在判断是否是非数字)    
+    // 是非数字 返回true ,不是非数字(是数字  => false)
+
+    // console.log(isNaN(100));  //false
+    // console.log(isNaN(100.55)); // false
+
+    // console.log(isNaN("100"));   // false
+    // console.log(isNaN("100.55")); // false
+    // console.log(isNaN("100.55a")); // NaN  => true
+    // console.log(isNaN("")); // 0   => false
+
+    // console.log(isNaN(true)); //1   => false
+    // console.log(isNaN(false)); //0   => false
+
+    // console.log(isNaN(undefined)); //NaN   => true
+    // console.log(isNaN(null)); //0   => false
+
+
+
+    // 但是 官方给定的方法  并不能满足所有人的需要  =>   官方允许我们自己定义函数(自己写方法)
+
+    // 用户自定义函数  (根据自己的需要 封装一个函数)
+    // 判断闰年  判断素数  打印三角形  判断年月日  
+
+
+
+
+</script>
+
+</html>

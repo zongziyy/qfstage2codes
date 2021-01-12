@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = [1, 2, 3, 2, 2, 3, 2, 3, 1, 2, 2, 3, 1, 2] // => [1,2,3]
+
+    //  index   0  1  2  3  4  5  6 
+    var list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+    // 下标为0 的  和后面所有的做比较
+
+    // 数组去重  
+
+    var arr = [];
+
+    for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        if (arr.indexOf(item) == -1) {
+            arr.push(item);
+        }
+    }
+    console.log(arr);
+
+
+
+</script>
+
+</html>

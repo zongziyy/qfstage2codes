@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 依赖递归
+    // 下一个的结果   依赖于 上一个或多个的结果
+
+    //  1-5 的和
+    // sum(5) = 5 + sum(4)
+    // sum(4) = 4 + sum(3)
+    // sum(3) = 3 + sum(2)
+    // sum(2) = 2 + sum(1) = 1 
+
+    function sum(n) {
+        if (n <= 1) {  // 临界值(跳出的条件)
+            return 1;
+        } else { // n>1
+            return n + sum(n - 1);
+        }
+    }
+
+    var result = sum(5);
+    console.log(result);
+
+    // sum(5) => 5 + sum(4) => 4 + sum(3) => 3 + sum(2) => 2 + sum(1) = 1
+    //                                                          || 
+    //   15   <=  5 +   10  <=  4  + 6   <=   3  +   3  <= 2 +   1
+
+</script>
+
+</html>

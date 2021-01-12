@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .list {
+            padding: 20px;
+            background-color: #6ff;
+        }
+
+        .list span,
+        .list p {
+            display: block;
+            line-height: 45px;
+            border: 1px dashed #333;
+            background-color: greenyellow;
+            margin: 5px 0;
+        }
+
+        .list>li {
+            display: block;
+            line-height: 45px;
+            border: 1px dashed #333;
+            background-color: pink;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>事件委托</h2>
+        <button class="add">点击新增</button>
+        <ul class="list">
+            <span>我是span</span>
+            <p>我是p</p>
+            <li class="first">我是第01个li</li>
+            <li class="li second">我是第02个li</li>
+            <li>我是第03个li</li>
+            <li>我是第04个li</li>
+            <li>我是第05个li</li>
+            <li>我是第06个li</li>
+            <li>我是第07个li</li>
+            <li>我是第08个li</li>
+            <li>我是第09个li</li>
+            <li id="last">我是第10个li</li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    // 事件委托
+    // 利用事件冒泡的原理,把子元素的事件委托给父代元素,由父代元素 代为执行
+
+    // 1. 节省内存,代码执行速度更快
+    // 2. 代码结构更为清晰
+    // 3. 可以给未来生成的元素绑定事件 (未来生成的元素  页面加载时没有,但是在未来某个时间段添加新的元素)
+
+
+    var list = document.getElementsByClassName("list")[0];
+    var liList = list.getElementsByTagName("li");
+
+    // var liList = document.querySelectorAll(".list li");
+
+    var addBtn = document.getElementsByClassName("add")[0];
+    addBtn.onclick = function () {
+        var li = document.createElement("li");
+        li.textContent = "我是新增的li";
+        list.appendChild(li);
+    }
+
+    // 给父元素绑定了事件
+    list.onclick = function (e) {
+        // console.log(this);   // list XXXXX
+
+        var e = e || window.event;
+
+        var target = e.target || e.srcElement;  // 事件源(谁触发的事件  list  li span p )
+        console.log(target);
+
+        // 区分元素(标签名)  list  li span p 
+        if (target.tagName == "LI") {  // 点击了li
+            // console.log("你点击了li");
+
+            var arr = Array.from(liList);
+            var index = arr.indexOf(target);
+
+            console.log(target.textContent, index);
+
+        }
+
+        // 如果元素有独特的class名  id名  name  (通过元素节点的属性判断)
+        if (target.className == "first") {  // 单class名
+            console.log("你点击了first");
+        }
+        if (target.classList.contains("second")) {  // 多class名
+            console.log("你点击了second");
+        }
+
+        if (target.id == "last") {
+            console.log("你点击了last");
+        }
+    }
+
+
+
+
+</script>
+
+</html>

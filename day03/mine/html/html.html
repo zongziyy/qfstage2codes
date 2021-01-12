@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    请输入年月日，进行数据判断
+    <br>
+    <hr>
+    <input type="text">年
+    <input type="text">月
+    <input type="text">日
+    <button>数据验证</button>
+    <div>验证结果: <span></span></div>
+</body>
+
+<script>
+    document.querySelector('button').addEventListener('click', function () {
+        document.querySelector('span').innerHTML = ''  //初始化清空所有历史数据
+        let date = document.querySelectorAll('input[type="text"]')
+        let [year, month, day] = [date[0].value, date[1].value, date[2].value]
+        let msg = []
+        let monthDate = [1, 3, 5, 7, 8, 10, 12]
+        if (year != '' && year >= 1000 && year <= 9999) {
+            let yearType = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? '闰年' : '平年'
+            msg.push(yearType)
+        } else {
+            alert('年份输入错误')
+        }
+        if (month == '' || month < 1 || month > 12) {
+            alert('月份输入错误')
+            return
+        }
+        if (month == 2) {
+            if (msg[0] == '闰年' && day <= 29 && day >= 1) {
+                document.querySelector('span').innerHTML = `${msg[0]},日期是:${year}年${month}月${day}日 共计${sumDate()}天`
+            } else if (msg[0] == '平年' && day <= 28 && day >= 1) {
+                document.querySelector('span').innerHTML = `${msg[0]},日期是:${year}年${month}月${day}日 共计${sumDate()}天`
+            } else {
+                alert('日输入错误')
+            }
+        } else if (monthDate.includes(Number(month))) {
+            if (day <= 31 && day >= 1) {
+                document.querySelector('span').innerHTML = `${msg[0]},日期是:${year}年${month}月${day}日 共计${sumDate()}天`
+            } else {
+                alert('日输入错误')
+            }
+        } else {
+            if (day <= 30 && day >= 1) {
+                document.querySelector('span').innerHTML = `${msg[0]},日期是:${year}年${month}月${day}日 共计${sumDate()}天`
+            } else {
+                alert('日输入错误')
+            }
+        }
+
+        function sumDate() {
+            let dateSum = 0
+            // 用当月前所有月都是完整的，直接-1加上当月天数可以得到完整天数
+            switch (month - 1) {
+                case 11: dateSum += 30;
+                case 10: dateSum += 31;
+                case 9: dateSum += 30;
+                case 8: dateSum += 31;
+                case 7: dateSum += 31;
+                case 6: dateSum += 30;
+                case 5: dateSum += 31;
+                case 4: dateSum += 30;
+                case 3: dateSum += 31
+                case 2: year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? dateSum += 29 : dateSum += 28
+                case 1: dateSum += 31
+            }
+            return dateSum += Number(day)
+        }
+    })
+</script>
+
+</html>

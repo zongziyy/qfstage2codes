@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn">替换/修改</button>
+        <div class="list">
+            <li>01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var list = document.getElementsByClassName("list")[0];
+    var second = document.getElementsByClassName("second")[0];
+    // console.log(btn);
+
+
+    // 修改/替换   (用新的节点(元素节点/文本节点) 替换 已存在的节点(元素节点))
+    // parent.replaceChild(newNode,oldNode)    父元素统筹 (喜新厌旧)
+
+    // 将已存在的节点 用 新的节点 代替
+    // oldNode.replaceWith(newNode);
+
+    // 新建一个li替换原本的 second
+    btn.onclick = function () {
+        var li = document.createElement("li");
+
+        // 给元素绑定属性
+        li.innerText = "这是新增的li";
+        li.setAttribute("class", "newLi");
+        li.setAttribute("title", "hello");
+
+        // 给元素绑定事件
+        li.onclick = function () {
+            console.log(li.innerText);
+        }
+
+        // console.log(li);
+
+        // if (second) {
+        //     list.replaceChild(li, second);
+        //     second = null;
+        // }
+
+        second.replaceWith(li);
+        // console.log(second);
+
+    }
+
+
+
+</script>
+
+</html>

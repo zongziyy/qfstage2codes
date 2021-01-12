@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .shadow {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* margin  translate  position */
+    </style>
+</head>
+
+<body>
+    <div class="shadow">
+
+    </div>
+</body>
+<script>
+    // 需求
+    // shadow  跟随鼠标在页面的任何位置移动
+
+    var shadow = document.getElementsByClassName("shadow")[0];
+
+    var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+    var maxLeft = clientWidth - shadow.clientWidth;
+    var maxTop = clientHeight - shadow.clientHeight;
+
+    // window.onresize = function () {
+    //     clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    //     clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+    //     maxLeft = clientWidth - shadow.clientWidth;
+    //     maxTop = clientHeight - shadow.clientHeight;
+    // }
+
+    document.onmousemove = function (e) {
+        var e = e || window.event;
+
+        var x = e.pageX - shadow.clientWidth / 2;
+        var y = e.pageY - shadow.clientHeight / 2;
+
+        if (x < 0) { x = 0 };
+        if (x >= maxLeft) x = maxLeft;
+        if (y < 0) y = 0;
+        if (y > maxTop) y = maxTop;
+
+
+        // 取值时 去单位
+        // 赋值时 加单位
+        shadow.style.left = x + "px";
+        shadow.style.top = y + "px";
+
+
+
+    }
+
+
+</script>
+
+</html>

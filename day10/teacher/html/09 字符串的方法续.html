@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = new String("good good study , day day up");
+    console.log(str, typeof str);  // "object"
+
+    // indexOf()  返回某个或某段字符 第一次出现的位置   存在=> 下标  不存在=>-1
+
+    // var index = str.indexOf("d"); // 3
+    // var index = str.indexOf("day");  // 18  =>如果是一段字符,返回第一个字符的下标
+
+    // // indexOf 可以接收第二参数  作为起始下标(默认0)
+    // var index = str.indexOf("day", 19);  // 18
+    // console.log(index);
+
+    // lastIndexOf()  返回某个或某段字符 最后一次出现的位置   存在=> 下标  不存在=>-1
+    // var index = str.lastIndexOf("d"); //22
+    // var index = str.lastIndexOf("day"); //22
+
+    //  indexOf 可以接收第二参数  作为起始下标(默认0) 倒着向前查
+    // var index = str.lastIndexOf("day", 21); //18
+    // console.log(index);
+
+</script>
+
+
+</html>

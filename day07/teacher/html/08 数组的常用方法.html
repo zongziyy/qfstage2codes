@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 学习数组的常用方法需要注意的地方
+    // 1. 完成什么功能  
+    // 2. 返回值
+    // 3. 是否影响原数组  有些方法会在原数组上修改,有的方法返回一个新数组(不改变原数组) 
+
+
+    // 数组中元素的增删改  
+
+    // push()  在数组尾部新增一个或多个元素
+    // 返回值  新增元素后数组的长度 
+    // 是否影响原数组   是
+    // var list = ["a", "b", "c"];
+    // // var result = list.push(999);  
+    // var result = list.push(999, 777);
+    // console.log(result);
+    // console.log(list);
+
+    // unshift()  在数组头部新增一个或多个元素
+    // 返回值  新增元素后数组的长度 
+    // 是否影响原数组   是
+
+    // var list = ["a", "b", "c"];
+    // var result = list.unshift(1, 2);
+    // console.log(result);
+    // console.log(list);
+
+    // pop()   删除数组尾部的元素
+    // 返回值   被删除的元素 
+    // 是否影响原数组   是
+    // var list = ["a", "b", "c"];
+    // var result = list.pop();
+    // console.log(result);
+    // console.log(list);
+
+    // shift()   删除数组头部的元素
+    // 返回值    被删除的元素 
+    // 是否影响原数组   是
+
+    // var list = ["a", "b", "c"];
+    // var result = list.shift();
+    // console.log(result);
+    // console.log(list);
+
+
+    // splice()  增删改
+
+    // 删除
+    // splice(startIndex,length)    自下标为startIndex的位置开始,删除length个元素
+    // startIndex  起始下标 
+    // length      删除元素的个数
+
+    // 返回值  被删除的元素形成的数组
+    // 是否影响原数组   是
+
+    // var list = ["a", "b", "c", "d"];
+
+    // var result = list.splice(1, 2);
+    // console.log(result);
+    // console.log(list);
+
+
+    // 新增
+    // splice(startIndex,0,arg1,arg2...argN)    自下标为startIndex的位置开始,新增一个或多个元素
+    // startIndex  起始下标 
+    // 0           不删除元素
+
+    // 返回值  空数组 (没有被删除的元素 => 空数组)
+    // 是否影响原数组   是
+
+    // var list = ["a", "b", "c", "d"];
+
+    // var result = list.splice(1, 0, "hello", "world");
+    // console.log(result);
+    // console.log(list);
+
+
+    // 修改  (先删除 在新增)
+    // splice(startIndex,length,arg1,arg2...argN)    自下标为startIndex的位置开始,删除length个元素,新增一个或多个元素
+    // startIndex  起始下标 
+    // length      删除元素的个数
+
+    // 返回值  被删除的元素形成的数组
+    // 是否影响原数组   是
+
+    var list = ["a", "b", "c", "d"];
+
+    var result = list.splice(1, 2, "hello", "world");
+    console.log(result);
+    console.log(list);
+
+
+
+
+
+</script>
+
+</html>

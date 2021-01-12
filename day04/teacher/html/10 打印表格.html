@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table,
+        td {
+            border: 1px solid #333;
+        }
+
+        table {
+            line-height: 45px;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+        <tr>
+            <td>1x1=01</td>
+            <td>2x2=02</td>
+            <td>3x3=03</td>
+            <td>4x4=04</td>
+            <td>5x5=05</td>
+            <td>6x6=06</td>
+            <td>7x7=07</td>
+            <td>8x8=08</td>
+            <td>9x9=09</td>
+        </tr>
+    </table>
+</body>
+<script>
+    // document.write("<h2>asdasd</h2>");
+
+    // 动态打印
+    // 1. 先写静态的
+    // 2. 再用js动态生成
+
+
+    document.write("<table>");
+    var i = 1;
+    while (i <= 9) {
+        document.write("<tr>");
+
+        var j = 1;
+        while (j <= 9) {
+            document.write("<td>" + i + "</td>")
+            j++;
+        }
+
+        document.write("</tr>");
+        i++;
+    }
+    document.write("</table>");
+
+
+</script>
+
+</html>

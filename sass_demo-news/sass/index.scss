@@ -1,0 +1,17 @@
+
+// 在一个sass文件中引入另一个sass文件
+@import "./reset.scss";
+@import "./header.scss";
+
+// 一部分sass文件存放公共代码,不想被编译 怎么解决
+// 在sass文件夹加前缀 "_"   eg: _reset.scss 
+
+.w{
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.banner{
+    height: 450px;
+    background-color: #f00;
+}

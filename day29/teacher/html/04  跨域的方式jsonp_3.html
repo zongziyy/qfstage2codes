@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+    <!-- 引入资源 不受同源策略的影响 -->
+    <!-- <script src="http://192.168.60.94/2009_php/jsonp/1.js"></script> -->
+
+
+</head>
+
+<body>
+
+</body>
+<script>
+    // 前端提供函数的声明  
+    // 后端返回函数的调用    callback({})  实际参数就是你要传递的数据
+
+    function callback(data) {
+        console.log(data);
+    }
+
+    // jsonp  (不是ajax)
+    // 原理:  引入资源(css,js,图片) 不受同源策略的影响  
+
+    // 优点: 请求速度比较快  
+    // 缺点: 只能进行get请求(保密性不高数据),不能进行post请求 
+
+
+</script>
+
+<!-- callback([{},{}]) -->
+<!-- 接口返回的确实是文本  =>只不过被script标签引入之后 按照js语法解析之后  就是 函数的调用 -->
+<script type="text/javascript"
+    src="http://192.168.60.94/2009_php/jsonp/searchGradeOrder.php?key=&orderCol=id&orderType=asc&pageIndex=1&showNum=20"></script>
+
+</html>

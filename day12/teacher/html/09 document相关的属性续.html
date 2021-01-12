@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            width: 2000px;
+            height: 4000px;
+        }
+
+        .top {
+            width: 40px;
+            height: 40px;
+            background-color: #6ff;
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">back</div>
+</body>
+<script>
+    // window.innerWidth   窗口的可视宽高(包含滚动条,但是不包含控制台)
+    // window.innerHeight  窗口的可视宽高
+    // console.log(window.innerWidth, window.innerHeight);
+
+
+    // 文档的可视宽高 (不包含滚动条,也不包含控制台)  => 可见的一个屏幕的宽高
+    //  document.documentElement.clientWidth   =>常规浏览器 存在 html元素中 
+    //  document.body.clientWidth               =>低版本IE  存在 body元素中 
+    // document.documentElement.clientHeight
+    // console.log(document.documentElement.clientWidth, document.body.clientWidth);
+
+    var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    console.log(clientWidth, clientHeight);
+
+    // 文档的实际宽高 (实际占据的宽高)
+    // document.documentElement.scrollWidth    =>常规浏览器 存在 html元素中 
+    // document.body.scrollWidth               =>低版本IE  存在 body元素中 
+
+    var scrollWidth = document.documentElement.scrollWidth || document.body.scrollWidth;
+    var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    console.log(scrollWidth, scrollHeight);
+
+    // console.log(document.documentElement, document.body)
+
+    // 滚动条距离页面左边和顶部的位置 (取值和赋值)
+    // document.documentElement.scrollTop    => 常规浏览器 存在 html元素中
+    // document.body.scrollTop               => 低版本IE  存在 body元素中\
+
+    // 滚动条距离页面顶部的位置  ==  页面上升的距离是等价的
+
+    window.onscroll = function () {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+        console.log("scrolling", scrollLeft, scrollTop);
+    }
+
+    var topBtn = document.getElementsByClassName("top")[0];
+    var timer = null;
+    topBtn.onclick = function () {
+        // window.scrollTo(0, 0);
+
+        // document.documentElement.scrollTop = 0;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            document.documentElement.scrollTop -= 100;
+            if (document.documentElement.scrollTop == 0) {
+                clearInterval(timer);
+            }
+        }, 10)
+
+    }
+
+
+
+
+</script>
+
+</html>

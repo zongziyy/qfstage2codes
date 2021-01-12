@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 函数 / 方法    完成某个特定功能的工具
+
+    // 函数封装的流程
+    // 1. 写特定功能的代码 (先把需要封装的功能按正常的逻辑流程写出来)
+    // 2. 将完成特定功能的代码抽离出来,放到函数中(让它形成一个独立的实体),起一个名字
+    // 3. 将可变参数改为形式参数 (function 的 () 中)
+    // 4. 设置函数的返回值  (用户可以自己通过return值定义函数执行的结果,如果不设置return  默认返回undefined )
+    // 5. 函数的使用  =>调用  函数名()
+
+    //  关于函数的调用 ,每次调用函数  都会按顺序执行函数函数的上下文
+
+    // 形式参数 实际参数
+    // 形式参数 代码在执行过程中的假设性参数
+    // 实际参数 函数在调用过程中 实际传入的值(实际值是可以变化的)
+    // 形式参数 和  实际参数  一一对应
+
+    // 注意 函数的返回值 只能有一个,且return之后的语句不在执行
+
+
+    function add(a, b) {
+        // var a = 1;
+        // var b = 2;
+        var c = a + b;
+
+        return "hello";    // 函数的返回值 只能有一个,且return之后的语句不在执行
+        alert(1111);
+        return "world";
+    }
+
+    var result = add(100, 200);
+    console.log(result);
+
+
+    // 封装一个闰年判断  isRun(year) => true /false
+
+
+
+
+
+
+
+
+</script>
+
+</html>

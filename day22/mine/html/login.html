@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <script src="../js/cookie.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f0f000;
+        }
+
+        form {
+            width: 400px;
+            height: 100px;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 50px;
+            padding: 50px 50px 50px;
+        }
+
+        p {
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            outline: none;
+        }
+
+        span {
+            margin-left: 20px;
+            height: 24px;
+            font-size: 14px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="javascript:;" id="form">
+        <p>
+            <label for="user">用户名：</label>
+            <input type="text" name="" id="user" placeholder="请输入用户名">
+        </p>
+        <p>
+            <label for="pwd">密&emsp;码：</label>
+            <input type="text" name="" id="pwd" placeholder="请输入密码">
+        </p>
+        <p>
+            <button id="btn">登录</button><span id="tips"></span>
+        </p>
+    </form>
+</body>
+<script>
+    var userInp = document.getElementById("user");
+    var pwdInp = document.getElementById("pwd");
+    var btn = document.getElementById("btn");
+    var tips = document.getElementById("tips");
+
+    var userFlag = false;
+    var pwdFlag = false;
+
+    function randomColor() {
+        var colorlist = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+        var color = "#";
+        for (let i = 0; i < 6; i++) {
+            var randomChar = Math.round(Math.random() * 15);
+            color += colorlist[randomChar];
+        }
+        return color;
+    }
+    document.body.style.backgroundColor = randomColor();
+
+
+    btn.onclick = function () {
+        var user = userInp.value;
+        var pwd = pwdInp.value;
+        if (user == getCookies("user") && pwd == getCookies("pwd")) {
+            console.log("登陆成功");
+            location.href = "index.html";
+        } else {
+            tips.textContent = "用户名与密码不匹配";
+            tips.className = "red";
+        }
+    }
+
+    function next(ele) {
+        if (ele.nextElementSibling) {
+            return ele.nextElementSibling;
+        } else {
+            return ele.nextSibling;
+        }
+    }
+</script>
+
+</html>

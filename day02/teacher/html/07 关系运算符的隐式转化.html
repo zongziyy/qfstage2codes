@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 关系运算符  
+    // >  >=  < <=   ==   ===  !=  !==  
+
+    // 关系运算符的隐式转化
+    // 1. 字符串,布尔值  和数字进行比较时,会先隐式的转化为数字类型,之后在比较
+    // 2. 字符串 和 字符串比较时,按照从左到右的顺序 比较 字符在码表(ASCII)中的大小
+    // 3. null 和 undefined 在和数字比较时
+    //    3.1  如果遇到 ==  不会进行在转化,没有可比性
+    //    3.2  如果遇到 > >= < <=  会隐式的转化为数字(null=> 0 ,undefined => NaN),可以进行比较
+
+    // 4. null 和 undefined 在数值上是相等的(官方规定),类型上不相同
+    // 5. NaN  和  任何值 都不相等
+
+    // 1. 
+    // console.log(5 > 3);
+    // console.log("5" > 3);  // "5"  =>  5  =>  5>3  => true
+    // console.log(true == 1);  //true
+    // console.log(false == 0); //true
+    // console.log(true == 2);  // true => 1 => 1==2  => false
+
+
+    // 2. 
+    // console.log(5 > 12);  //false
+    // console.log("5" > 12);  //false
+    // console.log("5" > "12");  //true
+    // console.log("15" > "12");  //true
+    // console.log("1" > "12");  //false
+
+    // 3. 
+    // console.log(null == 0);   // false
+    // console.log(null >= 0);   // true
+    // console.log(null <= 0);    // true
+    // console.log(null == 0);// false
+    // console.log(null == 1);// false
+    // console.log(null == -1);// false
+
+    // console.log(null > -5);// // true
+
+
+    // console.log(undefined == 0);   // false
+    // console.log(undefined >= 0);   // false
+    // console.log(undefined <= 0);   // false
+
+    // 4. 
+    // var a;  // undefined
+    // var b = null;
+    // console.log(a == b);  //undefiend == null  => true
+    // console.log(a === b);  //undefiend === null  => false
+
+    // 5.
+    // console.log(NaN == NaN); //false
+
+    // console.log("NaN" == "NaN"); //true
+
+
+
+
+</script>
+
+</html>

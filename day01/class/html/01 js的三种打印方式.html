@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link type="text/css" rel="stylesheet" href=""> -->
+    <style type="text/css">
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="margin:100px">
+
+    </div>
+</body>
+<!-- 内部引入js -->
+<script type="text/javascript">
+
+    //  单行注释        ctrl + / 
+    /*  多行注释        alt + shift + a    */
+
+    // 对比三种 
+    // 比较好的是第二中 (控制台打印 不会影响页面原本的结构)
+
+    // // 1. 在文档中打印一段或多段内容
+    // document.write(100000, 2000);
+
+    // // 2. 在控制台打印一个或多个内容
+    // console.log(100000);
+    // console.log(100000, 2000);
+
+    // // 3. 弹出一段内容
+    // alert(10000);
+
+
+    // 效果没有出现怎么办?
+    // 1. 先看控制台 console (有没有报错)
+    // 2. 找到报错的位置  
+    // 3. 修改错误 
+
+    document.write("hello");
+    // 报错  Uncaught ReferenceError: hello is not defined
+
+    // 在JS中 单词都需要有一定的代表意义, 
+    // 1. 官方的  
+    // document  文档
+    // console   控制台console
+    // window    窗口
+
+    // 2. 自己定义的(变量)
+    // 如果没有定义直接使用 就会报错   hello is not defined
+
+    //注意: 在js中 如果要输出一段文本 必须用引号("" , '') 包裹   => 字符串(数据类型)
+
+
+</script>
+
+</html>

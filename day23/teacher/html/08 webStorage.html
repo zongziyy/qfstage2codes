@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // webStorage   (H5)
+    // WebStorage的目的是克服由cookie所带来的一些限制，当数据需要被严格控制在客户端时，不需要持续的将数据发回服务器。 
+
+    // cookie 存储空间较小   
+    // 在浏览器向服务器发送请求时  cookie会随着请求(请求可以携带一定的数据)一同发送给服务器, 会影响请求和响应的速率  
+
+    // HTML5的WebStorage提供了两种API：localStorage（本地存储）和sessionStorage（会话存储）
+
+
+    console.log(window.localStorage);
+    console.log(sessionStorage);
+
+    // 查看  localStorage（本地存储）和sessionStorage（会话存储）
+    // 控制台 => Application  => localStorage/sessionStorage
+
+    // localStorage/sessionStorage 本质 => 对象  =>  键值(也只能是字符串)
+    // setItem(key,val)   根据键名存储键值(也只能是字符串)
+    // getItem(key)       根据键名获取对应的键值(也只能是字符串)
+    // removeItem(key) —— 删除单个数据，根据键值移除对应的信息
+    // clear() ——         删除所有的数据
+    // key(index) ——      获取某个索引的key
+
+    // length   存储数据数量
+
+
+    // 存
+    // localStorage.setItem("user", "a123123");
+    // localStorage.setItem("pwd", "123123");
+    // localStorage.setItem("phone", "17386141516");
+    // localStorage.email = "123@qq.com";
+
+    // var obj = { name: "张三", age: 18 };
+    // localStorage.setItem("zhang", JSON.stringify(obj));
+
+
+    // // 取
+    // var user = localStorage.getItem("user");
+    // var pwd = localStorage.pwd;
+    // console.log(user, pwd);
+
+    // var str = localStorage.getItem("zhang")
+    // zhang = JSON.parse(str);
+    // console.log(zhang);
+
+    // 单删 
+    // localStorage.removeItem("user");
+    // localStorage.removeItem("pwd");
+
+    // delete localStorage.phone;
+    // delete localStorage.email;
+
+    // console.log(localStorage);
+
+    // 全删
+    // localStorage.clear();
+    // console.log(localStorage);
+
+
+    // key()    获取某个索引的key
+    // console.log(localStorage.key(0));
+    // console.log(localStorage.key(1));
+    // console.log(localStorage.key(2));
+    // console.log(localStorage.key(3));
+
+    // // 遍历 localStorage  => 获取每一个键名
+    // for (var i = 0; i < localStorage.length; i++) {
+    //     var key = localStorage.key(i);
+    //     var val = localStorage.getItem(key);
+    //     console.log(key, val);
+    // }
+
+    // 不建议 (有问题)
+    // for (var key in localStorage) {
+    //     console.log(key);
+    // }
+
+
+
+
+
+
+
+</script>
+
+</html>

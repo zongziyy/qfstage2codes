@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 800px;
+            height: 600px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .shadow {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            user-select: none;
+        }
+
+        /* margin  translate  position */
+    </style>
+</head>
+
+<body>
+    <!-- <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div> -->
+
+    <div class="wrap">
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+    </div>
+</body>
+<script>
+    function DragEle(target, parent = document) {
+        // {}
+        // this->{}
+        // this.__proto__ = DragEle.prototype
+        // return this;
+        this.target = target;
+        this.parent = parent;
+        this.init(); //实例化对象创建之初 默认调用init()方法
+    }
+
+    DragEle.prototype.init = function() {
+        if (this.parent == document || this.parent == window) {
+            var parentWidth = document.documentElement.clientWidth || document.body.clientWidth;
+            var parentHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        } else {
+            var parentWidth = this.parent.clientWidth;
+            var parentHeight = this.parent.clientHeight;
+        }
+        var shadowWidth = this.target.clientWidth;
+        var shadowHeight = this.target.clientHeight;
+
+        this.maxLeft = parentWidth - shadowWidth;
+        this.maxTop = parentHeight - shadowHeight;
+
+        this.randColor();
+        this.dragStart();
+    }
+    DragEle.prototype.dragStart = function() {
+        var _this = this; // 提前声明一个变量保存 dragEle
+
+        // 鼠标按下开始拖拽
+        this.target.onmousedown = function(e) {
+            var e = e || window.event;
+            var posX = e.offsetX;
+            var posY = e.offsetY;
+            // console.log(posX, posY);
+            // 此处为了将 posX,posY传递出去,可以将两个值存到DragEle对象中
+
+            // console.log(this);   // 指向绑定事件的元素 shadow
+            _this.posX = posX;
+            _this.posY = posY;
+            console.log(_this);
+
+            // 先按下,在移动
+            _this.dragMove();
+            _this.dragEnd();
+            _this.dragPress();
+        }
+    }
+    DragEle.prototype.dragMove = function() {
+        // console.log(this);  // this -> dragEle(实例化对象)
+        var _this = this; // 提前声明一个变量保存 dragEle
+        document.onmousemove = function(e) {
+            var e = e || window.event;
+
+            if (_this.parent == document) {
+                var x = e.pageX - _this.posX;
+                var y = e.pageY - _this.posY;
+            } else {
+                var x = e.pageX - _this.parent.offsetLeft - _this.posX;
+                var y = e.pageY - _this.parent.offsetTop - _this.posY;
+            }
+
+
+            console.log(x, y);
+
+            if (x < 0) { x = 0 };
+            if (x >= _this.maxLeft) x = _this.maxLeft;
+            if (y < 0) y = 0;
+            if (y > _this.maxTop) y = _this.maxTop;
+
+            _this.target.style.left = x + "px";
+            _this.target.style.top = y + "px";
+        }
+    }
+    DragEle.prototype.dragEnd = function() {
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+    DragEle.prototype.randColor = function() {
+        // red  blue green
+        // rgba(255,255,255,1)
+        // #ffffff
+        var str = "0123456789abcdef";
+        var colorStr = "#";
+        for (var i = 0; i < 6; i++) {
+            var index = Math.floor(Math.random() * str.length);
+            var char = str.charAt(index);
+            colorStr += char;
+        }
+        this.target.style.background = colorStr;
+    }
+    DragEle.prototype.dragPress = function() {
+        var e = e || window.event;
+        var _this = this;
+
+
+        document.onkeydown = function(e) {
+            // console.log(_this.target.style.background);
+            if (e.preventDefault) { e.preventDefault(); } else { e.returnValue = false; }
+
+            if (e.keyCode == 37) {
+                var nx = parseInt(getComputedStyle(_this.target)["left"]) - 10;
+
+                _this.target.style.left = nx + "px";
+
+            }
+            if (e.keyCode == 38) {
+                var nx = parseInt(getComputedStyle(_this.target)["top"]) - 10;
+
+                _this.target.style.top = nx + "px";
+            }
+            if (e.keyCode == 39) {
+                var nx = parseInt(getComputedStyle(_this.target)["left"]) + 10;
+
+                _this.target.style.left = nx + "px";
+            }
+            if (e.keyCode == 40) {
+                var nx = parseInt(getComputedStyle(_this.target)["top"]) + 10;
+
+                _this.target.style.top = nx + "px";
+            }
+        }
+
+    }
+
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var shadowList = document.getElementsByClassName("shadow");
+
+    for (let i = 0; i < shadowList.length; i++) {
+        var obj = new DragEle(shadowList[i], wrap);
+        console.log(obj);
+    }
+
+    // new DragEle(shadowList[0], wrap)
+    // new DragEle(shadowList[1], wrap)
+    // new DragEle(shadowList[2], wrap)
+    // new DragEle(shadowList[3], wrap)
+    // new DragEle(shadowList[4], wrap)
+    // new DragEle(shadowList[5], wrap)
+</script>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+            overflow: hidden;
+        }
+
+        .sub {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="top">
+        <button class="hide">hide</button>
+        <button class="show">show</button>
+        <button class="slideUp">slideUp</button>
+        <button class="slideDown">slideDown</button>
+        <button class="slideToggle">slideToggle</button>
+        <button class="fadeOut">fadeOut</button>
+        <button class="fadeIn">fadeIn</button>
+        <button class="fadeToggle">fadeToggle</button>
+        <button class="fadeTo">fadeTo</button>
+    </div> -->
+    <div class="box">
+        <div class="sub">
+        </div>
+    </div>
+</body>
+<script>
+
+    // 给一个元素绑定事件的方式
+
+    // 1. 对应方法名绑定事件
+    // $(".box").click(function (evt) {
+    //     // console.log(evt);
+    //     // evt.target   事件源
+    //     // evt.currentTarget   绑定事件的当前元素
+    //     // console.log(evt.target, evt.currentTarget);
+
+    //     console.log("box被点击");
+    // })
+
+    // 2. 通过on方法绑定
+
+    // 2.1  普通绑定
+    // on(eventType,data,callback)    事件监听addEventListener(可以给一个元素绑定多个事件)
+    // eventType   事件类型
+    // data(可选)  当一个事件被触发时要传递event.data给事件处理函数     
+    // callback    事件触发是执行的回调函数
+    $(".box").on("click", function () {
+        $(this).css({
+            width: 400,
+            height: 400,
+        })
+    })
+
+    $(".box").on("click", { name: "张三", age: 18 }, function (evt) {
+        console.log("box被点击", evt.data);  //evt.data  事件对象的data
+    })
+
+    // 2.2   事件委托  (利用事件冒泡的元素  将子元素的事件委托给父元素  由父元素代为执行)
+    // $(parent).on(eventType,target,data(可选),callback)
+    // parent   委托的父元素
+
+    // eventType   事件类型
+    // target      委托事件的目标元素
+    // data(可选)  当一个事件被触发时要传递event.data给事件处理函数     
+    // callback    事件触发是执行的回调函数
+
+
+    // 可以给未来生成的元素绑定事件  (页面时没有生成,但是后来又生成的(ajax 动态生成,点击生成))
+
+    $(document).on("click", ".show", { a: 1, b: 2 }, function (e) {
+        console.log(e.data);
+        $(".box").show();
+    });
+
+    $(document).on("click", ".show", { a: 1, b: 2 }, function (e) {
+        console.log(e.data);
+        $(".box").show();
+    });
+
+    $(document).on("click", ".hide", function () {
+        $(".box").hide();
+    });
+    $(document).on("click", ".hide", function () {
+        $(".box").hide();
+    });
+
+
+
+
+
+    // 5s 后生成      模拟ajax 异步动态生成
+    setTimeout(function () {
+        $(`<div class="top">
+        <button class="hide">hide</button>
+        <button class="show">show</button>
+        <button class="slideUp">slideUp</button>
+        <button class="slideDown">slideDown</button>
+        <button class="slideToggle">slideToggle</button>
+        <button class="fadeOut">fadeOut</button>
+        <button class="fadeIn">fadeIn</button>
+        <button class="fadeToggle">fadeToggle</button>
+        <button class="fadeTo">fadeTo</button>
+    </div>`).prependTo("body");
+
+    }, 5000);
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 强制类型转换
+
+
+    // 函数/方法  完成某个特定功能的工具
+    // Number()    
+    // String()
+    // Boolean()
+
+    // number string boolean null undefined 
+
+    // Number()  将其他类型强制转化为 number类型
+
+    var result = Number("100");     // 纯数字类型的字符串  => 数值
+    var result = Number("100a");    // 非纯数字类型的字符串  => NaN
+    var result = Number("");        // 空字符串 转化为数字 => 0
+    var result = Number(" ");        // 空字符串 转化为数字 => 0
+    var result = Number(true);    // 转化为数字  1
+    var result = Number(false);    // 转化为数字  0
+    var result = Number(null);    // 转化为数字  0
+    var result = Number(undefined);    // 转化为数字  NaN
+    // console.log(result);
+
+
+    // String()  将其他类型强制转化为 string类型    +""
+
+    var result = String(100);    // 转化为字符串  "100"
+    var result = String(true);    // 转化为字符串 "true"
+    var result = String(false);    // 转化为字符串  "false"
+    var result = String(null);    // 转化为字符串  "null"
+    var result = String(undefined);    // 转化为字符串  "undefined"
+    console.log(result, typeof result);
+
+    // Boolean()    将其他类型强制转化为 boolean类型(true|false)
+
+    // 只要有实际内容转化为布尔值 都为true, 如果没有实际内容或空内容转化为布尔值都是false
+
+    // NaN,0,"",null,undefined  转化为布尔值为false,其他的都为true
+
+    // 数字转布尔
+    var result = Boolean(2);  // 转化为布尔值 =>  true
+    var result = Boolean(1);  // 转化为布尔值 =>  true
+    var result = Boolean(-1);  // 转化为布尔值 =>  true
+    var result = Boolean(Infinity);  // 转化为布尔值 =>  true
+
+    var result = Boolean(0);  // 转化为布尔值 =>  false
+    var result = Boolean(NaN);  // 转化为布尔值 =>  false
+
+    // 字符串转布尔
+    var result = Boolean("100");  // 转化为布尔值 =>  true
+    var result = Boolean("100a");  // 转化为布尔值 =>  true
+    var result = Boolean(" ");  //空格 转化为布尔值 =>  true
+    var result = Boolean("");  //空字符串 转化为布尔值 =>  false
+
+
+    // null  undefined  转布尔
+    var result = Boolean(null);  //空值 转化为布尔值 =>  false
+    var result = Boolean(undefined);  //未定义 转化为布尔值 =>  false
+
+    console.log(result);
+
+
+
+
+
+
+
+</script>
+
+</html>

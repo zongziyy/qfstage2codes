@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <input id="year" type="text">
+    <button id="btn">判断</button>
+    <input type="text" id="result">
+</body>
+
+<script>
+    // 输入一个1000-9999之间的年份  判断是否是闰年
+    // a.  输入一个1000-9999之间的年份   =>  范围正确 (判断是否是闰年)
+    //                                   => 范围错误  ("请输出xxx")
+    // b.  判断是否是闰年  => 是闰年
+    //                    => 是平年 
+
+    // JS想要操作页面的元素 ,必须要提前获取, 如何获取?
+    // document.getElementById( )   根据id名获取元素
+
+    // 1.获取元素,把它们赋值给对应的变量 (以后使用这些变量 就可以操作元素)
+    var yearInp = document.getElementById("year"); //  根据id名获取元素  赋值给变量yearInp 
+    var btn = document.getElementById("btn");
+    var resultInp = document.getElementById("result");
+    console.log(yearInp, btn, resultInp);
+
+    // 能操作元素的只有元素本身(操作谁 就找谁)
+
+    // 2. 给btn按钮绑定点击事件 (页面加载的时候不执行(只做绑定),点击时才会执行)
+    // 给btn按钮绑定点击事件   每次点击按钮是  执行function中对应的{}的代码 
+
+    btn.onclick = function () {  // 绑定事件的固定写法
+        // alert(11111);   // 测试事件是否能绑定成功
+
+        // 3. 点击取值
+        var year = yearInp.value;  // 获取yearInp(年份输入框)的value值 赋值给变量year   (只是一个单纯的值(字符串)  不能代表输入框)
+        // var year = "1111";
+        console.log(year, typeof year);  // string
+
+        // 4.判断输入框是否输入内容
+        if (year != "") {    //不为空
+            // console.log()
+
+            // 5. 判断年份是否能在1000-9999之间 的整数
+            if (year >= 1000 && year <= 9999 && year % 1 == 0) {  //年份输入正确
+                console.log(year + "ok");
+
+                // 6. 判断是否是闰年
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    // alert(year + "是闰年");
+                    resultInp.value = "是闰年";
+                } else {
+                    // alert(year + "是平年");
+                    resultInp.value = "是平年";
+                }
+
+            } else {
+                // alert("请输入1000-9999的年份");
+                resultInp.value = "请输入1000-9999的年份";
+            }
+
+
+        } else { // 空
+            // alert("请输入完整内容");
+            // 赋值  把等号后的文本 放到输入框的value值中  (将输入框额value值修改为  xxx)
+            resultInp.value = "请输入完整内容";
+        }
+
+    }
+
+
+</script>
+
+
+</html>

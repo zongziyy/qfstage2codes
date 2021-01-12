@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+            overflow: hidden;
+        }
+
+        .sub {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+</body>
+<script>
+
+    // click  普通绑定
+    $(".box").on("click", clickHandler);
+    function clickHandler() {
+        $(this).css({
+            width: 400,
+            height: 400,
+            background: "red"
+        })
+    }
+
+    // on
+    // 普通绑定
+    $(".box").on("click", { name: "张三", age: 18 }, function (evt) {
+        console.log("box被点击", evt.data);  //evt.data  事件对象的data
+    })
+
+    // 事件委托
+    $(document).on("click", ".box", { a: 1, b: 2 }, function (e) {
+        console.log("事件委托版", e.data);
+    });
+
+
+    // off()  
+    // 给谁绑定就给谁清除  (事件委托是绑定给父元素的)
+
+    // 普通绑定  click     
+    // 1.  对应清除(需要对应函数名)  一次清除一个
+    // $(".box").off("click", clickHandler);
+
+    // 2. 清除一个类型的事件  (注意  无法清除事件委托绑定的事件)  
+    // $(".box").off("click");
+
+    // 3. 全部清除
+    // $(".box").off();     // 清除box的所有事件
+
+
+    // 事件委托的清除   (如果要清除事件委托绑定的事件   对应委托的父元素清除)
+    // $(document).off("click", ".box");  // 对应清除
+    // $(document).off("click");         // 清除一个类型的事件
+    // $(document).off();                // 清除doucment上所有的事件 
+
+
+
+
+
+
+
+
+</script>
+
+</html>

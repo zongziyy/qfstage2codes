@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = [1, 2, 3, 4];
+    var obj = { a: 1, b: 2 };
+
+    // console.log(typeof list);
+    // console.log(typeof obj);
+
+    // 如何判断一个数据是否是数组?
+
+    // 1. instanceof  判断一个数据是否使用某个构造函数创建的(不准确,后面更新)
+
+    var list = [1, 2, 3, 4];  // new Array();   构造函数Array创建的
+    var obj = { a: 1, b: 2 }; // new Object()   构造函数Object创建的
+
+    // console.log(list instanceof Array); // true 判断list是否是由构造函数 Array创建的
+    // console.log(obj instanceof Array);  // false 判断list是否是由构造函数 Array创建的
+    // console.log(obj instanceof Object);  // true 判断obj是否是由构造函数 Object创建的
+
+    // 2. 构造函数Array提供的一个方法  Array.isArray()   //es6新增的
+
+    // Array.isArray()  接收一个数据,如果是数组返回true,否则返回false
+
+    console.log(Array.isArray(list));//true
+    console.log(Array.isArray(obj)); // false
+    console.log(Array.isArray(1)); // false
+    console.log(Array.isArray("123")); // false
+    console.log(Array.isArray(true)); // false
+    console.log(Array.isArray(undefined)); // false
+    console.log(Array.isArray(null)); // false
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

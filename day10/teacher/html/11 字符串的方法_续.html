@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // search    返回某个或某段字符 第一次出现的位置   存在=> 下标  不存在=>-1
+
+    var str = "good good study , day day up";
+
+    // 普通用法
+    // var index = str.search("d");  // 3
+    // console.log(index);
+    // var index = str.search("day");  // 18
+    // console.log(index);
+    // var index = str.search("Day");  // -1 
+    // console.log(index);
+
+    // 配合正则表达式使用  => 返回符合规则(正则表达式)的某个或某段字符 第一次出现的位置
+    // var str = "good good study , Day dAy up";
+    // var reg = /day/ig;
+    // var index = str.search(reg);
+    // console.log(index);
+
+
+    // match()   将匹配的内容(某个或某段字符 某个规则正则)存入数组  匹配不到返回 null
+
+    // 普通用法  (默认只匹配一个)
+    // var str = "good good study , day day up";
+    // var arr = str.match("day");
+    // console.log(arr);
+
+    //  配合  正则表达式 使用
+    // var str = "good good study , dAy Day up";
+    // var reg = /day/ig;
+    // var arr = str.match(reg);
+    // console.log(arr);
+
+    // replace()    用新的字符串替换原本的字符串(某个或某段字符 某个规则)
+    // 返回新的字符串
+
+    // 普通用法  (默认只替换一个)
+    // var str = "good good study , day day up";
+    // var newStr = str.replace("day", "money");
+    // console.log(newStr);
+
+    //  配合  正则表达式 使用
+    var str = "good good study , dAy Day up";
+    var reg = /day/ig;
+    var newStr = str.replace(reg, "money");
+    console.log(newStr);
+
+
+
+
+</script>
+
+</html>

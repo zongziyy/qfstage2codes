@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // a++ 和 ++a  都是自增1
+
+    // a++   先赋值,在自增
+    // ++a   先自增,在赋值
+
+
+    // 练习
+    var a = 13;
+    //   a   14      15    16       15     14
+    var sum = a++ + ++a + ++a * 2 + a-- + --a;
+    // sum = 13  +   15 + 16   *2 + 16  +  14
+    //     = 28 + 32 + 30 
+    //     = 90
+    console.log(a, sum);  // 14 90
+
+</script>
+
+</html>

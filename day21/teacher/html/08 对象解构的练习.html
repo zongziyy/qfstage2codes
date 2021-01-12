@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let obj = {
+        p: [
+            'Hello',
+            {
+                y: 'World'
+            }
+        ]
+    };
+
+    // var { p } = obj;  // p =>[hello,{y:'world'}]  不能再次解构    
+    // var { p: p } = obj;
+    var {
+        p: [a, b]
+    } = obj; // a=> hello  b => {y:World}
+    var {
+        p: [a, {
+            y
+        }]
+    } = obj; // a=> hello  y:World
+    var {
+        p: [a, {
+            y: b
+        }]
+    } = obj; // a=> hello    b:World
+
+    // 注意 
+    // 1. 如果需要对  对象进行解构,模式匹配即可   var {x,y} = {x:1,y:2}
+    // 2. 如果需要对  对象的某个属性结构,对应属性值结构   
+    var {
+        x: [a, b],
+        y: {
+            a: c,
+            b: d
+        }
+    } = {
+        x: [1, 2],
+        y: {
+            a: 1,
+            b: 2
+        }
+    }
+    console.log(a, b, c, d);
+</script>
+
+</html>

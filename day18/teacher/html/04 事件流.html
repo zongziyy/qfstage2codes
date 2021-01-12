@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 400px;
+            height: 400px;
+            background-color: #f00;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        .sub {
+            width: 300px;
+            height: 300px;
+            background-color: #0f0;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="sub">
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+<script>
+    //  事件冒泡和事件捕获 (父子元素绑定相同类型的事件)
+
+    // 事件传播机制 (两种方式)    事件冒泡和事件捕获
+
+    // 历史
+    // 事件捕获 从最不特定的元素 到最特定的元素  由外到内(网景)    wrap => sub  => box
+    // 事件冒泡 从最特定的元素 到 最不特定的元素   由内到外(IE)   box => sub  => wrap
+
+    //  =>  事件冒泡(从内到外) 
+
+    // ele.addEventListener(eventType,callback,userCapture);
+    // ele.addEventListener(eventType,callback,userCapture)   
+    // eventType  侦听事件的类型(click dblclick load)
+    // callback   事件触发时执行的回调函数
+    // userCapture   是否在捕获阶段触发事件(false  冒泡节点)
+
+
+    // 事件流 (事件的走向)  => dom二级事件  事件侦听
+    // 1. 捕获阶段   如果有绑定在捕获阶段触发的事件 则触发
+    // 2. 目标阶段   如果目标元素有对应事件则触发,否则进入冒泡阶段  (注意  目标元素的事件触发 只跟绑定的顺序有关  和  传播的方式(捕获/冒泡)无关)
+    // 3. 冒泡阶段   自目标元素的父元素开始向上层传播事件
+
+
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var sub = document.getElementsByClassName("sub")[0];
+    var box = document.getElementsByClassName("box")[0];
+
+    // 捕获方式 
+    window.addEventListener("click", function (e) {
+        console.log("捕获阶段", "window 被点击", e.path);
+    }, true);
+
+    document.addEventListener("click", function () {
+        console.log("捕获阶段", "document 被点击");
+    }, true);
+
+    document.documentElement.addEventListener("click", function () {
+        console.log("捕获阶段", "html 被点击");
+    }, true);
+
+    document.body.addEventListener("click", function () {
+        console.log("捕获阶段", "body 被点击");
+    }, true);
+    wrap.addEventListener("click", function () {
+        console.log("捕获阶段", "wrap 被点击");
+    }, true);
+
+    sub.addEventListener("click", function () {
+        console.log("捕获阶段", "sub 被点击");
+    }, true);
+
+    // 目标元素绑定的事件
+    box.onclick = function (e) {
+        console.log("box 手动绑定 被点击", e);
+
+        // 事件对象的属性
+        // path  返回  自事件源开始, 事件源及其所有父代元素的集合(数组)
+        // console.log(e.path);
+        // console.log(e.path.indexOf(wrap) != -1);
+    }
+
+    box.addEventListener("click", function () {
+        console.log("冒泡阶段", "box 被点击");
+    }, false);
+
+    box.addEventListener("click", function () {
+        console.log("捕获阶段", "box 被点击");
+    }, true);
+
+    // 冒泡方式
+    window.addEventListener("click", function () {
+        console.log("冒泡阶段", "window 被点击");
+    }, false);
+
+    document.addEventListener("click", function () {
+        console.log("冒泡阶段", "document 被点击");
+    }, false);
+
+    document.documentElement.addEventListener("click", function () {
+        console.log("冒泡阶段", "html 被点击");
+    }, false);
+
+    document.body.addEventListener("click", function () {
+        console.log("冒泡阶段", "body 被点击");
+    }, false);
+    wrap.addEventListener("click", function () {
+        console.log("冒泡阶段", "wrap 被点击");
+    }, false);
+
+    sub.addEventListener("click", function () {
+        console.log("冒泡阶段", "sub 被点击");
+    }, false);
+
+</script>
+
+</html>

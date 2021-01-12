@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    console.log("在 a,b 的 script标签之前使用全局变量", a, b);  // 报错  =>当前script之后的的代码不在执行  =>后续的script标签还会继续加载执行
+    alert(1111);
+</script>
+<script>
+    // 作用域  代码生效的区域
+
+    // 全局变量 
+    // a. 在函数外通过关键词(var let const)声明的变量是全局变量
+    // b. 不通过关键词直接声明的变量 也是全局变量
+
+    // 对应的作用域:全局作用域    自当前script标签开始的任何位置都可以使用(前提是不存在同名的局部变量)
+
+    // 局部变量   
+    // a. 在函数内部通过关键词(var let const)声明的变量是局部变量  
+    // b. 形式参数也是局部变量
+
+    // 对应的作用域:局部作用域(函数作用域)  只在函数内容生效
+
+    // 在函数外通过关键词声明的变量是全局变量
+    var a = 10;
+    var b = 20;
+
+    function fn() {   //此处只是封装 调用时才会执行
+        console.log("函数内使用全局变量", a, b);  //10 20
+        // 在函数内容声明的变量是局部变量,它只在函数内部生效(生效的区域作用域)
+        var c = 100;
+        var d = 200;
+        // console.log(c, d);  // 100 200
+    }
+
+    fn();
+</script>
+<script>
+    console.log("在script标签之后使用全局变量", a, b);  //10 20
+</script>
+
+</html>

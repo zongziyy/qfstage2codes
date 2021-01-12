@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #list {
+            padding: 20px 0;
+        }
+
+        #list li {
+            line-height: 45px;
+            border: 1px dashed #000;
+        }
+
+        .active {
+            background-color: #6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <input type="text">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>10</li>
+    </div>
+
+    <div class="box">
+        <button class="setHtml">
+            设置html
+        </button>
+        <button class="getHtml">
+            获取html
+        </button>
+        <button class="setWidth">
+            设置宽度
+        </button>
+        <button class="getWidth">
+            获取宽度
+        </button>
+        <button class="hide">隐藏</button>
+        <button class="show">显示</button>
+        <button class="attr">attr</button>
+        <button class="prop">prop</button>
+        <button class="css">css</button>
+        <button class="eq">第一个</button>
+        <button class="siblings">siblings</button>
+        <button class="chain">chain</button>
+    </div>
+</body>
+<script>
+
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // css()
+    // attr()  (attribute HTML属性)  prop() (property 元素节点的属性)
+
+    // attr()    html属性(属性节点)
+    // attr("class","first"); 
+    // attr("asdasd","asdasd"); 
+    // attr("asdasd"); 
+
+    // prop()  ) (property 元素节点的属性)
+
+    // prop("className", "second");
+    // prop("href", "xxx");
+    // prop("clientWidth");
+
+
+    //  eq(index)   siblings()
+    //  eq(index)   选取集合中对应下标的元素
+    //  siblings()  除了选中元素之外的所有同级元素 (链式操作   都是实例化对象)
+    //  $("#list li").eq(0).sibling()
+
+
+    // 封装的优化
+    // 1. 把所有共有的属性和方法 绑定到构造函数的原型对象上
+    // 2. 由于所有的方法都是遍历集合操作每一个元素, 所以我们模拟封装了一个each 用来遍历集合
+    // 3. 为了快速得到实例化对象  对GetEle 进行了二次封装  => function $(selector){ return new GetEle(selector)}
+
+    function GetEle(selector) {
+        // {}
+        // this -> {}
+
+        // eles存储操作元素的集合 
+        this.eles = document.querySelectorAll(selector);
+
+
+        // this.__proto__ = GetEle.prototype;
+        // return this;
+    }
+
+    // html()   获取和设置元素的html结构
+    // html(con)有参数,就设置
+    // html()   没有参数,就获取
+    GetEle.prototype.html = function (con) {
+        if (arguments.length >= 1) {   // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.innerHTML = con;
+            // }
+            this.each(function (ele, index) {
+                ele.innerHTML = con;
+            })
+            return this;
+        } else {
+            return this.eles[0].innerHTML;
+        }
+    }
+
+    // text()   获取和设置元素的text结构
+    // text(con)有参数,就设置
+    // text()   没有参数,就获取
+    GetEle.prototype.text = function (con) {
+        // this -> 调用此方法的实例化对象
+        if (arguments.length >= 1) {   // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.innerText = con;
+            // }
+            this.each(function (ele, index) {
+                ele.innerText = con;
+            })
+            return this;
+        } else {
+            return this.eles[0].innerText;
+        }
+    }
+
+    // value()   获取和设置元素的value值(表单元素)
+    // value(con)有参数,就设置
+    // value()   没有参数,就获取
+    GetEle.prototype.val = function (con) {
+        // this -> 调用此方法的实例化对象
+        if (arguments.length >= 1) {   // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.value = con;
+            // }
+            this.each(function (ele, index) {
+                ele.value = con;
+            })
+            return this;
+        } else {
+            return this.eles[0].value;
+        }
+    }
+
+    // click(fn)  给集合中的每一个元素绑定点击事件   
+    GetEle.prototype.click = function (fn) {
+        // this -> 调用此方法的实例化对象
+        // for (let i = 0; i < this.eles.length; i++) {
+        //     let ele = this.eles[i];
+        //     ele.onclick = fn;   // jquery中是用事件侦听绑定的(addEventListener)
+        //     // ele.addEventListener("click",fn)
+        // }
+
+        this.each(function (ele, index) {
+            ele.onclick = fn;
+        })
+        return this;
+    }
+
+    // 模拟封装数组的forEach 
+    GetEle.prototype.each = function (fn) {
+        // this -> 调用此方法的实例化对象
+        // 遍历集合(this.eles)中的每一个元素
+        for (let i = 0; i < this.eles.length; i++) {
+            let ele = this.eles[i];
+            let index = i;
+            let array = this.eles;
+            fn.apply(ele, [ele, index, array]);  // jquery 中参数顺序和原生不一样  fn(index, ele, array);
+        }
+        return this;
+    }
+
+    // width()   height()
+    // width()   获取和设置元素的width值(表单元素)
+    // width("100px")     有参数,就设置
+    //       100px 100em 100rem 100pt 100pc 100%
+    //       100 (px)
+
+    // width()  => 100px  没有参数,就获取
+    GetEle.prototype.width = function (con) {
+        if (arguments.length >= 1) {
+            this.each(function (ele, index) {
+
+                // 判断是否有单位
+                var reg = /\d+(px|pt|em|rem|pc|%|vw|vh)$/;
+                if (reg.test(con)) {  // 有单位直接 拼接
+                    ele.style.width = con;
+                } else {
+                    ele.style.width = con + "px";
+                }
+
+            })
+            return this;
+        } else {
+            return parseFloat(this.getStyle("width"));
+        }
+    }
+
+    GetEle.prototype.height = function (con) {
+        if (arguments.length >= 1) {
+            this.each(function (ele, index) {
+
+                // 判断是否有单位
+                var reg = /\d+(px|pt|em|rem|pc|%|vw|vh)$/;
+                if (reg.test(con)) {  // 有单位直接 拼接
+                    ele.style.height = con;
+                } else {
+                    ele.style.height = con + "px";
+                }
+
+            })
+            return this;
+        } else {
+            return parseFloat(this.getStyle("height"));
+        }
+    }
+
+    // css()   height()
+    // css()   获取和设置元素的width值(表单元素)
+    // css(key,val)     有2个参数,就设置
+    // css("color","red");
+    // css("font-size","12px");
+
+    // css(key)  => 100px   1个参数,就获取
+    GetEle.prototype.css = function (key, val) {
+        if (arguments.length >= 2) { //有2个参数,就设置
+            this.each(function (ele, index) {
+                ele.style[key] = val;
+            })
+            return this;
+        } else if (arguments.length == 1) { // 1个参数,就获取
+            return this.getStyle(key);
+        }
+    }
+
+    GetEle.prototype.hide = function () {
+        this.each(function (ele) {
+            ele.style.display = "none";
+        })
+        return this;
+    }
+    GetEle.prototype.show = function () {
+        this.each(function (ele) {
+            ele.style.display = "block";
+        })
+        return this;
+    }
+
+    // attr()    html属性
+    // attr("class","first")   setAttribute()
+    // attr("class")           getAttribute()
+
+    GetEle.prototype.attr = function (key, val) {
+        if (arguments.length >= 2) {
+            this.each(function (ele) {
+                ele.setAttribute(key, val)
+            })
+            return this;
+        } else {
+            return this.eles[0].getAttribute(key);
+        }
+    }
+
+    // prop    元素节点的属性      ele.className id title src href clientWidth
+    // prop("className","first")   setAttribute()  ele.className = "first"
+    // prop("className")           getAttribute()    
+    GetEle.prototype.prop = function (key, val) {  // "className" ,"first"
+        if (arguments.length >= 2) {
+            this.each(function (ele) {
+                ele[key] = val;
+            })
+            return this;
+        } else {
+            return this.eles[0][key];
+        }
+    }
+
+    // eq(index)  选取对应下标的元素   返回值实例化对象
+    GetEle.prototype.eq = function (index) {
+        // this.eles[index];   // 选取对应下标的元素 (具体的元素)
+
+        this.eles = [this.eles[index]];  // 选取对应下标的元素 放到集合中, 在赋值给 eles属性 
+        return this;    // 想要进行链式操作  返回值必须是实例化对象
+    }
+
+    // $("#list li").eq(0).siblings()
+    GetEle.prototype.siblings = function (index) {
+
+        // 一旦使用eq  集合中只有一个元素 
+        var ele = this.eles[0]; // 选出当前eq()选中的元素
+        var parentEle = ele.parentElement;  // 找到父元素
+        var children = parentEle.children;  // 找到父元素中所有的子元素
+
+        var list = [];
+        for (var i = 0; i < children.length; i++) {
+            var item = children[i];
+            if (item !== ele) {  // 如果不是ele(选中的元素)
+                list.push(item);
+            }
+        }
+
+
+        this.eles = list;  // 选取对应下标的元素 放到集合中, 在赋值给 eles属性 
+
+        return this;    // 想要进行链式操作  返回值必须是实例化对象
+    }
+
+
+
+
+
+
+
+    GetEle.prototype.getStyle = function (attr) {
+        try {
+            return window.getComputedStyle(this.eles[0])[attr];
+        } catch (err) {
+            return this.eles[0].currentStyle[attr];
+        }
+        return this;
+    }
+
+
+
+    // 传入一个选择器  =>得到 GetELe的实例化对象
+    function $(selector) {
+        return new GetEle(selector);
+    }
+
+    // $("#list li").each(function () {
+    //     console.log(this);
+    // });
+
+    $(".hide").click(function () {
+        $("#list li").hide();
+    })
+
+    $(".show").click(function () {
+        $("#list li").show();
+    })
+
+    $(".attr").click(function () {
+        $("#list li").attr("class", "active");
+        // $("#list li").attr("asd", "asd");
+    })
+    $(".prop").click(function () {
+        $("#list li").prop("className", "active");
+        // $("#list li").attr("asd", "asd");
+    })
+
+    $(".eq").click(function () {
+        $("#list li").eq(0).css("background", "red").width(200);
+        // $("#list li").attr("asd", "asd");
+    })
+
+    $(".siblings").click(function () {
+        $("#list li").eq(0).css("background", "red").siblings().css("background", 'blue');
+        // $("#list li").attr("asd", "asd");
+    })
+    $(".chain").click(function () {
+        $("#list li").html(123123).width(200).height(100).css("background", "red");
+    })
+
+
+
+</script>
+
+</html>

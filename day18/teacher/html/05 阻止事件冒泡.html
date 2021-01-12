@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .adBox {
+            width: 300px;
+            height: 400px;
+            background-color: #6ff;
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            /* display: none; */
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 5px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="adBox">
+        <div class="title">距离广告关闭还有10秒</div>
+        <div class="close">X</div>
+    </div>
+</body>
+<script>
+    // 计时器   每隔一段时间执行特定的操作(如果不停止会一直执行)
+    // setInterval(callback,interval,arg1,arg2...argN)
+
+
+    // 延时器  延迟一段时间执行特定的操作(只执行一次) 
+    // setTimeout(callback,interval,arg1,arg2...argN)
+
+    // 返回值  延时器的编号
+
+    // 清除延时器  
+    // clearTimeout(id) 
+
+    // 注意:计时器不能嵌套计时器, 如果遇到需要计时器嵌套的情况, 可以把延时器改为计时器  
+
+    var adBox = document.getElementsByClassName("adBox")[0];
+    var title = document.getElementsByClassName("title")[0];
+    var closeBtn = document.getElementsByClassName("close")[0];
+    // var timer1 = null; //接收延时器
+    // var timer2 = null; //接收计时器
+
+    // closeBtn.onclick = function () {
+    //     clearTimeout(timer1);  //清除延时器
+    //     clearInterval(timer2);  //清除计时器
+    //     adBox.style.display = "none";
+    //     showAd(5000);
+    // }
+
+    // showAd(5000);
+    // function showAd(delay) {
+    //     timer1 = setTimeout(function () {
+    //         adBox.style.display = "block";
+    //         var num = 10;
+    //         title.innerHTML = `距离广告关闭还有${num}秒`;  // 重置为10秒
+    //         timer2 = setInterval(function () {
+    //             num--;
+    //             title.innerHTML = `距离广告关闭还有${num}秒`;
+    //             if (num == 0) {
+    //                 clearInterval(timer2);
+    //                 adBox.style.display = "none";
+    //                 showAd(5000);
+    //             }
+    //         }, 1000);
+    //     }, delay);
+    // }
+
+
+    // 事件冒泡
+    // 父子元素绑定相同类型的事件,子元素被点击之后,也会冒泡到父元素
+
+    // 事件冒泡的缺点    =>  无论是否愿意,都会冒泡  (closeBtn  => addBox)
+
+    // 是否可以阻止事件向上层冒泡 ? 
+
+    // 可以 
+    // 常规浏览器
+    // e.stopPropagation();
+
+    // IE
+    // e.cancelBubble = true;   //是否阻止冒泡
+
+    // if (e.stopPropagation) {
+    //     e.stopPropagation();
+    // } else {
+    //     e.cancelBubble = true;
+    // }
+
+    adBox.onclick = function () {
+        location.href = "https://www.jd.com";
+    }
+
+    closeBtn.onclick = function (e) {
+        adBox.style.display = "none";
+
+        var e = e || window.event;
+        console.log(e);
+
+        // 常规浏览器
+        // e.stopPropagation();
+
+        // IE
+        // e.cancelBubble = true;   //是否阻止冒泡
+
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    }
+
+
+
+</script>
+
+</html>

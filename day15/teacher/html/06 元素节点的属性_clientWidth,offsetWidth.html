@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            border: 1px solid transparent;
+            overflow-y: scroll;
+        }
+
+        .sub {
+            height: 1000px;
+            width: 20px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="sub">
+            哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大哈啊是大叔大叔大叔大所大
+        </div>
+
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    var width = parseFloat(getStyle(box, "width"));
+    var height = parseFloat(getStyle(box, "height"));
+    // console.log(width, height);
+
+
+    // 文档的可视宽高
+    // document.documentElement.clientWidth || document.body.clientWidth
+    // 文档的实际宽高
+    // document.documentElement.scrollWidth || document.body.scrollWidth
+
+
+    // 快捷获取元素的宽度和高度
+
+    // clientWidth/clientHeight   元素的可视宽高
+    console.log(box.clientWidth, box.clientHeight);
+
+    // offsetWidth/offsetHeight
+
+    // scrollWidth/scrollHeight  元素的实际宽高(该元素在文档中占据的实际的位置)
+    console.log(box.scrollWidth, box.scrollHeight);
+
+
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+
+
+
+
+</script>
+
+</html>

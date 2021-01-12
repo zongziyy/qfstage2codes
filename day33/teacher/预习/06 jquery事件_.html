@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+            overflow: hidden;
+        }
+
+        .sub {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="sub">
+            <span>123123</span>
+        </div>
+    </div>
+</body>
+<script>
+    // $(".box").mouseover(function () {
+    //     console.log("鼠标划入");
+    // }).mouseout(function () {
+    //     console.log("鼠标划出");
+    // })
+
+    // $(".box").mouseenter(function () {
+    //     console.log("鼠标划入");
+    // }).mouseleave(function () {
+    //     console.log("鼠标划出");
+    // })
+
+    // mouseenter  mouseleave  二次封装
+    // $(".box").hover(function () {
+    //     console.log("鼠标划入");
+    // }, function () {
+    //     console.log("鼠标划出");
+    // })
+
+
+
+    $(".box").click(function (evt) {
+        // console.log(evt);
+        // evt.target   事件源
+        // evt.currentTarget   绑定事件的当前元素
+        // console.log(evt.target, evt.currentTarget);
+
+        console.log("box被点击");
+    })
+
+
+    $(".box .sub").click(function (evt) {
+        console.log("sub 被点击");
+    })
+
+    $(".box .sub span").click(function (evt) {
+        evt.stopPropagation();
+        console.log("span 被点击");
+    })
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

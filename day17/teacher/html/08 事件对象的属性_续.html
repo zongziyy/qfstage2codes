@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .shadow {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        #content {
+            width: 600px;
+            height: 200px;
+            padding: 5px;
+            display: block;
+            margin: 0 auto;
+            resize: none;
+        }
+
+        /* margin  translate  position */
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="content" cols="30" rows="10"></textarea>
+</body>
+<script>
+
+    // 事件对象的属性 (键盘事件)
+    // key  返回键盘敲击的字符   
+    // keyCode (IE)  
+    // (1)   keydown 和 keyup  (所有按键均可触发), 表示按键对应的虚拟键盘码
+    // (2)   keypress  (文本输入相关按键触发), 键盘敲击的字符对应的Unicode字符码 
+
+    // which  (常规浏览器)
+
+    var contentBox = document.getElementById("content");
+
+    contentBox.onkeydown = function (e) {
+        var e = e || window.event;
+        // console.log(e.key, e.keyCode);
+        var keyCode = e.which || e.keyCode;
+        console.log(keyCode)
+        // 组合键
+        if (e.ctrlKey == true && keyCode == 13) {
+            console.log("ctrl+enter")
+        } else if (e.altKey == true && keyCode == 13) {
+            console.log("alt+enter")
+        }
+    }
+
+    // contentBox.onkeypress = function (e) {
+    //     var e = e || window.event;
+
+    //     // keyCode的兼容
+
+    //     var keyCode = e.which || e.keyCode;
+    //     // console.log(e.key, e.keyCode, e.which);
+
+    //     // 组合键 (自带)
+    //     console.log(keyCode); //  ctrl + enter(13) => 10
+
+    //     // return false;
+    // }
+
+</script>
+
+</html>

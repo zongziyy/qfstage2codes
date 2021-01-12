@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrapAll {
+            margin-left: 50px;
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 100px;
+            border: 1px solid #000;
+            border-top: 0;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapAll">
+        <div class="btns">
+            <button class="start">start</button>
+            <button class="pause">pause</button>
+            <button class="back">back</button>
+        </div>
+        <div class="wrap">
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var start = document.getElementsByClassName("start")[0];
+    var pause = document.getElementsByClassName("pause")[0];
+    var back = document.getElementsByClassName("back")[0];
+
+
+    var timer = null;
+    start.onclick = function () {
+        move(box, 1000);
+    }
+
+    pause.onclick = function () {
+        clearInterval(timer);
+    }
+
+    back.onclick = function () {
+        move(box, 0);
+    }
+
+    function move(ele, end) {
+        var cur = ele.offsetLeft;
+        var speed;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            speed = cur > end ? -9 : 9;
+            cur += speed;
+            ele.style.left = cur + "px";
+            if (Math.abs(end - cur) < Math.abs(speed)) {
+                ele.style.left = end + "px";
+                clearInterval(timer);
+            }
+        }, 10)
+    }
+</script>
+<html>

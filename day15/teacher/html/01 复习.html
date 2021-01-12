@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box1" title="hello" asd="asd">
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+
+    var li = document.createElement("li");
+    li.className = "newLi"
+    li.title = "hello";
+    li.textContent = "新增";
+    console.log(li);
+
+    // box.appendChild(li);
+    // box.prepend(li.cloneNode(true));
+
+    // box.insertBefore(li, box.children[1]);
+
+    // // li.remove();
+    // box.removeChild(li);
+
+    // box.replaceChild(li, box.children[1]);
+
+    // box.children[1].replaceWith(li);
+
+
+    // setInterval(function () {
+    //     var ele = first(box);
+    //     box.appendChild(ele);
+    // }, 1000);
+
+
+    // var box = document.getElementsByClassName("box")[0];
+    // // 属性节点 => html属性(标签内可见)
+    // console.log(box.getAttribute("class"));
+    // console.log(box.getAttribute("asd"));   // 标签中的自定义属性
+
+    // console.dir(box);
+
+    // // 元素节点=> 对象=>属性 
+    // console.dir(box.className);
+    // console.dir(box.asd);
+
+    function first(ele) {
+        return ele.firstElementChild || ele.firstChild;
+    }
+
+
+
+    // 元素节点的属性
+    // innerHTML
+    // innerText / textContent
+
+    // outerHTML
+
+    // tagName
+
+    // className
+    // id
+    // title
+    // style    
+
+
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+    // var width = parseFloat(getStyle(box, "width"));
+    // console.log(width);
+    // var width = parseFloat(getStyle(box, "opacity"));
+    // console.log(width);
+</script>
+
+</html>

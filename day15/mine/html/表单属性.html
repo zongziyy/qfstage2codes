@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            background-color: #fa1a1a;
+            width: 100px;
+            height: 100px;
+        }
+        .b{
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="checkbox" id="a" value="" required checked>DASDA
+        <input type="checkbox" id="a" value="" required>DASDA
+    </form>
+    <div class="a"></div>
+</body>
+<script>
+    var a = document.getElementById("a");
+    var box = document.querySelector("div")
+    console.dir(a);
+    a.onclick = function (){
+        console.log(a.checked)
+    }
+
+    box.onclick = function(){
+        this.classList.toggle("b")
+    }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+<script>
+    document.cookie = "__jdv=122270672|direct|-|none|-|1608024849147;"
+
+    setCookies = (key, value, day) => {
+        if (!day) {
+            document.cookie = `${key}=${value}`;
+        } else {
+            var date = new Date();
+            date.setDate(date.getDate() + day * 1);
+            document.cookie = `${key}=${value};expires=${date.toUTCString()}`;
+        }
+    }
+    // setCookies("user", "123");
+    // setCookies("user", "123", 7);
+    setCookies("user1", "1213", 7);
+    setCookies("user2", "12123", 7);
+    setCookies("user3", "12133", 7);
+    document.cookie
+
+    getCookies = key => {
+        var cookies = document.cookie;
+        var cookieList = cookies.split("; ");
+        var newList = [];
+        cookieList.forEach(item => {
+            newList.push(item.split("="));
+        });
+        var keyValue = new Map(newList);
+        if (keyValue.has(key)) {
+            return keyValue.get(key);
+        } else {
+            console.log("不存在此cookie");
+        }
+    }
+    console.log(getCookies("user3"));
+</script>
+
+</html>

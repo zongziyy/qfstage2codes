@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+
+        .wrapNav {
+            /* background-color: #6ff; */
+            width: 100%;
+            height: 45px;
+        }
+
+        .wrapNav .nav {
+            display: flex;
+        }
+
+        .wrapNav .nav>li {
+            flex: 1;
+            border: 1px solid #000;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        .wrapNav .nav>li:not(:last-child) {
+            border-right: 0;
+        }
+
+        .wrapPart .part {
+            height: 400px;
+            line-height: 400px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .tips {
+            line-height: 45px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapNav">
+        <ul class="nav w">
+            <li>links_001</li>
+            <li>links_002</li>
+            <li>links_003</li>
+            <li>links_004</li>
+            <li>links_005</li>
+            <li>links_006</li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    var liList = document.querySelectorAll(".nav li");
+
+    console.log(liList);
+
+    //1. 寻找替换 li和i的方案
+    // li  => this替换  (指向自身)
+    // i   => 给每一个li设置一个编号(下标)
+    //  a.  标签自定义属性     li.setAttribute("index", i);   =>   var index = this.getAttribute("index");
+    // b.   li(元素节点)  =>  对象 => 对象新增属性  li.xxx   
+
+    for (var i = 0; i < liList.length; i++) {
+        var li = liList[i];
+        // a. 标签自定义属性
+        li.setAttribute("index", i);   //html属性(属性节点) ;
+
+        // b. 对象的自定义属性
+        li.myIndex = i;    // li(元素节点)  =>  对象 => 对象新增属性  li.xxx   
+
+
+        // 页面加载时 ,只是给li绑定了一个点击事件  => 只有元素被点击时(此时页面已经加载完毕)才会执行
+        li.onclick = function () {
+
+            // a.
+            var index = this.getAttribute("index");
+
+            // b. 
+            var myIndex = this.myIndex;
+            console.log(this, index, myIndex);
+            // console.dir(this);
+        }
+    }
+
+    console.log("页面加载完毕", li, i);  // 全局的li和i 已经变为循环结束之后的结果  <li>links_006</li>  6
+
+
+</script>
+
+</html>

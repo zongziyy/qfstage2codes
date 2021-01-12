@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: auto;
+            position: relative;
+            background: url(../images/seraphine.jpg) no-repeat;
+            background-size: contain;
+        }
+
+        .shadow {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="shadow">
+
+        </div>
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var shadow = document.getElementsByClassName("shadow")[0];
+
+    var Utils = (function() {
+        return {
+            randomColor: function() {
+                var col = "#";
+                for (var i = 0; i < 6; i++) {
+                    col += Math.floor(Math.random() * 16).toString(16);
+                }
+                return col;
+            },
+            ce: function(type, style, parent) {
+                var elem = document.createElement(type);
+                if (style) {
+                    for (var prop in style) {
+                        elem.style[prop] = style[prop];
+                    }
+                }
+                if (typeof parent === "string") parent = document.querySelector(parent);
+                if (parent) parent.appendChild(elem);
+                return elem;
+            },
+            dragElem: function(elem, parentOut) {
+                //该函数中的this为外层对象Utils
+                elem.obj = this;
+                elem.style.position = "absolute";
+                document.parentOut = parentOut; //将传入的parentOut存入document的对象属性parentOut中,方便以下函数调用
+                elem.addEventListener("mousedown", this.mousedownHandler);
+            },
+            mousedownHandler: function(e) {
+                //该函数中的this为elem，即实际侦听的元素
+                if (e.type === "mousedown") {
+                    e.preventDefault();
+                    document.x = e.offsetX; //把鼠标点击位置的信息存入document对象属性x与y中，offset为相对事件目标对象elem左上角的距离
+                    document.y = e.offsetY;
+                    document.div = this; //将实际侦听的元素存入document的对象div里
+                    document.obj = this.obj; //this.obj即elem.obj  而在elem.obj中存了Utils，所以是将Utils存在了document对象的属性obj中
+                    document.addEventListener("mousemove", this.obj.mousedownHandler); //这里的this.obj===elem.obj即Utils
+                    document.addEventListener("mouseup", this.obj.mousedownHandler);
+
+                } else if (e.type === "mousemove") {
+                    //当前函数中的this为document
+                    var left, top;
+                    var rect = this.div.parentElement.getBoundingClientRect(); //获取元素的矩形界限范围
+                    var x = e.clientX - this.x - rect.x;
+                    var y = e.clientY - this.y - rect.y; //控制元素的left和top等于
+                    //当前点击位置距离视窗的距离e.client-点击处相对事件目标对象elem左上角的距离-elem父元素相对视窗的距离rect.x/y
+                    if (this.parentOut === true) {
+                        if (x < 0) x = 0; //如果元素左边超过父元素即left:x<0,让他固定在0即可
+                        if (x >= rect.width - this.div.offsetWidth) x = rect.width - this.div.offsetWidth; //如果元素超过父元素边框，就使left
+                        //等于父元素的宽-当前元素的宽。使其不超过父元素
+                        if (y < 0) y = 0;
+                        if (y >= rect.height - this.div.offsetWidth) y = rect.height - this.div.offsetHeight;
+                    } else if (typeof this.parentOut === "object") { //如果parentOut中传入的是对象，对象中存储的是位置信息。
+                        if (x < 0) x = 0; //则left等于传入的x轴活动范围this.parentOut.width-当前元素的宽
+                        if (x >= this.parentOut.width - this.div.offsetWidth) x = this.parentOut.width - this.div.offsetWidth;
+                        if (y < 0) y = 0;
+                        if (y >= this.parentOut.height - this.div.offsetHeight) y = this.parentOut.height - this.div.offsetHeight;
+                        if (this.parentOut.width === 0) x = 0;
+                        if (this.parentOut.height === 0) y = 0;
+                    }
+                    this.div.style.left = x + "px";
+                    this.div.style.top = y + "px";
+                } else {
+                    document.removeEventListener("mousemove", this.obj.mousedownHandler);
+                    document.removeEventListener("mouseup", this.obj.mousedownHandler);
+                }
+            },
+            /*
+            将上面临时存储在elem.obj和document.obj里的Utils置空，并且移除事件。 
+             */
+            dragOff: function(elem) {
+                elem.obj = null;
+                document.obj = null;
+                elem.removeEventListener("mousedown", this.mousedownHandler);
+            }
+        }
+    })()
+
+    // shadow.Utils;
+</script>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            border: 1px dashed #333;
+            line-height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="box">
+        <div class="list">
+            <li class="first">我是01</li>
+            <li>我是02</li>
+            <li>我是03</li>
+            <li>我是04</li>
+            <li>我是05</li>
+            <li>我是06</li>
+            <li>我是07</li>
+            <li>我是08</li>
+            <li>我是09</li>
+            <li>我是10</li>
+        </div>
+    </div>
+</body>
+<script>
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // css()
+    // attr()  (attribute HTML属性)  prop() (property 节点的属性)
+    // eq()   siblings()
+
+    // 原生
+    // var liList = document.querySelectorAll(".list li");
+    // var liList = document.querySelectorAll(".wrap");
+    // var liList = document.querySelectorAll("#box");
+
+    // liList.forEach(function (item) {
+    //     item.textContent = "hello world";
+    // });
+
+    // liList.forEach(function (item) {
+    //     item.onclick = function () {
+    //         console.log(11111);
+    //     };
+    // });
+
+    // arr.forEach(function(item,index){})
+
+
+
+    function GetEle(selector) {
+        // 为什么用querySelectorAll  (无论是获取的 单个元素还是多个元素  都会放到集合中  => 操作集合)
+        // 用来存放  获取元素的结合
+        this.eles = document.querySelectorAll(selector);
+    }
+
+
+    // 设置 / 获取 对应元素的html结构
+    // 既可以设置 html  又可以获取 html
+    // html(1231231)  有参数  就设置
+    // html()         没有  就获取
+    GetEle.prototype.html = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            for (var i = 0; i < this.eles.length; i++) {
+                var ele = this.eles[i];
+                ele.innerHTML = con;
+            }
+        } else {  // 没有  就获取
+            return this.eles[0].innerHTML;
+        }
+    }
+
+
+    // 设置 / 获取 对应元素的text
+    GetEle.prototype.text = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            for (var i = 0; i < this.eles.length; i++) {
+                var ele = this.eles[i];
+                ele.textContent = con;
+            }
+        } else {  // 没有  就获取
+            return this.eles[0].textContent;
+        }
+    }
+
+    // 设置 / 获取 对应元素的value(表单)
+    GetEle.prototype.val = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            for (var i = 0; i < this.eles.length; i++) {
+                var ele = this.eles[i];
+                ele.value = con;
+            }
+        } else {  // 没有  就获取
+            return this.eles[0].value;
+        }
+    }
+
+    GetEle.prototype.click = function (fn) {
+        for (var i = 0; i < this.eles.length; i++) {
+            var ele = this.eles[i];
+            // ele.onclick = fn;
+            ele.addEventListener("click", fn);
+        }
+    }
+    GetEle.prototype.each = function (fn) {
+        for (var i = 0; i < this.eles.length; i++) {
+            var ele = this.eles[i];
+            var index = i;
+
+            // 注意  在Jquery中each 方法的回调函数中  第一个是下标,第二个是当前元素  fn(index,ele)  
+            fn(ele, index);
+        }
+    }
+
+    function $(selector) {  // 接收一个字符串的选择器   =>   GetEle 的实例化对象
+        return new GetEle(selector);
+    }
+
+    $(".list li").html("123123");
+
+
+    // $(".list li").html("123123");
+
+    $(".list li").click(function () {
+        console.log(this);   // this-> 当前点击元素
+    })
+
+    // $(".list li").each(function (item, index) {
+    //     console.log(item, index);
+    // })
+
+</script>
+
+</html>

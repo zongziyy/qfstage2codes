@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    "use strict";
+
+    // 如何进入严格模式? (ES5  全局作用域  函数作用域)
+    // 在作用域(全局作用域/函数作用域)的最前面 使用  "use strict"
+
+    // 优点
+    //     - 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+    // (1.全局变量要显式的声明，否则会报错；必须先声明变量然后再使用。)
+    // (2.创建eval()作用域)
+
+    // - 消除代码运行的一些不安全之处，保证代码运行的安全;
+    // (1. 禁止this关键字指向全局对象。)
+
+    // - 提高编译器效率，提高运行速度；
+
+    // - 为未来新版本的Javascript做好铺垫。
+
+
+    function fn() {
+        "use strict";
+        // var a = 10;
+        // b = 20;
+        // console.log(a);
+    }
+
+
+    //1. 严格模式中 不使用 关键词  var  直接声明变量会报错
+    // var a = 10;
+    // b = 20;
+    // console.log(a);
+
+
+    // 2. 严格模式中  创建eval()作用域    eval()中的声明的变量是局部的  
+
+    // eval("var c = 30;console.log('内部',c);");
+    // console.log('外部', c);
+
+    // 3.  严格模式  this的问题  函数在调用时如果没有依存关系,this默认返回undefined
+
+    // function fn() {
+    //     console.log(this);
+    // }
+    // fn();  //  函数在调用时如果没有依存关系  this -> undefined
+    // window.fn(); // 函数在调用时有依存关系   this -> window
+
+    // 4.  严格模式中  禁止删除变量系(统规定 变量是不能被删除的)
+
+    // var obj = {
+    //     a: 1,
+    //     b: 2,
+    // }
+
+    // 获取一个对象 所有属性的描述
+    // var result = Object.getOwnPropertyDescriptors(obj);
+    // console.log(result);
+    // {
+    //     value //该属性对应的值
+    //     writable // 该属性是否可以修改
+    //     enumerable, // 该属性是否可以被遍历
+    //     configurable,  // 该属性是否可以删除
+    // }
+
+    // delete obj.a;
+    // console.log(obj);
+
+
+    var a = 100;
+    var b = 200;
+
+    var result = Object.getOwnPropertyDescriptors(window);
+    console.log(result.a);
+    console.log(result.b);
+
+    // delete window.a;
+    // delete b;
+
+
+    // 5. 严格模式中  函数参数不允许重命名
+
+    function fn(a, b, b) {
+        return a + b;
+    }
+
+    fn(1, 2, 3);
+
+
+</script>
+
+</html>

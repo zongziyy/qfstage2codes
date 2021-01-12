@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 值类型
+    // 100  "100" true false null undefined 
+
+    // 值类型 => 存储在 栈内存
+
+    // 引用类型     (对象都是引用类型,null除外)
+    // array object  function
+    // 引用类型 => 存储在 堆内存
+
+    // 值类型
+    var a = 1;
+    var b = a;
+    b = 2;
+    console.log(a, b); // 1 2
+
+    // 引用类型  (对象都是引用类型)
+    // 浅复制  (将arr的存储空间的引用  复制给了brr)
+    // 只要一个做了改变,另一个也会受到影响
+
+    var arr = [1, 2, 3, 4];
+    var brr = arr;   // 浅复制  (将arr的存储空间的引用  复制给了brr)
+    brr.push("x");
+    console.log(arr);
+    console.log(brr);
+    console.log(arr === brr);  //true  引用同一片内存空间
+
+
+    var arr = [1, 2, 3, 4];
+    var brr = [1, 2, 3, 4];
+    console.log(arr === brr); //false 引用不同的内存空间
+
+    var obj = { a: 1, b: 2 }
+    console.log(obj);
+
+
+
+
+</script>
+
+</html>

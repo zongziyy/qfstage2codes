@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 箭头函数  函数的简写方式
+
+    function fn(a, b) {
+        console.log(a, b);
+        return a + b;
+    }
+    // fn(1, 2);
+
+    // 如何把普通函数改为箭头函数?
+    // 1. 先把函数改为匿名函数  (所有的箭头函数 都是匿名函数)
+    // 2. 删除function 在()之后加上 => 
+    // 3. 如果形式参数只有一个(不经过解构),小括号可以省略
+    // 4. 如果函数的语句只有一条,且是return语句时,可以省略 {}  和 return 
+
+    // 1. 先把函数改为匿名函数  (所有的箭头函数 都是匿名函数)
+    var fn = function (a, b) {
+        console.log(a, b);
+        return a + b;
+    }
+
+    // 2. 删除function 在()之后加上 => 
+    var fn = (a, b) => {
+        console.log(a, b);
+        return a + b;
+    }
+
+    // 3. 如果形式参数只有一个(不经过解构),小括号可以省略
+    var fn = (a) => {
+        console.log(a);
+        return a * 10;
+    }
+
+    // 简写
+    var fn = a => {
+        console.log(a);
+        return a * 10;
+    }
+
+    // 4. 如果函数的语句只有一条,且是return语句时,可以省略 {}  和 return 
+    // 如果函数的语句只有一条,可以省略 {}
+    var fn = a => {
+        console.log(a);
+    }
+    var fn = a => console.log(a);
+
+    var fn = a => {
+        return a * 10;
+    }
+    var fn = a => a * 10;
+
+    var result = fn(1, 2);
+    console.log(result);
+
+    // 注意 如果函数的return值 是一个对象时
+    // 由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+    var fn = () => ({ a: 1, b: 2 });
+    var result = fn(1, 2);
+    console.log(result);
+
+
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/cookie.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 5 cookie 的内容是纯文本，即只能保存字符串数据。 
+    // 存数组和对象 会隐式转字符串  => 不好  
+
+
+    var obj = {
+        name: "张三",
+        age: 18
+    };
+    var arr = [1, 2, 3, 4];
+
+    setCookie("obj", obj);
+    setCookie("arr", arr);
+
+    console.log(document.cookie);
+
+    // 解决方式
+    console.log(JSON);
+
+
+    // 存  将数组和对象 转为字符串     JSON.stringify()
+    // 取  对应的字符串 转为 数组和对象   JSON.parse();
+
+    // 存
+    var obj = {
+        name: "张三",
+        age: 18
+    };
+    var arr = [1, 2, 3, 4];
+    console.log(obj, arr);
+
+    var objToStr = JSON.stringify(obj); // '{ name: "张三", age: 18 }'
+    console.log(objToStr);
+
+    var arrToStr = JSON.stringify(arr);
+    console.log(arrToStr); // '[1, 2, 3, 4]'
+
+    // 取
+    var obj1 = JSON.parse(objToStr);
+    console.log(obj1, obj === obj1);
+    var arr1 = JSON.parse(arrToStr);
+    console.log(arr1, arr === arr1);
+
+    // 数组和对象的深复制
+
+    var list = [1, 2, [3, 4, [5, [6]]]];
+
+    var str = JSON.stringify(list);
+    console.log(str);
+    var arr = JSON.parse(str);
+    console.log(arr);
+</script>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap" id="box">
+        <div class="list">
+            <li class="first">我是01</li>
+            <li>我是02</li>
+            <li>我是03</li>
+            <li>我是04</li>
+            <li>我是05</li>
+            <li>我是06</li>
+            <li>我是07</li>
+            <li>我是08</li>
+            <li>我是09</li>
+            <li>我是10</li>
+        </div>
+    </div>
+    <div class="box">
+        <button class="setHtml">
+            设置html
+        </button>
+        <button class="getHtml">
+            获取html
+        </button>
+        <button class="setWidth">
+            设置宽度
+        </button>
+        <button class="getWidth">
+            获取宽度
+        </button>
+        <button class="hide">隐藏</button>
+        <button class="show">显示</button>
+        <button class="attr">attr</button>
+        <button class="prop">prop</button>
+        <button class="css">css</button>
+        <button class="eq">第一个</button>
+        <button class="siblings">siblings</button>
+    </div>
+</body>
+<script>
+    class GetEle {
+        constructor(selector) {
+            this.eles = document.querySelectorAll(selector);
+        }
+
+        static version = "1.0.0";
+
+        // prototype 
+        html(con) {
+            if (arguments.length >= 1) {
+                this.each(function (ele) {
+                    ele.innerHTML = con;
+                })
+            } else {
+                return this.eles[0].innerHTML;
+            }
+        }
+        each(fn) {
+            for (var i = 0; i < this.eles.length; i++) {
+                var item = this.eles[i];
+                var index = i;
+                var array = this.eles;
+                // fn.call(item, item, index, array);
+                fn.apply(item, [item, index, array]);
+            }
+        }
+
+
+    }
+    GetEle.prototype.version = "1.0.0";
+
+
+    function $(selector) {
+        return new GetEle(selector);
+    }
+
+    // console.dir(GetEle);
+    // console.log(new GetEle("#box"));
+    // console.log(new GetEle(".list li"));
+
+    // // new GetEle(".list li").each(function (item) {
+    // //     console.log(this, item);
+    // // })
+
+    // new GetEle(".list li").html(123123)
+
+    $(".list li").html("hello");
+
+
+
+</script>
+
+</html>

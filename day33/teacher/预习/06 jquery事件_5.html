@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            overflow: hidden;
+        }
+
+        .sub {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+</body>
+<script>
+
+    // one  为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数。
+    // $(".box").one("click", clickHandler);
+    // function clickHandler() {
+    //     console.log(111111);
+    //     $(this).css({
+    //         width: 400,
+    //         height: 400,
+    //         background: "red"
+    //     })
+    // }
+
+
+
+    // $(".box").on("click", clickHandler);
+    // function clickHandler() {
+    //     $(this).slideUp(1000);
+    // }
+
+
+    // trigger    在匹配的元素上触发某类事件
+    // $(".box").trigger("click");
+
+
+    // trigger  配合  on 触发自定义事件
+
+    // on(eventType,callback)
+    // on方法可以自定事件,此时方法无法自动触发  => trigger  触发
+    $(".box").on("双11", function () {
+        console.log("双11,剁手");
+    })
+
+    $(".box").trigger("双11");
+
+
+
+</script>
+
+</html>

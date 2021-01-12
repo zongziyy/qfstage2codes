@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            <label for="user">用户名:</label>
+            <input type="text" id="user">
+            <!-- style="color: red;font-size: 14px;" -->
+            <span id="user_span"></span>
+        </p>
+        <p>
+            <input id="btn" type="submit" value="注册">
+        </p>
+
+    </div>
+
+</body>
+<script>
+    var userIpt = document.getElementById("user");
+    var userSpan = document.getElementById("user_span");
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function () {
+        var user = userIpt.value;
+        //判断长度
+        if (user.length >= 6 && user.length <= 12) {
+
+            //判断第一个字符不为数字
+            var firstCharCode = user.charCodeAt(0);
+            if (!(firstCharCode >= 48 && firstCharCode <= 57)) {
+
+
+                //判断不包含非法字符
+                var flag = true;
+                for (i = 0; i < user.length; i++) {
+                    var charCode = user.charCodeAt(i);
+                    if (!(charCode >= 48 && charCode <= 57 || charCode >= 65 && charCode <= 90 || charCode >= 97 &&
+                            charCode <= 122 || charCode == 36 || charCode == 95)) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    userSpan.innerText = "√";
+                    userSpan.style.color = "green";
+                    userSpan.style.fontSize = "12px";
+                } else {
+                    userSpan.innerHTML = "用户名以大小写字母、数字、_或&组成";
+                    userSpan.style.color = "red";
+                    userSpan.style.fontSize = "12px";
+                }
+            } else {
+                userSpan.innerHTML = "用户名不能以数字开头";
+                userSpan.style.color = "red";
+                userSpan.style.fontSize = "12px";
+            }
+
+        } else {
+            userSpan.innerHTML = "用户名在6-12个字符之间！";
+            userSpan.style.color = "red";
+            userSpan.style.fontSize = "12px";
+        }
+    }
+</script>
+
+</html>

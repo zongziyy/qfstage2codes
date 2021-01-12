@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var timer = setInterval(function () {
+        // 当前时间
+        var now = new Date();
+
+        // 结束的事件  => 未来的时间
+        var future = new Date("2021-1-1");
+        // var future = new Date(2021,0,1);
+
+        var time = parseInt((future - now) / 1000);  //毫秒=>秒 
+        console.log(time);
+
+        var day = parseInt(time / (60 * 60 * 24));
+
+        // var hour = parseInt(time % (60 * 60 * 24) / (60 * 60));
+        var hour = parseInt(time / (60 * 60)) % 24;
+
+        // var minute = parseInt(time % (60 * 60) / 60);
+        var minute = parseInt(time / 60) % 60;
+
+        var second = time % 60;
+
+
+        console.log(day, hour, minute, second);
+    }, 1000)
+
+
+
+
+
+
+</script>
+
+</html>

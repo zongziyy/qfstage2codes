@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        p {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            <label for="">用户名:</label>
+            <input type="text" id="user">
+            <span id="user_span"></span>
+        </p>
+        <p>
+            <label for="">密&emsp;码:</label>
+            <input type="text" id="pwd">
+            <span id="pwd_span"></span>
+        </p>
+        <p>
+            <label for="">确认密码:</label>
+            <input type="text" id="confirmPwd">
+            <span id="confirmPwd_span"></span>
+        </p>
+        <p>
+            <label for="">手机号:</label>
+            <input type="text" id="phone">
+            <span id="phone_span"></span>
+        </p>
+        <p>
+            <label for="">邮&emsp;箱:</label>
+            <input type="text" id="email">
+            <span id="email_span"></span>
+        </p>
+        <p>
+            <label for="">验证码:</label>
+            <input type="text" id="repwd">
+            <span id="createCode"></span>
+            <span id="repwd_span"></span>
+        </p>
+        <p>
+            <input id="btn" type="submit" value="注册">
+        </p>
+    </div>
+</body>
+<script>
+    var userIpt = document.getElementById("user");
+    var userSpan = document.getElementById("user_span");
+    var pwdInp = document.getElementById("pwd");
+    var pwdSpan = document.getElementById("pwd_span");
+    var confirmPwd = document.getElementById("confirmPwd");
+    var confirmPwdSpan = document.getElementById("confirmPwd_span");
+    var phoneInp = document.getElementById("phone");
+    var phoneSpan = document.getElementById("phone_span");
+    var emailInp = document.getElementById("email");
+    var emailSpan = document.getElementById("email_span");
+    var createCode = document.getElementById("createCode");
+    var repwdSpan = document.getElementById("repwd_span");
+    var btn = document.getElementById("btn");
+    var repwd = document.getElementById("repwd");
+
+
+
+    var numList = [];
+    for (var i = 48; i <= 57; i++) {
+        var char = String.fromCharCode(i);
+        numList.push(char);
+    }
+    // console.log(numList)
+
+    var bigList = [];
+    for (var i = 65; i <= 90; i++) {
+        var char = String.fromCharCode(i);
+        bigList.push(char);
+    }
+
+    var smallList = [];
+    for (var i = 97; i <= 122; i++) {
+        var char = String.fromCharCode(i);
+        smallList.push(char);
+    }
+
+
+    repwdSpan.innerText = randCode();
+    repwdSpan.onclick = function () {
+        repwdSpan.innerText = randCode();
+    }
+
+
+    function randCode() {
+        var list = numList.concat(smallList, bigList);
+        var str = "";
+        for (var i = 0; i < 4; i++) {
+            var index = Math.round(Math.random() * (list.length - 1));
+            var char = list[index];
+            if (str.indexOf(char) == -1) {
+                str += char;
+            } else {
+                i--;
+            }
+        }
+        return str;
+    }
+
+    userIpt.oninput = function () {
+        var userName = userIpt.value;
+        var userReg = /^[a-zA-Z_$][\w$]{5,11}$/;
+        // console.log(userReg.test(userName));
+        if (!userReg.test(userName)) {
+            userSpan.textContent = "用户名必须由6-12位数字、大小写字母、_、$组成且不能以数字开头";
+            userSpan.style.color = "red";
+            if (userIpt.value == "") {
+                userSpan.textContent = "";
+            }
+        } else {
+            userSpan.textContent = "√";
+            userSpan.style.color = "green";
+        }
+    }
+
+    pwdInp.oninput = function () {
+        var pwd = pwdInp.value;
+        confirmPwd.value = "";
+        confirmPwdSpan.textContent = "";
+        var userReg = /^[\w$]{6,12}$/;
+        // console.log(userReg.test(pwd));
+        if (userReg.test(pwd)) {
+            pwdSpan.style.color = "green";
+            var isHasNumber = false;
+            var isHasBig = false;
+            var isHasSmall = false;
+            var isHasSpecial = false;
+            var smallReg = /[a-z]+/;
+            var bigReg = /[A-Z]+/;
+            var special = /[_\$]+/;
+            var num = /\d+/;
+            if (smallReg.test(pwd)) {
+                isHasSmall = true;
+            }
+            if (bigReg.test(pwd)) {
+                isHasBig = true;
+            }
+            if (num.test(pwd)) {
+                isHasNumber = true;
+            }
+            if (special.test(pwd)) {
+                isHasSpecial = true;
+            }
+            var sum = isHasSmall + isHasBig + isHasNumber + isHasSpecial;
+            switch (sum) {
+                case 4:
+                    pwdSpan.textContent = "密码强度：超强";
+                    break;
+                case 3:
+                    pwdSpan.textContent = "密码强度：强";
+                    break;
+                case 2:
+                    pwdSpan.textContent = "密码强度：中";
+                    break;
+                case 1:
+                    pwdSpan.textContent = "密码强度：弱";
+                    break;
+            }
+        } else {
+            pwdSpan.textContent = "密码必须由6-12位数字、大小写字母、_、$组成";
+            pwdSpan.style.color = "red";
+        }
+    }
+
+    confirmPwd.onchange = confirmPwd.onblur = function () {
+        if (pwdSpan.style.color == "green") {
+            if (!(confirmPwd.value == pwdInp.value)) {
+                confirmPwdSpan.textContent = "×";
+                confirmPwdSpan.style.color = "red";
+            } else {
+                confirmPwdSpan.textContent = "√";
+                confirmPwdSpan.style.color = "green";
+            }
+        } else if (pwdInp.value == "") {
+            confirmPwdSpan.textContent = "请先输入密码";
+            confirmPwdSpan.style.color = "red";
+        } else {
+            confirmPwdSpan.textContent = "密码格式不正确";
+            confirmPwdSpan.style.color = "red";
+        }
+    }
+
+    phoneInp.oninput = function () {
+        var phone = phoneInp.value;
+        var phoneReg = /^1[2-9]\d{9}$/;
+
+        if (phoneReg.test(phone)) {
+            phoneSpan.textContent = "√";
+            phoneSpan.style.color = "green";
+        } else {
+            phoneSpan.textContent = "×";
+            phoneSpan.style.color = "red";
+        }
+    }
+
+    emailInp.oninput = function () {
+        var email = emailInp.value;
+        var emailReg = /^[a-zA-Z0-9_-]+@(qq|foxmail|163|gmail)(\.com)$/;
+        if (emailReg.test(email)) {
+            emailSpan.textContent = "√";
+            emailSpan.style.color = "green";
+        } else {
+            emailSpan.textContent = "×";
+            emailSpan.style.color = "red";
+        }
+    }
+
+
+    btn.onclick = function () {
+        var inputCode = repwd.value;
+        var nowCode = repwdSpan.textContent;
+        if (inputCode == nowCode) {
+            alert("恭喜验证成功");
+        } else {
+            console.log("失败");
+        }
+    }
+
+
+    // 用户名
+    // 由数字 大小写字母 _ $ 组成 , 6-12位,且不能以数字开头
+
+    // 判断的流程  从易到难的顺序 
+    // a. 长度  6-12位 
+    // b. 不能以数字开头
+    // c. 由数字 大小写字母 _ $ 组成  (所有的字符都必须在合法字符的范围内,只要有一个不是合法的字符 报错   => 判断字符串中是否能含有非法字符)
+
+    // 密码
+    // 由数字 大小写字母 _ $   6-12位 
+
+    // 判断密码强度
+    // 数字,大写,小写,特殊字符  中 只出现一种   11111   aaaaaa  AAAAAA   弱
+    // 数字,大写,小写,特殊字符  中 出现2种      中
+    // 数字,大写,小写,特殊字符  中 出现3种      强
+    // 数字,大写,小写,特殊字符  中 出现4种      超强
+
+    // true + true + true + false  => 3 
+
+    // 确认密码  
+    // 和密码相同  
+
+    // 验证码
+    // 1. 页面加载时,随机生成四个不重复的验证码 (0-9 a-z A-Z )  
+    // 2. 点击 验证码 进行切换
+    // 3. 验证码输入判断  (输入的  随机生成的  保持一致)
+</script>
+
+
+</html>

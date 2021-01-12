@@ -1,0 +1,46 @@
+﻿body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd{
+    margin: 0;
+    padding: 0;
+}
+img{
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+    /* 让他继承父元素的颜色 */
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+html{
+    font-family: "微软雅黑","宋体" ,Arial;
+    font-size: 12px;
+    line-height: 24px;
+}
+/* 清除浮动 */
+.cl:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.cl{
+    zoom: 1;
+}
+/* 单行省略 */
+.s1{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+/* 多行省略 */
+.s2{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}

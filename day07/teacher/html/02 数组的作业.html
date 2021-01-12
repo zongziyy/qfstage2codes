@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 1. 随机10个0-100的数,放到数组中  list
+
+    var list = [];
+
+    for (var i = 0; i < 10; i++) {
+        var num = Math.round(Math.random() * 100);
+        // list[i] = num;
+        list[list.length] = num;  // 递增赋值
+    }
+    console.log(list);
+
+    // 2. 在1的基础下,取十个数的最大值
+    // max = 68  =>  69  => 78
+    // [68, 31, 69, 14, 47, 18, 36, 65, 44, 78]
+
+    // var max = list[0]; // 假设第一个值是最大的
+    // for (var i = 1; i < list.length; i++) {
+    //     if (list[i] > max) {
+    //         max = list[i];
+    //     }
+    // }
+    // console.log(max);
+
+    // [68, 31, 69, 14, 47, 18, 36, 65, 44, 78]
+
+    // 相邻的两个数依次比较,如果前一个大于后一个,交换两个数的位置, 接着拿第二个数(两个数中较大的值),继续和后面的比较  
+    // [68, 31, 69, 14, 47]
+    // 68  31[31, 68, 69, 14, 47]
+    // 68  69[31, 68, 69, 14, 47]
+    // 69, 14[31, 68, 14, 69, 47]
+    // 69, 47[31, 68, 14, 47, 69]
+
+    for (var i = 0; i < list.length; i++) {
+        if (list[i] > list[i + 1]) {
+            var temp = list[i];
+            list[i] = list[i + 1];
+            list[i + 1] = temp;
+        }
+    }
+    console.log(list);
+    console.log(list[list.length - 1]);
+
+    // 3. 取十个数的和  以及 平均值
+    // var sum = 0;
+    // for (var i = 0; i < list.length; i++) {
+    //     sum += list[i];
+    // }
+    // var ave = sum / list.length;
+    // console.log(sum, ave);
+
+    // 4.  将大于平均值的数 放到一个新的集合中
+    // var arr = [];
+    // for (var i = 0; i < list.length; i++) {
+    //     if (list[i] > ave) {
+    //         arr[arr.length] = list[i];
+    //     }
+    // }
+    // console.log(arr);
+
+    // 判断10个数 是否都大于60 (假设法) 
+
+    // 假设都大于60 =>  从对立面尝试推翻它(存在小于60的数)  => 找到一个小于60的即可  => 简单
+    // 假设存在小于60的数 =>  从对立面尝试推翻它(都大于60)  => 同时证明10个数都大于60 => 麻烦
+
+    // var list = [99, 88, 77, 6]
+    var flag = true;
+    for (var i = 0; i < list.length; i++) {
+        if (list[i] <= 60) { // 如果存在小于或等于60的数  推翻假设
+            flag = false;
+            break;
+        }
+    }
+
+    if (flag) {
+        document.write("list中所有的元素都大于60");
+    } else {
+        document.write("list中存在小于60的数:" + list[i] + "<br>");
+    }
+
+    document.write(list);
+
+
+
+
+</script>
+
+</html>

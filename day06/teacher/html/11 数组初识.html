@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    // 数组(array)  (一组数,一般用来存放一组相同类型的数据);
+    // JS是弱类型的语言,对此没有强制性要求
+
+    // var arr = [1, 2, 3, 4];
+
+    // var zhangSan = 87, liSi = 72, wangWu = 68;
+
+
+    // 数组的特性
+    // 1. 有length属性  表长度(数组中元素的个数)
+    // 2. 可以通过下标取值和赋值  下标的最大值 = length - 1
+    // 3. 可以被循环遍历 (for)
+
+
+    // 创建数组的方式
+
+    // 1. 字面量/直接量  创建数组
+
+    // var arr = [];   // 空数组  数组中没有任何元素(数组中存放的每一个数据=>元素)
+    // console.log(arr);
+
+    // var arr = [2, 6, 8, 4, 5, 9, 3, 7, 1];
+    // console.log(arr);
+
+    // console.log(arr.length);
+    // console.log(arr[3]);
+
+    // arr[3] = 40;
+    // console.log(arr);
+
+    // console.log(arr[arr.length - 1]); // 数组的最后一个值
+
+    // var sum = 0;
+    // for (var i = 0; i < arr.length; i++) {
+    //     var item = arr[i];
+    //     console.log(item);
+    //     sum += item;
+    // }
+    // console.log(sum);
+
+    // 2. 构造函数的创建方式  => 官方提供了专门创建数组的方法 Array
+
+    var arr = new Array();   //通过构造函数创建一个新的数组
+    console.log(arr);
+
+    var arr = new Array(2, 6, 8, 4, 5, 9, 3, 7, 1);
+    console.log(arr);
+
+
+
+
+
+</script>
+
+</html>

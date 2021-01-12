@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="num1">
+    <select name="" id="sel">
+        <option value="+">加</option>
+        <option value="-">减</option>
+        <option value="*">乘</option>
+        <option value="/">除</option>
+        <option value="%">余</option>
+    </select>
+    <input type="text" id="num2">
+    <button id="btn">计算</button>
+    <input type="text" id="result">
+</body>
+<script>
+    /* 
+        <select name="" id="sel">
+             <select name="" id="sel">
+                <option value="+">加</option>
+                <option value="-">减</option>
+                <option value="*">乘</option>
+                <option value="/">除</option>
+                <option value="%">余</option>
+            </select>
+        </select>
+    
+     */
+    // 关于下拉框的取值
+    // a. 如果option中有 value属性, 则优先取value属性的值
+    // a. 如果option中 没有 value属性, 则 获取option标签内的内容
+
+    // 能改变元素的只有元素本身
+
+    // 1. 获取需要使用的元素  
+    var num1Inp = document.getElementById("num1");
+    var num2Inp = document.getElementById("num2");
+    var selInp = document.getElementById("sel");
+    var btn = document.getElementById("btn");
+    var resultInp = document.getElementById("result");
+
+    console.log(num1Inp, selInp, num2Inp, btn, resultInp);
+
+    // 2. 给按钮绑定点击事件 
+    // 每次点击按钮  执行 function(){} 中的代码
+    btn.onclick = function () {
+        // alert(1111);   // 不要用document.write() !!!!!
+
+        // 3. 点击取值 
+        var num1 = num1Inp.value * 1;  // 字符串 "1"
+        var opt = selInp.value;    // 字符串 "+"
+        var num2 = num2Inp.value * 1;  // 字符串 "2"
+
+        console.log(num1, opt, num2);
+
+        // 4. 根据运算符 进行不同的运算
+        var sum = null;   //先声明
+        switch (opt) {
+            case "+": sum = num1 + num2; break;  //在赋值
+            case "-": sum = num1 - num2; break;
+            case "*": sum = num1 * num2; break;
+            case "/": sum = num1 / num2; break;
+            case "%": sum = num1 % num2; break;
+            default:
+                sum = "系统有误";
+                break;
+        }
+
+        console.log(sum);
+
+        // 5. 将计算的结果sum  放到 结果框(resultInp)的value中
+        resultInp.value = sum;
+
+    }
+
+
+</script>
+
+</html>

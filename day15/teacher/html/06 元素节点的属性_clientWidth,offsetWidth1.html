@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            border: 1px solid #000;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    // 传统的方法  (content)
+    var width = parseFloat(getStyle(box, "width"));
+    var height = parseFloat(getStyle(box, "height"));
+    // console.log(width, height);
+
+
+    // 快捷获取元素的宽度和高度,但是使用时需要注意
+    // 1.只能取值，不能赋值
+    // 2.对于隐藏的元索，clientWidth / clientHeight， offsetWidth / of fsetHeight 无法获取对应的宽高(0)
+    // 3.获取宽高的时候需要注意，如果元索没有padding和border任意属性均可，但是如果有padding和
+    // border => 就需要自己根据需求获取
+
+    // clientWidth/clientHeight   元素的可视宽高 (content+padding)
+    console.log(box.clientWidth, box.clientHeight);
+
+    // offsetWidth/offsetHeight   元素的偏移宽高 (content+padding+border)
+    console.log(box.offsetWidth, box.offsetHeight,)
+
+
+
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+
+
+
+
+</script>
+
+</html>

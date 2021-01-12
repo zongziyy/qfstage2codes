@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 内部的css -->
+    <style>
+        form {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form" action="https://www.baidu.com">
+        <p><label for="">用户名:</label><input name="user" type="text"></p>
+        <p><label for="">密码:</label><input name="pwd" type="text"></p>
+        <p><input type="submit" value="提交"></p>
+    </form>
+</body>
+<!-- 
+    JS组成  
+    1. ECMAScript   (语法以及语法规范   ES5  ES6)
+    2. BOM  (Browser Object Module浏览器对象模型  浏览器提供了操作浏览器的接口和方法  历史记录  页面跳转 )
+    3. DOM  (Document Object Module   提供了操作文档的接口和方法)
+
+
+    window -> document  ->  html -> body -> form -> p -> 
+
+
+ -->
+<!-- 获取文档中的html元素(id)    document.getElementById -->
+<script>
+    console.log(document.getElementById("form"));
+</script>
+
+</html>

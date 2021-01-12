@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href=""> -->
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            border: 1px solid transparent;
+        }
+
+        .active {
+            border-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="./login.html">
+        <h2>表单提交</h2>
+        <p><label for="">用户名:</label><input required name="user" placeholder="请输入..." type="text"></p>
+        <p><label for="">密码:</label><input disabled name="pwd" type="text"></p>
+        <p><label for="">爱好:</label>
+            <input type="checkbox" checked name="" id="" value="sing">
+            <input type="checkbox" name="" id="" value="dance">
+            <input type="checkbox" name="" id="" value="rap">
+        </p>
+        <p>
+            <input type="file" multiple>
+        </p>
+        <p><label for="">年份:</label>
+            <select name="sel" id="" multiple>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+            </select>
+        </p>
+        <p><input type="submit" value="提交"></p>
+    </form>
+</body>
+<script>
+    var userInp = document.getElementsByName("user")[0];
+    var pwdInp = document.getElementsByName("pwd")[0];
+    var checkbox = document.querySelector("[type=checkbox]");
+    var sel = document.querySelector("select");
+
+    console.dir(userInp);
+
+    // value 获取和设置表单的value属性
+    // name  获取和设置表单的name属性
+    // type  获取和设置表单的type属性
+    // placeholder  获取和设置表单的placeholder属性
+
+    userInp.placeholder = "hello";
+
+    // required  获取和设置表单的required属性  (是否必填  是=>true 不是返回false)
+    // disabled  获取和设置表单的disabled属性  (是否禁用  是=>true 不是=>false)
+    // checked  获取和设置表单(radio,checkbox)的checkbox属性  (是否选中  是=>true 不是=>false)
+
+    // multiple  获取和设置表单(input:file select)的multiple属性  (是否多选  是=>true 不是=>false)
+
+    // selectedIndex   获取和设置下拉框中被选中的option的下标
+    // selectedOptions   获取和设置下拉框中被选中的option的集合
+
+    console.log(userInp.required);
+    console.log(pwdInp.required);
+
+    console.log(userInp.disabled);
+    console.log(pwdInp.disabled);
+
+    checkbox.onclick = function() {
+        console.log(checkbox.checked);
+    }
+
+    sel.onchange = function() {
+        // console.log(sel.value);
+        console.dir(sel);
+        console.log(sel.multiple);
+        console.log(sel.selectedIndex);
+        console.log(sel.selectedOptions);
+    }
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = new String("good good study , day day up");
+    console.log(str, typeof str);  // "object"
+
+    // charAt(index)   返回对应下标的字符
+    // var char = str[3];
+    var char = str.charAt(3);
+    console.log(char);  // d
+
+    // charCodeAt(index)   返回对应下标的字符的编码 (ascii unicode)
+    var code = str.charCodeAt(3);
+    console.log(code);   // 100
+
+    // 空格  32
+    // 0     48
+    // A     65        Z  90
+    // a     97        z  122
+
+    // 构造函数String的方法 String.fromCharCode()  接收一个或多个编码,返回编码对应的字符
+    var str = String.fromCharCode(100, 97, 121);
+    console.log(str);
+
+
+
+
+
+    // 字符编码
+    // ascii
+
+    // GB2312  GBK  
+
+    // unicode => 国际统一编码
+
+    // utf-8
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+
+
+// .list li:nth-child(1){
+
+// }
+
+// @for $i from 1 to 10{
+//     .list li:nth-child(#{$i}){
+//         background-position: 0 -40px*$i;
+//     }
+// }
+
+// $i:1;
+// @while($i<=10){
+//     .list li:nth-child(#{$i}){
+//         background-position: 0 -40px*$i;
+//     }
+//     $i:$i+1;
+// }
+
+// [one,two,three,four]
+// @each $member in one,two,three,four {
+//     .#{$member} {
+//         background-image: url("/image/#{$member}.jpg");
+//     }
+// }
+
+// [(one 1),(two 2),(three 3),(four 4)]
+// @each $key,$member in (one 1),(two 2),(three 3),(four 4) {
+//     .#{$key} {
+//         background-image: url("/image/#{$member}.jpg");
+//     }
+// }

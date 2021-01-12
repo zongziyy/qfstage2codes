@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var now = new Date();
+    console.log(now);
+
+
+    // 获取年月日 时分秒 毫秒 星期
+    var year = now.getFullYear();  //年
+    console.log(year);
+
+    // 设置日期是  月份-1 
+    // 获取时(0-11)      月份+1
+    var month = now.getMonth() + 1;   // 月 `
+    console.log(month);
+
+    var day = now.getDate();  //日期
+    console.log(day);
+
+    // now.getDay()  返回星期几   (国外星期日 是第一天(0)  0-6  )
+    var week = now.getDay();
+    week = week == 0 ? 7 : week;   // 判断是否是星期天
+    console.log(week);
+
+    // 小时
+    var hour = now.getHours();
+    console.log(hour);
+
+    // 分钟
+    var minute = now.getMinutes();
+    console.log(minute);
+
+    var second = now.getSeconds();
+    console.log(second);
+
+    var millisecond = now.getMilliseconds();
+    console.log(millisecond);
+
+    var ms = now.getTime();  //获取日期对应的毫秒数
+    console.log(ms);
+
+
+
+</script>
+
+</html>

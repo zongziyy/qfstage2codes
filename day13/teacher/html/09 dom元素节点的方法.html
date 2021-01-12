@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #box {} */
+        /* one {
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #f00;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <one>123123</one>
+    <one>123123</one>
+    <one>123123</one> -->
+    <div id="box">
+        <h2>获取元素</h2>
+        <!-- 属性节点/html 属性 (写在标签内,和标签以一个空格分隔叫做属性 )  -->
+        <ul class="one two" id="ulBox" title="这是ul" style="background:red;font-size:14px" data-id="100" asd="haha">
+            <li class="first">01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 元素节点的方法  
+
+    // 通过 此方法 可以 获取/设置/删除  元素节点中的属性()
+
+    // ele.getAttribute(name)    根据属性名,获取属性值(字符串) (包括标签的自定义属性)
+    // ele.setAttribute(name,value)        根据属性名,设置属性值(修改已存在,添加新的)
+    // ele.removeAttribute(name)    根据属性名,删除属性
+
+    var ul = document.querySelector(".one");
+
+    // ele.getAttribute(name) 
+    var className = ul.getAttribute("class");
+    console.log(className);
+    var id = ul.getAttribute("id");
+    console.log(id);
+
+    var title = ul.getAttribute("title");
+    console.log(title);
+
+    var style = ul.getAttribute("style");
+    console.log(style);
+
+    var asd = ul.getAttribute("asd");
+    console.log(asd);
+
+    // ele.setAttribute(name,value)   
+    ul.setAttribute("class", "three"); //修改已存在的
+    ul.setAttribute("name", "firstUl"); //添加新的
+    ul.setAttribute("dsa", "heihei"); //添加自定义属性
+
+    // removeAttribute(name)
+
+    ul.removeAttribute("class");
+    ul.removeAttribute("id");
+    ul.removeAttribute("asd");
+    ul.removeAttribute("dsa");
+
+</script>
+
+</html>

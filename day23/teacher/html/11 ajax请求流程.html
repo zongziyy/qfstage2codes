@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // live server  起了一个假的服务(没有后端 不能做逻辑处理),只能展示页面  
+    // 但是可以请求同服务下其他文件的内容(只能是get)
+
+    // ajax的请求流程  (6行代码)
+
+
+    // xhr.readyState  请求的状态
+    // 0  请求未初始化(创建了请求 但是还没有调用open)
+    // 1  请求已经建立链接(TCP链接)，但是还没有发送（还没有调用 send()）
+    // 2  请求已经发送,但是服务器还没有接收到
+    // 3  服务器已经接收到请求,但是还在处理
+    // 4  响应结束,返回响应的结果(成功 失败)  
+
+    // xhr.status 服务器响应结果的状态码
+    // 1**	信息，服务器收到请求，需要请求者继续执行操作
+    // 2**	成功，操作被成功接收并处理
+    // 3**	重定向，需要进一步的操作以完成请求
+    // 4**	客户端错误，请求包含语法错误或无法完成请求
+    // 5**	服务器错误，服务器在处理请求的过程中发生了错误
+
+    var xhr = new XMLHttpRequest();  // 创建一个请求的对象(http请求)(载体)
+    console.log(xhr);
+    console.log(xhr.readyState);   // 0 请求未初始化(创建了请求 但是还没有调用open)
+
+    // xhr.open(type,url,bool)   规定请求的方式/请求的地址/是否异步
+    // type  请求方式(get/post)
+    // url   请求的地址
+    // bool  是否异步发送请求(默认异步/ 不要使用同步)
+
+    xhr.open("get", "../data/1.txt", true);
+    console.log(xhr.readyState); // 1  请求已经建立链接(TCP链接)，但是还没有发送（还没有调用 send()）
+
+
+    xhr.send();  //发送请求 => 等待服务器响应  (此步骤是异步的)
+
+    // 监听请求状态的变化  状态变化时 会触发函数,执行特定的代码
+    // 页面加载时  只做绑定 ,状态变化时 才会触发
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);  // 2 3 4 (函数触发三次)
+
+        // xhr.readyState == 4  响应结束,返回响应的结果
+        // xhr.status == 200    响应的结果也是成功的
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText); // 请求成功 => 获取响应的文本(都是字符串类型)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

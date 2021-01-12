@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 快速排序
+    // 取数组中间值mid  将小于mid的值放左边集合left,大于mid的值放右边right集合  
+    // 如果左右两边集合的元素大于1,则重复上述操作
+    // 直到拆分至 空数组 [] 或 只有一个元素时 在依次按顺序将拆分的数组拼接回去 
+
+    function quickSort(list) {
+        list = list.slice();   //深复制一个数组,不影响原数组
+        if (list.length <= 1) {
+            return list;
+        }
+        // 5/2  2  01234
+        // 6/2  3  012345
+        var midIndex = Math.floor(list.length / 2);  // 中间下标
+        var mid = list.splice(midIndex, 1)[0];  // 
+        var left = [];
+        var right = [];
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] >= mid) {
+                right.push(list[i]);
+            } else {
+                left.push(list[i]);
+            }
+
+        }
+        return quickSort(left).concat(mid, quickSort(right));
+    }
+
+    var list = [];
+
+    for (var i = 0; i < 10; i++) {
+        var num = Math.round(Math.random() * 100);
+        list[list.length] = num;
+    }
+    console.log("原数组", list);
+
+
+</script>
+
+</html>

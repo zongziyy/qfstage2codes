@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>jsonp</button>
+
+</body>
+<script>
+    $("button").eq(0).click(function () {
+        // $.ajax({
+        //     type: "get",
+        //     url: "http://localhost/2007_php/demo_30/php/searchGradeById.php",
+        //     data: {
+        //         id: 12,
+        //     },
+        //     dataType: "json",
+        //     success(result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        // $.get(url,data,callback,dataType)
+        // $.get("http://localhost/2007_php/demo_30/php/searchGradeById.php", { id: 12 }, function (result) {
+        //     console.log(result);
+        // }, "json");
+    })
+
+    $("button").eq(1).click(function () {
+        // $.ajax({
+        //     type: "post",
+        //     url: "http://localhost/2007_php/demo_30/php/login.php",
+        //     data: {
+        //         user: "a123123",
+        //         pwd: 123123,
+        //     },
+        //     dataType: "json",
+        //     success(result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        // $.post(url,data,callback,dataType)
+        $.post("http://localhost/2007_php/demo_30/php/login.php", {
+            user: "a123123",
+            pwd: 123123,
+        }, function (result) {
+            console.log(result);
+        }, "json");
+    })
+
+    $("button").eq(2).click(function () {
+        // https://www.baidu.com/sugrec?prod=pc&wd=h5&cb=callback
+        // $.ajax({
+        //     type: "get",
+        //     url: "https://www.baidu.com/sugrec",
+        //     data: {
+        //         prod: "pc",
+        //         wd: "h5",
+        //         // cb: "callback"   // 回调函数  cb=callback  不能作为参数传入(需要单独处理)
+        //     },
+        //     dataType: "jsonp",   // 如果使用jsonp请求  需要把dataType 改为jsonp 
+        //     // jsonp: "cb",     //   此处规定传递回调函数的参数的键名(cb)   (如果不写 默认是callback)
+        //     // jsonpCallback: "callback",  // 此处规定传递回调函数的参数的键值(callback)  (如果不写 默认jquery 随机生成)
+
+        //     success(result) {
+        //         console.log(result);
+        //     }
+        // })
+        // $.ajax({
+        //     type: "get",
+        //     url: "https://www.baidu.com/sugrec?prod=pc&wd=h5",
+        //     dataType: "jsonp",   // 如果使用jsonp请求  需要把dataType 改为jsonp 
+        //     jsonp: "cb",     //   此处规定传递回调函数的参数的键名(cb)   (如果不写 默认是callback)
+        //     jsonpCallback: "callback",  // 此处规定传递回调函数的参数的键值(callback)  (如果不写 默认jquery 随机生成)
+
+        //     success(result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        // getJSON   通过 HTTP GET 请求载入 JSON 数据(jsonp)。
+        // 您可以通过使用JSONP形式的回调函数来加载其他网域的JSON数据，如 "myurl?callback=?"。jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。 
+
+
+        $.getJSON("https://www.baidu.com/sugrec?prod=pc&wd=h5&cb=?", {}, function (result) {
+            console.log(result);
+        })
+    })
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 简易案例
+
+    // 需求 描述一只猫的名称，颜色，叫声，技能
+
+    // 面向过程
+
+    var name = "Tom";
+
+    var color = "black";
+
+    function call() {
+        console.log("喵喵");
+    }
+
+    function skill() {
+        console.log("捉老鼠");
+    }
+
+    // 面向对象  => 最简单的字面量创建对象
+    // var Tom = {
+    //     name: "Tom",
+    //     color: "black",
+    //     call() {
+    //         console.log("喵喵");
+    //     },
+    //     skill() {
+    //         console.log("捉老鼠");
+    //     }
+    // }
+
+    // var Kitty = {
+    //     name: "Kitty",
+    //     color: "pink",
+    //     call() {
+    //         console.log("喵喵");
+    //     },
+    //     skill() {
+    //         console.log("捉老鼠");
+    //     }
+    // }
+
+    // 工厂模式 创建对象  (给定既定的参数 产出对象 )
+    function Cat(name, color) {
+        var obj = {   // new Object();
+            name: name,
+            color: color,
+            call() {
+                console.log("喵喵");
+            },
+            skill() {
+                console.log("捉老鼠");
+            }
+        }
+
+        return obj;
+    }
+
+    // 1. 通过此方法创建的对象 和 函数没有关系(对比构造函数)
+    // var arr = new Array();
+    // var obj = new Object();
+    // console.log(arr instanceof Array); // true;
+    // console.log(obj instanceof Object); // true;
+
+    // 2. 共有的属性和方法重复创建  => 浪费内存
+
+
+    var Tom = Cat("Tom", "black");
+    console.log(Tom, Tom instanceof Cat, Tom instanceof Object);
+    var Kitty = Cat("Kitty", "pink");
+    console.log(Kitty);
+
+
+
+    // 自定义构造函数
+
+
+
+
+
+
+
+</script>
+
+</html>

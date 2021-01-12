@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+    // eq(index|-index)  选取对应下标的元素
+    // $(".list li").eq(3).css({
+    //     background: "red"
+    // })
+    // $(".list li").eq(-3).css({
+    //     background: "red"
+    // })
+
+    // first()  匹配第一个
+    // last()   匹配最后一个
+
+    // $(".list li").first().css({ background: "red" });
+    // $(".list li").last().css({ background: "red" });
+
+    // hasClass()   匹配的元素中是否函数有某个class名
+    // 单元素  => 精确判断
+    // 多元素  => 只要有一个元素含有即可
+
+    console.log($("#box").hasClass("wrap"));
+    console.log($(".list li").hasClass("first"));
+
+    // slice()   裁切
+    $(".list li").slice(1, 3).css({ background: "red" });
+
+
+
+</script>
+
+</html>

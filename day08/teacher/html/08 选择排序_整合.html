@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var list = [];
+
+    // for (var i = 0; i < 10; i++) {
+    //     var num = Math.round(Math.random() * 100);
+    //     list[list.length] = num;  // 递增赋值
+    // }
+    // console.log(list);
+
+    // var list = [92, 52, 60, 13, 66, 54];
+
+    // var min = list[0];
+    // for (var i = 1; i < list.length; i++) {
+    //     if (list[i] < min) {
+    //         min = list[i];
+    //     }
+    // }
+    // console.log(min);
+
+
+    var list = [92, 52, 60, 13, 66, 54];
+    console.log("原数组", list);
+
+    // 第一轮  拿第一个数 和后面所有的数 作比较,如果存在比第一个数还要小的数,交换两个数的位置
+    // => 最小值  放在第一位
+
+    // [92, 52, 60, 13, 66, 54]
+    //  13 [92, 60, 52, 66, 54]        // 13, 92, 60, 52, 66, 54
+
+
+    for (var j = 0; j < list.length - 1; j++) {  // 外层循环 控制总的循环的次数
+        // j = 0 ;   i = j+1, [1,length-1]
+        // j = 1 ;   i = j+1, [2,length-1]
+        for (var i = j + 1; i < list.length; i++) {  // 内层循环  控制每一次做什么操作
+            if (list[i] < list[j]) {
+                var temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+        console.log(list);
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

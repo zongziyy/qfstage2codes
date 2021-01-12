@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 函数的参数解构
+    // 函数的参数 也有可能是数组 和 对象
+
+    // 传统的函数
+    // function fn(a, b) {
+    //     return a + b;
+    // }
+
+    // fn(1, 2);
+
+
+    // 传统的函数 => 改数组
+    // function fn(arr) {
+    //     return arr[0] + arr[1];
+    // }
+
+    function fn(arr) {
+        var [a, b] = arr;
+        return a + b;
+    }
+
+    // 函数的参数解构  
+    function fn([a, b] = arr = []) { // 此处为了方便理解 写的(实际arr省略)
+        return a + b;
+    }
+
+    // 函数的参数解构  
+    function fn([a, b]) {
+        console.log(a, b);
+        return a + b;
+    }
+    function fn([a, b] = []) {   // [a, b] 对参数解构, []如果不传参,参数默认是[]空数组
+        console.log(a, b);
+        return a + b;
+    }
+
+    // fn([1, 2]);  // 传参数    [a,b] = [1,2]
+    // fn();  //        [a,b] = undefined   报错
+
+    // -----------------------------------------------------------------------
+
+    // 传统的函数 => 改对象
+    function fn(obj) {
+        return obj.a + obj.b;
+    }
+
+    function fn(obj) {
+        var { a, b } = obj;
+        return a + b;
+    }
+
+    // 函数的参数解构  对象版
+    function fn({ a, b } = obj) {
+        // var { a, b } = obj;
+        return a + b;
+    }
+
+    // fn({ a: 1, b: 2 });  // 传参   obj ={}  
+    // fn();  // 传参   obj =undefined   报错  
+
+    function fn({ a, b } = obj = {}) {  // 此处为了方便理解 写的(实际obj省略)
+        // var { a, b } = obj;
+        return a + b;
+    }
+
+    // !!!!!
+    //  { a=0, b=0 } = {}   
+    // {}  参数的默认值
+    // a,b 解构得到a,b变量  (变量的默认值)
+    function fn({ a, b } = {}) {  //{ a, b }  传入的参数进行解构, 如果不传参,参数默认是 {} 
+        // var { a, b } = obj;
+        console.log(a, b);
+        return a + b;
+    }
+
+    fn();
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

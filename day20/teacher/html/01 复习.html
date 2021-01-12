@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var reg = /da+y/ig;
+
+    var reg = new RegExp("da+y", "ig");
+
+    var str = "day";
+
+    // var reg = eval(`/${str}/ig`);
+    // console.log(reg);;
+
+
+    // 元字符
+    // 限定符    
+    // {n}
+    // {n,}
+    // {n,m}
+    // * 
+    // +
+    // ?
+
+    // 定位符
+    // ^  $    
+
+    // 字符匹配符   匹配集合中的任意一个 
+    // [xyz]
+    // [0-9]  [a-z]  [A-Z]  [0-9a-zA-Z_]  [\w$]
+
+    // [^xyz]
+    // [^0-9]  [^a-z]  [^A-Z]  [^0-9a-zA-Z_]  
+
+    // 字符簇
+    // \d
+    // \D
+    // \w
+    // \W
+    // \s
+    // \S
+    // .
+    // [\u4e00-\u9fa5]
+
+    // 选择匹配符   | 
+    // (com|cn|net)
+
+    // 转义字符
+
+
+    // ?=n	匹配任何其后紧接指定字符串 n 的字符串。
+    var str = "Is this all there is";
+    var patt1 = /is(?= all)/ig;  // 匹配紧邻 all的is
+
+    var arr = str.match(patt1);
+    console.log(arr);
+
+
+    // ?=n	?!n	匹配任何其后没有紧接指定字符串 n 的字符串。
+    var str = "Is this all there is";
+    var patt1 = /is(?! all)/ig;  // 匹不紧邻 all的is
+
+    var arr = str.match(patt1);
+    console.log(arr);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

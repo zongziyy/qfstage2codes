@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // for (var i = 0; i < 6; i++) { // 6不满足条件时 跳出循环
+    //     setTimeout(function () {
+    //         console.log(i);  // 自己没有i,向外跳一层,找全局的i
+    //     }, 5000);
+    // }
+    // console.log("循环结束", i); // 6
+
+    // 传统的思想    => 同步 按步骤 按顺序进行  
+    // 每次循环启动延时器  执行之后 在进入下一次循环   => 5*6 =>30s
+
+    // 实际流程     =>  异步 同时执行,也叫并发;
+    // 延时器 比较耗费时间  =>循环的过程中只是立即启动了延时器, 等到了对应的时间之后 执行演示器的回调函数
+
+
+    console.log(1);
+    setTimeout(function () {
+        console.log(2);
+    }, 0);
+    console.log(3);
+
+
+</script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        .list {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>jquery核心</h2>
+        <div class="list">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span class="sp">06</span></li>
+        </div>
+    </div>
+</body>
+<script>
+    // :first   匹配集合中的第一个
+    // :last    匹配集合中的最后一个
+
+    // $(".list li:first").css("background", "red");
+    // $(".list li:last").css({
+    //     background: "red",
+    //     width: 200,
+    //     height: 50,
+    //     lineHeight: "50px",
+    // });
+
+    // :eq(index)  匹配对应下标的元素  
+    // :lt(index)  匹配小于对应下标的元素  
+    // :gt(index)  匹配大于对应下标的元素  
+
+    // $(".list li:lt(3)").css("background", "blue");
+    // $(".list li:eq(3)").css("background", "red");
+    // $(".list li:gt(3)").css("background", "green");
+
+
+    // :even   匹配下标为偶数的元素
+    // :odd    匹配下标为奇数的元素
+    // $(".list li:even").css("background", "green");
+    // $(".list li:odd").css("background", "red");
+
+    // :contains(txt)  匹配包含给定文本的元素
+    // $(".list li:contains(3)").css("background", "red");
+
+    // :has(selector)  匹配含有 选择器selector所匹配的元素 的元素
+
+    $(".list li:has('.sp')").css("background", "red");
+
+
+
+
+
+
+
+</script>
+
+</html>

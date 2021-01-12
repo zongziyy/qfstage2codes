@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">01</form>
+    <form action="">02</form>
+    <form action="">03</form>
+    <form action="">04</form>
+
+    <a href="">001</a>
+    <a href="">002</a>
+    <a href="">003</a>
+    <a href="">004</a>
+    <img src="xx.png">
+    <img src="xx.png">
+    <img src="xx.png">
+    <img src="xx.png">
+</body>
+<script>
+    // document   => window.document
+
+    // window => document => html => body =>
+
+    // 1. 载入到浏览器的页面(html文档) 都会变成文档的一部分
+    // 2. 通过document可以访问页面中的所有元素  
+    // 3. document   => window.document
+
+    // console.dir()  打印一个对象/函数  所有的相关属性和方法
+    console.log(document);
+    console.dir(document);
+
+    // document相关的属性
+    // URL 返回当前文档的 URL。
+    // all[] 提供对文档中所有 HTML 元素的访问。是数组类型
+    // forms[] 返回对文档中所有 Form 对象引用。是数组类型
+    // links[] 返回对文档中所有 a 标签引用。  是数组类型
+    // images[] 返回对文档中所有 img 标签引用。是数组类型
+    // body 提供对 < body > 元素的直接访问。
+    // bgColor属性：可以改变文档的颜色；（ document.bgColor = "gray"; ）
+
+    // document.documentElement  快捷获取html元素
+    // document.body  快捷获取body元素
+    // document.head  快捷获取head元素
+    // document.title  快捷获取和设置 网页标题
+
+    console.log(document.URL);
+    console.log(document.all);
+    console.log(document.forms);
+    console.log(document.links);
+    console.log(document.images);
+    console.log(document.documentElement);   //html元素
+    console.log(document.body);   //html元素
+
+    document.bgColor = "#6ff";
+
+
+    // 方法   通过文档获取元素
+    // document.getElementById();
+    // document.getElementsByClassName();
+    // document.getElementsByTagName()
+    // document.getElementsByName()   建议用在表单元素
+
+    // document.write()
+
+
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var num = Math.round(Math.random() * (999 - 100) + 100);
+
+    console.log(num);
+
+    // var num = 123;
+
+    var bai = Math.floor(num / 100);
+
+    // var shi = Math.floor((num - bai * 100) / 10);
+
+    // 总的数 % 100 =>  小于100的数
+    var shi = Math.floor(num % 100 / 10);
+
+    var ge = num % 10;
+
+    console.log(bai, shi, ge);
+
+    // 123的百位是:1,十位是:2,个位是:3
+    console.log(num + "的百位是:" + bai + ",十位是:" + shi + ",个位是:" + ge);  //字符串拼接
+
+
+</script>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    // 1.  
+    // var a = 10;  //全局   100
+    // function fn() {
+    //     a = 100;  // 全局    先找函数中有没有变量声明/形式参数  有=>局部变量(不影响全局)  没有=>向外跳一层找全局的
+    //     console.log("函数内的a:", a);  //100
+    // }
+    // console.log("函数外的a:", a); // 10
+    // fn();
+    // console.log("函数外的a:", a); // 100
+
+
+    // 2.
+    // var a = 10;  // 全局
+    // function fn() {
+    //     var a = 100;  //局部
+    //     console.log(a);  // 100
+    // }
+    // fn();
+    // console.log(a); //10
+
+    // 2.1
+    // var a = 10;  // 全局   
+    // function fn() {
+    //     // var a;  => 函数执行之前也会预编译  => 变量提升
+    //     a = 100;   // 局部变量 先找函数中有没有变量声明/形式参数  有=>局部变量(不影响全局)  没有=>向外跳一层找全局的
+    //     console.log(a);  //100
+
+    //     var a = 1332;
+    // }
+    // fn();
+    // console.log(a); // 10
+
+
+    // 3. 
+    // var a = 10;  //全局
+    // function fn(a) {
+    //     a = 100;  // 局部
+    //     console.log(a);  //100
+    // }
+    // fn(10);
+    // console.log(a);
+
+    // var a = 10;  //全局   100
+    // function fn() {
+    //     a = 100;  // 全局
+    //     console.log(a);  //100
+    // }
+    // fn(10);
+    // console.log(a); //100
+
+
+
+    // console.log(a);   // 报错
+    // a = 100;
+    // console.log(a);
+
+    // function fn() {
+    //     a = 200;
+    //     console.log("我是函数里的a:", a);
+    // }
+
+    // fn();
+    // console.log("我是函数外的a:", a);
+
+
+    // 4.
+
+    // var a = b = 10;    // 全局  10  20
+
+    // // b = 10;
+    // // var a = b;
+
+    // function fn() {
+    //     var a = b = 20;  // 
+
+    //     // b = 20;       // 全局   20
+    //     // var a = b;    // 局部   20
+
+    //     console.log("函数内：", a, b); //20 20
+    // }
+
+    // fn();
+    // console.log("函数外", a, b); // 10  20
+
+
+    // 5.1 
+    // var a = 10; // 全局  10
+    // function fn() {
+    //     var a = 100;  // 局部 100
+    //     console.log("函数内：", a);//100
+
+    //     c();
+
+    //     // function b() {
+    //     //     var a = 1000;
+    //     //     c();
+    //     // }
+    //     // b();
+    // }
+
+    // function c() {
+    //     console.log("c里面的a", a);  //10   先找函数中有没有变量声明/形式参数  有=>局部变量(不影响全局)  没有=>向外跳一层找全局的
+    // }
+
+    // fn();
+
+    var a = 10;   // 全局
+    function fn() {
+        var a = 100;  // 局部
+        console.log("函数内：", a);  // 100
+
+        c();
+
+        function c() {
+            console.log("c里面的a", a); //100  先找函数中有没有变量声明/形式参数  有=>局部变量(不影响全局)  没有=>向外跳一层找fn的作用域
+        }
+    }
+
+    fn();
+    console.log("函数外：", a);//  10
+
+
+
+
+
+
+
+</script>
+
+</html>

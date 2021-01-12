@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 数组可以转Map (二维数组)
+    var list = [[1, 2], ["hello", "hello"], [true, true], [null, null], [undefined, undefined]];
+
+    var m = new Map(list);
+
+    console.log(m);
+
+    // Map 转数组  
+    // 1. Array.from()
+    var arr = Array.from(m);
+    console.log(arr);
+
+    // 2. 扩展运算符
+    var arr = [...m];
+    console.log(arr);
+
+
+
+
+
+
+
+</script>
+
+</html>

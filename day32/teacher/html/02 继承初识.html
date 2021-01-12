@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 面向对象之继承
+    // 让一个类(构造函数) 继承 另一个类 的属性和方法 (构造函数中的属性/方法(实例) 和 原型对象上的公用的属性和方法)
+
+    // 继承的类  子类
+    // 被继承的类 父类
+
+    // 本质:实现属性和方法的复用
+
+
+    function Person(name, age) { //  构造函数中 实例的属性和方法
+        this.name = name;
+        this.age = age;
+        this.species = "human";
+    }
+    // 原型对象上的属性和方法
+    Person.prototype.say = function () {
+        console.log(this.name, this.age);
+    }
+    Person.prototype.skill = function () {
+        console.log("thinking");
+    }
+
+    // var p1 = new Person("张三", "18");
+    // console.log(p1);
+
+
+    // 黄种人
+    function YellowPerson(hobby) {
+        this.hobby = hobby;
+    }
+
+    YellowPerson.prototype.skin = "yellow";
+    YellowPerson.prototype.speak = function () {
+        console.log("chinese");
+    };
+
+    var p1 = new YellowPerson("唱歌");
+    console.log(p1);
+
+
+
+
+</script>
+
+</html>

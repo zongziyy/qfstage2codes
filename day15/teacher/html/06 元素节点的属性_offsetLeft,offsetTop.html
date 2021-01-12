@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            margin-left: 200px;
+            margin-top: 100px;
+            /* position: absolute;
+            left: 200px;
+            top: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+    </div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    // 传统的方法  (content)
+    // var left = parseFloat(getStyle(box, "margin-left"));
+    // var top1 = parseFloat(getStyle(box, "margin-top"));
+    // console.log(left, top1);
+
+
+    // 快捷获取元素的相对于参照物父元素的偏移(margin-left/margin-top   left/top)
+    // 1. 只能取值,不能赋值
+    // 2. 对于隐藏的元素,offsetLeft,offsetTop 不生效(0)
+    console.log(box.offsetLeft, box.offsetTop);
+    console.log(box.offsetParent); //box的参照物父元素
+
+
+
+
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 1100px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 50px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="start">开始</button>
+    <button class="stop">stop(false,false) 默认</button>
+    <button class="stop">stop(false,true)</button>
+    <button class="stop">stop(true,true)</button>
+    <button class="stop">stop(true,false)</button>
+    <button class="finish">finish()</button>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    // animate(ele,attr,end,aniType,fn)
+
+
+    // 用于创建自定义动画的函数。
+    // $(".box").animate(params,[speed],[fn])
+    // params   (obj)   一组包含作为动画属性和终值的样式属性和及其值的集合
+    // speed:   三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000  单位毫秒)
+    // fn     运动执行完毕的回调函数
+
+    // 了解
+    // stop(clearQueue,gotoEnd)  
+    // clearQueue    是否清空队列    true=>清空队列,后续不动画执行了 , false   不清空队列,继续执行后续动画 
+    // gotoEnd       让当前正在执行的动画立即完成(当前任务列中的动画是否立即到达终点)  true => 立即到达 终点  false=> 不立即到达终点(自当前位置 进入下一个队列)
+    // 注意  clearQueue 为false时  不立即到达终点, 运动的回调函数不会执行
+    //       clearQueue 为true时  立即到达终点,   运动的回调函数会执行
+
+    // finish()   清空所有队列,到达最后的一个运动的终点位置   
+
+    // [{left:1000},{top:400},{left:0},{top:0}]
+
+    $(".start").click(function () {
+        $(".box").animate({ left: 1000 }, 2000, function () {
+            console.log("运动结束")
+        }).animate({ top: 400 }, 2000, function () {
+            console.log("运动结束")
+        }).animate({ left: 0 }, 2000, function () {
+            console.log("运动结束")
+        }).animate({ top: 20 }, 2000, function () {
+            console.log("运动结束")
+        });
+    })
+
+    $(".stop").eq(0).click(function () {
+        $(".box").stop(false, false);  //不清空队列,不立即结束动画  (自当前位置 继续执行后续的动画队列)
+    })
+    $(".stop").eq(1).click(function () {
+        $(".box").stop(false, true);  //不清空队列,立即结束动画  (自当前队列终点的位置 继续执行后续的动画队列)
+    })
+    $(".stop").eq(2).click(function () {
+        $(".box").stop(true, true);  //清空队列,立即结束动画  (不在继续执行后续的动画队列,当前队列的动画立即到达终点)
+    })
+    $(".stop").eq(3).click(function () {
+        $(".box").stop(true, false);  //清空队列,不立即结束动画  (不在继续执行后续的动画队列,停留在当前位置)
+    })
+    $(".finish").click(function () {
+        $(".box").finish();
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

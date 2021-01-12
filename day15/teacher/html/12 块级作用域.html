@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 作用域 (代码生效的区域)
+
+    // 全局作用域
+
+    // 局部作用域 (函数作用域,块级作用域)
+
+    // ES6 新增  块级作用域  => (只有含有{})  
+    // 在块级作用域中let声明的变量是局部变量,块级作用域对var没有影响 (该是全局的就是全局的,该是局部的就是局部的)
+
+    // if(){}
+    // if..else
+    // if...elseif..else
+    // switch(){}
+
+    // while(){}
+    // do...while()
+    // for(){}
+
+    // {   //纯净的块级作用域
+
+    //     var a = 10;
+    //     let b = 20; //局部变量
+    //     console.log(a, b);
+    // }
+    // console.log(a);
+    // console.log(b);   //b is not defined
+
+
+    // function fn() {
+    //     {   //纯净的块级作用域
+
+    //         var a = 10;
+    //         let b = 20; //局部变量
+    //         console.log(a, b);
+    //     }
+    //     console.log(a);
+    //     console.log(b);   //b is not defined
+
+    // }
+
+    if (true) {
+
+        var a = 10;
+        let b = 20; //局部变量
+        console.log(a, b);
+    }
+    console.log(a);
+    console.log(b);   //b is not defined
+
+
+</script>
+
+</html>

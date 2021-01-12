@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 选择结构的嵌套 (条件依赖  在满足某个条件的情况下,进行二次判断)
+
+    var grade = Math.round(Math.random() * 100);
+
+    if (grade >= 90) { //  >=90   90-100
+
+        if (grade == 100) {
+            document.write(grade + "分,999<br>");
+        } else if (grade > 96) {
+            document.write(grade + "分,非常优秀<br>");
+        } else {
+            document.write(grade + "分,优秀<br>");
+        }
+
+    } else if (grade >= 80) {   //  grade >= 80 && grade < 90
+        document.write(grade + "分,良好<br>");
+    } else if (grade >= 70) {   //  grade >= 70 && grade < 80
+        document.write(grade + "分,一般<br>");
+    } else if (grade >= 60) {   //  grade >= 70 && grade < 80
+        document.write(grade + "分,危险<br>");
+    } else {
+        document.write(grade + "分,赠送免费回城券一张<br>");
+    }
+
+</script>
+
+</html>

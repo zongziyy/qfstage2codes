@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+
+        table td{
+            width: 100px;
+            line-height: 30px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    姓名: <input type="text"><br>
+    年龄: <input type="number"><br>
+    性别: 男<input type="radio" value="男" name="sex">
+         女<input type="radio" value="女"  name="sex">
+         保密<input type="radio" value="保密" name="sex"><br>
+    城市: <select >
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="重庆">重庆</option>
+            <option value="天津">天津</option>
+          </select><br>
+    <button>新增</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>城市</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>    
+        // 建立数组,模拟数据库的数据
+        var arr = [
+            {name:'张三',age:18,sex:'男',city:'北京'},
+            {name:'李四',age:19,sex:'女',city:'上海'},
+            {name:'王五',age:20,sex:'男',city:'广州'},
+            {name:'赵六',age:21,sex:'女',city:'重庆'},
+            {name:'刘七',age:22,sex:'保密',city:'天津'},
+        ];
+
+        // 获取table表格中tbody标签对象
+        var oTb = document.querySelector('tbody');
+        // 获取button按钮标签对象
+        var oBtn = document.querySelector('button');
+
+
+        // 给tbody写入内容
+        oTb.innerHTML = setTab();
+
+        // 点击button按钮,新增数据操作
+        oBtn.onclick = function(){
+            
+            // 1,需要先获取input等标签中,写入的数据
+
+            // input标签,获取数据是通过标签对象的value属性
+            // document.querySelector('[type="text"]')  获取标签对象
+            // document.querySelector('[type="text"]').value  获取标签对象,value的数据
+            
+            // 获取姓名的数据
+            var oIptName = document.querySelector('[type="text"]').value;
+            console.log(oIptName);
+
+            // 获取年龄的数据
+            var oIptAge =  document.querySelector('[type="number"]').value;
+
+            // 获取单选标签,是一个数组
+            // 如果被选中的标签,checked属性值是true,没有选中的checked属性值是false
+            var oIptSex = document.querySelectorAll('[type="radio"]');
+
+            // 将变量定义在函数之外,是一个全局变量,这样函数之外就可以使用
+            // 定义变量,存储的是性别的数据
+            var oIptSexVal = 0;
+
+            // 获取数据,要循环遍历,如果 checked属性值是true,获取这个标签的value属性值
+            oIptSex.forEach(function(item){
+                // 如果标签 checked 属性,属性值是true,证明是被选中的标签
+                // 要获取value属性的属性值
+                if(item.checked === true ){
+                    // 获取当前这个item标签,value的属性值
+                    // 在函数之内对这个变量进行赋值
+                    oIptSexVal = item.value;
+                    // 如果将变量定义在函数之内,只能在函数之内调用
+                }
+            })
+            
+            // select和option标签,配合使用
+            // 选中option,所表示的数据,会定义在select标签的value属性上
+            var oIptCity = document.querySelector('select').value;
+
+            // 将数据写成一个对象的形式,与数组中存储的对象是相同的形式
+            var obj = {
+                name: oIptName ,
+                age: oIptAge ,
+                sex: oIptSexVal ,
+                city:oIptCity
+            };
+
+            // 将这个对象,写入到数组中
+            arr.push(obj);
+
+            // 根据新的数组,重新渲染页面
+            // 调用函数,生成新的页面内容
+            oTb.innerHTML = setTab();
+            console.log(arr)
+
+            // 总结思路:
+            // 1,获取标签对象中,对应的数据信息
+            //    input,text,password,number等等,输入框,包裹textarea文本域
+            //          输入的数据,都是存储在 value属性中的 
+            //          标签对象.value   就可以获取到标签value属性中存储的数据,也就是输入的内容 
+
+            //    select>option  定义数据是在option中,定义的option标签的value属性
+            //        option和select是配合使用的,最终,你选定的option的数据
+            //        会记录在select标签,value属性中
+            //        select标签对象.value    获取的是下拉列表框中,选定的数据的属性值
+
+            //    radio   定义标签的value属性,以及对应的属性值
+            //            标签的checked 属性 如果是 true 表示是被选中的标签
+            //            标签对象.checked 获取属性对应的属性值
+            //                如果 checked 属性值 是 true 表示这个标示是被单选选中的标签
+            //                就获取这个标签的数据,这个标签的数据是value属性中存储的数据
+            //                标签对象.value 获取属性值
+
+
+            // 2,将这些数据信息,也称对象的形式,对象中的格式,与数组中定义的对象格式必须一致
+            // 3,将新建立的对象,也就是新的数据信息,写入到数组中
+            // 4,重新调用函数,根据新的数组,生成新的字符串,写入到tbody中
+            //   之前写的内容,就会被覆盖掉,重新生成新的内容
+
+        }
+
+
+
+
+
+
+
+
+    
+        // 设定函数,生成table表格内容
+
+        function setTab(){
+            // 定义空字符串,存储拼接结果
+            var str = '';
+
+            arr.forEach(function( item , key ){
+                // 1,拼接tr起始标签
+                str += '<tr>';
+                // 2,拼接序号单元格,单元格内容是索引+1
+                str += `<td>${key+1}</td>`;
+                // 3,循环拼接内容单元格
+                // 此时内容的是一个对象,item中存储的是一个对象
+                // 对象的循环,只能使用 for...in
+                for(var k in item){
+                    str += `<td>${item[k]}</td>`;
+                }
+                // 4,拼接tr结束标签
+                str += '</tr>';
+                
+            })
+
+            // 定义 字符串为 函数的返回值
+
+            return str;
+            
+        }
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

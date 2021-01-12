@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            padding: 10px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // width()  height()   content
+
+    console.log($(".box").width())
+    console.log($(".box").height())
+
+    // innerWidth()  innerHeight()    (content+padding)
+    console.log($(".box").innerWidth())
+    console.log($(".box").innerHeight())
+
+
+    // outerWidth()  outerHeight()    (content+padding+border)
+    console.log($(".box").outerWidth())
+    console.log($(".box").outerHeight())
+
+    // 取值
+    console.log($(".box").css("padding-left"));
+
+
+
+</script>
+
+</html>

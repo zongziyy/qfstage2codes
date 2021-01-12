@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            border: 1px dashed #333;
+            line-height: 32px;
+        }
+
+        .list .active {
+            background-color: #6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="box">
+        <div class="list">
+            <li class="first">我是01</li>
+            <li>我是02</li>
+            <li>我是03</li>
+            <li>我是04</li>
+            <li>我是05</li>
+            <li>我是06</li>
+            <li>我是07</li>
+            <li>我是08</li>
+            <li>我是09</li>
+            <li>我是10</li>
+        </div>
+    </div>
+    <div class="box">
+        <button class="setHtml">
+            设置html
+        </button>
+        <button class="getHtml">
+            获取html
+        </button>
+        <button class="setWidth">
+            设置宽度
+        </button>
+        <button class="getWidth">
+            获取宽度
+        </button>
+        <button class="hide">隐藏</button>
+        <button class="show">显示</button>
+        <button class="attr">attr</button>
+        <button class="prop">prop</button>
+        <button class="css">css</button>
+        <button class="eq">第一个</button>
+        <button class="siblings">siblings</button>
+    </div>
+
+</body>
+<script>
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // attr()  (attribute HTML属性)  prop() (property 节点的属性)
+    // css()
+    // eq()   siblings()
+
+    // 原生
+    // var liList = document.querySelectorAll(".list li");
+    // var liList = document.querySelectorAll(".wrap");
+    // var liList = document.querySelectorAll("#box");
+
+    // liList.forEach(function (item) {
+    //     item.textContent = "hello world";
+    // });
+
+    // liList.forEach(function (item) {
+    //     item.onclick = function () {
+    //         console.log(11111);
+    //     };
+    // });
+
+    // arr.forEach(function(item,index){})
+
+
+
+    function GetEle(selector) {
+        // this.eles  目的就是得到一个由元素组成的集合 
+        if (typeof selector == "string") {
+            // 只能用字符串来获取   不能获取dom元素/dom元素的集合
+            // 为什么用querySelectorAll  (无论是获取的 单个元素还是多个元素  都会放到集合中  => 操作集合)
+            // 用来存放  获取元素的结合
+            this.eles = document.querySelectorAll(selector);
+        } else { // dom元素 / dom元素的集合
+            if (selector.length) {  //如果有length属性 说明是dom元素的集合  直接存到this.eles
+                this.eles = selector;
+            } else {  // 单个dom元素  => 放到集合中  =>存到this.eles
+                this.eles = [selector];
+            }
+        }
+    }
+
+
+    // 设置 / 获取 对应元素的html结构
+    // 既可以设置 html  又可以获取 html
+    // html(1231231)  有参数  就设置
+    // html()         没有  就获取
+    GetEle.prototype.html = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.innerHTML = con;
+            // }
+
+            // 此方法 一般是由实例化对象调用(this => 实例化对象)
+            this.each(function (ele, index) {
+                ele.innerHTML = con;
+            })
+            return this;  // 返回实例化对象
+
+
+        } else {  // 没有  就获取
+            return this.eles[0].innerHTML;
+        }
+    }
+    // 设置 / 获取 对应元素的text
+    GetEle.prototype.text = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.textContent = con;
+            // }
+            this.each(function (ele, index) {
+                ele.textContent = con;
+            })
+            return this;  // 返回实例化对象
+        } else {  // 没有  就获取
+            return this.eles[0].textContent;
+        }
+    }
+
+    // 设置 / 获取 对应元素的value(表单)
+    GetEle.prototype.val = function (con) {
+        if (arguments.length >= 1) {  //有参数  就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.value = con;
+            // }
+
+            this.each(function (ele, index) {
+                ele.value = con;
+            })
+            return this;  // 返回实例化对象
+        } else {  // 没有  就获取
+            return this.eles[0].value;
+        }
+    }
+
+    GetEle.prototype.click = function (fn) {
+        // for (var i = 0; i < this.eles.length; i++) {
+        //     var ele = this.eles[i];
+        //     // ele.onclick = fn;
+        //     ele.addEventListener("click", fn);
+        // }
+
+        this.each(function (ele, index) {
+
+            ele.addEventListener("click", fn);
+        })
+        return this;  // 返回实例化对象
+
+    }
+    GetEle.prototype.each = function (fn) {
+        for (var i = 0; i < this.eles.length; i++) {
+            var ele = this.eles[i];
+            var index = i;
+
+            // 注意  在Jquery中each 方法的回调函数中  第一个是下标,第二个是当前元素  fn(index,ele)  
+            fn(ele, index);
+        }
+        return this;  // 返回实例化对象
+    }
+
+    // 设置 / 获取 对应元素的宽度
+    // $(".list").width(200)       有参数  就设置
+    // $(".list").width()  => 200  没有  就获取
+    GetEle.prototype.width = function (con) {
+        if (arguments.length >= 1) {  //设置元素的宽度
+            var reg = /\d+(px|pt|%|em|rem)$/;
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     if (reg.test(con)) {   // 有单位
+            //         ele.style.width = con;
+            //     } else {  //没有单位默认用px
+            //         ele.style.width = con + "px";
+            //     }
+            // }
+
+            this.each(function (ele, index) {
+                if (reg.test(con)) {   // 有单位
+                    ele.style.width = con;
+                } else {  //没有单位默认用px
+                    ele.style.width = con + "px";
+                }
+            })
+            return this;  // 返回实例化对象
+
+        } else {
+            return parseFloat(this.getStyle(this.eles[0], "width"));
+        }
+    }
+
+    GetEle.prototype.height = function (con) {
+        if (arguments.length >= 1) {  //设置元素的宽度
+            var reg = /\d+(px|pt|%|em|rem)$/
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     if (reg.test(con)) {   // 有单位
+            //         ele.style.height = con;
+            //     } else {  //没有单位默认用px
+            //         ele.style.height = con + "px";
+            //     }
+            // }
+
+            this.each(function (ele, index) {
+                if (reg.test(con)) {   // 有单位
+                    ele.style.height = con;
+                } else {  //没有单位默认用px
+                    ele.style.height = con + "px";
+                }
+            })
+            return this;  // 返回实例化对象
+        } else {
+            return parseFloat(this.getStyle(this.eles[0], "height"));
+        }
+    }
+
+    GetEle.prototype.hide = function () {
+        this.each(function (ele) {
+            ele.style.display = "none";
+        })
+        return this;  // 返回实例化对象
+    }
+    GetEle.prototype.show = function () {
+        this.each(function (ele) {
+            ele.style.display = "block";
+        })
+        return this;  // 返回实例化对象
+    }
+
+
+
+
+    // 设置和获取 dom元素的html属性
+    // 设置  ele.setAttribute("title","a12312")
+    // 设置  ele.getAttribute("title")
+    GetEle.prototype.attr = function (attr, val) {
+        if (arguments.length >= 2) {
+            this.each(function (ele) {
+                ele.setAttribute(attr, val);
+            })
+            return this;  // 返回实例化对象
+        } else if (arguments.length == 1) {
+            return this.eles[0].getAttribute(attr);
+        }
+    }
+
+    // 设置和获取 dom元素的属性(元素节点的属性)
+    // 设置  ele.className = "active"
+    // 获取  ele.className => 3active
+    GetEle.prototype.prop = function (prop, val) {
+        if (arguments.length >= 2) {
+            this.each(function (ele) {
+                ele[prop] = val;
+            })
+
+            return this;  // 返回实例化对象
+        } else if (arguments.length == 1) {
+            return this.eles[0][prop];
+        }
+    }
+
+
+    // 设置 / 获取 对应元素的css样式
+    // $(".list li").css("background", "red");
+    // $(".list li").css("background");
+    GetEle.prototype.css = function (attr, val) {
+        if (arguments.length >= 2) {
+            this.each(function (ele) {
+                ele.style[attr] = val;
+            });
+            return this;  // 返回实例化对象
+        } else if (arguments.length == 1) {
+            return this.getStyle(this.eles[0], attr);
+        }
+    }
+
+    // 选取对应下标的元素
+    // $(".list li").eq(0)
+    GetEle.prototype.eq = function (index) {
+        // this.eles[index]; // 单个元素  => []
+        this.eles = [this.eles[index]];
+        return this;  // 返回实例化对象
+    }
+
+    // 返回选中元素 对应的同胞(同级元素)的集合
+    GetEle.prototype.siblings = function () {
+        var ele = this.eles[0];  // 把eq() 选中的单个元素  获取出来
+        var parent = ele.parentElement;  // 找到ele的父元素
+        var children = parent.children; // 找到所有同级元素(包括自己)
+
+        var arr = [];  // 除了自己之外的所有同级元素
+        for (var i = 0; i < children.length; i++) {
+            var item = children[i];
+            if (item !== ele) {
+                arr.push(item);
+            }
+        }
+        this.eles = arr;
+        return this;
+    }
+
+
+
+    GetEle.prototype.getStyle = function (ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+
+
+    // 实例的连写操作 (链式操作) 
+    // 只要不是 取值 都在函数末尾返回 对应的实例化对象(return this) (实例化对象可以继续 调用 prototype上的方法)
+
+
+    function $(selector) {  // 接收一个字符串的选择器   =>   GetEle 的实例化对象
+        return new GetEle(selector);
+    }
+
+
+    $(".setHtml").click(function () {
+        $(".list li").html("hello");
+    })
+
+    $(".getHtml").click(function () {
+        alert($(".list li").html());
+    })
+
+    $(".setWidth").click(function () {
+        $(".list li").width(200);
+    })
+
+    $(".getWidth").click(function () {
+        console.log($(".list li").width());
+    })
+
+    $(".hide").click(function () {
+        $(".list li").hide();
+    })
+
+    $(".show").click(function () {
+        $(".list li").show();
+    })
+
+    $(".attr").click(function () {
+        $(".list li").attr("class", "active")
+    })
+
+    $(".prop").click(function () {
+        $(".list li").prop("className", "");
+    })
+
+    $(".css").click(function () {
+        $(".list li").css("backgroundColor", "blue");
+    })
+
+    $(".eq").click(function () {
+        $(".list li").eq(0).css("background", "pink").width(200);
+    })
+
+    $(".siblings").click(function () {
+        console.log("123123");
+        $(".list li").eq(0).css("background", "pink").siblings().css("background", "#6ff")
+    })
+
+    $(".list li").click(function () {
+        $(this).prop("className", "active").siblings().prop("className", "");
+    })
+
+</script>
+
+</html>

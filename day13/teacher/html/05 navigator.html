@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // navigator   =>window.navigator
+
+    // 属性
+    // userAgent   userAgent  用户代理信息，通过该属性可以获取浏览器及操作系统信息
+
+    // PC     => Windows
+    // 移动端  => iPad,iPhone,Android,BB10
+
+    // console.log(navigator)
+    console.log(navigator.userAgent);
+
+    var userAgent = navigator.userAgent;
+    var appList = ["iPad", "iPhone", "Android", "BB10", "Windows Phone", "PlayBook"];
+
+    var flag = false;  // 假设不是移动端(PC)
+
+    for (var i = 0; i < appList.length; i++) {
+        var app = appList[i];
+        if (userAgent.indexOf(app) != -1) {
+            flag = true;
+            break
+        }
+    }
+
+    if (flag) {
+        document.write("移动端:" + app);
+        setTimeout(function () {
+            location.href = "https://m.jd.com";
+        }, 5000);
+    } else {
+        document.write("PC端");
+        setTimeout(function () {
+            location.href = "https://jd.com";
+        }, 5000);
+    }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form" action="">
+        <a href="#one">注册</a>
+        <p><label for="">用户名:</label><input name="user" type="text"></p>
+        <p><label for="">密码:</label><input name="pwd" type="text"></p>
+        <p><input type="submit" value="提交"></p>
+    </form>
+    <button id="btn">点击</button>
+</body>
+<script>
+
+    // location 对象(url有关)   => window.location
+
+    // url的组成   
+    // https://www.baidu.com:443/index.html?user=a123123&pwd=123123#part01
+
+    // 协议  http|https  (超文本传输协议) 
+    // 域名/主机地址(ip): www.baidu.com => ip(http://182.61.200.7/)
+    //    本地 192.168.59.181  (localhost,127.0.0.1  本地主机)
+    //  .com 域名后缀 (.xyz .pub .gov .top  .net .club .edu )
+    //  baidu   一级域名
+    //  search.jd.com 二级域名
+    //  www   (万维网可以省略)
+
+    // 端口 http(默认80)|https=>(默认443)   
+
+    // 文件路径   html/index.html
+    // 参数数据部分  ?user=a123123&pwd=123123  (?之后#之前)
+    // 锚点(hash值)  #part01
+
+    console.log(location);
+
+    // 属性
+    // protocol     设置或返回(取值和赋值)协议
+    // hostname     设置或返回域名或主机名
+    // host         设置或返回域名和端口
+    // origin       设置或返回   协议 域名 和 端口
+    // port         设置或返回端口部分
+    // pathName     设置或返回 url的路径部分
+
+    // search       设置或返回 url的参数数据部分(?之后 #之前)
+    // hash         设置或返回 hash值(url锚点部分) 
+    // href         设置或返回(取值和赋值)当前窗口的url地址
+
+    console.log(location.protocol);
+    // location.protocol = "https";
+
+    console.log(location.hostname);
+    console.log(location.host);
+    console.log(location.origin);
+    console.log(location.port);
+    console.log(location.pathname);
+    console.log(location.search);
+    console.log(location.hash);
+    console.log(location.href);
+    // location.host = "localhost";
+    // location.port="3000"
+    // location.href="https://www.baidu.com"   (当前页面跳转)
+
+    // 方法
+    // reload(bool);   页面刷新
+    // bool  是否不使用缓存  (默认false 使用缓存)
+    //                      true => 不用缓存
+
+    btn.onclick = function () {
+        location.reload(true);
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</html>

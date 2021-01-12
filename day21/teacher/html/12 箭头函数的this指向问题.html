@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // this -> 函数中的内置参数,一般指向对象
+    // 1. 普通函数 命名函数/匿名函数  this->window   (严格模式  this-> undefined)
+    // 2. 函数在调用时  属于谁就指向谁     事件/对象调用方法
+    // 3. 箭头函数没有自己的this指向,它的this依赖于箭头函数所在作用域(父作用域)的this(箭头函数遇到this,向外跳一层)
+
+
+    // 改箭头函数
+    document.onclick = () => {
+        console.log("doc", this);  //this -> document
+    }
+
+    var obj = {
+        name: "张三",
+        age: 18,
+        say: () => {
+            console.log("say", this);
+            // console.log(this.
+            //     name, this.age);
+        }
+    }
+    obj.say();   // this -> obj
+
+
+
+
+
+</script>
+
+</html>

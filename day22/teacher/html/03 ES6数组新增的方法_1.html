@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // entries()，keys() 和 values()
+
+    // ES6 提供三个新的方法——entries() ，keys()和values() ——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用for...of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。
+
+    var list = [55, 66, 77, 88, 99];
+
+    var obj = list.keys();    //  调用此方法得到遍历器对象(下标)
+    var obj = list.values();    // 调用此方法得到遍历器对象(值)
+    var obj = list.entries();    // 调用此方法得到遍历器对象([下标,值])
+
+    console.log(obj);
+
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+
+
+    // 一个一个调用太麻烦  (ES6新增 for...of )
+    var obj = list.keys();
+    for (var index of obj) {
+        console.log(index);
+    }
+
+    var obj = list.values();
+    for (var value of obj) {
+        console.log(value);
+    }
+
+    var obj = list.entries();
+    // for (var arr of obj) {
+    //     console.log(arr);
+    // }
+    for (var [index, value] of obj) {
+        console.log(index, value);
+    }
+
+    // 字符串中如何使用遍历器对象
+    var str = new String("hello");
+    console.log(str);
+    var obj = str[Symbol.iterator]();
+
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+    var result = obj.next();
+    console.log(result);
+
+
+
+
+</script>
+
+</html>

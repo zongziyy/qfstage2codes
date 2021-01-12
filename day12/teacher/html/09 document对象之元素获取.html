@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <ul class="ul">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+        <ul class="ul">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+    <form action="">
+        <label>用户名:
+            <input type="text" name="user">
+        </label>
+        <label>用户名:
+            <input type="text" name="pwd">
+        </label>
+        <span>爱好:</span>
+        <label>唱歌:
+            <input type="checkbox" name="hobby">
+        </label>
+        <label>跳舞:
+            <input type="checkbox" name="hobby">
+        </label>
+        <label>rap:
+            <input type="checkbox" name="hobby">
+        </label>
+    </form>
+</body>
+<script>
+    // 通过文档获取 
+    // document.getElementById();
+    // document.getElementsByClassName();
+    // document.getElementsByTagName()
+    // document.getElementsByName()   建议用在表单元素
+
+    // document.write()
+
+    var box = document.getElementById("box");
+    var ulList = document.getElementsByClassName("ul");
+    console.log(ulList);
+
+    var liList = document.getElementsByTagName("li");
+    console.log(liList);
+
+    var userInp = document.getElementsByName("user")[0];
+    var pwdInp = document.getElementsByName("pwd")[0];
+    var hobbyList = document.getElementsByName("hobby");
+    console.log(userInp, pwdInp, hobbyList);
+
+
+
+
+</script>
+
+</html>

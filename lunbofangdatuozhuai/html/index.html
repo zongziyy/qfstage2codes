@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页轮播</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 375px;
+            margin: 100px auto;
+            font-size: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box .left,
+        .box .right {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 2;
+            border-radius: 26px;
+            background: rgba(0, 0, 0, .5) url(../images/right.png) no-repeat center center;
+            cursor: pointer;
+        }
+
+        .box .left {
+            left: -30px;
+            transform: rotate(180deg);
+            display: none;
+        }
+
+        .box .right {
+            right: -30px;
+            display: none;
+        }
+
+        .slideBar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: max-content;
+            height: 375px;
+        }
+
+        .slideBar li {
+            float: left;
+            width: 1000px;
+        }
+
+        .slideBar li img {
+            width: 100%;
+        }
+
+        .list {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 100px;
+            height: 15px;
+        }
+
+        .list li {
+            list-style: none;
+            width: 15px;
+            height: 15px;
+            background-color: #ffffff;
+            border-radius: 99px;
+        }
+
+        .list .active {
+            background-color: #54ebff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right"></div>
+        <ul class="slideBar">
+            <li><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpg" alt=""></li>
+            <li><img src="../images/4.jpg" alt=""></li>
+            <li><img src="../images/1.jpg" alt=""></li>
+        </ul>
+        <ul class="list">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var slideBar = document.querySelector(".slideBar");
+    var slideList = document.querySelectorAll(".slideBar li");
+    var liList = document.querySelectorAll(".list li");
+    var box = document.querySelector(".box");
+    var left = document.querySelector(".left");
+    var right = document.querySelector(".right");
+
+    var timer = null;
+    var index = 0;
+    var isMove = false;
+
+    var slideWidth = slideList[0].clientWidth;
+
+    box.onmouseenter = function() {
+        clearInterval(timer);
+        left.style.display = "block";
+        animate(left, "left", 10, "linear");
+        right.style.display = "block";
+        animate(right, "right", 10, "linear");
+    }
+
+    box.onmouseleave = function() {
+        animate(left, "left", -30, "linear", 20, function() {
+            left.style.display = "none";
+        });
+        animate(right, "right", -30, "linear", 20, function() {
+            right.style.display = "none";
+        });
+        autoplay();
+    }
+
+    left.onclick = function() {
+        if ($(".slideBar:animated").length != 0) {
+            return false;
+        }
+        index--;
+        move();
+    }
+    right.onclick = function() {
+        if ($(".slideBar:animated").length != 0) {
+            return false;
+        }
+        index++;
+        move();
+    }
+
+    // 点击滚动 原生
+    // for (let i = 0; i < liList.length; i++) {
+    //     let li = liList[i];
+    //     li.onclick = function() {
+    //         if ($(".slideBar:animated").length != 0) {
+    //             return false;
+    //         }
+    //         index = i;
+    //         for (let j = 0; j < liList.length; j++) {
+    //             liList[j].classList.remove("active");
+    //         }
+    //         li.classList.add("active");
+    //         animate(slideBar, "left", -slideWidth * index, "ease-out");
+    //     }
+    // }
+
+    // 点击滚动 jQuery
+    $(document).on("click", ".list li", function() {
+        if ($(".slideBar:animated").length != 0) {
+            return false;
+        }
+        $(this).addClass("active").siblings().removeClass("active");
+        index = $(this).index();
+        $(".slideBar").animate({ left: `-${$(".slideBar li").width() * index}px` });
+    })
+    autoplay();
+
+    //自动轮播
+    function autoplay() {
+        timer = setInterval(function() {
+            index++;
+            console.log(index)
+            move();
+        }, 3000)
+    }
+
+    function move() {
+        // 原生
+        // for (let j = 0; j < liList.length; j++) {
+        //     liList[j].classList.remove("active");
+        // }
+        // if (index < 0) {
+        //     slideBar.style.left = -slideWidth * (slideList.length - 1) + "px";
+        //     index = slideList.length - 1;
+        //     index--;
+        // }
+        // if (index > slideList.length - 1) {
+        //     slideBar.style.left = 0;
+        //     index = 1;
+        // }
+        // animate(slideBar, "left", -slideWidth * index, "ease-out");
+        // liList[index > liList.length - 1 ? 0 : index].classList.add("active");
+
+        // jQuery
+        if (index < 0) {
+            $(".slideBar").css({ left: `${-$(".slideBar li").width() * ($(".slideBar li").length - 1)}px` });
+            index = $(".slideBar li").length - 1;
+            index--;
+        }
+        if (index > $(".slideBar li").length - 1) {
+            $(".slideBar").css({ left: 0 });
+            index = 1;
+        }
+        $(".slideBar").animate({ left: `-${$(".slideBar li").width() * index}px` });
+        $(".list li").eq(index > $(".list li").length - 1 ? 0 : index).addClass("active").siblings().removeClass("active");
+    }
+</script>
+
+</html>

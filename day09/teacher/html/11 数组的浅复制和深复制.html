@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = ["a", "b", "c", "d"];
+
+    // 浅复制  将数组的引用空间赋值给另一个变量
+    // 特点   只要一个做了改变,另一个也会受到影响
+    // var arr = list;
+    // console.log(arr === list); //true 引用同一片内存空间
+
+    // 深复制 得到一个与原数组元素相同的新数组
+    // 1. 新建数组,遍历原数组,将原数组中的每一个元素放到新数组中
+    // 2. 借助数组的常用方法 slice() concat() map()
+
+    // 以上写法 仅适用于一维数组(数组中的元素 都是值类型)
+    var list = ["a", "b", "c", "d"];
+
+    // 1. 
+    // var arr = [];
+    // for (var val of list) {
+    //     arr.push(val);
+    // }
+    // console.log(arr, list, arr === list);
+
+    // 2. 
+    // var arr = list.slice();
+    // var arr = list.concat();
+
+    // var arr = list.map(function (item) {
+    //     return item;
+    // })
+    // console.log(arr, list, arr === list);
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

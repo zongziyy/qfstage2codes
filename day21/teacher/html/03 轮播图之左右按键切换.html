@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .wrapAll {
+            width: 100%;
+            height: 570px;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideBar {
+            /* 父元素的宽度  == 所有子元素的宽度和 */
+            width: 500%;
+            height: 460px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .slideBar li {
+            width: 20%;
+            float: left;
+        }
+
+        .slideBar li img {
+            width: 100%;
+        }
+
+        .dotList {
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+            display: flex;
+        }
+
+        .dotList li {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            margin: 5px;
+            border-radius: 50%;
+        }
+
+        .dotList .active {
+            background-color: blue;
+        }
+
+        .left,
+        .right {
+            width: 60px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapAll">
+        <ul class="slideBar">
+            <li class="active"><img src="../images/1.jpg" alt=""></li>
+            <li><img src="../images/2.jpg" alt=""></li>
+            <li><img src="../images/3.jpg" alt=""></li>
+            <li><img src="../images/4.jpg" alt=""></li>
+            <li class="active"><img src="../images/1.jpg" alt=""></li>
+        </ul>
+        <ul class="dotList">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var wrapAll = document.querySelector(".wrapAll");
+        var slideBar = document.querySelector(".slideBar");
+        var liList = document.querySelectorAll(".dotList li");
+        var slideList = document.querySelectorAll(".slideBar li");
+        var left = document.querySelector(".left");
+        var right = document.querySelector(".right");
+
+        var index = 0; // 记录自动轮播的下标
+        var timer = null;
+
+        autoPlay(); // 页面加载时  自动轮播
+        // animate(slideBar, "left", -1226 * 2, "linear");
+
+        var swiperWidth = slideList[0].clientWidth;
+        console.log(swiperWidth);
+
+        for (let i = 0; i < liList.length; i++) {
+            let li = liList[i];
+            li.onclick = function () {
+                index = i;
+                for (var j = 0; j < liList.length; j++) {
+                    liList[j].className = "";
+                }
+                liList[i].className = "active";
+
+                animate(slideBar, "left", -swiperWidth * i, "ease-out");
+            }
+        }
+
+        left.onclick = function () {
+            index--;
+            move();
+        }
+
+        right.onclick = function () {
+            index++;
+            move();
+
+        }
+
+        wrapAll.onmouseenter = function () {
+            clearInterval(timer);
+        }
+
+        wrapAll.onmouseleave = function () {
+            autoPlay();
+        }
+
+
+        function autoPlay() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                index++;
+
+                move();
+            }, 3000);
+        }
+
+        function move() {
+
+            // 左键连点的处理   => 连续点击时, 不会触发animate中的回调函数,index 会小于0 (负值)  需要而外添加条件切换  
+            // 第一张如何滚动到第四张   
+            // 第一张 切换到  第五张  滚动到第四张
+            if (index < 0) {
+                slideBar.style.left = -swiperWidth * (slideList.length - 1) + "px"; //第一张 切换到  第五张 
+                index = slideList.length - 1; //下标 第一张 切换到  第五张 
+                index--;
+            }
+
+            // 右键连点的处理   => 连续点击时,不会触发animate中的回调函数,index 会超出下标的最大值 需要而外添加条件切换
+            // 如果下标超出  第五张(4)   第五张  切换到  第一张  滚动到第二张
+            if (index > slideList.length - 1) {
+                slideBar.style.left = 0; // 第五张  切换到  第一张
+                index = 0; // 第一张的下标
+                index++; //  滚动到第二张
+            }
+
+            for (var j = 0; j < liList.length; j++) {
+                liList[j].className = "";
+            }
+            console.log(index, slideList.length - 1);
+            // index >= 4 ? 0 : index  判断如果是第五张 把第一张改为活跃状态
+            liList[index >= slideList.length - 1 ? 0 : index].className = "active";
+
+            animate(slideBar, "left", -swiperWidth * index, "ease-out", function () {
+                // 每次运动结束之后 会执行此回调函数
+                // console.log("运动结束");
+
+                // 如何实现滚动切换(障眼法)
+                // 每次运动结束之后  判断是否是第五张, 如果是第五张 立即切换到第一张
+                // 第四张  滚动 第五张 切换到  第一张
+                if (index >= slideList.length - 1) {
+                    slideBar.style.left = 0;
+                    index = 0;
+                }
+            });
+        }
+
+
+    }
+</script>
+
+</html>

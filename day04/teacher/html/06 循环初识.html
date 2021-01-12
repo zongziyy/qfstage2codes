@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 程序的三大流程控制
+    // 顺序结构
+    // 选择结构
+    // 循环结构   (在满足特定条件的情况下,重复的执行某个操作(代码段),直到条件不满足为止)
+
+
+    // 循环     循 => 沿着   环 => 圆    =>  周而复始,循环往复  
+
+    // 10 (跑圈)
+
+    // 1  2  3  4  ....   10      <=10     满足条件 继续循环 ,不满足条件=> 停止
+
+
+    // 循环的三要素   =>只是为了方便理解(并不适用于所有的循环)
+    // a. 初始值      1
+    // b. 循环条件    满足条件 继续循环 ,不满足条件=> 停止
+    // c. 自增或自减  1=>10   10 => 1
+
+    // while(表达式){
+    //      执行语句;   // 循环体
+    // }
+
+    // 首先求解表达式(循环条件) , 如果表达式成立,则执行while(){}  中的 循环语句, 执行完毕, 继续求解表达式,如果表达式成立,继续循环,否则跳出循环执行循环之后的语句
+
+    // 在页面上  打印10个*号   =>  while
+    // var i = 1; //循环的初始值
+    // while (i <= 10) {  //循环条件
+    //     document.write("*");
+    //     i++;  //自增
+    // }
+
+    // i的作用   a. 作为循环的初始值  b. 贯穿整个循环,每次循环的当前值
+
+    // i = 1 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=2 
+    // i = 2 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=3 
+    // i = 3 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=4 
+    // i = 4 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=5 
+    // i = 5 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=6 
+    // i = 6 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=7 
+    // i = 7 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=8 
+    // i = 8 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=9 
+    // i = 9 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=10 
+    // i = 10 ,  i <= 10=> true   => 执行语句 document.write("*");   i++ => i=11 
+    // i = 11 ,  i <= 10=> false   => 跳出循环
+
+
+
+    // var i = 10;
+    // while (i >= 1) {
+    //     document.write("*");
+    //     i--;
+    // }
+
+    // 计算1-100的和
+    // a. 得到1-100的数 
+
+    var i = 1;
+    var sum = 0;
+    while (i <= 100) {
+        document.write(i + "<br>");
+        sum += i; //sum = sum+i;
+        i++;
+    }
+    console.log(sum);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

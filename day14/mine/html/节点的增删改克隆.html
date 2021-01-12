@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn">加！</button>
+        <button class="btn">滚！</button>
+        <button class="btn">变！</button>
+        <button class="btn">分!</button>
+        <ul class="list" id="one" title="hello" asd="haha">
+            <li id="li1">01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var btn1 = document.getElementsByClassName("btn")[1];
+    var btn2 = document.getElementsByClassName("btn")[2];
+    var btn3 = document.getElementsByClassName("btn")[3];
+    var li1 = document.getElementById("li1");
+    var list = document.getElementsByClassName("list")[0];
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var second = document.getElementsByClassName("second")[0];
+
+    // 自删
+    // ele.remove();   => 返回值 undefined   (可以重复删除)
+
+    // 父删
+    // parent.removeChild()    返回值 被删除的元素  (一旦被删除之后 无法再删除了)
+
+    btn1.onclick= function(){
+        second.remove();
+    }
+
+    // 增
+    btn.onclick = function (){
+        // list.appendChild(second);
+        list.insertBefore(second,li1.previousElementSibling)
+    }
+    
+    // 克隆 list 放到wrap中
+    // ele.cloneNode(bool)
+    //  bool 
+    //  false(默认)  只克隆元素及其相关属性,并不克隆子内容
+    //  true         既克隆元素及其相关属性,又克隆子内容
+    btn3.onclick = function () {
+        var cloneList = list.cloneNode(true);
+        console.log(cloneList);
+        console.log(list);
+        wrap.appendChild(cloneList);
+    }
+</script>
+
+</html>

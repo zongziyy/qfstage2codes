@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // 强制类型转换
+
+
+    // 函数/方法  完成某个特定功能的工具
+
+    // 一般适用于 数字/字符串 转化为 number类型
+    // parseInt()   将其他类型转化为整型(整数)
+    // parseFloat()   将其他类型转化为浮点型(小数)
+
+    // parseInt()    找到第一个非数字之前的数  将其转化为整数  (变相用法 向下取整)
+    // parseFloat()  找到第一个非数字之前的数  将其转化为number类型(保留小数)  (变相用法 向下取整)
+
+    var str = "100px";  // => 100
+
+    // var num = parseInt("100px");//100
+    // var num = parseInt("100.55px");//100
+    // var num = parseInt(100.55);//100
+    // var num = parseInt("a100.55px");//NaN
+    // console.log(num);
+
+
+    var num = parseFloat("100px");//100
+    var num = parseFloat("100.55px");//100.55
+    var num = parseFloat(100.55);//100.55
+    var num = parseFloat("a100.55px");//NaN
+    console.log(num);
+
+    // var num = parseInt(true);  //NaN
+    // var num = parseInt(false);  //NaN
+    // var num = parseInt(undefined);  //NaN
+    // var num = parseInt(null);  //NaN
+    // console.log(num);
+
+
+
+
+
+
+</script>
+
+</html>

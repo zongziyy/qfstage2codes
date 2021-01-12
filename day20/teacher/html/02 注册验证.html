@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .right {
+            color: green;
+            font-size: 12px;
+        }
+
+        .err {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            <label for="">用户名:</label>
+            <input type="text" id="user">
+            <span id="user_span"></span>
+        </p>
+        <p>
+            <label for="">密&emsp;码:</label>
+            <input type="text" id="pwd">
+            <span id="pwd_span"></span>
+        </p>
+        <p>
+            <label for="">手机号:</label>
+            <input type="text" id="phone">
+            <span id="phone_span"></span>
+        </p>
+        <p>
+            <label for="">邮&emsp;箱:</label>
+            <input type="text" id="email">
+            <span id="email_span"></span>
+        </p>
+        <p>
+            <label for="">验证码:</label>
+            <input type="text" id="code">
+            <span id="createCode">a1b2</span>
+            <span id="repwd_span"></span>
+        </p>
+        <p>
+            <input id="btn" type="submit" value="注册">
+        </p>
+    </div>
+</body>
+<script>
+    // 用户名
+    // 由数字 大小写字母 _ $ 组成 , 6-12位,且不能以数字开头
+
+    // 判断的流程  从易到难的顺序 
+    // a. 长度  6-12位 
+    // b. 不能以数字开头
+    // c. 由数字 大小写字母 _ $ 组成  (所有的字符都必须在合法字符的范围内,只要有一个不是合法的字符 报错   => 判断字符串中是否能含有非法字符)
+
+
+    // 密码
+    // 由数字 大小写字母 _ $   6-12位 
+
+    // 判断密码强度
+    // 数字,大写,小写,特殊字符  中 只出现一种   11111   aaaaaa  AAAAAA   弱
+    // 数字,大写,小写,特殊字符  中 出现2种      中
+    // 数字,大写,小写,特殊字符  中 出现3种      强
+    // 数字,大写,小写,特殊字符  中 出现4种      超强
+
+    // true + true + true + false  => 3 
+
+    // 确认密码  
+    // 和密码相同  
+
+    // 验证码
+    // 1. 页面加载时,随机生成四个不重复的验证码 (0-9 a-z A-Z )  
+    // 2. 点击 验证码 进行切换
+    // 3. 验证码输入判断  (输入的  随机生成的  保持一致)
+
+
+    var userInp = document.getElementById("user");
+    var pwdInp = document.getElementById("pwd");
+    var phoneInp = document.getElementById("phone");
+    var emailInp = document.getElementById("email");
+    var codeInp = document.getElementById("code");
+
+
+    // userInp.onchange = userInp.onblur = function () {
+    //     var user = userInp.value.trim();
+    //     var reg = /^[a-zA-Z_$\u4e00-\u9fa5][\w$\u4e00-\u9fa5]{5,11}$/;
+
+    //     var tipsSpan = next(userInp);
+
+    //     if (user) {
+    //         if (reg.test(user)) {
+    //             tipsSpan.textContent = "√";
+    //             tipsSpan.className = "right";
+    //         } else {
+    //             tipsSpan.textContent = "由数字 大小写字母 _ $ 组成 , 6-12位,且不能以数字开头";
+    //             tipsSpan.className = "err";
+    //         }
+    //     } else {
+    //         tipsSpan.textContent = "*";
+    //         tipsSpan.className = "err";
+    //     }
+    // }
+
+
+    // 拆开判断
+    // 判断的流程  从易到难的顺序 
+    // a. 长度  6-12位 
+    // b. 不能以数字开头
+    // c. 由数字 大小写字母 _ $ 组成
+
+    userInp.onchange = userInp.onblur = function () {
+        var user = userInp.value.trim();
+        // var reg = /^[a-zA-Z_$\u4e00-\u9fa5][\w$\u4e00-\u9fa5]{5,11}$/;
+        // var lenReg = /(^[^\u4e00-\u9fa5]{6,12}$|^[\u4e00-\u9fa5]{3,6}$)/;
+
+        var lenReg = /^.{6,12}$/;
+        var startReg = /^[^0-9]/;
+        var rulerReg = /[^\w$\u4e00-\u9fa5]/;  // 是否含有非法字符
+
+        var tipsSpan = next(userInp);
+
+        if (user) {
+            if (lenReg.test(user)) {
+                if (startReg.test(user)) {
+
+                    if (!rulerReg.test(user)) {
+                        tipsSpan.textContent = "√";
+                        tipsSpan.className = "right";
+
+                    } else {
+                        tipsSpan.textContent = "由 中文 数字 大小写字母 _ $ 组成";
+                        tipsSpan.className = "err";
+                    }
+
+                } else {
+                    tipsSpan.textContent = "用户名不能以数字开头";
+                    tipsSpan.className = "err";
+                }
+            } else {
+                tipsSpan.textContent = "用户名长度需要在6-12位之间";
+                tipsSpan.className = "err";
+            }
+
+        } else {
+            tipsSpan.textContent = "*";
+            tipsSpan.className = "err";
+        }
+    }
+
+    function judgeUser(user) {
+
+        var lenReg = /^.{6,12}$/;
+        var startReg = /^[^0-9]/;
+        var rulerReg = /[^\w$\u4e00-\u9fa5]/;  // 是否含有非法字符
+
+        var tipsSpan = next(userInp);
+
+        if (user) {
+            if (lenReg.test(user)) {
+                if (startReg.test(user)) {
+
+                    if (!rulerReg.test(user)) {
+                        tipsSpan.textContent = "√";
+                        tipsSpan.className = "right";
+
+                        return true;
+                    } else {
+                        tipsSpan.textContent = "由 中文 数字 大小写字母 _ $ 组成";
+                        tipsSpan.className = "err";
+                    }
+
+                } else {
+                    tipsSpan.textContent = "用户名不能以数字开头";
+                    tipsSpan.className = "err";
+                }
+            } else {
+                tipsSpan.textContent = "用户名长度需要在6-12位之间";
+                tipsSpan.className = "err";
+            }
+
+        } else {
+            tipsSpan.textContent = "*";
+            tipsSpan.className = "err";
+        }
+        return false;
+    }
+
+
+    function next(ele) {
+        return ele.nextElementSibling || ele.nextSibling;
+    }
+
+
+</script>
+
+
+</html>

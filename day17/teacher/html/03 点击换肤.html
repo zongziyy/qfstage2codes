@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link class="linkSkin" rel="stylesheet" href="../css/a.css">
+</head>
+
+<body>
+    <select name="" id="changeSkin">
+        <option value="0">皮肤1</option>
+        <option value="1">皮肤2</option>
+    </select>
+    <div class="wrapNav w">
+        <ul class="nav">
+            <li class="active">links_001</li>
+            <li>links_002</li>
+            <li>links_003</li>
+            <li>links_004</li>
+            <li>links_005</li>
+            <li>links_006</li>
+        </ul>
+        <div class="slideBar w">
+            <div class="show">part_01</div>
+            <div>part_02</div>
+            <div>part_03</div>
+            <div>part_04</div>
+            <div>part_05</div>
+            <div>part_06</div>
+        </div>
+    </div>
+</body>
+<script>
+    var wrapNav = document.querySelector(".wrapNav");
+    var liList = document.querySelectorAll(".nav li");
+    var slideList = document.querySelectorAll(".slideBar>div");
+    var changeSkin = document.getElementById("changeSkin");
+    var linkSkin = document.getElementsByClassName("linkSkin")[0];
+
+    var index = 0;  //全局变量  index 存储下标(记录轮播时的下标)
+    var timer = null;
+
+    autoPlay();
+
+
+    var skinList = ["../css/a.css", "../css/b.css"];
+    changeSkin.onchange = function () {
+        var index = this.value;
+        linkSkin.href = skinList[index];
+    }
+
+    for (let i = 0; i < liList.length; i++) {
+        let li = liList[i];
+        li.onclick = function () {
+            // className   单class名
+            // classList   多class名
+            for (let j = 0; j < liList.length; j++) {
+                liList[j].className = "";
+                slideList[j].className = ""
+            }
+            this.className = "active";
+            slideList[i].className = "show";
+
+            index = i;  // 点击时  记录当前元素的下标,下次轮播就从当前位置开始
+        }
+    }
+
+    wrapNav.onmouseenter = function () {
+        clearInterval(timer);
+    }
+
+    wrapNav.onmouseleave = function () {
+        autoPlay();
+    }
+
+
+    function autoPlay() {
+        clearInterval(timer); // 启动下一个之前,清除上一个
+        timer = setInterval(function () {
+            index++;
+            if (index >= liList.length) {
+                index = 0;
+            }
+            for (let j = 0; j < liList.length; j++) {
+                liList[j].className = "";
+                slideList[j].className = "";
+            }
+            liList[index].className = "active";
+            slideList[index].className = "show";
+        }, 1000);
+    }
+
+
+
+
+
+
+</script>
+
+</html>

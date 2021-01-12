@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>jsonp</button>
+</body>
+<script>
+    $("button").eq(0).click(function () {
+
+        // $.ajax({
+        //     type: "get",
+        //     url: "http://localhost/2009_php/demo_29/php/isExistUser.php",
+        //     data: {
+        //         user: "a123123"
+        //     },
+        //     async: true,
+        //     dataType: "json",
+        //     success: function (result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        $.get("http://localhost/2009_php/demo_29/php/isExistUser.php", { user: "a123123" }, function (result) {
+            console.log(result);
+        }, "json")
+
+    })
+
+    $("button").eq(1).click(function () {
+
+        // $.ajax({
+        //     type: "post",
+        //     url: "http://localhost/2009_php/demo_29/php/login.php",
+        //     data: {
+        //         user: "a123123",
+        //         pwd: "123123"
+        //     },
+        //     async: true,
+        //     dataType: "json",
+        //     success: function (result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        $.post("http://localhost/2009_php/demo_29/php/login.php", {
+            user: "a123123",
+            pwd: "123123"
+        }, function (result) {
+            console.log(result);
+        }, "json")
+
+    })
+
+    $("button").eq(2).click(function () {
+
+        // $.ajax({
+        //     type: "get",
+        //     url: "http://localhost/2009_php/jsonp/searchAllGrade.php",
+        //     dataType: "jsonp",   // 以jsonp的形式
+        //     // jsonp: "callback",  // 接收回调函数的字段名
+        //     jsonpCallback: "callback",   // 执行 jsonp返回数据的回调函数的函数名
+        //     success: function (result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        // $.ajax({
+        //     type: "get",
+        //     url: "http://localhost/2009_php/jsonp/searchGradeOrder.php",
+        //     data: {
+        //         key: "",
+        //         orderCol: "id",
+        //         orderType: "asc",
+        //         pageIndex: 1,
+        //         showNum: 10,
+        //     },
+        //     dataType: "jsonp",   // 以jsonp的形式
+        //     // cb = callback
+        //     jsonp: "cb",  // 接收回调函数的字段名  (不指定 默认 callback)
+        //     // jsonpCallback: "callback",   // 执行 jsonp返回数据的回调函数的函数名  (不指定 jquery自动随机)
+        //     success: function (result) {
+        //         console.log(result);
+        //     }
+        // })
+
+        // jsonp请求  cb 接收回调函数的字段名
+        $.getJSON("http://localhost/2009_php/jsonp/searchGradeOrder.php?cb=?", {
+            key: "",
+            orderCol: "id",
+            orderType: "asc",
+            pageIndex: 1,
+            showNum: 10,
+        }, function (result) {
+            console.log(result);
+        })
+
+
+
+    })
+
+
+
+
+
+</script>
+
+</html>

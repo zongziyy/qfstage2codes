@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>原生JS实现购物车结算功能代码</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="catbox">
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input class="check-all check" type="checkbox" />&nbsp;&nbsp;全选</label>
+                    </th>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+                    <td class="goods"><img src="../images/1.jpg" alt="" /><span>Casio/卡西欧 EX-TR350</span></td>
+                    <td class="price">5999.88</td>
+                    <td class="count"><span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span></td>
+                    <td class="subtotal">5999.88</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+                    <td class="goods"><img src="../images/2.jpg" alt="" /><span>Canon/佳能 PowerShot SX50 HS</span></td>
+                    <td class="price">3888.50</td>
+                    <td class="count"><span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span></td>
+                    <td class="subtotal">3888.50</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+                    <td class="goods"><img src="../images/3.jpg" alt="" /><span>Sony/索尼 DSC-WX300</span></td>
+                    <td class="price">1428.50</td>
+                    <td class="count"><span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span></td>
+                    <td class="subtotal">1428.50</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+                    <td class="goods"><img src="../images/4.jpg" alt="" /><span>Fujifilm/富士 instax mini 25</span></td>
+                    <td class="price">640.60</td>
+                    <td class="count"><span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span></td>
+                    <td class="subtotal">640.60</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr> -->
+            </tbody>
+        </table>
+        <div class="foot" id="foot">
+
+            <a class="fl" id="deleteAll" href="javascript:;">删除</a>
+            <div class="fr closing" onclick="getTotal();">结 算</div>
+            <input type="hidden" id="cartTotalPrice" />
+            <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+            <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span
+                    class="arrow up">︽</span><span class="arrow down">︾</span></div>
+            <div class="selected-view">
+                <div id="selectedViewList" class="clearfix">
+                    <div><img src=""><span>取消选择</span></div>
+                </div>
+                <span class="arrow">◆<span>◆</span></span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var tbody = document.querySelector("#cartTable tbody");
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("get", "../data/goods.json", true);
+
+    xhr.send();  // 需要时间
+
+    // 页面加载时  只做绑定  不会立即执行, 将来请求状态改变之后才会执行
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var result = xhr.responseText;
+            var data = JSON.parse(result);
+            console.log(data);
+
+
+            var html = "";
+            data.forEach(function (goods) {
+                // console.log(goods);
+                // var goodsId = goods.goodsId;
+                // var goodsName = goods.goodsName;
+                // var goodsImg = goods.goodsImg;
+                // var goodsPrice = goods.goodsPrice;
+                // var buyNum = goods.buyNum;
+
+                var { goodsId, goodsName, goodsImg, goodsPrice, buyNum } = goods;
+
+                html += `<tr>
+                    <td class="checkbox"><input class="check-one check" type="checkbox" /></td>
+                    <td class="goods"><img src="${goodsImg}" alt="" /><span>${goodsName}</span></td>
+                    <td class="price">${goodsPrice.toFixed(2)}</td>
+                    <td class="count"><span class="reduce"></span>
+                        <input class="count-input" type="text" value="${buyNum}" />
+                        <span class="add">+</span></td>
+                    <td class="subtotal">${(goodsPrice * buyNum).toFixed(2)}</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>`;
+            })
+            tbody.innerHTML = html;    // 生成 
+
+            // // 生成之后 
+            // var addList = document.getElementsByClassName("add");
+            // console.log(addList);
+
+        }
+    }
+
+
+    // var addList = document.getElementsByClassName("add");
+    // console.log(addList);
+    console.log("主线程执行完毕");
+
+
+    // 购物车的动态生成  (3秒后生成)   => 如何绑定事件
+    // 1. 生成之后   在获取元素在绑定事件
+
+    // 2. 事件委托   
+
+
+    // 事件委托
+    var catbox = document.getElementsByClassName("catbox")[0];
+    var checkAll = document.getElementsByClassName("check-all")[0];
+    var checkOneList = document.getElementsByClassName("check-one");
+
+    var addList = document.getElementsByClassName("add");
+    var reduceList = document.getElementsByClassName("reduce");
+
+    var deleteList = document.getElementsByClassName("delete");
+    var deleteAll = document.getElementById("deleteAll");
+
+    var selectedTotal = document.getElementById("selectedTotal");
+    var priceTotal = document.getElementById("priceTotal");
+    console.log(checkOneList);
+
+    catbox.onclick = function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target);
+        // target  -> 事件源
+
+
+        if (target.classList.contains("check-all")) {
+            checkAllHandler(target);
+        } else if (target.classList.contains("check-one")) { //单选
+            checkOneHandler()
+        } else if (target.classList.contains("add")) { //加号
+            addHandler(target)
+        } else if (target.classList.contains("reduce")) { //加号
+            reduceHandler(target)
+        } else if (target.classList.contains("delete")) { //加号
+            deleteOneHandler(target)
+        } else if (target.id == "deleteAll") { //加号
+            deleteAllHandler(target)
+        }
+    }
+
+
+
+    function checkAllHandler(target) {
+        var status = target.checked;
+        console.log(status);
+        for (var i = 0; i < checkOneList.length; i++) {
+            var checkOne = checkOneList[i];
+            checkOne.checked = status;
+        }
+        getTotal();
+    }
+
+    function checkOneHandler() {
+        var flag = true;  //假设全被选中
+        for (let i = 0; i < checkOneList.length; i++) {
+            let checkOne = checkOneList[i];
+            if (!checkOne.checked) { //checkOne.checked == false   存在未被选中的
+                flag = false;
+                break;
+            }
+        }
+        flag = checkOneList.length == 0 ? false : flag;
+        checkAll.checked = flag;
+
+        getTotal();
+    }
+
+    function addHandler(target) {
+        console.log(target);
+
+        // console.log(this);
+        // a. 输入框  数量 加一 
+        var countInput = prev(target);  // 找到加号前的 countInp
+        // console.log(countInput);
+
+        var num = countInput.value;  //取值
+        num++;  //自增
+
+        countInput.value = num;  //放回去
+
+        // b.  小计更新    =  单价*数量
+        // 数量 已经有了
+        // 单价 
+
+        var parentTd = parent(target);   // 找到加号的parentTd
+        var priceTd = prev(parentTd);  //  parentTd前面的priceTd(价格)
+        var subtotalTd = next(parentTd);  //  parentTd前面的subtotalTd
+        console.log(priceTd, subtotalTd);
+
+        var price = priceTd.textContent * 1;
+
+        subtotalTd.textContent = (price * num).toFixed(2);
+
+        // 3. 减号按钮的 “-”  出现
+        var reduce = prev(countInput);
+        reduce.textContent = "-";
+        reduce.style.cursor = "pointer";
+
+        getTotal();
+    }
+
+    function reduceHandler(target) {
+        // a. 输入框  数量 减一 
+
+        var countInp = next(target);
+        var num = countInp.value;
+        // c.  减之前  判断  如果数量为1  不能减
+        if (num == 1) {
+            console.log("亲,不能在减了");
+            return false;
+        }
+
+        num--;  //自减
+        // d 减之后  判断  如果数量为1  减号按钮的 “-” 消失  手势禁止
+        if (num == 1) {  // 由2变为1的一瞬间
+            target.textContent = "";
+            target.style.cursor = "no-drop";
+        }
+
+        countInp.value = num;
+
+        // b.  小计更新    =  单价*数量
+        // 数量 已经有了
+        // 单价 
+
+        var parentTd = parent(target);   // 找到加号的parentTd
+        var priceTd = prev(parentTd);  //  parentTd前面的priceTd(价格)
+        var subtotalTd = next(parentTd);  //  parentTd前面的subtotalTd
+        console.log(priceTd, subtotalTd);
+
+        var price = priceTd.textContent * 1;
+
+        subtotalTd.textContent = (price * num).toFixed(2);
+        getTotal();
+    }
+
+
+    function deleteOneHandler(target) {
+        if (confirm("是否删除该商品?")) {
+            var tr = parent(parent(target));
+            console.log(tr);
+            tr.remove();
+
+            // 先删除 ,在判断   剩余的商品全部被选中
+            // a. 每次删除商品之后  判断  如果剩余的商品全部被选中 => 全选框 变为选中状态
+            // var flag = true;
+            // for (let i = 0; i < checkOneList.length; i++) {
+            //     let checkOne = checkOneList[i];
+            //     if (!checkOne.checked) {
+            //         flag = false;
+            //         break;
+            //     }
+            // }
+            // checkAll.checked = flag;
+
+            checkOneHandler();
+        }
+    }
+
+    function deleteAllHandler() {
+        for (let i = 0; i < checkOneList.length; i++) {
+            let checkOne = checkOneList[i];
+            if (checkOne.checked) {
+                var tr = parent(parent(checkOne));
+                tr.remove();
+                i--;
+            }
+        }
+
+        checkOneHandler();
+    }
+
+    // 结算
+    function getTotal() {
+        // 每次点击单选  将选中的单选框对应的商品数量和小计累加 =>结算
+        var sum = 0;
+        var allPrice = 0;
+
+        for (let i = 0; i < checkOneList.length; i++) {
+            let checkOne = checkOneList[i];
+            if (checkOne.checked) { //被选中
+                var parentTr = parent(parent(checkOne));
+                // console.log(parentTr);
+                var countInput = parentTr.getElementsByClassName("count-input")[0];
+                var subtotalTd = parentTr.getElementsByClassName("subtotal")[0];
+                var num = countInput.value * 1;
+                var subtotal = subtotalTd.textContent * 1
+
+                sum += num;
+                allPrice += subtotal;
+
+            }
+        }
+
+        console.log(sum, allPrice);
+        selectedTotal.textContent = sum;
+        priceTotal.textContent = allPrice.toFixed(2);
+    }
+
+
+    function parent(ele) {
+        return ele.parentElement || ele.parentNode;
+    }
+    function prev(ele) {
+        return ele.previousElementSibling || ele.previousSibling;
+    }
+    function next(ele) {
+        return ele.nextElementSibling || ele.nextSibling;
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</html>

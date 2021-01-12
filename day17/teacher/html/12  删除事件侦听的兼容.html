@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="box"></div>
+</body>
+<script>
+    // 3. dom二级事件  (事件侦听) (先获取元素,在绑定事件) 
+
+
+    // 添加事件侦听
+    // 常规浏览器的写法
+    // ele.addEventListener(eventType,callback,userCapture)   
+    // eventType  侦听事件的类型(click dblclick load)
+    // callback   事件触发时执行的回调函数
+    // userCapture   是否在捕获阶段触发事件(false)
+
+    // IE  
+    // attach  附加   
+    // ele.attachEvent("on"+eventType,callback)
+    // eventType  侦听事件的类型(onclick ondblclick onload)
+
+
+    // 删除事件侦听
+    // 常规浏览器的写法
+    // ele.removeEventListener(eventType,callback,userCapture)   
+    // eventType  侦听事件的类型(click dblclick load)
+    // callback   事件触发时执行的回调函数(对应函数清除)
+    // userCapture   是否在捕获阶段触发事件(false)
+
+    // IE  
+    // attach  附加   detach  分离
+    // ele.detachEvent("on"+eventType,callback)
+    // eventType  侦听事件的类型(onclick ondblclick onload)
+    // callback   事件触发时执行的回调函数(对应函数清除)
+
+
+
+    var box = document.getElementById("box");
+    // console.log(box.addEventListener);
+
+    // 常规浏览器的写法
+    // box.addEventListener("click", function () {
+    //     console.log("box被点击");
+    // });
+
+    // box.addEventListener("click", function () {
+    //     console.log(this);
+    //     this.style.backgroundColor = "red";
+    // });
+
+    // IE浏览器的写法
+    // box.attachEvent("onclick", function () {
+    //     console.log("box被点击");
+    // })
+
+    // box.attachEvent("onclick", function (e) {
+    //     // console.log(e);
+    //     box.style.backgroundColor = "red";
+    // })
+
+
+    // if (box.addEventListener) {  //常规浏览器
+    //     box.addEventListener("click", function () {
+    //         console.log("box被点击");
+    //     });
+    // } else {
+    //     box.attachEvent("onclick", function () {
+    //         console.log("box被点击");
+    //     })
+    // }
+
+    // 添加事件监听的兼容
+    function addEvent(ele, eventType, fn) {
+        if (ele.addEventListener) { //常规浏览器
+            ele.addEventListener(eventType, fn);
+        } else {
+            ele.attachEvent("on" + eventType, fn);
+        }
+    }
+
+
+    // 删除事件监听的兼容
+    function removeEvent(ele, eventType, fn) {
+        if (ele.removeEventListener) { //常规浏览器
+            ele.removeEventListener(eventType, fn);
+        } else {
+            ele.detachEvent("on" + eventType, fn);
+        }
+    }
+
+    function clickHandler_1() {
+        console.log("hello");
+    }
+
+    function clickHandler_2() {
+        console.log("world");
+    }
+
+    addEvent(box, "click", clickHandler_1);
+    addEvent(box, "click", clickHandler_2);
+
+    removeEvent(box, "click", clickHandler_1);
+    removeEvent(box, "click", clickHandler_2);
+</script>
+
+</html>

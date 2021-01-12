@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // [xyz]   匹配集合中的任意一个字符
+
+    // jpg  png   gif  webp
+    // rar  zip   7z
+    // html  css  js  
+    // .com .cn .xyz .net .club
+
+    // 选择匹配符  |   在正则表达式中表 或  的关系  通常配合()使用
+    // (jpg|png|gif|webp)   匹配 jpg  png   gif  webp中的任意一个
+    // (\.com|\.cn|\.xyz|\.net|\.club)  匹配.com .cn .xyz .net .club中的任意一个
+
+    // var imgReg = /^.{1,12}\.(jpg|png|gif|webp)$/;
+    var imgReg = /^[\w\u4e00-\u9fa5]{1,12}\.(jpg|png|gif|webp)$/;
+
+    // xxx.jpg
+    var imgUrl = "small11111111.jpg";  //长度超了
+    // var imgUrl = "哈哈.jpg";   //true
+    // var imgUrl = ".........jpg";   // false
+    console.log(imgReg.test(imgUrl));
+
+
+
+
+
+</script>
+
+</html>

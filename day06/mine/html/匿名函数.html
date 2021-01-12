@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 匿名函数的三种创建方式
+    // 1
+    // var fn = function(){
+    //     alert("郭浩文傻逼！");
+    // }
+
+
+
+    // 2
+    // (function(){
+    //     alert("郭浩文傻逼！");
+    // })
+    // +function(){
+    //     alert("郭浩文傻逼！");
+    // }
+    // -function(){
+    //     alert("郭浩文傻逼！");
+    // }
+
+    // 执行在后面加()
+    // (function(){
+    //     alert("郭浩文傻逼！");
+    // })();
+
+
+    // 3
+    // var fn = new Function("a","b","alert('郭浩文傻逼！');");
+    // fn();
+    function add (){
+        console.log(arguments);
+        var sum =0;
+        for(var i=0;i<arguments.length;i++){
+            sum+=arguments[i];
+        }
+        console.log(sum);
+    }
+    add(1,1,2,2,21,3,4,4,7,45,4);
+</script>
+</html>

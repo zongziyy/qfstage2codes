@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 表达式(概念性的东西)   由运算符和操作数（变量或常量）组成的式子
+    // var a = 10;
+    // a + 1;   // 算术表达式
+    // a >= 1;  // 关系表达式
+    // a >= 1 && a <= 10;  // 逻辑表达式
+
+
+    // 选择结构 之  if
+    // 单分支
+    // 双分支
+    // 多分支
+
+    // 双分支  (只有两个选择,必须选择其中的一个)
+
+    // if (表达式1) {
+    //     执行语句1;
+    // } else if (表达式2) {
+    //     执行语句2;
+    // } else if (表达式3) {
+    //     执行语句3;
+    // } else {
+    //     执行语句4;
+    // }
+    // 首先 求解表达式1(判断表达式1 是否成立)  成立  => 执行语句1
+    // 否则 求解表达式2                       成立  => 执行语句2
+    // 否则 求解表达式3                       成立  => 执行语句3
+    // 否则 执行else对应的语句4
+
+    // if (如果北大录取我 ?) {
+    //     我就去北大;
+    // } else if (如果浙江大学大学录取我 ?) {
+    //     我就去浙大;
+    // } else if (如果武汉工程大学录取我 ?) {
+    //     我就去工程大;
+    // } else if (如果武汉职业技术学院录取我 ?) {
+    //     我就去武职;
+    // } else {
+    //     我就去千锋;
+    // }
+
+    var grade = Math.round(Math.random() * 100);
+
+    // if(grade>=60){
+
+    // }else{
+
+    // }
+
+    if (grade >= 90) {
+        document.write(grade + "分,优秀<br>");
+    } else if (grade >= 80) {   //  grade >= 80 && grade < 90
+        document.write(grade + "分,良好<br>");
+    } else if (grade >= 70) {   //  grade >= 70 && grade < 80
+        document.write(grade + "分,一般<br>");
+    } else if (grade >= 60) {   //  grade >= 70 && grade < 80
+        document.write(grade + "分,危险<br>");
+    } else {
+        document.write(grade + "分,赠送免费回城券一张<br>");
+    }
+
+
+
+</script>
+
+</html>

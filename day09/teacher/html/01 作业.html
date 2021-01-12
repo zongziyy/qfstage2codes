@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // var list = ["a", "b", "c", "d", "e", "f", "g"]; 从数组中随机选取四个元素, 组成一个新数组, 变为字符串 => 验证码(可以重复)       数组都是通过下标取值的  
+    var list = ["a", "b", "c", "d", "e", "f", "g"];
+
+    // 随机下标  数组都是通过下标取值的   0  -  list.lenth-1
+    // var arr = [];
+    // for (var i = 0; i < 4; i++) {
+    //     var index = Math.floor(Math.random() * list.length);
+    //     var char = list[index];
+    //     arr.push(char);    //无论是否重复 直接放到数组中
+    // }
+    // console.log(arr);
+
+    // var arr = [];
+    // for (var i = 0; i < 4; i++) {
+    //     var index = Math.floor(Math.random() * list.length);
+    //     var char = list[index];  // 随机的元素
+
+    //     // 如果不存在  就放到数组中
+    //     // if (!arr.includes(char)) {  //   arr.includes(char)==false
+    //     //     arr.push(char);
+    //     // } else {    //true
+
+    //     // }
+
+    //     // 如果不存在  就放到数组中
+    //     if (arr.indexOf(char) == -1) {
+    //         arr.push(char);
+    //     } else {    //true
+
+    //     }
+    // }
+    // console.log(arr);
+
+
+
+    var arr = [];
+    var count = 4;
+    for (var i = 0; i < count; i++) {
+        var index = Math.floor(Math.random() * list.length);
+        var char = list[index];  // 随机的元素
+
+        // 如果不存在  就放到数组中
+        // if (!arr.includes(char)) {  //   arr.includes(char)==false
+        //     arr.push(char);
+        // } else {    //true
+
+        // }
+
+        // 如果不存在  就放到数组中
+        if (arr.indexOf(char) == -1) {
+            arr.push(char);
+        } else {    //true
+            console.log(char + "在第" + i + "次放置时已存在,再来一次");
+            count++;  // 如果重复了,在送你一次
+        }
+    }
+    console.log(arr);
+
+
+
+</script>
+
+</html>

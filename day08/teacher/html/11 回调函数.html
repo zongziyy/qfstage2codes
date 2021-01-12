@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 拓展  
+    // 回调函数
+
+
+
+    // function add(a, b) {
+    //     var a = 1;
+    //     var b = 2;
+    //     return a + b;
+    // }
+
+    // function doSomeThing() {   // 定死的  四选一
+    //     function sing() {
+    //         console.log("唱歌");
+    //     }
+    //     function dance() {
+    //         console.log("跳舞");
+    //     }
+    //     function rap() {
+    //         console.log("rap");
+    //     }
+    //     function play() {
+    //         console.log("game");
+    //     }
+
+    //     play();
+    // }
+
+    // doSomeThing();
+
+
+    // 回调函数   => 把函数当成参数  传到另一个函数中, 让它在另一个函数中执行
+
+    function doSomeThing(fn) {   // 根据用户传入的函数 执行不同的操作  => 提形参()
+        // 你给我传一个函数  ,我给你调用  
+        // var fn = sing;
+        // console.log(fn)
+        fn();  // 函数调用 
+    }
+
+    doSomeThing(sing);  // 把函数sing当成参数 传递到 doSomeThing中,让它在doSome中执行
+    doSomeThing(dance);
+    doSomeThing(rap);
+    doSomeThing(play);
+    doSomeThing(function () {
+        console.log("吃烧烤");
+    });
+
+
+
+
+    function sing() {
+        console.log("唱歌");
+    }
+    function dance() {
+        console.log("跳舞");
+    }
+    function rap() {
+        console.log("rap");
+    }
+    function play() {
+        console.log("play basketball");
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

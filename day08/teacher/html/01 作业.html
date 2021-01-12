@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：有个人想知道，一年之内一对兔子能繁殖多少对？于是就筑了一道围墙把一对兔子关在里面。已知一对兔子每个月可以生一对小兔子，而一对兔子从出生后到成长为大兔子需要等待2个月(第3个月起每月生一对小兔子)。假如一年内没有发生死亡现象，那么，一对兔子一年内（12个月）能繁殖成多少对？
+    　　已知兔子的规律为数列: 1，1，2，3，5，8，13，21...
+    
+        前两个月都是1
+        从第三个月开始 fn(n) = fn(n-1) + fn(n-2);
+     -->
+
+
+</body>
+<script>
+    // // 递归  =>函数在执行的过程中调用了自身(类似循环 重复的执行函数自身的内容)
+
+    // 注意:递归需要有临界值 (跳出的条件)
+
+
+    function Fibonacci(n) {
+
+        if (n <= 2) {
+            return 1;
+        }
+
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+    // Fibonacci(12)
+
+    // Fibonacci(1) = 1;
+    // Fibonacci(2) = 1;
+    // Fibonacci(3) = Fibonacci(2) + Fibonacci(1) = 2
+    // Fibonacci(4) = Fibonacci(3) + Fibonacci(2) 
+    //              = Fibonacci(2) + Fibonacci(1)  + 1 
+    //              = 1 + 1 + 1
+    //              = 3
+
+
+    for (var i = 1; i <= 12; i++) {
+        console.log(Fibonacci(i));
+    }
+
+
+</script>
+
+</html>

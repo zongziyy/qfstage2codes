@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计算器</title>
+</head>
+
+<body>
+    <input type="text" name="" id="num1" placeholder="输入第一个值">
+    <select name="" id="slt">
+        <option value="+">加</option>
+        <option value="-">减</option>
+        <option value="*">乘</option>
+        <option value="/">除</option>
+        <option value="%">余</option>
+    </select>
+    <input type="text" name="" id="num2" placeholder="输入第一个值">
+    <button id="btn" onclick="calc()">计算</button>
+    <h1 id="result"></h1>
+</body>
+
+<script>
+    var num1 = document.getElementById("num1");
+    var num2 = document.getElementById("num2");
+    var slt = document.getElementById("slt");
+    var result = document.getElementById("result");
+    console.log(num1, num2, slt, result);
+
+    function calc() {
+        var num3 = num1.value * 1;
+        var num4 = num2.value * 1;
+        var opt = slt.value;
+        console.log(num3, num4, typeof num3, typeof num4);
+        var sum;
+        switch (opt) {
+            case "+":
+                sum = num3 + num4;
+                break;
+            case "-":
+                sum = num3 - num4;
+                break;
+            case "*":
+                sum = num3 * num4;
+                break;
+            case "/":
+                sum = num3 / num4;
+                break;
+            case "%":
+                sum = num3 % num4;
+                break;
+            default:
+                sum = "错误";
+                break;
+        }
+        result.innerHTML = sum;
+    }
+</script>
+
+</html>

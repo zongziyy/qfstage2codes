@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+
+    // 构造函数创建 set结构
+    var s = new Set();
+    console.log(s);
+
+    // set结构的方法
+    // add()     向set结构中添加一个成员(元素)
+    // delete()  删除set结构中一个成员(元素)   单删
+    // clear()   清空 所有的成员    全删
+    // has()     判断set结构中是否存在某个成员(元素)  存在=>true 不存在=>false
+
+    // 属性 
+    // size     返回set结构成员的个数 (类似数组的length)
+
+    s.add(1);   //成员都是唯一的  不能重复
+    s.add(2);
+    s.add(3);
+    s.add(NaN);  // 在 Set 内部，两个NaN是相等的。
+
+    s.add(1);
+    s.add(2);
+    s.add(3);
+    s.add(NaN);
+    console.log(s.size);
+    console.log(s);
+
+    // delete
+    s.delete(NaN);
+    s.delete(3);
+
+    // has()
+    var result = s.has(3);  //false
+    var result = s.has(1);  //true
+    console.log(result);
+
+    // clear()
+    s.clear();
+
+
+    console.log(s);
+
+
+    // 遍历操作   
+    // keys() ：返回键名的遍历器
+    // values() ：返回键值的遍历器
+    // entries() ：返回键值对的遍历器
+    // forEach() ：使用回调函数遍历每个成员
+
+
+
+
+</script>
+
+</html>

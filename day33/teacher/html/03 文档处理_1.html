@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <!-- style="display:none" -->
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    // var list = document.getElementsByClassName("list")[0];
+
+    // // 原生
+    // var li = document.createElement("li");
+    // li.className = "newLi";
+    // li.textContent = "这是新增li"
+
+    // list.appendChild(li);
+
+
+    // jquery中如何新增元素
+    // 1. 将创建的原生dom元素转为jquery对象  , 再放到父元素中
+
+    // var li = document.createElement("li");
+    // li.className = "newLi";
+    // li.textContent = "这是新增li"
+
+    // var $li = $(li);
+
+    // 父 放 子
+    // append()    向匹配的元素中追加一个元素(新的/已存在)    
+    // prepend()    向匹配的元素中预追加一个元素(新的/已存在)
+
+    // $(".list").append($li);   //放jquery对象
+    // $(".list").append(li);   //放原生
+    // $(".list").append("<li>123123</li>");  // 放html结构
+
+    // $(".list").prepend($li);   //放jquery对象
+    // $(".list").prepend(li);   //放原生
+    // $(".list").prepend("<li>123123</li>");  // 放html结构
+
+
+    // 2.  快捷创建元素  将一个html结构的字符串 传入到 $()中
+
+    // console.log($("<li>123123</li>"))
+    // console.log($("<li></li>").html(123123))
+    // console.log($("<li/>").html(123123))
+
+    // $li = $("<li/>").html(123123).css({
+    //     background: "red",
+    //     width: 200,
+    // }).click(function () {
+    //     alert($(this).index())
+    // })
+
+    // $(".list").append($li);
+
+    // appendTo()    将一个元素追加到指定的元素中 (子->父) 
+    // prependTo()    将一个元素预追加到指定的元素中 (子->父)   
+
+    // $("<li/>").html(123123).css({
+    //     background: "red",
+    //     width: 200,
+    // }).click(function () {
+    //     alert($(this).index())
+    // }).appendTo(".list");
+
+    $("<li/>", {
+        text: "123123",
+        class: "newLi",
+        id: "li",
+        style: "background:red;width:200px",
+        click() {
+            alert($(this).index());
+        }
+    }).appendTo(".list");
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

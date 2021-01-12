@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button class="clear">清除</button>
+</body>
+<script>
+
+    // 普通绑定
+    // on(eventType,data,callback)    事件监听绑定 => 一个元素可以绑定多个事件
+    // eventType  事件类型 
+    // data       事件绑定是传递的数据(可选)
+    // callback   事件触发时执行的回调函数
+
+    // off()
+    // (1) 对应函数名清除   off(eventType,callback) 
+    // (2) 对应事件类型清除   off(eventType) 
+    // (3) 清除该元素所有事件   off() 
+
+    function clickHandler_1() {
+        console.log(1111);
+    }
+    function clickHandler_2() {
+        console.log(2222);
+    }
+    $(".box").on("click", clickHandler_1);
+    $(".box").on("click", clickHandler_2);
+
+    $(".box").on("click", { a: 1, b: 2 }, function (e) {
+        // console.log($(this).width());
+        // console.log(e);
+        console.log("3333", e.data);
+    })
+
+    $(".box").on("click", { a: 3, b: 4 }, function (e) {
+        console.log("4444", $(this).width());
+    })
+
+    $(".box").on("mousedown", { a: 3, b: 4 }, function (e) {
+        console.log("5555");
+    })
+
+
+
+    $('.clear').on("click", function () {
+        // 1.对应函数名
+        // $(".box").off("click", clickHandler_1);
+        // $(".box").off("click", clickHandler_2);
+
+        // 2.对应事件类型清除
+        // $(".box").off("click");
+
+        // 3.清除该元素所有事件
+        $(".box").off();
+    })
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // while 和 do...while的区别
+    // while  先求解表达式,然后在决定是否执行循环语句     (理智型   先判断,在执行)
+    // do...while   先执行一次循环语句,然后在判断表达式是否成立 ,成立=>继续循环 不成立 则跳出
+    //              (冲动型   无论条件成立与否,先执行,在判断)
+
+
+    // 一般情况下,我们更倾向于使用while,但是在while处理循环逻辑比较别扭时 使用 do...while (先取值 在判断)
+
+    // prompt()   弹出输入框
+    // confirm()  确认框
+    // alert("你好");
+
+    // var con = prompt("请输入一个数字...");  // 接收弹出输出框的内容
+    // console.log(con);
+
+    // var result = confirm("是否删除该商品?");  // 接收弹出确认框的结果
+    // console.log(result);  //确认 => true 取消=> false
+
+    do {
+        var con = prompt("考试不及格是否留级?");
+    } while (con != "是"); // "123123"!= "是"  ;// true
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .shadow {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        /* margin  translate  position */
+    </style>
+</head>
+
+<body>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+    <div class="shadow"></div>
+</body>
+<script>
+    // 拖拽
+    // 1. onmousedown   鼠标按下=>记录按下的位置
+    // 2. onmousemove   a. 先按下,在移动(文档中 可移动范围)  b.始终相对于按下的位置移动
+    // 3. onmouseup     鼠标抬起  清除移动事件
+
+    // var shadow = document.getElementsByClassName("shadow")[0];
+
+    // var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    // var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+    // var maxLeft = clientWidth - shadow.clientWidth;
+    // var maxTop = clientHeight - shadow.clientHeight;
+
+    var shadowList = document.getElementsByClassName("shadow");
+
+    for (let i = 0; i < shadowList.length; i++) {
+
+        var obj = DragEle(shadowList[i]);
+        obj.init();
+    }
+
+
+    function DragEle(ele) {
+        var obj = {
+            target: ele,
+            init: function () { //初始化方法 对象创建之后可以统一执行对应的方法 
+                this.randColor();
+                this.dragStart();
+            },
+            dragStart: function () {
+                // console.log(this);  // this -> dragEle(实例化对象)
+
+                var _this = this; // 提前声明一个变量保存 dragEle
+
+                // 鼠标按下开始拖拽
+                this.target.onmousedown = function (e) {
+                    var e = e || window.event;
+                    var posX = e.offsetX;
+                    var posY = e.offsetY;
+                    // console.log(posX, posY);
+                    // 此处为了将 posX,posY传递出去,可以将两个值存到DragEle对象中
+
+                    // console.log(this);   // 指向绑定事件的元素 shadow
+                    _this.posX = posX;
+                    _this.posY = posY;
+                    console.log(_this);
+
+                    // 先按下,在移动
+                    _this.dragMove();
+                    _this.dragEnd();
+                }
+            },
+            dragMove: function () {
+                // console.log(this);  // this -> dragEle(实例化对象)
+                var _this = this; // 提前声明一个变量保存 dragEle
+                document.onmousemove = function (e) {
+                    var e = e || window.event;
+                    var x = e.pageX - _this.posX;
+                    var y = e.pageY - _this.posY;
+                    console.log(x, y);
+
+                    _this.target.style.left = x + "px";
+                    _this.target.style.top = y + "px";
+                }
+            },
+            dragEnd: function () {
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+            },
+            randColor() {
+                // red  blue green
+                // rgba(255,255,255,1)
+                // #ffffff
+                var str = "0123456789abcdef";
+                var colorStr = "#";
+                for (var i = 0; i < 6; i++) {
+                    var index = Math.floor(Math.random() * str.length);
+                    var char = str.charAt(index);
+                    colorStr += char;
+                }
+                this.target.style.background = colorStr;
+            }
+        }
+        return obj;
+    }
+
+
+
+
+
+</script>
+
+</html>

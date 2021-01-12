@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            padding: 0 5px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">0</div>
+    <button class="start">开始</button>
+    <button class="pause">暂停</button>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var start = document.getElementsByClassName("start")[0];
+    var pause = document.getElementsByClassName("pause")[0];
+    var timer = null;
+    var isStart = false;  // 默认 没有开始
+
+    // 注意的地方
+    // 1. 如果计时器的编号 timer  需要跨作用域 ,需要提为全局 
+    // 2. 每次计时器开启之前  需要清除上一个 =>  保证同一时间 只有一个计时器完成此功能
+    // 3. 添加一个状态的切换 ,判断是否连点
+
+    start.onclick = function () {
+        if (isStart) {  // 每次点击之前  进行判断(判断是否已经开始了  ,已经开始之后 不执行后续代码)
+            return false;// 阻止代码默认向后执行
+        }
+
+        isStart = true;   // 点击开始    isStart = true;
+        clearInterval(timer); // 清除上一个,再启动下一个(否则会连续启动多个)
+        timer = setInterval(function () {
+            box.innerHTML++;  // 
+        }, 1000);
+    }
+
+    pause.onclick = function () {
+        isStart = false; // 点击结束 => isStart = false; 
+        clearInterval(timer);
+    }
+
+
+
+
+
+</script>
+
+</html>

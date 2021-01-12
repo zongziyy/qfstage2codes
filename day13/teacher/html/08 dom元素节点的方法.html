@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #box {} */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h2>获取元素</h2>
+        <ul class="one">
+            <li class="first">01</li>
+            <li id="second">02</li>
+            <li name="third">03</li>
+            <li>04</li>
+        </ul>
+        <ul class="two">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    // 元素节点的方法  
+
+    // 获取元素的方法
+    // document.getElementById()
+
+    // 返回集合  => 单元素获取[0]
+    // document.getElementsByClassName()
+    // document.getElementsByTagName()
+    // document.getElementsByName()
+
+    // 通过文档获取页面中所有的
+    var box = document.getElementById("box");
+    var one = document.getElementsByClassName("one")[0];
+    var liList = document.getElementsByTagName("li");
+    // console.log(box);
+    // console.log(one);
+    // console.log(liList);
+
+    // 可不可以限制获取的范围  => .one li
+    // 通过父元素查找子代元素 (只能使用一下两种方法  不能使用id和name)
+    // parent.getElementsByClassName()
+    // parent.getElementsByTagName()
+
+
+    var oneList = one.getElementsByTagName("li");
+    // console.log(oneList);
+
+    var first = one.getElementsByClassName("first")[0];
+    console.log(first);
+
+    // var second = one.getElementById("second");   //报错
+    // console.log(second);
+
+    // var third = one.getElementsByName("third");   //报错
+    // console.log(third);
+
+    // 获取元素的方法(新增)
+
+    // 允许我们以css选择器的形式获取元素 
+    // document.querySelector()   // 单元素获取 (只返回一个,即时有多个也默认返回第一个)
+    // document.querySelectorAll()   // 多元素获取 (返回集合,即时只有一个也会放到集合中)
+
+    // 单元素获取
+    // var box = document.querySelector("#box");
+    // var one = document.querySelector(".one");
+    // var li = document.querySelector("li");
+    // var li = document.querySelector(".one>li");
+    // var one = document.querySelector("[class]");
+
+    // console.log(box);
+
+
+    // 多元素获取
+    var boxList = document.querySelectorAll("#box");
+    console.log(boxList);
+    var liList = document.querySelectorAll(".one>li");
+    console.log(liList);
+    var clsList = document.querySelectorAll("[class]");
+    console.log(clsList);
+
+    var list = document.querySelectorAll(".one li:not([class])");
+    console.log(list);
+</script>
+
+</html>

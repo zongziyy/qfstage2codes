@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .searchBox {
+            width: max-content;
+        }
+
+        .list {
+            /* display: none; */
+        }
+
+        .list li {
+            line-height: 32px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="searchBox">
+        <div class="searchBar">
+            <input type="text" class="searchCon">
+            <button class="searchBtn">百度一下</button>
+        </div>
+        <ul class="showList">
+            <!-- <li><a href="">hahaha</a></li>
+            <li><a href="">hahaha</a></li>
+            <li><a href="">hahaha</a></li>
+            <li><a href="">hahaha</a></li> -->
+        </ul>
+    </div>
+</body>
+<script>
+
+    // https://www.baidu.com/sugrec?prod=pc&wd=h5&cb=jQuery110201876634044309773_1608862455883&_=1608862455887
+
+    // prod=pc  电脑端
+    // wd = h5  搜索的关键词
+    // cb =      回调函数名
+
+
+    var searchCon = document.getElementsByClassName("searchCon")[0];
+    var searchBtn = document.getElementsByClassName("searchBtn")[0];
+    var showList = document.getElementsByClassName("showList")[0];
+
+    // searchCon.oninput = function () {
+    //     var key = this.value.trim();
+    // }
+
+
+    function fn(data) {
+        console.log(data);
+    }
+
+</script>
+<!-- 函数的调用  fn() -->
+<script src="https://www.baidu.com/sugrec?prod=pc&wd=h5&cb=fn&_=1608862455887"></script>
+
+</html>

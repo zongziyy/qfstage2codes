@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>原生JS实现购物车结算功能代码</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="catbox">
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>
+                        <label>
+                            <input class="check-all check" type="checkbox" />&nbsp;&nbsp;全选</label>
+                    </th>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="checkbox">
+                        <input class="check-one check" type="checkbox" />
+                    </td>
+                    <td class="goods">
+                        <img src="../images/1.jpg" alt="" /><span>Casio/卡西欧 EX-TR350</span>
+                    </td>
+                    <td class="price">5999.88</td>
+                    <td class="count">
+                        <span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span>
+                    </td>
+                    <td class="subtotal">5999.88</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox">
+                        <input class="check-one check" type="checkbox" />
+                    </td>
+                    <td class="goods">
+                        <img src="../images/2.jpg" alt="" /><span>Canon/佳能 PowerShot SX50 HS</span>
+                    </td>
+                    <td class="price">3888.50</td>
+                    <td class="count">
+                        <span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span>
+                    </td>
+                    <td class="subtotal">3888.50</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox">
+                        <input class="check-one check" type="checkbox" />
+                    </td>
+                    <td class="goods">
+                        <img src="../images/3.jpg" alt="" /><span>Sony/索尼 DSC-WX300</span>
+                    </td>
+                    <td class="price">1428.50</td>
+                    <td class="count">
+                        <span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span>
+                    </td>
+                    <td class="subtotal">1428.50</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+                <tr>
+                    <td class="checkbox">
+                        <input class="check-one check" type="checkbox" />
+                    </td>
+                    <td class="goods">
+                        <img src="../images/4.jpg" alt="" /><span>Fujifilm/富士 instax mini 25</span>
+                    </td>
+                    <td class="price">640.60</td>
+                    <td class="count">
+                        <span class="reduce"></span>
+                        <input class="count-input" type="text" value="1" />
+                        <span class="add">+</span>
+                    </td>
+                    <td class="subtotal">640.60</td>
+                    <td class="operation"><span class="delete">删除</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="foot" id="foot">
+            <a class="fl" id="deleteAll" href="javascript:;">删除</a>
+            <div class="fr closing" onclick="getTotal();">结 算</div>
+            <input type="hidden" id="cartTotalPrice" />
+            <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+            <div class="fr selected" id="selected">
+                已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span>
+            </div>
+            <div class="selected-view">
+                <div id="selectedViewList" class="clearfix">
+                    <div><img src="../images/1.jpg" /><span>取消选择</span></div>
+                </div>
+                <span class="arrow">◆<span>◆</span></span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var checkOne = document.getElementsByClassName("check-one");
+    var checkAll = document.getElementsByClassName("check-all")[0];
+    var countInput = document.getElementsByClassName("count-input");
+    var catbox = document.getElementsByClassName("catbox")[0];
+    var priceTotal = document.getElementById("priceTotal");
+    var selectedTotal = document.getElementById("selectedTotal");
+
+    // 给表格绑定点击事件
+    catbox.onclick = function (e) {
+        var e = e || window.event; //兼容废物IE
+        // console.dir(e);
+
+        var target = e.target || e.srcElement; //兼容废物IE
+
+        // 全选事件冒泡
+        if (target.className == "check-all check") {
+            // console.log(target);
+            if (target.checked) {
+                for (let i = 0; i < checkOne.length; i++) {
+                    checkOne[i].checked = true;
+                }
+            } else {
+                for (let i = 0; i < checkOne.length; i++) {
+                    checkOne[i].checked = false;
+                }
+            }
+            settlement();
+        }
+
+
+        //单选事件冒泡
+        if (target.className == "check-one check") {
+            // console.log(target);
+            isCheckAll();
+            settlement();
+        }
+
+        // 单删事件冒泡
+        if (target.className == "delete") {
+            target.parentElement.parentElement.remove(); //父元素的父元素自删
+            target.parentElement.parentElement.firstElementChild.firstElementChild.checked = false;
+            isCheckAll();
+            settlement();
+        }
+
+        //加号事件冒泡
+        if (target.className == "add") {
+            target.previousElementSibling.value++; //改变数量
+            let amount = target.previousElementSibling.value * 1; //获取数量
+            let price = target.parentElement.previousElementSibling.textContent * 1;
+            let subtotal = (price * amount).toFixed(2); //保留两位小数
+            target.parentElement.nextElementSibling.innerHTML = subtotal; //赋值给小计
+            target.previousElementSibling.previousElementSibling.innerText = "-";
+            settlement();
+        }
+
+        //减号事件冒泡
+        if (target.className == "reduce") {
+            if (target.innerText == "-") {
+                target.nextElementSibling.value--;
+                let amount = target.nextElementSibling.value * 1; //获取数量
+                let price = target.parentElement.previousElementSibling.textContent * 1; //获取单价
+                let subtotal = (price * amount).toFixed(2); //保留两位小数
+                target.parentElement.nextElementSibling.innerHTML = subtotal; //赋值给小计
+                if (amount < 2) target.innerText = "";
+                settlement();
+            } else {
+                return false;
+            }
+        }
+
+
+        //全删事件冒泡
+        if (target.className == "fl") {
+            // if (e.preventDefault) {
+            //     e.preventDefault();
+            // } else {
+            //     e.returnValue = false; //return false;
+            // }
+            // console.dir(target);
+            let checkOneList = Array.from(checkOne);
+            for (let i = 0; i < checkOneList.length; i++) {
+                if (checkOneList[i].checked) {
+                    checkOneList[i].parentElement.parentElement.remove();
+                    checkOneList[i].parentElement.parentElement.firstElementChild.firstElementChild.checked = false;
+                    isCheckAll();
+                }
+            }
+            settlement();
+        }
+
+    }
+
+    for (i = 0; i < countInput.length; i++) {
+        countInput[i].onchange = function () {
+            let amount = this.value * 1; //获取数量
+            let price = this.parentElement.previousElementSibling.textContent * 1;
+            let subtotal = (price * amount).toFixed(2); //保留两位小数
+            this.parentElement.nextElementSibling.innerHTML = subtotal; //赋值给小计
+            if (amount < 1 || amount % 1 != 0) {
+                alert("请输入正确的数量;");
+                this.value = 1;
+                this.previousElementSibling.innerText = "";
+                this.parentElement.nextElementSibling.innerHTML = price;
+            } else if (amount >= 2) {
+                this.previousElementSibling.innerText = "-";
+            }
+            settlement();
+        }
+    }
+
+
+    //封装是否全选函数
+    function isCheckAll() {
+        var flag = true; //立flag，假设全部被选中
+        let checkOneNew = Array.from(checkOne); //伪数组转真数组
+        checkOneNew.forEach(function (item) {
+            //遍历新获取的小盒子数组
+            if (!item.checked) { //只要有一个没有被选中
+                flag = false; //改变flag为 false
+            }
+        });
+        // console.log(flag);
+        flag = checkOneNew.length == 0 ? false : flag;
+        checkAll.checked = flag;
+    }
+
+    // 封装结算函数
+    function settlement() {
+        var amountAll = 0; //创建初始总数量为0
+        var priceAll = 0; //初始总价格为0
+        for (let i = 0; i < checkOne.length; i++) {
+            let price = checkOne[i].parentElement.parentElement.getElementsByClassName("subtotal")[0]
+                .textContent * 1;
+            let amount = checkOne[i].parentElement.parentElement.getElementsByClassName("count-input")[0]
+                .value * 1;
+            if (checkOne[i].checked) { //如果盒子被勾选
+                amountAll += amount; //数量累加
+                priceAll += price; //价格累加
+            }
+        }
+        priceTotal.textContent = priceAll.toFixed(2); //输出到总价
+        selectedTotal.textContent = amountAll; //输出到总数量
+    }
+</script>
+
+</html>

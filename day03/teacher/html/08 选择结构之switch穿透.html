@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // switch中的表达式 一般是变量/常量  (if中的表达式 一般是一个条件)
+
+    // 多分支 -选择结构switch
+    // switch (表达式) {
+    //     case 常量1: 语句; break;
+    //     case 常量2: 语句; break;
+    //     case 常量3: 语句; break;
+    //         …
+    //     case 常量n: 语句; break;
+    //     default: 语句; break;
+    // }
+
+    // switch中的表达式(变量和常量) 和 case中常量做全等比较,如果全等则执行case之后的执行语句,遇到break跳出当前的选择结构,如果不全等 则继续向下比较,直到default为止
+
+    // break的作用：是跳出switch结构，如果没有break，则继续执行下面分支的的语句（而不进行判断）。
+
+    // 穿透版的执行流程
+    // switch中的表达式(变量和常量) 和 case中常量做全等比较,如果全等则执行case之后的执行语句,遇到break跳出当前的选择结构,如果没有break，则继续执行下面分支的的语句（而不进行判断）。
+
+
+    var week = 1 + Math.round(Math.random() * 6);  // 1-7     =>6
+    console.log(week);
+    switch (week) {//6
+        case 1:// week===1
+            document.write("今天是星期一,学习了变量和数据类型<br>");
+        case 2:// week===2
+            document.write("今天是星期二,学习了if..else<br>");
+        case 3:// week===3
+            document.write("今天是星期三,学习了switch / while <br>");
+        case 4:// week===4
+            document.write("今天是星期四,学习了for 循环 <br>");
+        case 5:// week===5
+            document.write("今天是星期五,学习了function 函数 <br>");
+        case 6:// week===6
+            document.write("今天是星期六,学习了课外活动party <br>");
+        case 7:// week===7
+            document.write("今天是星期日,休息/复习 <br>");
+        default:
+            document.write("出现了意料之外的情况<br>");
+            break;
+    }
+
+
+    var week = 1 + Math.round(Math.random() * 6);  // 1-7     =>6
+    console.log(week);
+    switch (week) {//6
+        case 1:// week===1
+        case 2:// week===2
+        case 3:// week===3
+        case 4:// week===4
+        case 5:// week===5
+            document.write("我要学习,学习使我快乐!!!<br>");
+            break;
+        case 6:// week===6
+            document.write("我要自习,自习使我学的更多!!!<br>");
+            break;
+        case 7:// week===7
+            document.write("我要休息/复习,休息能是我更好的学习<br>");
+            break;
+        default:
+            document.write("不要拦我,谁拦我跟谁急<br>");
+            break;
+    }
+
+    // if (week == 1 || week == 2 || week == 3 || week == 4 || week == 5) {
+
+    // } else if (week == 6) {
+
+    // } else if (week == 7) {
+
+    // } else {
+
+    // }
+
+
+
+
+
+</script>
+
+</html>

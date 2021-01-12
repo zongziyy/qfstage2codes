@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        .list {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>jquery核心</h2>
+        <div class="list" asd="asdasd">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li class="last">04</li>
+        </div>
+        <div class="list">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+    // 等页面所有内容加载完 (文档,js,img) 在执行
+    // window.onload = function(){
+
+    // }
+
+    // 文档加载完毕之后执行
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     console.log("文档加载完毕");
+    // })
+
+    // load
+    // $(window).load(function () {
+    //     console.log("等页面所有内容加载完");
+    // })
+
+    // ready  文档加载完毕之后执行
+    // $(document).ready(function () {
+    //     console.log("文档加载完毕");
+    // })
+
+    // 简写
+    // $(function () {
+    //     console.log("文档加载完毕");
+    // })
+
+    // each()    //jquery遍历
+    // $(".list li").each(function (index, ele) {
+    //     console.log(index, ele, this);
+    // })
+
+    // length   返回jquery对象中元素的个数
+    // console.log($(".list li").length);
+
+    // get()
+    // get(index)  返回对应下标的元素
+    // get()       返回对应的真数组
+    // console.log($(".wrap li").get(0));
+    // console.log($(".wrap li").get());
+
+    // index()  默认返回当前元素相对于所有同级元素的下标
+    // index(selector)  接收一个选择器作为查询的范围, 返回相会于该范围的下标
+    // console.log($(".last").index());
+
+    // $(".list li").click(function () {
+    //     // console.log($(this).index()); //  默认返回当前元素相对于所有同级元素的下标
+    //     console.log($(this).index(".wrap li"));   //接收一个选择器作为查询的范围
+    // })
+
+    // data(key,val)   在元素上存放数据,返回jQuery对象。
+    // data(key)      在元素上获取数据 返回对应键名的数据。
+    // removeData(key)      在元素上移除存放的数据 对应键名删除 
+
+    // 存
+    $(".wrap").data("name", "张三");
+    $(".wrap").data("age", 18);
+    $(".wrap").data("data", { a: 1, b: 2, c: 3 });
+
+    // 取
+    console.log($(".wrap").data("name"));
+    console.log($(".wrap").data("age"));
+    console.log($(".wrap").data("data"));
+
+    // 删除
+    $(".wrap").removeData("name");
+    $(".wrap").removeData("age");
+    $(".wrap").removeData("data");
+
+    // 取
+    console.log($(".wrap").data("name"));
+    console.log($(".wrap").data("age"));
+    console.log($(".wrap").data("data"));
+
+
+
+    // css 拓展
+    // $(".list li").css({
+    //     background: randColor,
+    //     width: 200,
+    //     height: 50,
+    //     lineHeight: "50px",
+    // });
+
+    // function randColor() {
+    //     var str = "0123456789abcdef";
+    //     var colorStr = "#";
+    //     for (var i = 0; i < 6; i++) {
+    //         var index = Math.floor(Math.random() * str.length);
+    //         var char = str.charAt(index);
+    //         colorStr += char;
+    //     }
+    //     return colorStr;
+    // }
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

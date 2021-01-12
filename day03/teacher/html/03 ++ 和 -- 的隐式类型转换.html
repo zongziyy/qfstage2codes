@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // number string boolean null undefined
+
+
+    // ++   --       遇到非数字的其他数据类型  也会将其隐式的转化为数字
+
+    var a = "10";  //  => 纯数字类型的字符串 转化为对应的数值  10, 在自增 
+    var a = "10a";  //  => 非纯数字类型的字符串 转化为  NaN, 在自增 
+    var a = "";     //  =>  转化为  0, 在自增 
+
+
+    var a = true;     //  =>  转化为数字  1, 在自增 
+    var a = false;     //  =>  转化为数字  0, 在自增 
+
+    var a = null;     //  =>  转化为数字  0, 在自增 
+    var a = undefined;     //  =>  转化为数字  NaN, 在自增 
+
+    a++;
+    console.log(a);
+
+
+
+
+
+</script>
+
+</html>

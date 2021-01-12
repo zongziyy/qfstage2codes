@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="sub">
+            <div class="list">
+                <li class="first">我是01</li>
+                <li>我是02</li>
+                <li class="li">我是03</li>
+                <li class="li">我是04</li>
+                <li>我是05</li>
+                <li class="last">我是06</li>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // JS兼容
+    // 1. 常规浏览器的属性 和 低版本IE的属性  存放的位置不一样  (属性名不一样) 
+
+    // document.documentElement.clientWidth || document.body.clientWidth;
+
+    // ele.previousSibling || ele.previousElementSibling
+
+    // 2. 低版本没有对应的方法   => 兼容(自己封装  引入别人封装的插件)
+
+    // document.getElementById()
+    // document.getElementsByClassName()
+    // document.getElementsByTagName()
+    // document.getElementsByName()
+
+
+    // 伪数组/类数组   
+    // 有数组的特性(1. length  2. 下标取值 下标的最大值=length-1 3. 可以被循环遍历 (不建议用for...in) ),但是不能使用数组的方法 (push unshift ... concat forEach map filter)
+
+    var all = document.getElementsByTagName("*");
+    console.log(all);
+    console.log(all.length);
+    console.log(all[0]);
+
+    // for (var i = 0; i < all.length; i++) {
+    //     console.log(all[i]);
+    // }
+
+    // for (var key in all) {   //不建议用for...in  多出一些属性
+    //     console.log(key);
+    // }
+
+    // for (var val of all) {   //不建议用for...in  多出一些属性
+    //     console.log(val);
+    // }
+
+
+    // all.forEach(function (item) {  //不能使用数组的方法
+    //     console.log(item);
+    // })
+
+
+    // 如果想使用数组的方法  ?   伪数组转真数组
+
+    // 1. 新建数组,将位数组中的每一个元素,放到新数组中
+    var list = [];
+    for (var i = 0; i < all.length; i++) {
+        var ele = all[i];
+        list.push(ele);
+    }
+    console.log(list, Array.isArray(list));
+
+    // 2. 借助构造函数Array方法 Array.from()    
+    // Array.from()       接收伪数组,返回对应的真数组
+    var list = Array.from(all);
+    console.log(list, Array.isArray(list));
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

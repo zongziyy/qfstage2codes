@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 三元运算符  /  三目运算符    =>运算符
+
+    // 表达式1 ? 表达式2 :表达式3;
+
+    // 执行流程
+    // 首先 求解表达式1  如果成立  则求解表达式2 (?之后的语句)
+    //                  否则      求解表达式3  (:之后的语句)
+
+    // a. 一个简单的双分支判断
+
+
+    // 2 随机两个0-100的数,求两个数的最大数；
+    // var a = Math.round(Math.random() * 100);
+    // var b = Math.round(Math.random() * 100);
+    // console.log(a, b);
+
+    // var max = null;
+
+    // if (a > b) {
+    //     max = a;
+    // } else {  // a<=b
+    //     max = b;
+    // }
+
+    // console.log(max);
+
+    var a = Math.round(Math.random() * 100);
+    var b = Math.round(Math.random() * 100);
+    console.log(a, b);
+
+    //a. 做一些简单的双分支判断
+    // var max = null;
+    // a >= b ? max = a : max = b;    // 分支中进行赋值
+
+    //b. 判断赋值
+    var max = (a >= b ? a : b);     // 判断赋值   => 先判断,在赋值给max  
+
+    console.log(max);
+
+
+</script>
+
+</html>

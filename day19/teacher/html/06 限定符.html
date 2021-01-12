@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 限定符    指定正则表达式给定组件(子表达式)出现多少次 才能满足匹配
+
+    // *   匹配前面的子表达式出现0次或多次  {0,}
+    // +   匹配前面的子表达式出现1次或多次  {1,}
+    // ?   匹配前面的子表达式出现0次或1次   {0,1}
+
+    // {n}  匹配前面的子表达式出现的次数   n次
+    // {n,}  匹配前面的子表达式出现的次数  至少n次
+    // {n,m}  匹配前面的子表达式出现的次数  至少n次,至多m次
+
+    var str = "good good study , day day up"
+
+    // 单个子表达式(单个字符)
+    // var reg = /day/; // true
+    // var reg = /da{2}y/;   //  daay  
+    // var reg = /d{2}a{2}y/;   //  ddaay  
+
+    var reg = /da{2,}y/; // daay  daaay   daaaay  daaaaay  
+    var reg = /da{2,5}y/; // daay  daaay   daaaay  daaaaay   2-5
+
+    // 0次或多次 
+    var reg = /da*y/; //  dy  day daay  daaay  daaaay  daaaaay 
+
+    // 1次或多次 
+    var reg = /da+y/; //   day daay  daaay  daaaay  daaaaay 
+
+    // 0次或1次
+    var reg = /da?y/;   // dy day
+
+
+    // 匹配一段子表达式(多字符)
+    var reg = /(day){2}/; // dayday
+    var reg = /(day)?/; // ""  day
+
+    console.log(reg.test(str));
+
+
+</script>
+
+</html>

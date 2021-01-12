@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        .searchBox {
+            display: flex;
+            height: 45px;
+            margin-top: 20px;
+        }
+
+        .searchBox .searchBtn {
+            width: 120px;
+
+        }
+
+        .searchBox .searchCon {
+            flex: 1;
+            outline: none;
+            resize: none;
+        }
+
+        .list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+        }
+
+        .list li {
+            width: 23%;
+            padding: 10px;
+            /* border: 1px solid #000; */
+        }
+
+        .list li h5 {
+            /* width: 100%; */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .list li img {
+            width: 220px;
+            height: 220px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap w">
+        <div class="searchBox">
+            <input type="text" class="searchCon"></input>
+            <input type="button" value="搜索" class="searchBtn">
+        </div>
+        <div class="list">
+            <!-- <li>
+                <img src="https://img20.360buyimg.com/jdcms/s300x300_jfs/t1/149400/24/7356/146736/5f509af0Ea4280d26/b4726fbfede2e798.jpg.webp"
+                    alt="">
+                <h5 class="msg">光线电动汽车支架车载手机支架出风口无线充车内用品导航吸盘 黑色（出风口+吸盘）</h5>
+                <p class="price">￥ <span>379.00 </span></p>
+            </li>
+            -->
+        </div>
+    </div>
+</body>
+<script>
+
+    // js动态生成
+    // 先写静态页面 =>  再改为动态生成
+
+    var goodsList = [{  // 对一件商品的描述
+        goodsId: "A001",
+        goodsName: "华为 HUAWEI P40 Pro",
+        goodsMsg: "华为 HUAWEI P40 Pro 麒麟990 5G SoC芯片 5000万超感知徕卡四摄 50倍数字变焦 8GB+128GB冰霜银全网通5G",
+        goodsImg: "https://img12.360buyimg.com/n7/jfs/t1/139098/11/697/82375/5ee6fcebE11053e13/f5df8e27a0b546c5.jpg",
+        goodsPrice: 5988,
+
+    }, {
+        goodsId: "A002",
+        goodsName: "Apple iPhone 11",
+        goodsMsg: "Apple iPhone 11 (A2223) 128GB 黑色 移动联通电信4G",
+        goodsImg: "https://img10.360buyimg.com/n7/jfs/t1/41566/13/14792/149059/5d7809a7E99b4ed1b/56ea66c5f8a6f724.jpg",
+        goodsPrice: 5999,
+    }, {
+        goodsId: "A003",
+        goodsName: "一加8Pro OnePlus",
+        goodsMsg: "一加8Pro OnePlus 1+8Pro 5G手机2K+120Hz 青空色",
+        goodsImg: "https://img13.360buyimg.com/n7/jfs/t1/131844/26/2030/179283/5ee212b8E6037a065/8ebdf06de22e64e0.jpg",
+        goodsPrice: 5399,
+    }, {
+        goodsId: "A004",
+        goodsName: "小米10pro",
+        goodsMsg: "小米10pro 双模5G游戏手机【至高12期分期0首付】 珍珠白 12G+256G",
+        goodsImg: "https://img12.360buyimg.com/n7/jfs/t1/130507/6/2419/623986/5eea0995E7333f0e8/7ebbebf5a6312e30.png",
+        goodsPrice: 4928,
+    }];
+
+    /* 
+        <li>
+            <img src="https://img20.360buyimg.com/jdcms/s300x300_jfs/t1/149400/24/7356/146736/5f509af0Ea4280d26/b4726fbfede2e798.jpg.webp"
+                alt="">
+            <h5 class="msg">光线电动汽车支架车载手机支架出风口无线充车内用品导航吸盘 黑色（出风口+吸盘）</h5>
+            <p class="price">￥ <span>379.00 </span></p>
+        </li>
+    
+    
+    */
+    // getElementsByClassName()  获取的元素 放在一个集合(数组)中
+    // 注意:如果需要操作元素,需要将元素从集合中取出来  (下标取值)
+    var listBox = document.getElementsByClassName("list")[0];
+    var searchCon = document.getElementsByClassName("searchCon")[0];
+    var searchBtn = document.getElementsByClassName("searchBtn")[0];
+
+    console.log(listBox);
+
+
+    listBox.innerHTML = createHtml(goodsList);
+
+
+
+    searchBtn.onclick = function () {
+        var key = searchCon.value.trim();   //搜索的关键词
+
+        // 将商品名称中 含有特定关键词的数据筛选出来  放到新的数组中
+
+        // var list = [];
+        // for (var i = 0; i < goodsList.length; i++) {
+        //     var goods = goodsList[i];
+        //     var goodsName = goods.goodsName;
+        //     //商品名称中  含有关键词的数据   (同时转小写)
+        //     if (goodsName.toLowerCase().indexOf(key.toLowerCase()) != -1) {
+        //         list.push(goods);
+        //     }
+        // }
+
+        var list = goodsList.filter(function (goods) {
+            var goodsName = goods.goodsName;
+            return goodsName.toLowerCase().indexOf(key.toLowerCase()) != -1;
+        })
+
+        // console.log(list);
+
+        listBox.innerHTML = createHtml(list);
+    }
+
+
+    function createHtml(list) {
+        var html = "";  // 拼接所有的li
+
+        // 根据商品的数量  拼接字符串(html结构) 
+        list.forEach(function (goods) {
+            // console.log(goods);
+            // 2. 将商品的相关信息拼接到 字符串中
+
+            var goodsId = goods.goodsId;
+            var goodsName = goods.goodsName;
+            var goodsMsg = goods.goodsMsg;
+            var goodsImg = goods.goodsImg;
+            var goodsPrice = goods.goodsPrice;
+
+
+            // ES6新增字符串模板 (``);    =>  如何拼接变量/表达式 
+            //  ${}
+            html += `<li>
+            <img src="${goodsImg}"
+                alt="">
+            <h5 class="msg">${goodsMsg}</h5>
+            <p class="price">￥ <span>${goodsPrice.toFixed(2)} </span></p>
+        </li>`;
+        })
+        // console.log(html);
+
+        return html;
+    }
+
+</script>
+
+</html>

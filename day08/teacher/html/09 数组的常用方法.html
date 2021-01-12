@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // push()   unshift()   pop()  shift()  splice()
+
+    // reverse()    数组反转
+    // 返回值  反转后的原数组
+    // 是否改变原数组   是
+
+    // var list = ["a", "b", "c", "d"];
+    // var result = list.reverse();
+    // console.log(result);
+    // console.log(list);
+
+    // slice(startIndex,endIndex)    数组的裁切  [startIndex,endIndex )
+    // startIndex  起始下标   默认值 0
+    // endIndex    终止下标   默认值 length
+    // [startIndex,endIndex )
+
+    // 注意  slice() 如果不传参数,会使用默认值,得到一个与原数组元素相同的新数组 (数组进行了一个复制)  
+
+    // 返回值  被裁切的元素形成的新数组
+    // 是否改变原数组   否
+
+    // for(var i=startIndex;i<endIndex;i++){}
+    // var list = ["a", "b", "c", "d"];
+
+    // // var result = list.slice(1, 3);
+    // var result = list.slice(); // 0-length
+
+    // console.log(result);
+    // console.log(list);
+
+
+    // concat()   数组的拼接(将多个数组或元素拼接形成一个新的数组)
+    //  如果拼接的是数组  则将数组展开,之后将数组中的每一个元素放到新数组中
+    //             其他类型, 直接放到新数组中
+
+    // 注意  concat() 如果不传参数,也会得到一个与原数组元素相同的新数组 (数组进行了一个复制) 
+
+    // var list = ["a", "b", "c", "d"];
+    // var arr = [1, 2, 3, 4];
+    // var brr = ["A", "B", "C"];
+
+    // // "a", "b", "c", "d" 1, 2, 3, 4  "A", "B", "C"
+
+    // var crr = list.concat(arr, brr, "hello", "world", true, 1);
+    // console.log(crr);
+    // console.log(list, arr, brr);
+
+
+    // var list = ["a", "b", "c", "d"];
+    // var result = list.concat();   // concat() 如果不传参数,也会得到一个与原数组元素相同的新数组 (数组进行了一个复制) 
+    // console.log(result);
+    // console.log(list);
+
+
+    // includes()   //判断数组中是否存在某个元素  存在=> true,不存在返回false (!!  ES6新增的)
+    // var list = [1, 2, 3, 4];
+
+    // var result = list.includes(1);  // true
+    // var result = list.includes("1");  // false
+    // console.log(result);
+
+
+    // indexOf()   // 返回某个元素在数组中第一次出现的位置    存在该元素,返回下标,不存在 返回 -1  (可以通过返回值 变相的判断是否存在该元素)   
+
+    // var list = [1, 2, 3, 4];
+    // var index = list.indexOf(4);  //3
+    // var index = list.indexOf("4");  //-1
+    // console.log(index);
+
+    // index >= 0  // 存在
+    // index == -1  // 不存在
+
+    // var list = ["a", "b", "c", "d"];
+    // var char = "/";
+
+    // var sum = "";
+    // for (var i = 0; i < list.length; i++) {
+    //     var val = list[i];
+    //     if (i == list.length - 1) {
+    //         sum += val;
+    //     } else {
+    //         sum += val + char;
+    //     }
+    // }
+    // console.log(sum); 
+
+    // join(char)    用特定的字符,将数组拼接形成字符串 (默认",")
+    var list = ["a", "b", "c", "d"];   // "a-b-c-d"
+
+    var result = list.join("-"); //"a-b-c-d"
+    var result = list.join("/"); //"a/b/c/d"
+    var result = list.join(""); //"abcd"
+    var result = list.join(); //  a,b,c,d
+    console.log(result);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

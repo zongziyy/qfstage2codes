@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+
+    // 工厂模式 创建对象  (给定既定的参数 产出对象 )
+    // function Cat(name, color) {
+    //     var obj = {   // new Object();
+    //         name: name,
+    //         color: color,
+    //         call() {
+    //             console.log("喵喵");
+    //         },
+    //         skill() {
+    //             console.log("捉老鼠");
+    //         }
+    //     }
+
+    //     return obj;
+    // }
+
+    // 1. 通过此方法创建的对象 和 函数没有关系(对比构造函数)
+    // var arr = new Array();
+    // var obj = new Object();
+    // console.log(arr instanceof Array); // true;
+    // console.log(obj instanceof Object); // true;
+
+    // 2. 共有的属性和方法重复创建  => 浪费内存
+
+
+
+
+    // 自定义构造函数
+    // !!! 构造函数中的this,指向函数调用过程中创建的实例化对象
+
+    function Cat(name, color) {
+        // {}
+        // this-> {}
+
+        // 把需要的属性和方法绑定到创建的对象(实例化对象)
+        this.name = name;
+        this.color = color;
+        // this.__proto__ = Cat.prototype
+        // return this;
+    }
+
+
+    // 所有实例化对象共有的属性和方法  => 存到Cat.prototype(原型对象)
+    // Cat.prototype.constructor = Cat;
+    Cat.prototype.species = "猫";
+    Cat.prototype.call = function () {
+        console.log("喵喵");
+    }
+    Cat.prototype.skill = function () {
+        console.log("捉老鼠");
+    }
+    Cat.prototype.say = function () {
+        console.log(this.name, this.color);
+    }
+
+
+
+    console.dir(Cat);
+
+    var Tom = new Cat("Tom", "black");
+    // console.log(Tom.__proto__ == Cat.prototype);
+    // console.log(Tom.__proto__.constructor == Cat);
+    console.log(Tom);
+    // console.log(Tom.name);
+    // console.log(Tom.color);
+    // console.log(Tom.species);
+    // Tom.say();
+    // console.log(Tom.a);
+
+    // Cat.prototype(原型对象 => 本质:也是一个对象)  =>此对象是由哪个构造函数创建的
+    //   Cat.prototype  是由上级构造函数Object创建的
+    // console.log(Cat.prototype);
+    // console.log(Cat.prototype.__proto__.constructor === Object);  //Cat.prototype  是由上级构造函数Object创建的
+    // console.log(Cat.prototype.__proto === Object.prototype);  //
+
+
+    // Object.prototype(原型对象 => 本质:也是一个对象) =>此对象是由哪个构造函数创建的
+    // Object.prototype  是由上级构造函数Object创建的  (矛盾的  先有构造函数还是先有构造函数的原型对象)
+    // Object.prototype
+    // console.log(Object.prototype);
+    // console.log(Object.prototype.__proto__);  // 
+
+
+
+
+
+
+
+
+</script>
+
+</html>

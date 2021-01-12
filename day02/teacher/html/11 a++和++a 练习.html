@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // a++ 和 ++a  都是自增1
+
+    // 区别
+    // 在自增或自减的过程中出现其他操作
+    // a++ 先赋值,再自增
+    // ++a 先自增,再赋值
+
+    var a = 10;
+    a++;
+    console.log(a);
+
+    var a = 10;
+    ++a;
+    console.log(a);
+
+    // 在自增或自减的过程中出现其他操作
+    // a++ 先赋值,再自增
+    // ++a 先自增,再赋值
+
+    var a = 10;
+    var n = a++;    // 在自增的过程中 出现赋值  a++ =>    var n = a; a+=1
+    console.log(a);  //11 
+    console.log(n);   //10
+
+    var a = 10;
+    var n = ++a;    // 在自增的过程中 出现赋值 ++a =>    a+=1, var n =a;
+    console.log(a);  //11 
+    console.log(n);  // 11 
+
+
+    // --------------------------------------------------
+
+    var a = 10;
+    console.log(a++);  // 10   在自增的过程中 打印答应操作
+    console.log(a);    //11
+
+    var a = 10;
+    console.log(++a);  // 11   在自增的过程中 打印答应操作
+    console.log(a);    //11
+
+    // 练习
+    var a = 13;
+    var sum = a++ + ++a + ++a * 2 + a-- + --a;
+
+</script>
+
+</html>

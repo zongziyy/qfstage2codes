@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 局部变量   
+
+    // a. 在函数内部通过关键词(var let const)声明的变量是局部变量  
+    // b. 形式参数也是局部变量
+
+    // 对应的作用域:局部作用域(函数作用域)  只在函数内容生效
+
+
+    // var a = 10;
+    // var b = 20;
+
+    // function fn() {   //此处只是封装 调用时才会执行
+
+    //     // 在函数内通过关键词(var let const),它只在函数内部生效(生效的区域作用域)
+    //     var c = 100;
+    //     var d = 200;
+    //     console.log(c, d);  // 100 200
+    // }
+
+    // fn();
+    // console.log(c, d);   //报错
+
+
+    function add(a, b) {
+        console.log(a, b); // 100 200
+    }
+
+    add(100, 200);
+    console.log(a, b);
+
+
+
+
+</script>
+
+</html>

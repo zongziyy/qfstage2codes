@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 06 小数运算失精度的问题  
+    // 小数也是以二进制的形式存储的,有些小数靠二进制无法完全存储,存的是近似值  =>导致结果出现误差
+
+    // console.log(0.1 + 0.2);
+
+    // 怎么解决?
+
+    // 1.  先扩大响应的倍数(10 100 1000),计算,之后再所想响应的倍数
+    // var a = 0.1;
+    // var b = 0.2;
+
+    // a = a * 10;   // a*10之后赋值给变量a
+    // b = b * 10;
+
+    // var c = (a + b) / 10;
+    // console.log(c);
+
+    // 2. 官方提供的方法
+    // num.toFixed(n)   保留n位小数(四舍五入)   =>返回的相应数值的字符串
+
+    var a = 0.1;
+    var b = 0.2;
+
+    var c = (a + b);
+    c = c.toFixed(2);
+    console.log(c);
+
+
+    // var str = "100";
+    // var result = Number(str);
+    // console.log(result);
+
+
+</script>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var list = [32, 93, 77, 53, 38, 87];
+    // console.log("原数组", list);
+    // var sum = 0;
+    // for (var i = 0; i < list.length; i++) {
+    //     sum += list[i];
+    // }
+
+    // var sum = 0;
+    // list.forEach(function (item) {
+    //     sum += item;
+    // })
+
+    // reduce  遍历数组, 每次循环时执行传入的回调函数,回调函数会返回一个值,将该值作为初始值prev,传入到下一次函数中, 返回最终求和的结果
+
+    // prev  初始值 (类似求和是 sum=0)   可以设置初始值,如果不设置初始值默认是数组中的第一个元素,遍历时从第二个元素开始遍历
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+
+    // reduceRight 用法同reduce,只不过是从右向左
+
+    var list = [32, 93, 77, 53, 38, 87];
+    console.log("原数组", list);
+
+    // var sum = list.reduce(function (prev, item, index, array) {
+    //     console.log(prev, item, index, array);
+    //     return prev + item; // 0+32  32+93   125+77
+    // }, 0);
+    // console.log(sum);
+
+    // var sum = list.reduce(function (prev, item, index, array) {
+    //     console.log(prev, item, index, array);
+    //     return prev + item; // 0+32  32+93   125+77
+    // })
+    // console.log(sum);
+
+
+    var sum = list.reduceRight(function (prev, item, index, array) {
+        console.log(prev, item, index, array);
+        return prev + item; // 0+32  32+93   125+77
+    });
+    console.log(sum);
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 算术运算符
+    // + - * / %
+    //  * / %  优先级大于  + -
+
+
+
+    // 数字类型
+    var a = 10;
+    var b = 3;
+    var c = a + b;
+    var c = a - b;
+    var c = a * b;
+    var c = a / b;
+    var c = a % b;  //余 | 模     10 / 3 = 3 ... 1
+    // console.log(c);
+
+    // 字符串  (隐式类型转换  )
+
+    // a. 字符串遇到 + 会拼接形成新的字符串      (隐式的转化为字符串)
+
+    // b. 字符串遇到 -  * / % 会隐式的转化为数字,然后在运算   (隐式的转化为数字)
+    // 纯数字类型的字符串  => 转化为对应的数值
+    // 非纯数字类型的字符串("a","10px")  => 转化 NaN (not a number)
+
+    // 字符串与 +
+    var a = "10";
+    var b = 3;
+    var c = a + b;  // "10" + 3  => "103" 
+    var c = b + a;  // 3 + "10"  => "310" 
+    // console.log(c)
+
+    // 字符串 与 - 
+    var a = "10";  // 纯数字类型的字符串  => 对应数值
+    var b = 3;
+    var c = a - b;
+    var c = a * b;
+    var c = a / b;
+    var c = a % b;
+    // console.log(c, typeof c);
+
+
+    var a = "10px";  // 非纯数字类型的字符串 => 转化为数字 NaN
+    var b = 3;
+    var c = a - b;
+    // var c = a * b;
+    // var c = a / b;
+    // var c = a % b;
+    console.log(c, typeof c);
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 方法/函数   完成某个特定功能的工具
+    // 方法可以接收参数,也可以不接受参数
+
+    // document.write("hello")   "hello"  参数
+    // console.log()                         
+    // alert()
+
+
+    // Math
+
+    // Math.random()  生成一个0-1的随机数  [0,1)   
+
+    // console.log(Math.random());
+
+    var num = Math.random(); // 生成一个0-1的随机数 [0,1)     赋值给变量num
+    var num = Math.random() * 100; // 生成一个0-1的随机数 [0,1)*100  =>[0,100)
+    var num = Math.random() * 100 + 100; // 生成一个0-1的随机数 [0,1)*100 + 100  =>[0,100)+100 =>[100,200)
+
+    console.log(num);
+
+    // Math.ceil(number)   接收一个数值number,对number向上取整并返回
+    // ceil  天花板
+    var upNum = Math.ceil(num);   //对num 向上取整  赋值给变量upNum
+    console.log(upNum);
+
+    // Math.floor(number)   接收一个数值number,对number向下取整并返回
+    // floor  地板
+    var downNum = Math.floor(num);   //对num 向上取整  赋值给变量upNum
+    console.log(downNum);
+
+    // Math.round(number)   接收一个数值number,对number四舍五入并返回
+    var roundNum = Math.round(num);
+    console.log(roundNum);
+
+
+
+
+</script>
+
+</html>

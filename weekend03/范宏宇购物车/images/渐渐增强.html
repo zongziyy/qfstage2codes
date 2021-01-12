@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="yangmi.jpg">1</a>
+<a href="yangmi1.jpg">2</a>
+<a href="yangmi2.jpg">3</a>
+</body>
+<script>
+    var div1=document.createElement("div");
+    var body=document.getElementsByTagName("body")[0];
+    body.appendChild(div1);
+    div1.style="width:500px;height:500px;border:1px solid black;"
+    var img=document.createElement("img");
+    div1.appendChild(img);
+    var abiaoqian=document.getElementsByTagName("a");
+    for(var i=0;i<abiaoqian.length;i++){
+        abiaoqian[i].onclick=function(){
+            tihuanlujin(this);
+            return false;
+        }
+    }
+    function tihuanlujin(lujin){
+        var src=lujin.href;
+        img.src=src;
+    }
+
+</script>
+</html>

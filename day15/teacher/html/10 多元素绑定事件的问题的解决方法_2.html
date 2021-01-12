@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+
+        .wrapNav {
+            /* background-color: #6ff; */
+            width: 100%;
+            height: 45px;
+        }
+
+        .wrapNav .nav {
+            display: flex;
+        }
+
+        .wrapNav .nav>li {
+            flex: 1;
+            border: 1px solid #000;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        .wrapNav .nav>li:not(:last-child) {
+            border-right: 0;
+        }
+
+        .wrapPart .part {
+            height: 400px;
+            line-height: 400px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .tips {
+            line-height: 45px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapNav">
+        <ul class="nav w">
+            <li>links_001</li>
+            <li>links_002</li>
+            <li>links_003</li>
+            <li>links_004</li>
+            <li>links_005</li>
+            <li>links_006</li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    var liList = document.querySelectorAll(".nav li");
+
+    console.log(liList);
+
+    // liList[0].onclick = function () {
+    //     console.log(liList[0].textContent);
+    // }
+    // liList[1].onclick = function () {
+    //     console.log(liList[1].textContent);
+    // }
+
+    // 2. 事件中的 li和 i找的是全局的li和i  => 如何让他不找全局的,找局部的
+    // 中间嵌套一个函数  将原本的全局变量转为局部变量
+
+    for (var i = 0; i < liList.length; i++) {
+        var li = liList[i];
+        function fn(li, i) {
+            console.log(li, i);
+
+            // 给循环当前的li绑定事件  i循环当前的i值
+            li.onclick = function () {
+
+                //  // 当我们点击li时,函数内部没有声明 li和i ,向外跳一层(fn的函数作用域   找到循环当前的li和i)
+                console.log(li, i);
+            }
+
+        }
+        fn(li, i);  // 立即调用函数  传入循环当前的li和i
+
+    }
+
+    // console.log("页面加载完毕", li, i);  // 全局的li和i 已经变为循环结束之后的结果  <li>links_006</li>  6
+
+    // fn(liList[0], 0);
+    // function fn(li, i) {
+
+    //     console.log(li, i);  // liList[0]   0
+
+    //     // 给循环当前的li绑定事件  i循环当前的i值
+    //     li.onclick = function () {
+
+    //         //  // 当我们点击li时,函数内部没有声明 li和i ,向外跳一层(fn的函数作用域   找到循环当前的li和i)
+    //         console.log(li, i);
+    //     }
+
+    // }
+
+    // fn(liList[1], 1);
+    // function fn(li, i) {
+    //     console.log(li, i);  // liList[1]   1
+
+    //     // 给循环当前的li绑定事件  i循环当前的i值
+    //     li.onclick = function () {
+
+    //         //  // 当我们点击li时,函数内部没有声明 li和i ,向外跳一层(fn的函数作用域   找到循环当前的li和i)
+    //         console.log(li, i);
+    //     }
+
+    // }
+
+
+</script>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select class="province">
+        <option value="">请选择省份</option>
+        <!-- <option value="A001">北京</option>
+        <option value="A002">上海</option>
+        <option value="A003">湖北</option>
+        <option value="A004">湖南</option> -->
+    </select>
+    <select class="city" name="" id="">
+        <option value="">请选择市/区</option>
+        <!-- <option value="A001">朝阳</option>
+        <option value="A002">海淀</option>
+        <option value="A003">沙河</option>
+        <option value="A004">上地</option> -->
+    </select>
+</body>
+<script>
+    // live Server 启动一个假的服务 (不能做逻辑处理  只能做页面展示)
+
+    // xhr.readyState  请求的状态
+    //  0 1 2 3 4 
+
+    // xhr.status  服务器响应的状态码
+    // 100  200  300  400  500
+
+    var province = document.getElementsByClassName("province")[0];
+    var city = document.getElementsByClassName("city")[0];
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("get", "../data/pro.json", true);
+
+    xhr.send();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var result = xhr.responseText;
+            var data = JSON.parse(result);
+            console.log(data);
+
+            // 生成省份
+            var { list: proList } = data;
+            console.log(proList);
+            var html = '<option value="">请选择省份</option>';
+            // proList.forEach((item) => {
+            //     console.log(item);
+            //     var { city_id, city_name } = item;
+            //     html += `<option value="${city_id}">${city_name}</option>`
+            // })
+            proList.forEach(({ city_id, city_name }) => {
+                html += `<option value="${city_id}">${city_name}</option>`
+            })
+
+            province.innerHTML = html;
+
+            province.onchange = function() {
+                var city_id = this.value; // 获取选择的省份 id
+                console.log(city_id);
+                if (city_id) {
+                    // var arr = proList.filter(function (item) {
+                    //     return item.city_id == city_id;
+                    // });
+                    // console.log(arr);
+                    // var thisPro = arr[0];
+                    // console.log(thisPro);
+
+                    var thisPro = proList.filter((item) => item.city_id == city_id)[0];
+                    console.log(thisPro);
+
+                    var { list: cityList } = thisPro;
+                    console.log(cityList);
+
+                    var html = '<option value="">请选择市/区</option>';
+                    cityList.forEach(({ city_id, city_name }) => {
+                        html += `<option value="${city_id}">${city_name}</option>`
+                    })
+
+                    city.innerHTML = html;
+
+                } else {
+                    // city.selectedIndex = 0;
+                    city.innerHTML = '<option value="">请选择市/区</option>';
+                }
+
+            }
+
+        }
+    }
+</script>
+
+</html>

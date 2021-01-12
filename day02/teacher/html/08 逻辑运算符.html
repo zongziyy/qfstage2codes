@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 逻辑运算符(多条件)
+
+    //  与/且 &&   或 ||   非 !
+
+    // 优先级   !  >   &&  >  ||
+
+    // 王者荣耀    加工会
+    // 等级30     段位王者     VIP8
+
+
+    // 与/且     同真为真,遇假为假(遇假则停 ,  找假的,一旦遇到false,就没有必要向后看了,肯定为false)
+    // 等级30  &&   段位王者  &&   VIP8    => 同时满足(只要有一个不满足,没有必要往后看了)
+
+    console.log(5 > 3 && 5 < 10);  // true && true => true
+    console.log(5 < 3 && 5 < 10);  // false && true => false
+    console.log(5 > 3 && 5 < 10 && "5" > "12");  // true && true&&true => true
+    console.log(5 > 3 && 5 > 10 && "5" > "12");  // true && false &&true => false
+
+
+    // ||  或   同假为假,遇真为真 (遇真即停 , 找条件为真的,只有找到真的,后面就没有必要看了,肯定为true)
+    // 等级30  ||   段位>=钻石   ||   VIP>=6   => 只要满足一个就可以
+
+    console.log(5 < 3 || 5 > 10);  // false|| false  => false
+    console.log(5 > 3 || 5 > 10);  // true || false  => true
+    console.log(5 < 3 || 5 > 10 || "5" < 12);  // false || false||true  => true
+    console.log(5 < 3 || 5 > 10 || "5" < "12");  // false || false|| false  => false
+
+    // !  非  (颠倒是非  => 条件反转)
+    console.log(!true);  //false
+    console.log(!false);  //true
+
+    var num = Math.round(Math.random() * 100);
+    console.log(num);
+    console.log("及格", num >= 60);  //及格
+    console.log("不及格", !(num >= 60));  //不及格
+
+
+
+
+</script>
+
+</html>

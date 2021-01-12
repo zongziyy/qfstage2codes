@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .wrapAll {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .wrapAll .judgeBox img {
+            width: 100%;
+            height: 263px;
+        }
+
+        .wrapAll .judgeBox {
+            position: relative;
+        }
+
+        .shadow {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+        }
+
+        .judge {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            position: absolute;
+            left: 0px;
+            top: 100px;
+            background-image: url(../images/bg.png);
+            background-position: -400px -100px;
+
+            background-size: 600px auto;
+
+        }
+
+        .slideBar {
+            margin-top: 20px;
+            background-color: grey;
+            height: 50px;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .slideBar .ball {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapAll">
+        <div class="judgeBox">
+            <!-- <img src="../images/bg.png" alt=""> -->
+            <img src="../images/bg.png" alt="">
+            <div class="shadow"></div>
+            <div class="judge"></div>
+        </div>
+        <div class="slideBar">
+            <div class="ball"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+
+    var judgeBox = document.querySelector(".judgeBox");
+    var shadow = document.querySelector(".shadow");
+    var judge = document.querySelector(".judge");
+    var slideBar = document.querySelector(".slideBar");
+    var ball = document.querySelector(".ball");
+
+
+    // 细节  
+    // 图片没有加载完毕 , 父元素judgeBox 高度比较低(21px)  => maxTop有问题
+    // 解决方法  
+    // a. 给图片设置高度
+    // b. window.onload 
+    var maxLeft = judgeBox.clientWidth - shadow.clientWidth;
+    var maxTop = judgeBox.clientHeight - shadow.clientHeight;
+    // console.log(judgeBox.clientHeight, shadow.clientHeight);
+
+
+    //shadow 随机位置
+    // 200-maxLeft
+    var randX = Math.round(Math.random() * (maxLeft - 200)) + 200;
+    var randY = Math.round(Math.random() * maxTop);
+    console.log(randX, randY);
+
+    shadow.style.left = randX + "px";
+    shadow.style.top = randY + "px";
+
+    judge.style.top = randY + "px";
+    //  background-position: -400px -100px;
+    // judge.style.backgroundPosition = `${-randX}px ${-randY}px`;
+    judge.style.backgroundPositionX = -randX + "px";
+    judge.style.backgroundPositionY = -randY + "px";
+
+
+    ball.onmousedown = function (e) {
+        var e = e || window.event;
+        var posX = e.offsetX;
+
+        console.log(posX);
+
+        document.onmousemove = function (e) {
+            var e = e || window.event;
+
+            var x = e.pageX - posX - slideBar.offsetLeft;
+
+            if (x < 0) x = 0;
+            if (x > maxLeft) x = maxLeft;
+
+            ball.style.left = x + "px";
+            judge.style.left = x + "px";
+        }
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+
+            // 鼠标松开时验证
+            // 完美情况下  shadow和judge 完全重合(left相等)
+
+            // if (shadow.offsetLeft == judge.offsetLeft) {  //理想情况下
+            //     console.log("解锁成功");
+            // }
+
+            if (judge.offsetLeft >= shadow.offsetLeft - 3 && judge.offsetLeft <= shadow.offsetLeft + 3) {  //理想情况下
+                console.log("解锁成功");
+                location.href = "https://www.baidu.com";
+            } else {
+                ball.style.left = 0;
+                judge.style.left = 0;
+
+                //shadow 随机位置
+                // 200-maxLeft
+                var randX = Math.round(Math.random() * (maxLeft - 200)) + 200;
+                var randY = Math.round(Math.random() * maxTop);
+                console.log(randX, randY);
+
+                shadow.style.left = randX + "px";
+                shadow.style.top = randY + "px";
+
+                judge.style.top = randY + "px";
+                //  background-position: -400px -100px;
+                // judge.style.backgroundPosition = `${-randX}px ${-randY}px`;
+                judge.style.backgroundPositionX = -randX + "px";
+                judge.style.backgroundPositionY = -randY + "px";
+
+
+            }
+
+        }
+
+
+
+    }
+</script>
+
+</html>

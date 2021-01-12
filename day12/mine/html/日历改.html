@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2239723_s6pnd5yhvvf.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <title>马泽亮日历</title>
+    <style>
+        @font-face {
+            font-family: "clockIcon";
+            src: url(../fonts/clockicons.woff2);
+        }
+
+        .calendar {
+            background-color: #505050;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            width: 300px;
+            color: #fff;
+        }
+
+        .clockBox {
+            width: 280px;
+            padding: 20px 15px;
+            margin: 0;
+            border-bottom: 1px #FFFFFF solid;
+        }
+
+        .clockBox .clock {
+            height: 32px;
+            line-height: 32px;
+            font-size: 28px;
+            font-family: "clockIcon";
+        }
+
+        .clockBox .dateBox {
+            line-height: 24px;
+            height: 24px;
+            font-size: 16px;
+            text-decoration: underline;
+        }
+
+        .date {
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .dates,
+        .week {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 0 15px;
+        }
+
+        .dates li,
+        .week li {
+            width: 14%;
+            text-align: center;
+            height: 36px;
+            line-height: 36px;
+            box-sizing: border-box;
+        }
+        .switch .iconfont{
+            height: 30px;
+            line-height: 30px;
+            font-size: 25px;
+            text-align: center;
+            display: block;
+            float: right;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .switch .up{
+            transform: rotate(180deg);
+        }
+        .switch .now{
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calendar">
+        <div class="clockBox">
+            <div class="clock"></div>
+            <div class="dateBox"></div>
+        </div>
+        <div class="date">
+            <p class="yearMonth">2020</p>
+            <div class="switch">
+                <i class="iconfont icon-arrow-up up"></i>
+                <i class="iconfont icon-arrow-up down"></i>
+                <i class="iconfont now">今</i>
+            </div>
+        </div>
+        <ul class="week">
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+            <li>日</li>
+        </ul>
+        <ul class="dates">
+        </ul>
+    </div>
+</body>
+<script>
+    var time = new Date(); // 当前时间
+    var date = new Date(time); // 切换的时间
+    
+
+
+    var clock = document.getElementsByClassName("clock")[0];
+    var dateBox = document.getElementsByClassName("dateBox")[0];
+    var yearMonth = document.getElementsByClassName("yearMonth")[0];
+    var dates = document.getElementsByClassName("dates")[0];
+    var thisMonth = document.getElementsByClassName("iconfont")[2];
+    var lastMonth = document.getElementsByClassName("iconfont")[1];
+    var nextMonth = document.getElementsByClassName("iconfont")[0];
+
+
+    displayTime();
+
+    setInterval(displayTime, 1000);
+
+    function displayTime() {
+        //获取年月日、时间
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var day = time.getDate();
+        var hour = time.getHours();
+        var minute = time.getMinutes();
+        var second = time.getSeconds();
+        var week = time.getDay();
+        var weekList = ["天", "一", "二", "三", "四", "五", "六"]
+
+        //打印到文档
+        clock.innerHTML = `${hour<10?"0"+hour:hour}:${minute<10?"0"+minute:minute}:${second<10?"0"+second:second}`;
+        dateBox.innerHTML = `${year}年${month}月${day} 星期${weekList[week]} `;
+    }
+
+    // 第一题  传入一个日期 返回该月的第一天是星期几
+    function firstDay(time) {
+        var newDay = new Date(time); //以新日期对象接收
+        newDay.setDate(1); //设置日期为本月第一天
+        // console.log(time, newDay);
+        var week = newDay.getDay();
+        week = week == 0 ? 7 : week;
+        return week;
+    }
+    // firstDay(time);
+    // var result = firstDay(time);
+    // console.log(result);
+
+    // 第二题  传入一个日期 返回上个月有多少天
+    function lastMonthDate(time) {
+        var newDay = new Date(time); //以新日期对象接收
+        newDay.setDate(0); //设置日期为上月最后一天
+        // console.log(time, newDay);
+        var date = newDay.getDate();
+        return date;
+    }
+    // lastMonthDate(time);
+    // var result = lastMonthDate(time);
+    // console.log(result);
+
+    //第三题  传入一个日期 返回该月有多少天
+    function howManyDays(time) {
+        var newDay = new Date(time); //以新日期对象接收
+        // console.log(time, newDay);
+        newDay.setDate(28); //以防月份切换时日期超出自动换算为下下月
+        var month = newDay.getMonth(); //获取本月月份
+        newDay.setMonth(month + 1); //设置月份为下个月
+        // console.log(time, newDay);
+        newDay.setDate(0); //设置日期为上月最后一天
+        // console.log(time, newDay);
+        var days = newDay.getDate();
+        // console.log(days)
+        return days;
+    }
+    // howManyDays(time);
+    // var result = howManyDays(time);
+    // console.log(result);
+
+
+    // 初始打印一次
+    writeDate(date,time);
+    // 半个月更新一次
+    setInterval(writeDate, 129600000);
+    // 循环打印
+    function writeDate(date,time) {
+        var day = date.getDate();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var nowDay = time.getDate();
+        var nowYear = time.getFullYear();
+        var nowMonth = time.getMonth() + 1;
+        yearMonth.innerHTML = `${year}年${month}月`;
+        for (let i = lastMonthDate(date) - (firstDay(date) - 2); i <= lastMonthDate(date); i++) {
+            dates.innerHTML += `<li style="color:#717171">${i}</li>`;
+        }
+        for (let i = 1; i <= howManyDays(date); i++) {
+            if(year == nowYear && month == nowMonth && i == nowDay){
+                dates.innerHTML += i==day?`<li style="border:2px solid #000">${i}</li>`:`<li>${i}</li>`;
+            } else {
+                dates.innerHTML +=`<li>${i}</li>`;
+            }                
+        }
+        for (let i = 1; i <= 42 - (firstDay(date) - 1) - howManyDays(date); i++) {
+            dates.innerHTML += `<li style="color:#717171">${i}</li>`;
+        }
+    }
+
+
+
+    lastMonth.onclick = function(){
+        date.setDate(1);
+        date.setMonth(date.getMonth()-1);
+        console.log(date)
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        yearMonth.innerHTML = `${year}年${month}月`;
+        dates.innerHTML = "";
+        writeDate(date,time);
+    }
+    nextMonth.onclick = function(){
+        date.setDate(1);
+        date.setMonth(date.getMonth()+1);
+        console.log(date)
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        yearMonth.innerHTML = `${year}年${month}月`;
+        dates.innerHTML = "";
+        writeDate(date,time);
+    }
+    thisMonth.onclick = function(){
+        date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        yearMonth.innerHTML = `${year}年${month}月`;
+        dates.innerHTML = "";
+        writeDate(date,time);
+    }
+</script>
+
+</html>

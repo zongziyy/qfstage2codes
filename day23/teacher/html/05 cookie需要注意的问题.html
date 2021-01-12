@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 1. - 有些浏览器在使用中文时，会出现乱码。   =>中文编码/解码
+
+    // > 在设置cookie时，通过encodeURIComponent 编码，在获取cookie时，通过decodeURIComponent 解码\
+
+    // 2. cookie 文件存放在客户端(PC/App)
+
+    // 3. cookie 不能跨网站
+
+    // 4. cookie 不能跨浏览器
+
+    // 5 cookie 的内容是纯文本，即只能保存字符串数据。
+
+
+    var str = "今天星期三123123asdasd+-*/?"
+
+    // 编码
+
+    var enStr1 = encodeURI(str);   // 一般针对中文 , %
+    console.log(enStr1);
+    var enStr2 = encodeURIComponent(str); // 除了中文 , 标点符号也会被编码(- *除外)
+    console.log(enStr2);
+
+
+    // 解码
+
+    var deStr1 = decodeURI(enStr1);
+    console.log(deStr1);
+
+    var deStr1 = decodeURIComponent(enStr2);
+    console.log(deStr1);
+
+
+
+</script>
+
+</html>

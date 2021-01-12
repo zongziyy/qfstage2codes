@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 题目：有个人想知道，一年之内一对兔子能繁殖多少对？于是就筑了一道围墙把一对兔子关在里面。已知一对兔子每个月可以生一对小兔子，而一对兔子从出生后到成长为大兔子需要等待2个月(第3个月起每月生一对小兔子)。假如一年内没有发生死亡现象，那么，一对兔子一年内（12个月）能繁殖成多少对？
+    　　已知兔子的规律为数列: 1，1，2，3，5，8，13，21...
+    
+        前两个月都是1
+        从第三个月开始 fn(n) = fn(n-1) + fn(n-2);
+     -->
+
+
+</body>
+<script>
+
+    var a = 1997;
+    var b = 615;
+
+    if (a < b) {  // 如果a小于b 交换两个数的位置 (保证 a是较大的值)
+        var c = a;
+        a = b;
+        b = c;
+    }
+
+    console.log(a, b);
+
+    do {
+        var mod = a % b;    // 18 % 12 =1 ...6      12%6 = 2 ...0
+
+        // 为下一次做准备  => 把除数赋值给a  把余数赋值给 b
+        a = b;   //  a = 12       a = 6
+        b = mod; //  b = 6        b = 0
+
+    } while (mod != 0);
+    console.log(a);
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <ul class="one two" id="ul">
+            <li class="first">01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    // var ul = document.querySelector(".one");
+    var ul = document.getElementById("ul");
+    var second = document.querySelector(".one .second");
+
+
+    // 层级关系
+
+    // 父节点 和 父元素
+    // ele.parentNode
+    // ele.parentElement
+
+    // console.log(ul.parentNode);
+    // console.log(ul.parentElement);
+
+    //兄弟节点
+
+    console.log(ul.childNodes);   //子节点(元素节点,文本节点,注释节点)
+    console.log(ul.children);
+
+    // previous  早先的   sibling 同胞
+    // 前一个兄弟节点 / 前一个兄弟元素
+    // ele.previousSibling
+    // ele.previousElementSibling
+
+    // 常规浏览器两个属性都有
+    // IE 低版本  没有  ele.previousElementSibling  =>   undefined    =>但是 ele.previousSibling  就是前一个兄弟元素
+
+    console.log(second.previousSibling);
+    console.log(second.previousElementSibling);
+
+    function prev(ele) {
+        return ele.previousElementSibling || ele.previousSibling;
+    }
+
+
+    // next  早先的   sibling 同胞
+    // 前一个兄弟节点 / 前一个兄弟元素
+    // ele.nextSibling
+    // ele.nextElementSibling
+
+    // 常规浏览器两个属性都有
+    // IE 低版本  没有  ele.nextElementSibling  =>   undefined    =>但是 ele.nextSibling  就是前一个兄弟元素
+
+    console.log(second.nextSibling);
+    console.log(second.nextElementSibling);
+
+    function next(ele) {
+        return ele.nextElementSibling || ele.nextSibling;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

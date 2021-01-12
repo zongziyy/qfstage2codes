@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数组 对象  => 快速取值
+    var list = [1, 2, [3, 4, [5, [6]]]];
+    var f = list[2][2][1][0];
+
+    // var [a, b, c] = list;
+    // var [a, b, [c, d, e]] = list;
+    var [a, b, [c, d, [e, [f]]]] = list;
+
+
+    // 扩展运算符 ...
+    var arr = [1, 2, 3];
+    console.log(...arr);
+
+    var brr = [...arr];
+    console.log(brr);
+
+    // 
+    var list = [1, 2, 3, 4, 5, 6];
+    var [a, b, ...c] = list;
+    console.log(a, b, c);
+
+    var [a = 1, b = 1, c = 1] = [];
+
+    // 
+    var obj = {
+        a: [1, 2],
+        b: { x: 1, y: 2 },
+        c: 3,
+        d: 4,
+    }
+
+    var A = obj.a[0];
+
+    // var { a, b, c, d } = obj;
+    // var { a: a, b: b, c, d } = obj;
+    // var { a: A, b: B, c, d } = obj;
+
+    // var { a, b, c, d } = obj;
+    var { a: [A, B], b: { x, y }, c, d } = obj;
+    console.log(A, B, x, y, c, d)
+
+
+    // function fn({ } = {}) {
+
+    // }
+
+    // function fn([] = []) {
+
+    // }
+
+
+    // function fn(...args) {
+
+    // }
+
+    // fn(1, 2, 3);
+
+    // function fn(fun,interval, ...args) {
+    //     fun(...args);
+    // }
+
+    // fn(function (a, b, c) {
+    //     console.log(a, b, c)
+    // }, 1000,1, 2, 3);
+
+
+    // setInterval(fn,1000,1,2,3,4,5);
+
+
+    // 简写
+    var f = a => a;
+
+    var f = a => {
+        return a;
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

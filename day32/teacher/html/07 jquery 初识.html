@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        li {
+            list-style: none;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="box">
+        <div class="list">
+            <li class="first">我是01</li>
+            <li>我是02</li>
+            <li>我是03</li>
+            <li>我是04</li>
+            <li>我是05</li>
+            <li>我是06</li>
+            <li>我是07</li>
+            <li>我是08</li>
+            <li>我是09</li>
+            <li>我是10</li>
+        </div>
+    </div>
+    <div class="box">
+        <button class="setHtml">
+            设置html
+        </button>
+        <button class="getHtml">
+            获取html
+        </button>
+        <button class="setWidth">
+            设置宽度
+        </button>
+        <button class="getWidth">
+            获取宽度
+        </button>
+        <button class="hide">隐藏</button>
+        <button class="show">显示</button>
+        <button class="attr">attr</button>
+        <button class="prop">prop</button>
+        <button class="css">css</button>
+        <button class="eq">第一个</button>
+        <button class="siblings">siblings</button>
+        <button class="chain">chain</button>
+    </div>
+</body>
+<script>
+    console.log($);
+
+
+    // $("#box")   => jquery对象 (伪数组/类数组)
+
+    console.log($("#box"));
+    console.log($(".list li"));
+    // $(".list li").each(function (index, item) {
+    //     console.log(index, item)
+    // });
+
+    $(".setHtml").click(function() {
+        $(".list li").html("asdasdasd");
+    })
+    $(".setWidth").click(function() {
+        $(".list li").width("200px");
+    })
+
+    $(".hide").click(function() {
+        $(".list li").hide("slow");
+    })
+    $(".show").click(function() {
+        $(".list li").show();
+    })
+
+    $(".css").click(function() {
+        $(".list li").css("background", "red");
+    })
+
+    $(".chain").click(function() {
+        $(".list li").eq(0).width(200).css("background", "red").siblings().width(400).css("background", "blue");
+    })
+</script>
+
+</html>

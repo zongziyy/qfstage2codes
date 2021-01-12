@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <p>全选:<input type="checkbox" name="" id="" class="check-all"></p>
+    <p>单选:<input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+    </p>
+</body>
+<script>
+    $(".check-all").click(function() {
+        $(".check-all")[0].checked ? $(".check-one").prop("checked", true) : $(".check-one").prop("checked", false);
+    })
+
+    $(".check-one").click(function() {
+        $(".check-one:not(:checked)").length == 0 ? $(".check-all").prop("checked", true) : $(".check-all").prop("checked", false);
+    })
+</script>
+
+</html>

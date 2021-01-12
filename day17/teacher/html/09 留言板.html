@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrapBox {
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .wrapBox textarea {
+            width: 100%;
+            height: 200px;
+        }
+
+        .tipBox {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .showComment {
+            margin-top: 50px;
+        }
+
+        .showComment li {
+            border: 1px dashed #333;
+            line-height: 32px;
+            padding: 5px;
+        }
+
+        .showComment .top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .commentDetail {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapBox">
+        <div class="commentBox">
+            <textarea class="commentCon" name="" id="" cols="30" rows="10"></textarea>
+            <div class="tipBox">
+                <span class="tips">你还可以输入50个字</span>
+                <button class="sendComment">发送</button>
+            </div>
+        </div>
+
+        <ul class="showComment">
+            <li>
+                <div class="top">
+                    <span>留言人:XXX</span>
+                    <span>2020/10/14 16:55:30</span>
+                </div>
+                <div class="commentDetail">
+                    xxxxxxxx
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script>
+    // 留言板
+    // 1. 输入提示 (你还可以输入50个字)
+    // a.  评论可能超出50个字符   => return false    阻止浏览器默认行为(阻止默认输入    暂时的)
+    // b. onkeypress 输入提示不准确,删除之后没有改变输入提示  =>  添加键盘抬起事件(onkeyup)
+    // c.  中文输入时 在输入法上 不在留言板中,可能会拼接上去
+    //    解决方法  添加键盘抬起事件(onkeyup)  => 按键抬起时 如果超出50个只保留前50个 
+
+
+    // 2. 点击发送  / 快捷发送(ctrl+enter)
+    // a 问题 可以一直发送 
+    //  解决方法    倒计时n 秒之后方可输入
+
+
+    var commentCon = document.getElementsByClassName("commentCon")[0];
+    var tips = document.getElementsByClassName("tips")[0];
+    var sendComment = document.getElementsByClassName("sendComment")[0];
+
+
+    //  1. 输入提示 (你还可以输入50个字)
+    // var a = b = 1;
+
+    commentCon.onkeypress = commentCon.onkeyup = function () {
+        var comment = this.value;
+        // console.log(comment);
+
+        var sum = 50;
+        var num = sum - comment.length;
+        console.log(num);
+        tips.textContent = `你还可以输入${num}个字`;
+
+        if (num <= 0) {
+            tips.textContent = `你还可以输入0个字`;
+            comment = comment.substr(0, 50);
+            console.log(comment, comment.length);
+            commentCon.value = comment;
+            // return false;   // 如果字符到达限制之后 无法继续输入  (中文还可以卡bug)
+        }
+
+    }
+
+
+
+
+
+
+</script>
+
+</html>

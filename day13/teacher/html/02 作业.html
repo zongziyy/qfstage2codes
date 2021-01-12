@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: grey;
+        }
+
+        .wrapAll {
+            height: 45px;
+        }
+
+        .wrapNav {
+            background-color: #6ff;
+            width: 100%;
+            height: 45px;
+        }
+
+        .wrapNav .nav {
+            display: flex;
+        }
+
+        .wrapNav .nav>li {
+            flex: 1;
+            border: 1px solid #000;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        .wrapNav .nav>li:not(:last-child) {
+            border-right: 0;
+        }
+
+        .wrapPart .part {
+            height: 400px;
+            line-height: 400px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .tips {
+            line-height: 45px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header w"></div>
+    <div class="wrapAll">
+        <div class="wrapNav">
+            <ul class="nav w">
+                <li><a href="#part01">links_001</a></li>
+                <li><a href="#part02">links_002</a></li>
+                <li><a href="#part03">links_003</a></li>
+                <li><a href="#part04">links_004</a></li>
+                <li><a href="#part05">links_005</a></li>
+                <li><a href="#part06">links_006</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapPart w">
+        <div class="part" id="part01">001</div>
+        <div class="part" id="part02">002</div>
+        <div class="part" id="part03">003</div>
+        <div class="part" id="part04">004</div>
+        <div class="part" id="part05">005</div>
+        <div class="part" id="part06">006</div>
+    </div>
+    <div class="tips">
+        到达底部
+    </div>
+</body>
+<script>
+    var wrapNav = document.getElementsByClassName("wrapNav")[0];
+    var tips = document.getElementsByClassName("tips")[0];
+    window.onscroll = function () {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // console.log(scrollTop);
+
+        if (scrollTop >= 150) {
+            wrapNav.style.position = "fixed";
+            wrapNav.style.top = "0";
+        } else {
+            wrapNav.style.position = "static";
+            wrapNav.style.top = "0";
+        }
+
+        // 页面上升的最大距离 + 一屏的高度 == 总高度
+        // 页面上升的最大距离  =>  滚动条滚动的最大距离
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+        var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+        var scrollMax = scrollHeight - clientHeight;
+        console.log(scrollTop, scrollMax);
+        // if (scrollTop == scrollMax) {   //理想情况
+        //     tips.style.display = "block";
+        // }
+
+        if (scrollTop >= scrollMax - 1 && scrollTop <= scrollMax + 1) {   //设置一个误差允许范围
+            tips.style.display = "block";
+            setTimeout(function () {
+                tips.style.display = "none";
+            }, 1000);
+        }
+    }
+
+
+
+
+</script>
+
+</html>

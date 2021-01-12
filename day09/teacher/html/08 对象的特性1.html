@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    // length
+    // 下标取值和赋值    arr[0] arr[1]  arr.length 
+    // for  for...in  for...of
+
+
+    // 数组的键名 => 下标
+    var list = [1, 2, 3, 4, 5];
+    console.log(list);
+    // for (var i = 0; i < list.length; i++) {
+
+    // }
+
+    // for (var i in list) {
+    //     console.log(i, list[i]);
+    // }
+
+
+    // 对象(数据形式)   对一个或一类事物特征(属性)和行为(方法)的描述 
+
+    // a. 对象是以键值(key:value)对形式存在的数据,键(key 键名 属性名)和值(value 键值 属性值)  之间用冒号分隔
+    // b. 键值对之间逗号分隔
+    // c. 对象的取值排名不分先后
+
+    // 对象的特性
+    // 1. 对象的取值和赋值依赖于 键名, 
+    // a. 点语法       对象.属性名              => 一般都习惯用  点语法
+    // b. 中括号语法   对象["属性名"]           => 遇到变量/字符串 用中括号语法  
+
+    // 注意
+    // 对象取值时,如果获取一个不存在的键名(属性名),默认返回undefined
+    // 对象赋值时,如果赋值一个不存在的键名(属性名),新增该属性到对象中
+
+    // 2. 可以被for...in循环遍历 (只能用for...in,不能用for...of)
+    //   不能用for...of (for...of es6新增 专门用来遍历数组,字符串和伪数组这些结构的)
+
+
+    var zhangSan = {  //声明对象的同时并赋值
+        name: "张三",  // 对张三的名字的描述
+        age: 18,
+        height: "179cm",
+        weight: "80kg",
+        say: function (a, b) {
+            console.log("hello", a, b);
+        },
+        skill: function () {
+            console.log("恰饭");
+        },
+    };
+
+    // for (var key in zhangSan) {
+    //     // key 变量(存的是键名的字符串) = > "name","age","height"
+    //     console.log(key, zhangSan[key]);  // zhangSan["name"] zhangSan["age"] 
+    // }
+
+    console.log(zhangSan.name);
+    console.log(zhangSan.age);
+
+
+    // 报错   Uncaught TypeError: zhangSan is not iterable
+    // for (var val of zhangSan) {
+    //     console.log(val);
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

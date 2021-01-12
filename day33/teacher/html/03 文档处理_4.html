@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <!-- style="display:none" -->
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    // wrap()   把所有匹配的元素用其他元素的结构化标记包裹起来。  (把每一个匹配的元素 用 另一个元素包裹起来)
+    // $(".list li").wrap("<ul></ul>");
+
+    // wrapAll()   把所有匹配的元素用一个结构化标记包裹起来
+    // $(".list li").wrapAll("<ul></ul>");
+
+    // unwrap   这个方法将移出元素的父元素。这能快速取消 .wrap()方法的效果。匹配的元素（以及他们的同辈元素）会在DOM结构上替换他们的父元素。
+    // $(".first").unwrap();
+
+    // wrapInner()   将每一个匹配的元素的子内容(包括文本节点)用一个HTML结构包裹起来
+    $(".list li").wrapInner("<a>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

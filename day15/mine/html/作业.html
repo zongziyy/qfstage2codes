@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马泽亮作业</title>
+</head>
+
+<body>
+    <p>
+        全选:<input type="checkbox" class="check-all">
+        <button id="check-others">反选</button>
+    </p>
+    <p>
+        单选:
+        <input type="checkbox" class="check-one">
+        <input type="checkbox" class="check-one">
+        <input type="checkbox" class="check-one">
+        <input type="checkbox" class="check-one">
+        <input type="checkbox" class="check-one">
+        <input type="checkbox" class="check-one">
+    </p>
+</body>
+<script>
+    // 全选功能
+    // 所有的单选 跟随全选的状态
+
+    // 反选功能
+    // 每次点击单选  都要进行判断  所有的单选是否都选中
+    // 如果所有的单选选中 全选也需要改为选中状态 
+    // 只要有一个未选中  则 全选不选
+
+    var checkAll = document.querySelector(".check-all");
+    var checkOneList = document.querySelectorAll(".check-one");
+    var checkOthers = document.getElementById("check-others");
+    // console.log(checkAll,checkOneList);
+    // console.dir(checkAll)
+
+
+    //全选按钮点击事件
+    checkAll.onclick = function () {
+        console.log(checkAll.checked)
+        if (checkAll.checked) { //判断全选盒子的选中状态
+            for (let i = 0; i < checkOneList.length; i++) { //遍历小盒子
+                checkOneList[i].checked = true; //状态切为选中
+            }
+        } else {
+            for (let i = 0; i < checkOneList.length; i++) {
+                checkOneList[i].checked = false; //否则切换为不选中
+            }
+        }
+    }
+
+
+    //每个小盒子的点击事件
+    checkOneList.forEach(function (item) { //遍历小盒子
+        item.onclick = function () { //添加点击事件
+            var flag = true; //立flag，假设全部被选中
+            let checkBoxes = this.parentElement.children; //获取所有小盒子 得到一个伪数组
+            let checkBoxList = Array.from(checkBoxes); //伪数组转真数组
+            // console.log(checkBoxList);
+            checkBoxList.forEach(function (item) { //遍历小盒子数组
+                if (!item.checked) { //只要有一个没有被选中
+                    flag = false; //改变flag为 false
+                }
+            })
+
+            console.log(flag);
+            if (flag) { //判断flag
+                checkAll.checked = true;
+            } else {
+                checkAll.checked = false;
+            }
+        }
+    })
+
+    //反选点击事件
+    checkOthers.onclick = function () {
+        for (let i = 0; i < checkOneList.length; i++) { //遍历小盒子
+            if (checkOneList[i].checked) {
+                checkOneList[i].checked = false;
+            } else {
+                checkOneList[i].checked = true;
+            }
+        }
+    }
+
+</script>
+
+</html>

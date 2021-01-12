@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "clockIcon";
+            src: url(../fonts/clockicons.woff2);
+        }
+
+        .clockBox {
+            width: 200px;
+            border: 1px dashed #333;
+            padding: 10px;
+            text-align: center;
+
+        }
+
+        .clockBox .clock {
+            height: 32px;
+            line-height: 32px;
+            font-size: 28px;
+            font-family: "clockIcon";
+        }
+
+        .clockBox .dateBox {
+            line-height: 24px;
+            height: 24px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clockBox">
+        <div class="clock"></div>
+        <div class="dateBox"></div>
+    </div>
+
+</body>
+<script>
+    var clock = document.getElementsByClassName("clock")[0];
+    var dateBox = document.getElementsByClassName("dateBox")[0];
+
+    setTime();
+
+    setInterval(setTime,1000);
+
+    function setTime() {
+        //获取年月日、时间
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var day = time.getDate();
+        var hour = time.getHours();
+        var minute = time.getMinutes();
+        var second = time.getSeconds();
+        var week = time.getDay();
+        var weekList = ["天", "一", "二", "三", "四", "五", "六"]
+
+        //打印到文档
+        clock.innerHTML = `${hour<10?"0"+hour:hour}:${minute<10?"0"+minute:minute}:${second<10?"0"+second:second}`;
+        dateBox.innerHTML = `${year}年${month}月${day} 星期${weekList[week]} `
+
+    }
+</script>
+
+</html>

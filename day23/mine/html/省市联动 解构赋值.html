@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="" id="provinces">
+        <option value="">请选择省份</option>
+    </select>
+    <select name="" id="cities">
+        <option value="">请选择市/区</option>
+    </select>
+    <select name="" id="area">
+        <option value="">请选择区域</option>
+    </select>
+</body>
+<script>
+    var provinces = document.getElementById("provinces");
+    var cities = document.getElementById("cities");
+    var area = document.getElementById("area");
+
+    var xhr = new XMLHttpRequest();
+    // var cityList = null;
+    xhr.open("get", "../json/proData.json", true);
+    xhr.send();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var proData = xhr.responseText;
+            var cityList = JSON.parse(proData);
+        }
+    }
+</script>
+
+</html>

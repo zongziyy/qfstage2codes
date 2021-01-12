@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #list {
+            padding: 20px 0;
+        }
+
+        #list li {
+            line-height: 45px;
+            border: 1px dashed #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <input type="text">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>10</li>
+    </div>
+</body>
+<script>
+    // 自己通过原生代码 模拟封装jquery   
+
+    // html()  text()  val()  
+    // click()
+    // width()   height()
+    // css()
+    // attr()  (attribute HTML属性)  prop() (property 元素节点的属性)
+
+    // attr()    html属性(属性节点)
+    // attr("class","first"); 
+    // attr("asdasd","asdasd"); 
+    // attr("asdasd"); 
+
+    // prop()  ) (property 元素节点的属性)
+
+    // prop("className", "second");
+    // prop("href", "xxx");
+    // prop("clientWidth");
+
+
+    //  eq(index)   siblings()
+    //  eq(index)   选取集合中对应下标的元素
+    //  siblings()  除了选中元素之外的所有同级元素 (链式操作   都是实例化对象)
+    //  $("#list li").eq(0).sibling()
+
+
+    // 封装的优化
+    // 1. 把所有共有的属性和方法 绑定到构造函数的原型对象上
+    // 2. 由于所有的方法都是遍历集合操作每一个元素, 所以我们模拟封装了一个each 用来遍历集合
+    // 3. 为了快速得到实例化对象  对GetEle 进行了二次封装  => function $(selector){ return new GetEle(selector)}
+
+    function GetEle(selector) {
+        // {}
+        // this -> {}
+
+        // eles存储操作元素的集合 
+        this.eles = document.querySelectorAll(selector);
+
+
+        // this.__proto__ = GetEle.prototype;
+        // return this;
+    }
+
+    // html()   获取和设置元素的html结构
+    // html(con)有参数,就设置
+    // html()   没有参数,就获取
+    GetEle.prototype.html = function(con) {
+        if (arguments.length >= 1) { // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.innerHTML = con;
+            // }
+            this.each(function(ele, index) {
+                ele.innerHTML = con;
+            })
+        } else {
+            return this.eles[0].innerHTML;
+        }
+    }
+
+    // text()   获取和设置元素的text结构
+    // text(con)有参数,就设置
+    // text()   没有参数,就获取
+    GetEle.prototype.text = function(con) {
+        // this -> 调用此方法的实例化对象
+        if (arguments.length >= 1) { // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.innerText = con;
+            // }
+            this.each(function(ele, index) {
+                ele.innerText = con;
+            })
+        } else {
+            return this.eles[0].innerText;
+        }
+    }
+
+    // value()   获取和设置元素的value值(表单元素)
+    // value(con)有参数,就设置
+    // value()   没有参数,就获取
+    GetEle.prototype.val = function(con) {
+        // this -> 调用此方法的实例化对象
+        if (arguments.length >= 1) { // 至少一个 有参数
+            // 有参数,就设置
+            // for (var i = 0; i < this.eles.length; i++) {
+            //     var ele = this.eles[i];
+            //     ele.value = con;
+            // }
+            this.each(function(ele, index) {
+                ele.value = con;
+            })
+        } else {
+            return this.eles[0].value;
+        }
+    }
+
+    // click(fn)  给集合中的每一个元素绑定点击事件   
+    GetEle.prototype.click = function(fn) {
+        // this -> 调用此方法的实例化对象
+        // for (let i = 0; i < this.eles.length; i++) {
+        //     let ele = this.eles[i];
+        //     ele.onclick = fn;   // jquery中是用事件侦听绑定的(addEventListener)
+        //     // ele.addEventListener("click",fn)
+        // }
+        this.each(function(ele, index) {
+            ele.onclick = fn;
+        })
+    }
+
+    // 模拟封装数组的forEach 
+    GetEle.prototype.each = function(fn) {
+        // this -> 调用此方法的实例化对象
+        // 遍历集合(this.eles)中的每一个元素
+        for (let i = 0; i < this.eles.length; i++) {
+            let ele = this.eles[i];
+            let index = i;
+            let array = this.eles;
+            fn(ele, index, array); // jquery 中参数顺序和原生不一样  fn(index, ele, array);
+        }
+    }
+
+    // width()   height()
+    // width()   获取和设置元素的width值(表单元素)
+    // width("100px")     有参数,就设置
+    //       100px 100em 100rem 100pt 100pc 100%
+    //       100 (px)
+
+    // width()  => 100px  没有参数,就获取
+    GetEle.prototype.width = function(con) {
+        if (arguments.length >= 1) {
+            this.each(function(ele, index) {
+                // 判断是否有单位
+                var reg = /\d+(px|pt|em|rem|pc|%|vw|vh)$/;
+                if (reg.test(con)) { // 有单位直接 拼接
+                    ele.style.width = con;
+                } else {
+                    ele.style.width = con + "px";
+                }
+
+            })
+        } else {
+            return parseFloat(this.getStyle("width"));
+        }
+    }
+
+    GetEle.prototype.height = function(con) {
+        if (arguments.length >= 1) {
+            this.each(function(ele, index) {
+
+                // 判断是否有单位
+                var reg = /\d+(px|pt|em|rem|pc|%|vw|vh)$/;
+                if (reg.test(con)) { // 有单位直接 拼接
+                    ele.style.height = con;
+                } else {
+                    ele.style.height = con + "px";
+                }
+
+            })
+        } else {
+            return parseFloat(this.getStyle("height"));
+        }
+    }
+
+    // css()   height()
+    // css()   获取和设置元素的width值(表单元素)
+    // css(key,val)     有2个参数,就设置
+    // css("color","red");
+    // css("font-size","12px");
+
+
+    // css(key)  => 100px   1个参数,就获取
+    GetEle.prototype.css = function(key, val) {
+        if (arguments.length >= 2) { //有2个参数,就设置
+            this.each(function(ele, index) {
+                ele.style[key] = val;
+            })
+        } else if (arguments.length == 1) { // 1个参数,就获取
+            return this.getStyle(key);
+        }
+    }
+
+    function eq(index) {
+        var target = eq
+    }
+
+    GetEle.prototype.getStyle = function(attr) {
+        try {
+            return window.getComputedStyle(this.eles[0])[attr];
+        } catch (err) {
+            return this.eles[0].currentStyle[attr];
+        }
+    }
+
+
+
+    // 传入一个选择器  =>得到 GetELe的实例化对象
+    function $(selector) {
+        return new GetEle(selector);
+    }
+
+    console.dir(GetEle);
+
+    // 每次操作都需要先new, 在调用方法 => 稍稍有点麻烦
+    // var $liList = new GetEle("#list");
+    // var $liList = new GetEle("#list input");
+    // var $liList = new GetEle("#list li");
+
+
+
+    $("#list li").html("1231231");
+    $("#list li").click(function() {
+        console.log(this);
+    })
+
+    $("#list li").width("200%");
+    console.log($("#list li").width());
+</script>
+
+</html>

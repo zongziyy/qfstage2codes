@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // break
+    // break用在循环中  表示 跳出当前循环结构
+
+    // 注意 
+    // a. break之后的语句不执行
+    // b. 如果有多层循环(嵌套的情况)  只跳一层
+
+    // 找到第一个能同时整除 2 3  的数
+
+    // for(var i =1;true;i++)
+
+    // var i = 1;
+    // while (true) {
+    //     if (i % 2 == 0 && i % 3 == 0) {
+    //         document.write(i);
+    //         break;
+    //     }
+    //     i++;
+    // }
+
+    // 假设 break只跳一层,  => 打印10个6
+    // 假设 break跳多层,   => 打印1个
+
+    for (var j = 1; j <= 10; j++) {
+        var i = 1;
+        while (true) {
+            if (i % 2 == 0 && i % 3 == 0) {
+                document.write(i + "<br>");
+                break;
+            }
+            i++;
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>

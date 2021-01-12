@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 面向对象之继承
+    // 让一个类(构造函数) 继承 另一个类 的属性和方法 (构造函数中的属性/方法(实例) 和 原型对象上的公用的属性和方法)
+
+    // 继承的类  子类
+    // 被继承的类 父类
+
+    // 本质:实现属性和方法的复用
+
+
+    // 构造函数的继承
+    // 子类构造函数在执行的过程中 调用父类构造函数,改变this指向   Person.call(this, name, age);
+
+    // 缺点:只能继承 构造函数中 实例的属性和方法 不能继承原型对象上的属性和方法
+
+
+    function Person(name, age) { //  构造函数中 实例的属性和方法
+        // {}   this->{}
+        this.name = name;    // 构造函数Person在执行时 this-> Person创建的实例化对象
+        this.age = age;
+        this.species = "human";
+    }
+    // 原型对象上的属性和方法
+    Person.prototype.say = function () {
+        console.log(this.name, this.age);
+    }
+    Person.prototype.skill = function () {
+        console.log("thinking");
+    }
+
+    // var p1 = new Person("张三", "18");
+    // console.log(p1);
+
+
+    // 黄种人
+    function YellowPerson(name, age, hobby) {
+        // {}    this -> {}    // 构造函数YellowPerson在执行时 this->YellowPerson创建的实例化对象
+        // 调用Person方法,在函数执行的过程中 强制将this指向  YellowPerson创建的实例化对象
+        Person.call(this, name, age);//  this->YellowPerson创建的实例化对象
+        // Person.apply(this, [name, age]);//  this->YellowPerson创建的实例化对象
+
+        this.hobby = hobby;
+    }
+
+    YellowPerson.prototype.skin = "yellow";
+    YellowPerson.prototype.speak = function () {
+        console.log("chinese");
+    };
+
+    var p1 = new YellowPerson("张三", 18, "唱歌");
+    console.log(p1);
+
+
+
+
+</script>
+
+</html>

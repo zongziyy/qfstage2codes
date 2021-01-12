@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var now = new Date();
+    console.log("原日期", now);
+
+    // 设置年份/月份/日期  时分秒 
+    // 返回值  设置的日期对应的毫秒数 
+    // 是否影响原日期   影响
+    // var result = now.setFullYear("2021");
+    // console.log(result);
+    // console.log(now);
+
+    // setMonth() 设置月份  // 0-11    超出临界值会自动换算(大于最大值  小于最小值)
+    // var result = now.setMonth(1);   // 2020-2-30  => 2020-3-1
+    // var result = now.setMonth(5);  // 0-11
+    // var result = now.setMonth(12);
+    // var result = now.setMonth(0);
+    // var result = now.setMonth("-1");
+    // console.log(result);
+    // console.log(now);
+
+
+    // now.setDate(1); // 本月的一号
+    // now.setDate(0); // 本月的第0天就是上个月的最后一天
+    // now.setDate(31); //  
+    // console.log(now);
+
+
+    now.setHours(15);
+    // console.log(now);
+
+    now.setMinutes(15);
+    console.log(now);
+
+    now.setSeconds(1);
+    console.log(now);
+
+
+    now.setMilliseconds(100);
+    console.log(now);
+    console.log(now.getTime());
+
+
+    // 设置总的毫秒数
+    now.setTime(0);
+    console.log(now);
+
+
+
+    // 封装三个函数  (函数独立,不影响传入的原日期  => 得到一个与原日期相同的新日期)
+    // 传入一个日期 返回该月的第一天是星期几    
+    // 传入一个日期 返回上个月的有多少天
+    // 传入一个日期 返回该月的有多少天
+
+
+
+
+
+
+
+
+</script>
+
+</html>

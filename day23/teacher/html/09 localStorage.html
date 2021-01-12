@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // localStorage和sessionStorage的区别
+    // localStorage的生命周期是永久的，关闭页面或浏览器之后localStorage中的数据也不会消失。
+    // localStorage除非主动删除数据，否则数据永远不会消失。
+
+    // sessionStorage的生命周期是仅在当前会话下有效, 关闭会话窗口就失效了。
+    // sessionStorage引入了一个“浏览器会话”的概念，sessionStorage是在同源的窗口中始终存在的数据。
+    // 只要这个浏览器窗口没有关闭，即使刷新页面或者进入同源(同一个服务器目录)另一个页面，数据依然存在。
+    // 但是sessionStorage在关闭了浏览器窗口后就会被销毁。同时独立的打开新的窗口但是同一个页面，sessionStorage也是不一样的。
+
+    console.log(localStorage);
+    console.log(sessionStorage);
+
+    // sessionStorage.setItem("user", "a123123");
+    // sessionStorage.setItem("pwd", "123123");
+    // sessionStorage.setItem("phone", "17386141516");
+    // sessionStorage.email = "123@qq.com";
+
+
+
+
+</script>
+
+</html>

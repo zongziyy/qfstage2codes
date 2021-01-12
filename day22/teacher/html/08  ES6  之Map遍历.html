@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Map 结构原生提供三个遍历器生成函数和一个遍历方法。
+    // Map.prototype.keys() ：返回键名的遍历器。
+    // Map.prototype.values() ：返回键值的遍历器。
+    // Map.prototype.entries() ：返回所有成员的遍历器。
+    // Map.prototype.forEach() ：遍历 Map 的所有成员。
+
+    var m = new Map();
+    m.set(1, 100);
+    m.set("hello", "hello");
+    m.set(true, true);
+    m.set(null, null);
+    m.set(undefined, undefined);
+
+    var arr = [1, 2, 3];
+    var obj = {
+        a: 1
+    }
+    var fn = v => v;
+
+    m.set(arr, arr);
+    m.set(obj, obj);
+    m.set(fn, fn);
+    console.log(m);
+
+    var obj = m.keys();
+    console.log(obj);
+
+    var result = obj.next();
+    console.log(result);
+
+    var result = obj.next();
+    console.log(result);
+
+    var result = obj.next();
+    console.log(result);
+
+    var result = obj.next();
+    console.log(result);
+
+    var result = obj.next();
+    console.log(result);
+
+    // for (var key of m.keys()) {
+    //     console.log(key);
+    // }
+    // for (var val of m.values()) {
+    //     console.log(val);
+    // }
+    // for (var val of m.entries()) {
+    //     console.log(val);
+    // }
+
+    // m.forEach(function (item, key) {
+    //     console.log(item, key);
+    // })
+</script>
+
+</html>

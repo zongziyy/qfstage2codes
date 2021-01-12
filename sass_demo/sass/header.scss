@@ -1,0 +1,99 @@
+
+/* 普通注释  会保留到编译后的文件*/
+// 静默注释  只保留在SASS源文件中，编译后被省略。   
+// 今天吃了什么?
+
+// 变量
+// 计算
+// 嵌套语法   
+// 父选择器修饰 &  
+// 子选择器修饰 >  
+// 同级        + ~
+
+// 变量 
+$warm:#FFCCCC;
+$hot:#e1251b;
+$fontDefault:#666;
+$lively:#FFCC99;
+$centerWidth:1140px;
+
+$sider:left;
+
+// 函数 
+@function pxToRem($val){   // 100px/100px 1rem
+    @return ($val/100px)
+}
+
+
+body{
+    color:$fontDefault;
+}
+
+.app{
+    width: #{pxToRem(100px)}rem;
+    height: 70px*2;
+}
+
+.w{
+    width: $centerWidth;
+    margin: 0 auto;
+}
+.swiper{
+    width:$centerWidth*5;
+}
+.header{
+    height: 45px;
+    background-color: $warm;
+
+    // 插值语句  变量拼接css
+    border-#{$sider}: 1px solid #000;
+
+    .navBar{
+        float: left;
+        // .navBar>li
+        // 子选择器修饰符  ( & > + ~)
+        & .nav>li{
+            float: left;
+            line-height: 45px;
+            padding: 0 20px;
+
+            // 属性嵌套 (复合属性  border:1px solid #000)
+            // border: {
+            //     width:1px;
+            //     style:dashed;
+            //     color:#000;
+            // }
+
+            // 父选择器修饰符 (& => li)    li:hover 
+            &:hover{
+                background-color: aqua;
+
+                // li:hover .subNav{}
+                .subNav{
+                    display: block;
+                }
+            }
+
+            .subNav{
+                position: absolute;
+                width: 200px;
+                line-height: 30px;
+                display: none;
+            }
+            
+        }
+    }
+    .searchBar{
+        float: right;
+    }
+
+}
+
+// .header .navBar li:hover{
+//     background-color: aqua;
+// }
+
+
+
+
+

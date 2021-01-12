@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // switch中的表达式 一般是变量/常量  (if中的表达式 一般是一个条件)
+
+    // 多分支 -选择结构switch
+    // switch (表达式) {
+    //     case 常量1: 语句; break;
+    //     case 常量2: 语句; break;
+    //     case 常量3: 语句; break;
+    //         …
+    //     case 常量n: 语句; break;
+    //     default: 语句; break;
+    // }
+
+    // switch中的表达式(变量和常量) 和 case中常量做全等比较,如果全等则执行case之后的执行语句,遇到break跳出当前的选择结构,如果不全等 则继续向下比较,直到default为止
+
+    // break的作用：是跳出switch结构，如果没有break，则继续执行下面分支的的语句（而不进行判断）。
+
+    // var week = 1 + Math.round(Math.random() * 6);  // 1-7
+
+    // if (week == 1) {
+
+    // } else if (week == 2) {
+
+    // } else if (week == 3) {
+
+    // } else if (week == 4) {
+
+    // } else if (week == 5) {
+
+    // } else if (week == 6) {
+
+    // } else if (week == 7) {
+
+    // } else {
+
+    // }    
+    var week = 1 + Math.round(Math.random() * 6);  // 1-7    7
+    console.log(week);
+    switch (week) {
+        case 1:// week===1
+            document.write("今天是星期一,学习了变量和数据类型<br>");
+            break;  //  跳出当前选择结构
+        case 2:// week===2
+            document.write("今天是星期二,学习了if..else<br>");
+            break;  //  跳出当前选择结构
+        case 3:// week===3
+            document.write("今天是星期三,学习了switch / while <br>");
+            break;  //  跳出当前选择结构
+        case 4:// week===4
+            document.write("今天是星期四,学习了for 循环 <br>");
+            break;  //  跳出当前选择结构
+        case 5:// week===5
+            document.write("今天是星期五,学习了function 函数 <br>");
+            break;  //  跳出当前选择结构
+        case 6:// week===6
+            document.write("今天是星期六,学习了课外活动party <br>");
+            break;  //  跳出当前选择结构
+        case 7:// week===7
+            document.write("今天是星期日,休息/复习 <br>");
+            break;  //  跳出当前选择结构
+        default:
+            document.write("出现了意料之外的情况<br>");
+            break;
+    }
+
+
+
+</script>
+
+</html>

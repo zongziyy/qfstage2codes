@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米帐号-登录</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2170186_o6kl0golgml.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/request.js"></script>
+    <script src="../js/cookie.js"></script>
+</head>
+
+<body>
+    <div class="h_panel w">
+        <a class="h_logo"></a>
+    </div>
+
+    <div class="banner">
+        <div class="w main cl">
+            <div class="login cl">
+                <h3>帐号登录</h3>
+                <!-- 表单输入 -->
+                <div class="inputs">
+                    <input type="text" id="phoneIpt" placeholder="邮箱/手机号码/小米ID" class="inp">
+                    <input type="password" id="pwdIpt" placeholder="密码" class="inp">
+                </div>
+                <!-- 错误提示 -->
+                <p class="errTip"><i class="iconfont icon-jinggao"></i><span>用户名或密码不正确</span></p>
+                <!-- 提交按钮 -->
+                <div class="subbtn"><button id="login" class="inp">登录</button></div>
+                <a href="./register.html" class="phoneLogin">手机短信登录/注册</a>
+                <div class="reverse">
+                    <a href="javascript:;" class="registerNow">立即注册</a>丨<a href="javascript:;" class="losePwd">忘记密码?</a>
+                </div>
+                <div class="loginWith">
+                    <a href="javascript:;"><i class="iconfont icon-sign_qq"></i></a>
+                    <a href="javascript:;"><i class="iconfont icon-weibo"></i></a>
+                    <a href="javascript:;"><i class="iconfont icon-zhifubao"></i></a>
+                    <a href="javascript:;"><i class="iconfont icon-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <p class="font">
+            <a href="javascript:;">简体</a>丨
+            <a href="javascript:;">繁体</a>丨
+            <a href="javascript:;">English</a>丨
+            <a href="javascript:;">常见问题</a>丨
+            <a href="javascript:;">隐私政策</a>
+        </p>
+        <p class="copyRight">小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+    </footer>
+</body>
+<script>
+    $(function() {
+        $("#login").click(function() {
+            var account = $("#phoneIpt").val();
+            var pwd = $("#pwdIpt").val();
+
+            login({ account, pwd }).then(({ status, msg, user }) => {
+                if (status) {
+                    // 存储登录的用户(标识用户身份 存用户名)
+                    setCookie("logUser", user, 7);
+
+                    var search = location.search;
+
+                    if (search) { //有参数(其他页中途跳转过来登录的  => 跳回去)
+                        var enUrl = location.search.split("=")[1];
+                        var url = decodeURIComponent(enUrl);
+                        console.log(url)
+                        location.href = url;
+                    } else { //没有参数
+                        location.href = "index.html";
+                    }
+
+                } else {
+                    alert(msg);
+                }
+            }).catch(err => {
+                throw err;
+            })
+        })
+
+    })
+</script>
+
+</html>

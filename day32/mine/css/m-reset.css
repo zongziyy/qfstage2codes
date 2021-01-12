@@ -1,0 +1,82 @@
+@charset "utf-8";
+body,ul,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;   
+}
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+}
+img{
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+    /* 让他继承父元素的颜色 */
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+
+
+html{
+    line-height: 1.5;
+    color: rgb(95, 85, 85);
+}
+
+input{
+    border: 0;
+    background: none;
+    padding: 0;
+}
+input:focus,textarea:focus,select:focus{
+    /* 去掉点击时的外框 */
+    outline: none;
+}
+textarea{
+    /* 去掉右下角拉伸的效果 */
+    resize:none;
+}
+
+.cl:after{
+    content: ""; 
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+.cl{
+    zoom: 1;
+}
+
+.s1{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+
+.s2{
+	overflow: hidden;
+	text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	
+}
+
+
+
+html{
+    /* 定义rem适配 */
+    font-size: calc(100vw/7.5) !important;
+    font-size: -webkit-calc(100vw/7.5) !important;
+
+    /* rem根据根元素字体大小变化的单位 */
+}
+body{
+    /* 让字体大小继承 */
+    font-size: .24rem;
+}

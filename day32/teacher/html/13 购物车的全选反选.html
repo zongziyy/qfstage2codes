@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <p>全选:<input type="checkbox" name="" id="" class="check-all"></p>
+    <p>单选:<input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+        <input type="checkbox" name="" id="" class="check-one">
+    </p>
+</body>
+<script>
+    $(".check-all").click(function() {
+        var flag = this.checked; //元素节点的属性
+        var flag = $(this).prop("checked");
+        console.log(flag);
+
+        $(".check-one").prop("checked", flag);
+    })
+
+    $(".check-one").click(function() {
+
+        // $(".check-one:checked")  选中状态的单选框
+        // $(".check-one")          所有的单选框
+
+        // console.log($(".check-one:checked"))
+        // if ($(".check-one:checked").length && $(".check-one:checked").length == $(".check-one").length) {
+        //     $(".check-all").prop("checked", true);
+        // } else {
+        //     $(".check-all").prop("checked", false);
+        // }
+
+        console.log($(".check-one:not(:checked)")) // 未选中状态的单选框
+
+        $(".check-one:not(:checked)").length == 0 ? $(".check-all").prop("checked", true) : $(".check-all").prop("checked", false)
+
+
+
+    })
+</script>
+
+</html>

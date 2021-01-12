@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid #000;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            line-height: 26px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <table>
+        <tr>
+            <th>姓名</th>
+            <th>语文</th>
+            <th>数学</th>
+            <th>英语</th>
+            <th>总分</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>77</td>
+            <td>88</td>
+            <td>99</td>
+            <td>264</td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+        </tr>
+        <tr>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+        </tr>
+    </table> -->
+</body>
+<script>
+    // 6. 有二维数组 var list = [["张三",77,88,99],["李四",68,90,78],["王五",55,92,93]]将其数据动态生成到表格中
+
+    // var arr = [1, 2, 3, 4]; //一维数组
+    // var arr = [1, 2, 3, 4, ["a", "b", "c"]]; //二维数组
+    // var arr = [1, 2, 3, 4, ["a", "b", "c", ["A", "B"]]]; //多维数组
+
+    // var a1 = arr[4];// ["a", "b", "c", ["A", "B"]]
+    // var b2 = a1[3]; // ["A", "B"]
+    // var char = b2[1];
+    // console.log(char);
+    // console.log(arr[4][3][1]);
+
+    var list = [["张三", 77, 88, 99], ["李四", 68, 90, 78], ["王五", 55, 92, 93]];
+
+    document.write("<table>");
+    // 注意 字符串("" ,'') 是不允许换行的
+    // 怎么解决?
+    // 1. 不换行
+    // 2. 改为字符串拼接的形式
+    // 3. ES6的模板字符串(反引号 ``)  允许字符串换行
+    // document.write("<tr><th>姓名</th><th>语文</th><th>数学</th><th>英语</th><th>总分</th></tr>");
+    // document.write("<tr>" +
+    //     "<th>姓名</th>" +
+    //     "<th>语文</th>" +
+    //     "<th>数学</th>" +
+    //     "<th>英语</th>" +
+    //     "<th>总分</th>" +
+    //     "</tr>");
+
+    document.write(`<tr>
+            <th>姓名</th>
+            <th>语文</th>
+            <th>数学</th>
+            <th>英语</th>
+            <th>总分</th>
+        </tr>`);
+
+    for (var i = 0; i < list.length; i++) {  //外层循环 控制总的次数
+        document.write("<tr>");
+        var item = list[i]; // ["张三", 77, 88, 99] 
+        // console.log(item);
+
+        var sum = 0;
+        for (var j = 0; j < item.length; j++) {  // 内层循环 控制每次要做的内容
+            document.write("<td>" + item[j] + "</td>");
+
+            if (j == 0) {  //跳过第一条
+                continue;
+            }
+            sum += item[j];
+        }
+        // console.log(sum);
+        document.write("<td>" + sum + "</td>");
+
+        document.write("</tr>");
+    }
+
+    document.write("</table>");
+
+
+</script>
+
+</html>

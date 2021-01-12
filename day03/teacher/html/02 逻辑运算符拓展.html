@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // &&   || 
+
+
+    // 拓展  (面试题  )
+
+    // &&   (多条件并列  同时满足   同真为真 遇假为假  => 找假的)  
+    // 5>3 && 5<10;  => true && true => true  
+
+
+    // 没有转化为布尔值,而是把它当做布尔值来看(人为的)
+    1 && 2;  //2   如何解读    1 当做布尔值来看  true, 继续向后 ,2 当做布尔值来看 true,如果后续有就继续,没有就输出当前位置的值(落脚点)
+
+    1 && 2 && 3;  // 3
+
+    0 && 2;       // 0  如何解读   0 当做布尔值来看   false ,没有必要向后看,代码在此处结束,输出当前位置的值(落脚点)
+
+    1 && 0 && 3;  // 0  如何解读    1 当做布尔值来看  true, 继续向后 ,  0 当做布尔值来看   false ,没有必要向后看,代码在此处结束,输出当前位置的值(落脚点)
+
+    // ||   (多个条件满足其中一个  同假为假 遇真为真  =>找真的)
+    console.log(1 || 2); // 1    如何解读,  1 当做布尔值来看  true,没有必要向后看,代码在此处结束,输出当前位置的值(落脚点)  => 1
+
+    console.log(0 || 1);  // 1   如何解读, 0 当做布尔值来看   false ,继续向后 , 1 当做布尔值来看  true,没有必要向后看,代码在此处结束,输出当前位置的值(落脚点)
+
+    // console.log(1 || 2 || null || 0 || 3);  // 1
+    console.log("" || NaN || null || 0 || 3);  // 3
+
+
+    console.log(1 && 2 && null && 0 && 3);  // null
+
+    // true && false && true && true; //false
+
+    // var a = null;
+    // (a = 1) && (a = 0) && (a = 3);
+    // console.log(a);
+
+
+    // 面试 可能遇到
+    // var a = 1 && 2; // 2
+    // var b = 1 || 2; // 1
+
+    // var c = a + b;
+
+    // 2 3 4 报错
+
+
+
+
+
+
+
+
+</script>
+
+</html>

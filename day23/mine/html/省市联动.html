@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="" id="provinces">
+        <option value="">请选择省份</option>
+    </select>
+    <select name="" id="cities">
+        <option value="">请选择市/区</option>
+    </select>
+    <select name="" id="area">
+        <option value="">请选择区域</option>
+    </select>
+</body>
+<script>
+    var provinces = document.getElementById("provinces");
+    var cities = document.getElementById("cities");
+    var area = document.getElementById("area");
+
+    var xhr = new XMLHttpRequest();
+    // var cityList = null;
+    xhr.open("get", "../json/proData.json", true);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var proData = xhr.responseText;
+            // console.log(proData);
+            var cityList = JSON.parse(proData);
+            console.log(cityList);
+            let list = cityList.list;
+            list.forEach(items => {
+                var newOption = document.createElement("option");
+                newOption.innerHTML = `<option value="${items.city_id}">${items.name}</option>`;
+                provinces.appendChild(newOption);
+            });
+            provinces.onchange = function () {
+                // var e = e || window.event;
+                // var target = e.target || e.srcElement;
+                // console.log(target);
+                var chooseProvinces = provinces.value;
+
+                // console.log(chooseProvinces);
+                list.forEach(city => {
+                    if (chooseProvinces == city.name) {
+                        cities.innerHTML = `<option value="">请选择市/区</option>`
+                        area.innerHTML = `<option value="">请选择区域</option>`
+                        let list = city.list;
+                        list.forEach(city => {
+                            var newOption = document.createElement("option");
+                            newOption.innerHTML =
+                                `<option value="${city.city_id}">${city.name}</option>`;
+                            cities.appendChild(newOption);
+                        });
+                    }
+                });
+            }
+            cities.onchange = function () {
+                var chooseProvinces = provinces.value;
+                var chooseCities = cities.value;
+                if (chooseProvinces == "北京" || chooseProvinces == "上海" || chooseProvinces == "重庆" ||
+                    chooseProvinces == "天津") {
+                    // area.style.disabled = true;
+                    area.innerHTML = `<option value="">${chooseCities}</option>`
+                    return false;
+                }
+                // console.log(chooseProvinces);
+                list.forEach(items => {
+                    if (chooseProvinces == items.name) {
+                        var areaList = items.list;
+                        areaList.forEach(areas => {
+                            if (chooseCities == areas.name) {
+                                area.innerHTML = `<option value="">请选择区域</option>`
+                                let list = areas.list;
+                                list.forEach(areas => {
+                                    var newOption = document.createElement("option");
+                                    newOption.innerHTML =
+                                        `<option value="${areas.city_id}">${areas.name}</option>`;
+                                    area.appendChild(newOption);
+                                });
+                            }
+                        })
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+</html>

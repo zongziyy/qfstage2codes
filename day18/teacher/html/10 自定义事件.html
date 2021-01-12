@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+<script>
+    // addEventListener(eventType,callback,userCapture)
+
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    function hahaHandler() {
+        console.log("哈哈", "自定义事件触发");
+    }
+
+    box.addEventListener("哈哈", hahaHandler);   // 添加自定义事件
+
+    // box.removeEventListener("haha", hahaHandler); //删除 
+
+
+    // 事件抛发   =>  对应元素抛发
+    // var e = new Event("哈哈");  //创建一个事件对象
+    // console.log(e);
+
+    // box.dispatchEvent(e);
+
+
+
+
+
+
+</script>
+
+</html>

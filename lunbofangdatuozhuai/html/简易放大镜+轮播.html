@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        .preview-intro {
+            margin-top: 100px;
+        }
+
+        .preview-intro .preview-wrap {
+            width: 400px;
+            float: left;
+            margin-right: 100px;
+            /* background-color: coral; */
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview .shadow {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+
+        .preview-intro .preview-wrap .preview img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-scale {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            /* background-color: rgba(125, 255, 255, 0.5); */
+            position: absolute;
+            left: 500px;
+            top: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .preview-scale img {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        .preview-intro .itemInfo {
+            overflow: hidden;
+            background-color: pink;
+            height: 600px;
+        }
+
+        .preview-intro .previewList {
+            display: flex;
+            width: 400px;
+            /* height: 100px; */
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .preview-intro .previewList .thumbnail {
+            width: 23%;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+        }
+
+        .preview-intro .previewList .active {
+            border: 2px solid tomato;
+        }
+
+        .preview-intro .previewList .thumbnail img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preview-intro w">
+        <div class="preview-wrap left">
+            <div class="preview">
+                <div class="shadow"></div>
+                <img class="smallImg" src="../images/girlsmall1.jpg" alt="" index=0>
+            </div>
+            <div class="preview-scale">
+                <img class="bigImg" src="../images/girlbig1.jpg" alt="">
+            </div>
+            <ul class="previewList">
+                <li class="thumbnail"><img src="../images/girlsmall1.jpg" imgNum="0" alt="图片加载失败"></li>
+                <li class="thumbnail"><img src="../images/girlsmall2.jpg" imgNum="1" alt="图片加载失败"></li>
+                <li class="thumbnail"><img src="../images/girlsmall3.jpg" imgNum="2" alt="图片加载失败"></li>
+                <li class="thumbnail"><img src="../images/girlsmall4.jpg" imgNum="3" alt="图片加载失败"></li>
+            </ul>
+        </div>
+        <!-- <div class="itemInfo right"></div> -->
+    </div>
+</body>
+
+
+<script>
+    var previewWrap = document.getElementsByClassName("preview-wrap")[0];
+    var preview = document.getElementsByClassName("preview")[0];
+    var shadow = document.getElementsByClassName("shadow")[0];
+    var bigImg = document.getElementsByClassName("bigImg")[0];
+    var smallImg = document.getElementsByClassName("smallImg")[0];
+    var previewScale = document.getElementsByClassName("preview-scale")[0];
+    var thumbnail = document.getElementsByClassName("thumbnail");
+
+    var maxLeft = preview.clientWidth - shadow.clientWidth;
+    var maxTop = preview.clientHeight - shadow.clientHeight;
+
+    var scale = previewScale.clientWidth / shadow.clientWidth;
+
+    var smallImgList = [{
+        src: "../images/girlsmall1.jpg",
+        index: 0
+    }, {
+        src: "../images/girlsmall2.jpg",
+        index: 1
+    }, {
+        src: "../images/girlsmall3.jpg",
+        index: 2
+    }, {
+        src: "../images/girlsmall4.jpg",
+        index: 3
+    }]
+    var bigImgList = ["../images/girlbig1.jpg", "../images/girlbig2.jpg", "../images/girlbig3.jpg",
+        "../images/girlbig4.jpg"
+    ];
+
+
+
+    preview.onmousemove = function (e) {
+        var e = e || window.event;
+
+        maxLeft = preview.clientWidth - shadow.clientWidth;
+        maxTop = preview.clientHeight - shadow.clientHeight;
+        scale = previewScale.clientWidth / shadow.clientWidth;
+
+        var x = e.pageX - previewWrap.offsetLeft - shadow.clientWidth / 2;
+        var y = e.pageY - previewWrap.offsetTop - shadow.clientHeight / 2;
+
+        if (x < 0) x = 0;
+        if (x >= maxLeft) x = maxLeft;
+        if (y < 0) y = 0;
+        if (y >= maxTop) y = maxTop;
+
+        shadow.style.left = x + "px";
+        shadow.style.top = y + "px";
+
+        bigImg.style.left = -x * scale + 'px';
+        bigImg.style.top = -y * scale + 'px';
+    }
+
+
+    preview.onmouseenter = function () {
+        shadow.style.display = "block";
+        previewScale.style.display = "block";
+        clearInterval(timer);
+        let i = preview.lastElementChild.getAttribute("index");
+        // console.log(i);
+        clearActive(i);
+    }
+
+
+    preview.onmouseleave = function () {
+        shadow.style.display = "none";
+        previewScale.style.display = "none";
+        let i = preview.lastElementChild.getAttribute("index");
+        Rotation(i);
+        clearActive(i);
+    }
+
+
+    for (let i = 0; i < thumbnail.length; i++) {
+        thumbnail[i].onmouseenter = function () {
+            this.classList.add("active");
+            clearActive(i);
+            let imgSrc = this.firstElementChild.getAttribute("imgNum") * 1;
+            smallImg.setAttribute("src", smallImgList[imgSrc].src);
+            smallImg.setAttribute("index", smallImgList[imgSrc].index);
+            bigImg.setAttribute("src", bigImgList[imgSrc]);
+            clearInterval(timer);
+        }
+
+        thumbnail[i].onmouseleave = function () {
+            this.classList.remove("active");
+            Rotation(i);
+        }
+    }
+
+
+    //轮播
+    var timer = 0;
+
+    function Rotation(num) {
+        // console.time("a");
+        clearInterval(timer);
+        var i = num == undefined ? 0 : num;
+        // console.log(i);
+        thumbnail[i].classList.add("active");
+        timer = setInterval(function () {
+            i++;
+            if (i > 3) i = 0;
+            smallImg.setAttribute("src", smallImgList[i].src);
+            smallImg.setAttribute("index", smallImgList[i].index);
+            bigImg.setAttribute("src", bigImgList[i]);
+            thumbnail[i].classList.add("active");
+            clearActive(i);
+            // console.timeEnd("a");
+        }, 2000)
+    }
+    Rotation();
+
+    //清除活跃状态
+    function clearActive(i) {
+        for (let k = 0; k < thumbnail.length; k++) {
+            if (k == i) continue;
+            thumbnail[k].classList.remove("active");
+        }
+    }
+</script>
+
+
+
+</html>

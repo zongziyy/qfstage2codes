@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* 普通注释  会保留到编译后的文件*/
+body {
+  color: #666;
+}
+
+.app {
+  width: 1rem;
+  height: 140px;
+}
+
+.w {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.swiper {
+  width: 5700px;
+}
+
+.header {
+  height: 45px;
+  background-color: #FFCCCC;
+  border-left: 1px solid #000;
+}
+.header .navBar {
+  float: left;
+}
+.header .navBar .nav > li {
+  float: left;
+  line-height: 45px;
+  padding: 0 20px;
+}
+.header .navBar .nav > li:hover {
+  background-color: aqua;
+}
+.header .navBar .nav > li:hover .subNav {
+  display: block;
+}
+.header .navBar .nav > li .subNav {
+  position: absolute;
+  width: 200px;
+  line-height: 30px;
+  display: none;
+}
+.header .searchBar {
+  float: right;
+}
+
+/*# sourceMappingURL=header.css.map */

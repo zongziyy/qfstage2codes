@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 解决跨域访问的方法：
+
+    // 1.  对方服务器配置 CORS(跨域资源共享)
+
+    //     > 指在对方服务器上做配置，即让他们允许我们访问，这样我们再通过AJAX就可以拿到数据了。
+    // 	@header("Access-Control-Allow-Origin:*"); //允许所有的源访问
+
+    $.ajax({
+        type: "get",
+        url: "http://192.168.60.94/2009_php/demo_29/php/searchAllGrade.php",
+        dataType: "json",
+        success(data) {
+            console.log(data);
+        }
+    })
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1-100中是否存在 能同时整除 2 3 4 5 7 的数    => 有 还是 没有 =>习惯用bool值表状态 ?
+
+
+    // var flag = false;  //假设不存在
+
+    // for (var i = 1; i <= 100; i++) {
+    //     if (i % 2 == 0 && i % 3 == 0 && i % 4 == 0 && i % 5 == 0 && i % 7 == 0) {
+    //         document.write(i);  //如果有就输出  没有 就不管  => 到底有没有看页面 
+    //         break;
+    //     }
+    // }
+
+    // 是否存在,是否包含,是否能都大于   =>习惯用bool值表状态
+
+    // 1-100中是否存在 能同时整除 2 3 4 5 7 的数 ?
+    // 假设不存在  => 如果想要用状态切换,从对立面推翻假设(证明 存在)  => 只要找到一个能满足条件的数即可
+
+    var flag = false;  //假设不存在
+
+    for (var i = 1; i <= 1000; i++) {
+        // if (i % 2 == 0 && i % 3 == 0 && i % 4 == 0 && i % 5 == 0 && i % 7 == 0) {
+        //     // document.write(i);
+        //     flag = true; // 如果存在满足条件的值  则存在
+        //     break;
+        // }
+
+        // if (i % 9 == 0 && i % 5 == 0 && i % 12 == 0) {
+        //     // document.write(i);
+        //     flag = true; // 如果存在满足条件的值  则存在
+        //     break;
+        // }
+    }
+
+    if (flag) { // flag==true
+        document.write("存在:" + i);
+    } else {
+        document.write("不存在");
+    }
+
+
+
+
+</script>
+
+</html>

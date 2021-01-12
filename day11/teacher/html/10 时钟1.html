@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "clockIcon";
+            src: url("../font/clockicons.woff2");
+        }
+
+        .clockBox {
+            width: 200px;
+            border: 1px dashed #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .clockBox .clock {
+            height: 32px;
+            line-height: 32px;
+            font-size: 24px;
+            font-family: "clockIcon";
+        }
+
+        .clockBox .dateBox {
+            line-height: 24px;
+            height: 24px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clockBox">
+        <div class="clock"></div>
+        <div class="dateBox"></div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var clock = document.getElementsByClassName("clock")[0];
+        var dateBox = document.getElementsByClassName("dateBox")[0];
+
+        // 加载时调用 
+        clockGet();
+
+        // 之后每隔一秒  执行一次
+        setInterval(clockGet, 1000);
+
+
+        function clockGet() {
+            var now = new Date();
+            console.log(now);
+
+            // 获取年月日 时分秒 毫秒 星期
+            var year = now.getFullYear();  //年
+            console.log(year);
+
+            // 设置日期是  月份-1 
+            // 获取时(0-11)      月份+1
+            var month = now.getMonth() + 1;   // 月 `
+            console.log(month);
+
+            var day = now.getDate();  //日期
+            console.log(day);
+
+            // now.getDay()  返回星期几   (国外星期日 是第一天(0)  0-6  )
+            var week = now.getDay();
+            var weekList = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+
+            // 小时
+            var hour = now.getHours();
+            hour = hour < 10 ? "0" + hour : hour;
+            console.log(hour);
+
+            // 分钟
+            var minute = now.getMinutes();
+            minute = minute < 10 ? "0" + minute : minute;
+            console.log(minute);
+
+            var second = now.getSeconds();
+            second = second < 10 ? "0" + second : second;
+            console.log(second);
+
+            clock.innerHTML = `${hour}:${minute}:${second}`;
+            dateBox.innerHTML = `${year}年${month}月${day} ${weekList[week]}`;
+        }
+
+
+        function beautify(num) {
+            if (num < 0 || num % 1 != 0) {  //小于0  小数
+                var err = new Error("Please enter the correct range of parameters");
+                throw err;
+            }
+            return num < 10 ? "0" + num : num;
+        }
+
+    }
+
+
+
+</script>
+
+</html>

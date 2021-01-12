@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .w {
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        .preview-intro {
+            margin-top: 100px;
+        }
+
+        .preview-intro .preview-wrap {
+            width: 400px;
+            float: left;
+            margin-right: 100px;
+            background-color: coral;
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .preview-intro .preview-wrap .preview .shadow {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+        .preview-intro .preview-wrap .preview img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .preview-scale {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #6ff;
+            position: absolute;
+            left: 500px;
+            top: 0;
+        }
+
+        .preview-scale img {
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .preview-intro .itemInfo {
+            overflow: hidden;
+            background-color: pink;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preview-intro w">
+        <div class="preview-wrap left">
+            <div class="preview">
+                <div class="shadow"></div>
+                <!-- <img src="../images/girlsmall1.jpg" alt=""> -->
+            </div>
+            <!-- <div class="preview-scale">
+                <img src="../images/girlbig1.jpg" alt="">
+            </div> -->
+            <div class="previewList">
+
+            </div>
+        </div>
+        <div class="itemInfo right"></div>
+    </div>
+</body>
+<script>
+    var previewWrap = document.getElementsByClassName("preview-wrap")[0];
+    var preview = document.getElementsByClassName("preview")[0];
+    var shadow = document.getElementsByClassName("shadow")[0];
+
+
+    preview.onmousemove = function (e) {
+        var e = e || window.event;
+
+        // 为什么找preview的offsetLeft,offsetTop 值为0;
+        // 因为布局影响 previewWrap 设置了position:relative,所以此时preview返回的是相对于previewWrap的偏移 0 0 , 为了找到真正偏移 所以我们向外跳了一层 找previewWrap相对于文档左边和上边的偏移
+
+        var x = e.pageX - previewWrap.offsetLeft;
+        var y = e.pageY - previewWrap.offsetTop;
+
+        // console.log(previewWrap.offsetLeft, previewWrap.offsetTop);
+        shadow.style.left = x + "px";
+        shadow.style.top = y + "px";
+
+    }
+
+
+</script>
+
+</html>

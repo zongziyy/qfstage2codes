@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 构造函数的创建
+    var str = new String("hello");
+    console.log(str, typeof str);  // "object"
+    // Object.getOwnPropertyDescriptors()  接收一个对象,返回该对象所有属性的描述
+    var result = Object.getOwnPropertyDescriptors(str);
+    console.log(result);
+
+    // { value: "h", writable: false, enumerable: true, configurable: false }
+    // value  键名对应的值
+    // writable  是否可以写入  (默认false)
+    // enumerable  是否可以遍历/枚举(循环遍历)     (默认true)
+    // configurable  该属性是否被删除    (默认false)
+
+</script>
+
+</html>

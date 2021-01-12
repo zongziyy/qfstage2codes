@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for while循环练习</title>
+    <style>
+        p {
+            font-size: 18px;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        h3 {
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>第一题：</h3>
+    <p id="pid1"></p>
+    <br>
+    <h3>第二题：</h3>
+    <p id="pid2"></p>
+    <br>
+    <h3>第三题：</h3>
+</body>
+
+<script>
+    // 第一题
+    var gongZi = 2000;
+    for (let i = 1; i <= 20; i++) {
+        gongZi = gongZi * (1 + 0.05);
+    }
+    gongZi = gongZi.toFixed(2);
+    console.log("20年后工资为：" + gongZi)
+    document.getElementById("pid1").innerHTML = "20年后工资为：" + gongZi;
+
+    // 第二题
+    var ciShu = 0;
+    for (let i = 15; i < 50; i = i + 5) {
+        ciShu++;
+    }
+    console.log("一共需要" + ciShu + "次能装满水缸");
+    document.getElementById("pid2").innerHTML = "一共需要" + ciShu + "次能装满水缸";
+
+    // 第三题
+    for (let i = 100; i <= 200; i++) {
+        if (i % 3 == 0 || i % 7 == 0) {
+            document.write(i + " ");
+        }
+        if(i==150){
+            document.write("<br>");
+        }
+    }
+
+    // 第四题
+    document.write("<br><br>");
+    document.write("<h3>第四题：</h3>");
+    var product = 1;
+    for (let i = 1; i <= 10; i++) {
+        product *= i;
+    }
+    document.write("10的阶乘为：" + product);
+
+    // 第五题
+    document.write("<br><br>");
+    document.write("<h3>第五题：</h3>");
+    for (let i = 100; i <= 999; i++) {
+        var bai = parseInt(i / 100);
+        var shi = parseInt((i % 100) / 10);
+        var ge = parseInt((i % 100) % 10);
+        if (bai * bai * bai + shi * shi * shi + ge * ge * ge == i) {
+            document.write(i + " ");
+        }
+    }
+
+
+    // 第六题
+    document.write("<br><br>");
+    document.write("<h3>第六题：</h3>");
+    var j=0,sum=0;
+    for(let i=1;i<=100;i++){
+        if(i%2==1){
+            j=1/i;
+        }else{
+            j=-1/i;
+        }
+        sum += j;
+    }
+    sum = sum.toFixed(10);
+    document.write(sum)
+</script>
+
+</html>

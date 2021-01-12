@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+
+        table td{
+            width: 100px;
+            line-height: 30px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    姓名: <input type="text"><br>
+    年龄: <input type="number"><br>
+    性别: 男 <input type="radio" name="sex" value="男">
+          女 <input type="radio" name="sex" value="女">
+          保密 <input type="radio" name="sex" value="保密"><br>
+    城市: <select>
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="重庆">重庆</option>
+            <option value="天津">天津</option>
+         </select><br>
+    <button name="add">新增</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>城市</td>
+                <td>删除</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+        // 建立数组,模拟数据库的数据
+        var arr = [
+            {name:'张三',age:18,sex:'男',city:'北京'},
+            {name:'李四',age:19,sex:'女',city:'上海'},
+            {name:'王五',age:20,sex:'男',city:'广州'},
+            {name:'赵六',age:21,sex:'女',city:'重庆'},
+            {name:'刘七',age:22,sex:'保密',city:'天津'},
+        ];
+
+
+        // 获取table中的tbody标签
+        var oTb = document.querySelector('tbody');
+
+        var oBtn = document.querySelector('[name="add"]');
+
+        // 不能在函数之外执行生成页面操作了
+        // oTb.innerHTML = setTab();
+
+        // 调用函数,生成页面
+        // 在函数内部就有生成页面的操作
+        // 将之前的 oTb.innerHTML = setTab();
+        // 都直接改成  setTab(); 在函数内部,就完成生成页面操作
+        setTab();
+
+        
+        // button按钮添加点击事件
+        oBtn.onclick = function(){
+            // 1,获取数据
+
+            // 获取姓名  对应input标签,value属性值
+            var oIptName = document.querySelector('[type="text"]').value;
+            // 获取年龄  对应input标签,value属性值
+            var oIptAge = document.querySelector('[type="number"]').value;
+            // 获取城市  对应select标签,value属性值
+            var oIptCity = document.querySelector('select').value;
+
+            // 获取性别的三个radio单元框标签,是一个伪数组
+            var oIptSex = document.querySelectorAll('[type="radio"]');
+            // 定义变量,存储获取数据结果
+            var oIptSexVal = 0; 
+
+            // 循环3个radio单元框伪数组,item存储的就是radio单选框标签
+            oIptSex.forEach(function(item){
+                // 如果 radio单选框标签,checked属性值是 true,表示是被选中的标签
+                if(item.checked === true){
+                    // 获取这个标签的value属性值
+                    oIptSexVal = item.value;
+                }
+            })
+
+            // 建立对象,结构与arr中的对象结构一直
+            var obj = {
+                name:oIptName , 
+                age:oIptAge ,
+                sex:oIptSexVal ,
+                city: oIptCity,
+            }
+
+            // 将对象写入到数组中
+            arr.push(obj);
+            console.log(arr)
+
+            // 调用生成页面函数,也就会根据新的数组,渲染生成新的页面
+            // 同时函数中会调用,添加删除效果函数,也同时给新的删除标签,重新绑定删除效果
+            setTab();
+        }
+        
+        
+        
+        
+        
+        
+        // 定义生成table表格的函数
+        function setTab(){
+            var str = '';
+            arr.forEach(function(item , key){
+                str += '<tr>';
+                str += `<td>${key+1}</td>`;
+                for(var k in item){
+                    str += `<td>${item[k]}</td>`;
+                }
+                // 拼接删除单元格
+                // 给删除标签,添加属性,属性值是当期这条数据对应的索引数值
+                // 自定义属性,随便你写什么都行,跟别任何内容都没有关系
+                str += `<td> <button index="${key}">删除</button> </td>`
+                str += '</tr>';
+                
+            });
+
+
+            // 将生成页面的操作,定义在函数中
+            oTb.innerHTML = str;
+
+            // 生成页面之后,有了删除标签之后,执行给删除标签绑定事件的函数
+            // 给删除标签绑定事件
+            // 之后只要是重新调用渲染生成页面的setTab()函数
+            // 就会调用 给删除标签绑定事件函数
+            del();
+
+        }
+
+
+        // 给删除标签,添加事件,实现功能效果
+        function del(){
+            // 给删除button添加事件,循环遍历添加
+
+            // 1,获取标签对象
+            // 获取 tbody中的botton 按钮,与新增button不冲突
+            // 获取结果是所有删除button标签的伪数组
+            var oBtns = document.querySelectorAll('tbody button');
+
+            // 2,循环遍历伪数组,item中存储的是就是 删除标签对象
+            oBtns.forEach(function(item,key){
+                // 给删除标签,添加点击事件
+                item.onclick = function(){
+                    // 1,获取删除标签上,自定义属性的属性值
+                    var index = item.getAttribute('index');
+
+                    // 2,根据属性值,也就是需要 删除数组单元的索引,进制删除数组的操作
+                    // 从这个索引开始,删除一个单元
+                    arr.splice(key , 1);
+
+                    // 3,删除之后生成了新的数组单元
+                    // 根据新的数据单元,生成页面
+                    // 同时也会重新 调用给删除标签绑定事件的函数本身
+                    setTab();
+                }
+            })
+        }
+
+
+        // 总结:思路
+        /*
+
+            1,定义全局作用域变量
+                tbody标签对象   数组arr 新增button按钮
+
+            2,调用生成table表格函数,生成页面;
+                setTab();
+
+            3,给新增button按钮,添加事件
+                标签.onclick = funciton(){}
+                   获取数据,姓名,年龄,性别,城市
+                   将四个数据,生成对象,对象的解构与arr数组中的对象,结构一致
+                   将生成的对象,新增写入到arr数组中
+                   根据新的数组,再重新渲染,生成table表格
+                       调用生成table表格的函数  setTab()
+
+            4,定义生成table表格函数 setTab函数
+                定义变量,赋值空字符串,存储拼接生成的字符串内容
+
+                循环遍历数组arr  第一个参数存储数据单元的数值,也就是对象,第二个参数存储数据单元对应的索下标
+                   拼接 tr 起始标签
+                   拼接 序号单元格 内容是 数据单元,也就是对象对应的索引下标,第二个参数+1
+                   循环遍历 对象 也就是第一个参数存储的数据单元的数值
+                       对象,只能使用for...in循环 自定义变量存储的是对象的属性
+                       拼接 内容单元格 内容是 对象属性存储的属性值 也就是 item[自定义变量]
+                   拼接 删除单元格 内容是 button按钮
+                       给button按钮,添加自定义属性,属性名称是任意名称都行
+                       属性值是 对象对应的索引下标 也就是循环arr时 forEach() 的第二个参数
+                   拼接 tr结束标签  
+
+                将字符串写入到tbody标签中
+
+                调用 给 删除标签,添加事件函数
+                   de()
+
+                说明:因为我们给删除标签添加事件,必须要和渲染生成页面一起执行
+                     每次渲染生成页面,都要给button标签,添加删除事件,因此,这两个操作,必须要绑定执行
+                     我们把这两个操作,都写在渲染生成页面的函数中
+
+
+            5,定义函数,给button标签,添加删除效果 del函数
+                获取所有需要添加事件的button按钮,是一个数组
+                forEach()循环遍历这个数组 , 第一个参数,就是button按钮标签
+                    获取button标签,自定义属性的属性值
+                    按照属性值,执行删除数组单元的操作
+                        arr.splice(属性值 , 1)
+                    根据新的数组,渲染生成新的table表格
+                        再次调用生成table表格函数 setTab();
+
+
+        */
+
+
+    </script>
+</body>
+</html>

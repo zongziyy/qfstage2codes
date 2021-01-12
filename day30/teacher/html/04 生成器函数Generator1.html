@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 形式上，Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。
+
+    function* keys(list) {
+        for (var i = 0; i < list.length; i++) {
+            if (i < list.length - 1) {
+                var item = list[i];
+                var index = i;
+                var subArr = [item, index];
+                yield index;
+            } else {
+                return index;
+            }
+
+        }
+    }
+
+    var list = [55, 66, 77, 88, 99];
+    var obj = keys(list);
+    console.log(obj);
+
+    // var result = obj.next();
+    // console.log(result);
+    // var result = obj.next();
+    // console.log(result);
+    // var result = obj.next();
+    // console.log(result);
+    // var result = obj.next();
+    // console.log(result);
+    // var result = obj.next();
+    // console.log(result);
+
+    for (var i of obj) {
+        console.log(i);
+    }
+
+
+
+
+
+
+</script>
+
+</html>

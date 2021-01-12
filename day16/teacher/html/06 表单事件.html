@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            outline: none;
+            /* border: 1px solid grey; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- onsubmit="return false"  阻止表单默认提交 -->
+    <form action="" onsubmit="return false">
+        <p><label for="">用户名:</label><input name="user" placeholder="请输入..." type="text"><span class="user_span"></span>
+        </p>
+        <p><label for="">密码:</label><input name="pwd" type="text"></p>
+        <p><label for="">出生年份:</label>
+            <select name="" id="sel">
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+            </select>
+        </p>
+        <p><label for="">手机号:</label><input name="phone" type="text"></p>
+        <p><label for="">邮箱:</label><input name="email" type="text"></p>
+        <p><input type="submit" value="提交"><input type="reset"></p>
+    </form>
+
+    <a href="https://www.baidu.com" onclick="return false">百度</a>
+</body>
+<script>
+
+    // 表单事件
+
+    // onfocus
+    var userInp = document.getElementsByName("user")[0];
+    var pwdInp = document.getElementsByName("pwd")[0];
+    var phoneInp = document.getElementsByName("phone")[0];
+    var sel = document.getElementById("sel");
+
+    var form = document.forms[0]
+
+
+    // 聚焦事件  
+    userInp.onfocus = function () {
+        userInp.value = "";
+        // userInp.placeholder = "请输入";
+        userInp.style.borderColor = "blue";
+        console.log("userInp 聚焦");
+    }
+
+    // 失焦事件 
+    userInp.onblur = function () {
+        userInp.style.borderColor = "grey";
+        console.log("userInp 失焦");
+
+        var user = this.value.trim();
+        console.log(user);
+    }
+
+    //  onchange  
+    // 输入框 
+    // 1. 内容发生改变   2.失去焦点(按回车键) 
+    // 下拉框
+    // 1. 下拉框的选项切换(option改变)
+    pwdInp.onchange = function () {
+        var pwd = this.value;
+        console.log(pwd);
+    }
+
+    sel.onchange = function () {
+        var val = this.value;
+        console.log(val);
+    }
+
+    // oninput      即时输入(只要内容发生改变即可)
+    phoneInp.oninput = function () {
+        var phone = this.value;
+        console.log(phone);
+    }
+
+    // onsubmit  表单提交 绑定给form,由提交按钮触发
+    // onreset  表单重置  绑定给form,由重置按钮触发
+
+    form.onsubmit = function (e) {
+        console.log("数据提交", e);
+        return false;  // 阻止浏览器的默认行为(表单默认提交)
+    }
+
+    form.onreset = function () {
+        console.log("表单重置");
+        // return false;     //阻止浏览器的默认行为(表单默认重置)
+    }
+
+
+    document.oncontextmenu = function () {
+        console.log("鼠标右键菜单");
+        return false;   //阻止浏览器的默认行为(鼠标右键菜单)
+    }
+
+
+
+
+
+
+</script>
+
+</html>

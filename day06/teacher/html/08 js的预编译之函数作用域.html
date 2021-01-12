@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+
+    // JavaScript运行三部曲  (js从加载完毕到开始执行经历了哪些流程)
+
+    // 1. 语法解析    => 通篇检查当前script标签的js语法,如果语法有误 则报错  (SyntaxError)      
+    // 2. 预编译      => 发生在代码执行之前,为代码执行提前做的一些准备工作
+
+    // 全局作用域
+    //  a. 变量提升   把变量的声明提升到当前作用域(script标签的)最前面,赋值还是在对应位置赋值
+    //  b. 确定函数体   把整个函数(命名函数)的声明提前 (把函数整体提升到当前script标签的最前面)
+
+    // 函数作用域
+    //  a. 变量提升   把变量的声明提升到当前作用域(函数作用域)最前面,赋值还是在对应位置赋值
+    //  b. 确定函数体   把整个函数(命名函数)的声明提前 (把函数整体提升到当前script标签的最前面)
+    //  c. 把实际参数赋值给形式参数  (形式参数和实际参数一一对应)
+
+    // 3. 解释执行   =>  按照代码流程从上到下开始执行  
+
+
+    // var a = 10;
+    // var b = 20;
+
+
+    function fn(e, f) {
+        // 函数中的预编译
+        // var a,b;   变量提升 
+
+        // function one() {  // 确定函数体  把整个函数体的声明提前
+        //     console.log("我是fn中声明的函数");
+        // }
+
+        // var e = "e";   把实际参数赋值给形式参数
+        // var f = "f";
+
+
+        console.log(a, b, one);
+        console.log(e, f);
+
+        var a = 100;
+        var b = 200;
+        var c = a + b;
+
+        function one() {  //函数中声明的函数也是局部的
+            console.log("我是fn中声明的函数");
+        }
+
+    }
+
+    fn("e", "f");
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

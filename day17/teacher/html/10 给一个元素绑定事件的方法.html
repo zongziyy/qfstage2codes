@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="box" onclick="alert(11111)"></div>
+    <div class="box" onclick="fn()"></div> -->
+    <div class="box"></div>
+</body>
+<script>
+    // 给一个元素绑定事件的方法
+    // 1. 内联js绑定事件
+    // 2. dom一级事件  (先获取元素,在绑定事件) 
+    //    缺点:只能给元素绑定一个事件    
+
+    // 3. dom二级事件  (事件侦听) (先获取元素,在绑定事件) 
+
+    // 常规浏览器的写法
+    // ele.addEventListener(eventType,callback,userCapture)   
+    // eventType  侦听事件的类型(click dblclick load)
+    // callback   事件触发时执行的回调函数
+    // userCapture   是否在捕获阶段触发事件(false)
+
+    // var box = document.getElementsByClassName("box")[0];
+    // box.onclick = function () {
+    //     console.log("box被点击")
+    // }
+    // box.onclick = function () {
+    //     this.style.backgroundColor = "red";
+    // }
+
+    var box = document.getElementsByClassName("box")[0];
+
+    box.addEventListener("click", function () {
+        console.log("box被点击");
+    });
+
+    box.addEventListener("click", function () {
+        console.log(this);
+        this.style.backgroundColor = "red";
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function fn() {
+        alert("2222");
+    }
+
+
+</script>
+
+</html>

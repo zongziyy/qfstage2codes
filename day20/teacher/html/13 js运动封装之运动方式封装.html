@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrapAll {
+            margin-left: 50px;
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #000;
+            border-top: 0;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            position: absolute;
+            left: 0px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapAll">
+        <div class="btns">
+            <button class="start">start</button>
+            <button class="pause">pause</button>
+            <button class="back">back</button>
+        </div>
+        <div class="wrap">
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+<script>
+    // 如何让元素 动起来(改变元素的位置) ?
+    // 1. margin  translate 
+    // 2. position
+
+
+    // 运动的本质
+    // 通过计时器/延时器  每隔固定的时间 改变元素的位置
+
+
+    var start = document.getElementsByClassName("start")[0];
+    var pause = document.getElementsByClassName("pause")[0];
+    var back = document.getElementsByClassName("back")[0];
+
+    var box = document.getElementsByClassName("box")[0];
+    var timer = null;
+
+    // 正向运动  (0-1000)  终点值 > 起点值
+    start.onclick = function () {
+        // animate(box, "top", "500px");
+        animate(box, "left", "1000px", "ease-in");
+    }
+
+    pause.onclick = function () {
+        clearInterval(timer);
+    }
+
+    // 反向运动  (1000-0)   终点值 < 起点值
+    back.onclick = function () {
+        // animate(box, "top", 0);
+        animate(box, "left", 0, "ease-out");
+    }
+
+
+
+
+    // animate(box, "top", 500);
+    // animate(box, "width", 500);
+
+    // 多个属性  
+
+    function animate(ele, attr, end, aniType) {
+
+        // var cur = ele.offsetLeft;   //  点击时盒子的当前值 (初始的位置)
+        var cur = parseFloat(getStyle(ele, attr));   //  点击时盒子的当前值 (初始的位置)
+        // var end = 1000;
+
+        end = parseFloat(end);
+
+        var speed = 0;
+
+        clearInterval(timer);    // 下一次启动前清除上一个
+
+        timer = setInterval(function () {
+
+            // if (end > cur) {
+            //     // 正向运动  (0-1000)  终点值 > 起点值
+            //     cur += speed;
+            // } else {
+            //     // 反向运动  (1000-0)   终点值 < 起点值
+            //     cur -= speed;
+            // }
+            console.log(aniType);
+            if (aniType == "linear") {
+                // 匀速运动 
+                speed = end > cur ? 10 : -10;
+
+            } else if (aniType == "ease-in") {
+                // 加速运动     v = v0 + at;
+                // speed += 5;   //正向运动   每隔一段时间 速度加5
+                // speed -= 5;   //正向运动   每隔一段时间 速度减5
+
+                // speed = end > cur ? speed + 5 : speed - 5;
+                end > cur ? speed += 5 : speed -= 5;
+            } else if (aniType == "ease-out") {
+                // console.log(speed);
+
+                // 缓冲运动    (终点值-当前值)/缓冲因子  => 每次走剩余的  1/n
+                // 缓冲因子  一般在8-12之间
+
+                // 正向运动   
+                // var speed = (end - cur) / 2;  // => 正值
+                // speed = Math.ceil(speed);   //如果speed <1  向上取整 => 1
+                // console.log(speed);
+
+                // 反向运动 
+                // var speed = (end - cur) / 2;  //负值  => -0.75
+                // speed = Math.floor(speed);   //如果speed > -1  向下取整 => -*-1
+                // console.log(speed);
+
+                speed = (end - cur) / 12;
+                speed = end > cur ? Math.ceil(speed) : Math.floor(speed);
+            }
+
+            cur += speed;
+
+            console.log(speed);
+
+            ele.style[attr] = cur + "px";
+
+            if (Math.abs(end - cur) < Math.abs(speed)) {  // 临界值的判断  (理想条件  cur==end) => 误差允许范围(speed)
+                ele.style[attr] = end + "px";
+                clearInterval(timer);
+            }
+        }, 10);
+
+    }
+
+    function getStyle(ele, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+
+</script>
+
+</html>

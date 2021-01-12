@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            margin: 100px;
+        }
+
+        /* 只能控制自己,子代元素,同级后面 */
+        /* .box:hover {
+            background-color: #00f;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+
+    // 先获取元素,在绑定事件
+    var box = document.getElementsByClassName("box")[0];
+
+    // 单击事件 (鼠标左键点击)
+    // box.onclick = function () {
+    //     console.log("box被点击");
+    // }
+
+    // 双击事件 (鼠标左键点击)
+    // box.ondblclick = function () {
+    //     console.log("box被双击");
+    // }
+
+    // 鼠标按钮被按下 (鼠标按键被按下都可以触发)  
+    // box.onmousedown = function (e) { // event 事件对象(包含事件发生时的详细信息)
+
+    //     // e.button   0(左)  1(中)  2(右)
+    //     console.log("鼠标按下", e.button);
+    // }
+
+    // 鼠标移动
+    // box.onmousemove = function (e) { // event 事件对象(包含事件发生时的详细信息)
+    //     console.log("鼠标移动", e);
+    // }
+
+    // 鼠标按键松开
+    // box.onmouseup = function (e) { // event 事件对象(包含事件发生时的详细信息)
+    //     // e.button   0(左)  1(中)  2(右)
+    //     console.log("鼠标抬起", e.button);
+    // }
+
+    // 鼠标划入
+    box.onmouseover = function () {
+        console.log("鼠标划入");
+        // this.style.background = "blue";
+        document.bgColor = "#6ff";
+    }
+
+    // 鼠标划出
+    box.onmouseout = function () {
+        console.log("鼠标划出");
+        // this.style.background = "blue";
+        document.bgColor = "#fff";
+    }
+
+
+
+</script>
+
+</html>

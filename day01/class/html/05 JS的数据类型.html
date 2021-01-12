@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box {
+            width: 100px;
+            height: 200px;
+            background-color: red
+        } */
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 常量/字面量/直接量
+    // 100;      //  数字
+    // "你好";   //  字符串
+    // true;     //  布尔值
+
+    // JS是弱类型的语言,数据类型和变量存储的数据有关,存什么类型就是什么类型
+
+    // JS的数据类型 
+    // number,string,boolean,null,undefined,array,object  (7中常见的数据类型)
+
+    // 如何判断数据类型?
+    // 使用关键词  typeof xxx     => 返回对应数据类型的字符串
+
+    // undefined 的类型也是undefined
+    // null,array  的类型是 object
+
+
+    var num = 100.5;
+    console.log(num, typeof num);  // 100.5   "number"
+
+    var str = "hello";
+    console.log(str, typeof str);  // "hello"   "string"
+
+    var bool = true; //false
+    console.log(bool, typeof bool); // true     "boolean"
+
+    var a;           // 不赋值(未定义  undefined) 
+    console.log(a, typeof a);  // 值      undefined   类型"undefined"
+
+    var b = null;    // 赋空值
+    console.log(b, typeof b);  // null   "object"
+
+
+    // 了解(后面详细介绍)
+    // 数组  一组数(数据)  一般用来存储多个相同类型的数据
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];  //
+    var nameList = ["张三", "李四", "王五"];
+    var nameList = ["a", "b", "c", "d", "e", "f"];
+    console.log(arr, typeof arr);  //[1, 2, 3, 4, 5, 6, 7, 8, 9] "object"  (数组也是一种特殊格式的对象 键名是0 1 2 3)
+
+    // 对象 (也是一种数据形式) 
+    // 对一个或一类事物 特性和行为的描述
+
+    // 对象是以键值(key:value)对形式存在的, 键值对之间用逗号分隔 
+    // key  键名/属性名
+    // value  键值/属性值
+
+    // 人  (姓名,年龄,性别,身高,体重)
+    var zhangSan = {
+        name: "张三",   // 属性(键值(key:value)对形式存在)
+        age: 18,
+        sex: "男",
+        height: "188cm",
+        weight: "70kg"
+    }
+    console.log(zhangSan, typeof zhangSan); // "object"
+
+
+
+
+</script>
+
+</html>

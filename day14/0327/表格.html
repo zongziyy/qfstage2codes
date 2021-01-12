@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid black;
+            line-height: 40px;
+            text-align: center; 
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>姓名: <input type="text"><div>
+    <br>
+    年龄: <input type="number"> <br>
+    地址： <select name="" id=""> <br>
+        <option>北京</option>
+        <option>上海</option>
+        <option>广州</option>
+        <option>深圳</option>
+        <option>武汉</option>
+    </select> <br>
+    性别： 男<input type="radio" value="男" name="sex"> 女<input type="radio" value="女" name="sex">
+    <button name="add">添加</button>
+    <button id="last">删除最后一行</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>地址</td>
+                <td>性别</td>
+                <td>删除</td>
+            </tr>
+        </thead>
+        <tbody id="qqq"></tbody>
+
+    </table>
+    
+
+
+
+
+    <script>
+        var arr1 = [{ name: '张三', age: 18, address: '北京', 性别: '男' },
+        { name: '张三2', age: 19, address: '上海', 性别: '女' },
+        { name: '张三3', age: 128, address: '天津', 性别: '男' },
+        { name: '张三4', age: 185, address: '武汉', 性别: '女' }];
+
+
+        var oLstBtn = document.getElementById('last');
+        var oBtn = document.querySelector('[name="add"]'); //获取添加按钮
+        var oTb = document.querySelector('tbody');  //获取tbody 标签
+
+
+        /*
+
+            点击新增按钮，添加到table中
+            @param oIptN 获取name的值
+            @param oIptA 获取age的值
+            @param oIptAd 获取地址的值
+            @param oIptS 获取性别的所有标签
+        */
+        oBtn.onclick = function () {
+            var oIptN = document.querySelector('[type="text"]').value;
+            var oIptA = document.querySelector('[type="number"]').value;
+            var oIptAd = document.querySelector('select').value;
+            var oIptS = document.querySelectorAll('[type="radio"]');
+
+            // 循环2个radio单元框伪数组,item存储的就是radio单选框标签
+            oIptS.forEach(function (item, key) {
+
+                if (item.checked) {  // 如果 radio单选框标签,checked属性值是 true,表示是被选中的标签
+                   
+                    oIptS = item.value;  // 获取这个标签的value属性值
+                } 
+            })
+
+            var obj = { name: oIptN, age: oIptA, address: oIptAd, 性别: oIptS };// 建立对象,结构与arr中的对象结构一直
+            console.log(obj);
+            arr1.push(obj);// 将对象写入到数组中
+
+
+            // 调用生成页面函数,也就会根据新的数组,渲染生成新的页面
+             // 同时函数中会调用,添加删除效果函数,也同时给新的删除标签,重新绑定删除效果
+            table1();
+
+           
+
+        }
+
+
+        /*
+           输入一个信息对应的二维数组，在页面的表格中显示出来。
+           @param arr1 你输入的二维数组，里面的信息对应：姓名，年龄，地址，性别。
+           @param str  用来存储和拼接你二维数组里的信息的一个变量。
+       */
+        function table1() {
+
+            var str = '';
+
+
+            arr1.forEach(function (item, key) {
+                str += '<tr>' + '<td>' + (key + 1) + '</td>';
+
+                for (var val in item) {
+                    str += '<td>' + item[val] + '</td>';
+                }
+                    //自定义属性，=属性值是当期这条数据对应的索引数值
+                str += ` <td> <button index ="${key}">删除</button></td>`;
+                str += '</tr>';
+            })
+            // console.log(arr1);
+
+            oTb.innerHTML = str; // 将生成页面的操作,定义在函数中
+
+
+            // 生成页面之后,有了删除标签之后,执行给删除标签绑定事件的函数
+            // 给删除标签绑定事件
+            // 之后只要是重新调用渲染生成页面的table1()函数
+            // 就会调用 给删除标签绑定事件函数
+            del();
+           
+        }
+
+        // 调用函数,生成页面
+        table1();
+
+         // 给删除标签,添加事件,实现功能效果
+        function del() {
+            
+            var aBtns = document.querySelectorAll('table button');  // 获取标签对象
+
+            //给删除button添加事件,循环遍历添加
+            aBtns.forEach(function (item, key) {
+
+                // 给删除标签,添加点击事件
+            item.onclick = function () {
+                
+                var index = item.getAttribute('index');  //获取删除标签上,自定义属性的属性值
+
+                arr1.splice(index, 1);  // 根据属性值得到索引值，从这个索引开始,删除一个单元
+                table1();//重新渲染页面
+        }
+        })
+
+        }
+
+        oLstBtn.onclick = function(){
+            oTb.removeChild(oTb.lastChild);
+        }
+
+    </script>
+</body>
+
+</html>

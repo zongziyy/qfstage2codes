@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        **********<br>
+        **********<br>
+        **********<br>
+        **********<br>
+    
+     */
+
+    // var i = 1;
+    // while (i <= 4) {
+
+    //     var j = 1;
+    //     while (j <= 10) {
+    //         document.write("*");
+    //         j++
+    //     }
+
+    //     document.write("<br>");
+
+    //     i++;
+    // }
+
+
+    /* 
+        第几层几个  
+        *
+        **
+        ***
+        ****
+        *****
+        ******
+     */
+
+    var i = 1;
+    while (i <= 6) {
+
+        var j = 1;
+        while (j <= i) {  // 打印的个数 由层数控制
+            document.write("*");
+            j++
+        }
+
+        document.write("<br>");
+
+        i++;
+    }
+
+    /* 
+                i   总层数  6     
+         *      1   空格 6-1个   星号 1    
+        **      2   空格 6-2个   星号 2    
+       ***      3   空格 6-3个   星号 3 
+      ****      4   空格 6-4个   星号 4 
+     *****      5   空格 6-5个   星号 5 
+    ******      6   空格 6-6个   星号 5 
+                i        6-i         i
+                       
+    
+     */
+
+    var i = 1;
+    var n = 60;  // 把总层数提取为参数 n
+    while (i <= n) {  //外层循环控制总的层数
+
+        // 内层循环1  => 打印空格
+        var j = 1;
+        while (j <= n - i) {
+            document.write("&emsp;");
+            j++;
+        }
+
+        // 内层循环2  => 星号
+        var k = 1;
+        while (k <= i) {
+            document.write("锋");
+            k++;
+        }
+        document.write("<br>");
+
+        i++;
+    }
+
+    var i = 60;
+    var n = 60;  // 把总层数提取为参数 n
+    while (i >= 1) {  //外层循环控制总的层数
+
+        // 内层循环1  => 打印空格
+        var j = 1;
+        while (j <= n - i) {
+            document.write("&emsp;");
+            j++;
+        }
+
+        // 内层循环2  => 星号
+        var k = 1;
+        while (k <= i) {
+            document.write("锋");
+            k++;
+        }
+        document.write("<br>");
+
+        i--;
+    }
+
+
+
+</script>
+
+</html>

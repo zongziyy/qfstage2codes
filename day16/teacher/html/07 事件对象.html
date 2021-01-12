@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            margin: 100px;
+            overflow: hidden;
+        }
+
+        .sub {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="sub">
+            <span>123123</span>
+        </div>
+    </div>
+</body>
+<script>
+
+    // 先获取元素,在绑定事件
+    var box = document.getElementsByClassName("box")[0];
+
+    // 事件对象(事件发生时的所有相关信息)
+    // 事件源,鼠标的位置,鼠标按键,键盘按键,事件类型 
+
+
+    // 事件对象的属性
+
+    // 通用
+    // ctrlKey   事件触发时,ctrl键是否被按下
+    // altKey    事件触发时,alt键是否被按下
+    // shiftKey    事件触发时,shift键是否被按下
+    // metaKey    事件触发时,meta键是否被按下
+
+    // 一般用来做组合键  ctrl+enter 
+
+    // target  事件源(触发事件的元素  给父元素绑定事件,子元素也可以触发,到底是谁触发的=>事件源)
+    // srcElement   事件源(IE的写法,常规浏览器也有)  
+    // type   事件类型(load,scroll,resize,click,dblclick,mouseover...)
+
+
+
+
+    box.onmousedown = function (e) {  //形式参数 常规浏览器的写法
+        // e   形式参数 常规浏览器的写法
+        // window.event;
+
+        // 事件对象的兼容
+        var e = e || window.event;
+        console.log("box被点击", e);
+        // console.log(e.ctrlKey, e.shiftKey, e.altKey, e.metaKey);
+
+
+        // console.log(e.target);    //常规浏览器
+        // console.log(e.srcElement);    //低版本IE
+        var target = e.target || e.srcElement;  //事件源的兼容
+
+        console.log(e.type);
+
+
+    }
+
+
+</script>
+
+</html>

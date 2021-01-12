@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // JSON  
+
+    // 由数组和对象组合形成的一种数据形式,基本数据(字符串,数字,布尔值,null,array,object)
+
+    // json 对象 (js对象一种) 
+    var data = [{
+        name: "张三",
+        age: 18,
+        sex: "男",
+        height: "177cm",
+        weight: "70kg",
+        isStudy: true,
+        hobby: ["唱歌", "跳舞"],
+        money: null,
+        // say() {
+        //     console.log(1111);
+        // },
+        // hello: undefined,
+    }, {
+        name: "张三",
+        age: 18,
+        sex: "男",
+        height: "177cm",
+        weight: "70kg",
+        isStudy: true,
+        hobby: ["唱歌", "跳舞"],
+        money: null,
+        // say() {
+        //     console.log(1111);
+        // },
+        // hello: undefined,
+    }]
+
+    // json类型 字符串(后端返回的)
+    var str = JSON.stringify(data);
+    console.log(str);
+
+
+
+</script>
+
+</html>

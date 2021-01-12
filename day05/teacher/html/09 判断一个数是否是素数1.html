@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 素数/质数   (除了1和它本身之外  不存在有其他能数整除它)
+    // 那如果我排除 1 => 只有它本身可以整除它  (查找结尾)
+
+    // 2 3 5 7 11 13 17 19 23 29
+
+    // 7  => [1,7] =>排除1和它本身   2-6 =>  不存在有其他能数整除它  => 素数(质数)
+
+    // 9  => [1,9] =>排除1和它本身   2-8 =>  存在有其他能数整除它 3  => 非素数(合数)
+
+    // 4 是 2 的倍数
+    // 2 是 4 的约数
+
+    // 4%2==0     4能被2整除     2能整除4
+
+    var num = 1234567;
+
+    for (var i = 2; i <= num; i++) {  // 2 - num(本身)
+        // 如果存在i可以整除num跳出 => 所以的数都可以跳
+        // 素数跳出时 =>本身 i==num     7 -    2-7   =>  7
+        // 不是素数 => 中途就跳出来了    9 -    2-9   =>  3 
+
+        if (num % i == 0) {
+            break;
+        }
+    }
+
+    if (num == i) {
+        document.write(num + "是素数");
+    } else {
+        document.write(num + "不是素数,存在" + i + "可以整除它");
+    }
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+</body>
+<script>
+    // 扩展运算符（spread）是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+
+    // 数组和  扩展运算符    => 将数组展开,得到以逗号分隔的多个参数
+    var arr = [1, 2, 3, 4, 5];
+
+    console.log(...arr);  // [1, 2, 3, 4, 5] =>   1, 2, 3, 4, 5
+
+    // a.数组的深复制 (只能用于一维数组)
+    var brr = [...arr];  //  [1, 2, 3, 4, 5] =>   1, 2, 3, 4, 5  => brr [ 1, 2, 3, 4, 5]
+    console.log(arr, brr, arr === brr);
+
+    // b. 伪数组转真数组
+    var liList = document.querySelectorAll(".list li");
+    console.log(liList);
+
+    var brr = [...liList];
+    console.log(brr);
+    console.log(Array.isArray(brr));
+
+
+    // 对象和  扩展运算符    => 将对象展开,得到以逗号分隔的属性(必须放在新的对象中)
+
+    var obj1 = {
+        a: 1,
+        b: 2,
+    }
+
+    var obj2 = {
+        ...obj1,
+        c: 3,
+        d: 4,
+    }
+    console.log(obj2);
+
+    // 运用
+    // a.对象的深复制 
+
+    var obj3 = { ...obj1 };
+    console.log(obj1, obj3);
+
+    // b. 将多个对象合并为一个对象
+
+    var obj4 = { ...obj1, ...obj2 };
+    console.log(obj4);
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 键盘事件  
+    // 1. 绑定为文档  在文档的任意位置均可出发啊 
+
+    // 键盘按键(所有的按键)被按下  
+    document.onkeydown = function (e) { // e 
+        console.log("按键按下onkeydown", e.key, e.code);
+    }
+
+    // 键盘按键(所有的按键)被抬起/松开 
+    // document.onkeyup = function (e) { // e 
+    //     console.log("按键松开", e.key, e.code);
+    // }
+
+    // 键盘按键(文本输入相关的按键 字母 数字 字符 运算符 enter space )被按下并松开。
+    document.onkeypress = function (e) {
+        console.log("键盘按键被按下并松开onkeypress", e.key);
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 5000px;
+        }
+
+        .box {
+            position: fixed;
+            right: 50px;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="open">打开百度</button>
+    <button class="close">关闭百度</button>
+    <button class="moveBy">moveBy</button>
+    <button class="moveTo">moveTo</button>
+    <button class="resizeBy">resizeBy</button>
+    <button class="resizeTo">resizeTo</button>
+    <div class="box">
+        <button class="scrollBy">scrollBy</button>
+        <button class="scrollTo">scrollTo</button>
+    </div>
+
+</body>
+<script>
+    var openBtn = document.getElementsByClassName("open")[0];
+    var closeBtn = document.getElementsByClassName("close")[0];
+    var moveByBtn = document.getElementsByClassName("moveBy")[0];
+    var moveToBtn = document.getElementsByClassName("moveTo")[0];
+    var resizeByBtn = document.getElementsByClassName("resizeBy")[0];
+    var resizeToBtn = document.getElementsByClassName("resizeTo")[0];
+    var scrollByBtn = document.getElementsByClassName("scrollBy")[0];
+    var scrollToBtn = document.getElementsByClassName("scrollTo")[0];
+    var subWindow = null;
+
+    // window.open();
+    // open(url,name,"窗口特征")     打开一个新的窗口或者查找一个已命名的窗口
+    // 返回值 返回被打开窗口的window
+
+    // close ()   关闭窗口  => 根据对应窗口的window进行关闭 
+
+    openBtn.onclick = function () {
+        // window.open("https://www.baidu.com"); // 一直打开新的
+        // subWindow = window.open("https://www.baidu.com", "baidu"); //  查找一个已命名的窗口(找不到打开一个新的)
+        // console.log(subWindow);
+        // subWindow = window.open("https://www.baidu.com", "baidu", "width=400px,height=400px,left=100px,top=200px");
+        // console.log(subWindow);
+
+        subWindow = window.open("./03 日历之动态切换2.html", "rili", "width=400px,height=400px,left=100px,top=200px");
+        console.log(subWindow);
+    }
+
+    closeBtn.onclick = function () {
+        if (subWindow) {
+            subWindow.close();
+        }
+    }
+
+    // moveBy(x,y)  移动窗口,相对窗口于原本的位置移动  正数(右  下)  负数(左 上)
+    // moveTo(x,y)  移动窗口,直接移动到对应位置  
+
+    // resizeBy    修改窗口大小,相对窗口于原本的大小  正数(增加宽度和高度)  负数(减小宽度和高度)
+    // resizeTo     修改窗口大小,直接修改至对应宽高
+
+    // scrollBy    修改窗口滚动条的位置,相对于滚动条原位置
+    // scrollTo    修改窗口滚动条的位置,直接移动滚动条至对应位置
+
+
+    moveByBtn.onclick = function () {
+        if (subWindow) {
+            subWindow.moveBy(50, 50);
+        }
+    }
+
+    moveToBtn.onclick = function () {
+        if (subWindow) {
+            subWindow.moveTo(500, 400);
+        }
+    }
+
+    resizeByBtn.onclick = function () {
+        if (subWindow) {
+            subWindow.resizeBy(50, 50);
+        }
+    }
+
+    resizeToBtn.onclick = function () {
+        if (subWindow) {
+            subWindow.resizeTo(500, 400);
+        }
+    }
+
+
+    scrollByBtn.onclick = function () {
+        window.scrollBy(0, 50);
+    }
+
+    scrollToBtn.onclick = function () {
+
+        window.scrollTo(0, 2000);
+    }
+
+
+    // 属性
+    console.log(window.innerWidth);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

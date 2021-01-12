@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 创建数组的方式
+    // 1. 字面量创建  快捷创建
+    // var arr = [1, 2, 3, 4];
+    // console.log(arr);
+
+    // 2. 构造函数创建  官方提供专门创建数组的方法
+    // var arr = new Array(1, 2, 3, 4);
+    // console.log(arr);
+
+    // 注意
+    // 如果new Array() 只接收一个参数,且是number类型时,会生成对应长度的数组
+    // 如果new Array() 只接收一个参数,不是number类型时,会将该参数作为数组的元素放到数组中
+
+    // var arr = new Array(10);// [,,,,,,,,,,]
+    // console.log(arr);
+
+    // var arr = new Array("10");// ["10"]
+    // console.log(arr);
+
+
+    // 数组的特性
+    // length
+    // 下标取值和赋值  下标的最大值 = length-1
+    // 可以被循环遍历   
+
+    var arr = ["a", "b", "c", "d"];
+
+    // for (var i = 0; i < arr.length; i++) {
+    //     var item = arr[i];
+    //     console.log(item);
+    // }
+
+    // 官方提供的  for...in   for...of  (快捷遍历数组的方法)
+    var arr = ["a", "b", "c", "d"];
+
+    //  for...in  遍历数组 返回数组的下标(字符串)
+    // for (var i in arr) {
+    //     console.log(i, arr[i]);
+    // }
+
+    //  for...of  遍历数组 返回数组的每一个元素 
+    // for (var val of arr) {
+    //     console.log(val);
+    // }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

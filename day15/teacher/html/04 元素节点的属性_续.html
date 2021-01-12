@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            border: 1px solid transparent;
+        }
+
+        .active {
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box one two three"></div>
+</body>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+
+    console.dir(box);
+    console.log(box.className);
+    console.log(box.classList);  //获取
+
+    // classList  返回的是 class名的集合
+
+    // box.classList  的方法
+    // add()   向元素中添加一个或多个class名, (不存在就添加,存在就不做任何操作)
+    // remove()  删除元素中的一个或多个class名(存在就删除,不存在就不做任何操作)
+    // replace()   用新的class名 替换原本的class名
+    // contains()  判断classList中是否存在某个class名  (存在=> true,否则=>false) 
+
+    // toggle()   有就删除 没有就添加
+
+    box.classList.add("four", "five");
+    box.classList.add("four", "five");
+
+    // box.classList.remove("four", "five");
+
+    box.classList.replace("four", "forth");
+
+    var result = box.classList.contains("box1");
+    console.log(result);
+
+
+    box.onclick = function () {
+        box.classList.toggle("active");
+    }
+
+
+
+
+</script>
+
+</html>

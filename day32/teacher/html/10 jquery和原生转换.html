@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>jquery核心</h2>
+        <div class="list">
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+
+    // 如何获取jquery对象? 
+    // // 1. 传入一个字符串(css选择器)
+    // console.log($(".wrap"));
+
+    // // 2. 传原生dom元素
+    // var wrap = document.getElementsByClassName("wrap")[0];
+    // console.log($(wrap));
+
+    // // 3. dom元素的集合
+    // var liList = document.querySelectorAll(".wrap li");
+    // console.log($(liList));
+
+    // // 4. 传入一个jquery对象
+    // console.log($($(".wrap")));
+
+    // 通过jquery对象 得到原生dom元素?
+    // console.log($(".wrap li"))
+    // console.log($(".wrap li")[0])
+    // console.log(Array.from($(".wrap li")))
+
+    // get()
+    // get(index)  返回对应下标的元素
+    // get()       返回对应的真数组
+    console.log($(".wrap li").get(0));
+    console.log($(".wrap li").get());
+
+
+
+
+
+
+
+
+</script>
+
+</html>

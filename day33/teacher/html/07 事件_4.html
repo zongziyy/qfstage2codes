@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #6ff;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery</h2>
+        <!-- style="display:none" -->
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+<script>
+
+    // on 和 事件委托
+    // $(parent).on(eventType,target,data,callback)
+    // parent  委托的父元素
+    // eventType  事件类型 
+    // target     委托事件的元素(由哪个元素触发)
+    // data       事件绑定是传递的数据(可选)
+    // callback   事件触发时执行的回调函数
+
+    // $(".wrap").on("click", "h2", { a: 1, b: 2 }, function (e) {
+    //     console.log(e.data);
+    //     $("<li>", {
+    //         text: "我是新增的li"
+    //     }).appendTo(".list");
+    // })
+
+    // $(".wrap").on("click", "li", function (e) {
+    //     console.log($(this).index());
+    // })
+
+    // $(document).on("click", ".wrap h2", { a: 1, b: 2 }, function (e) {
+    //     console.log(e.data);
+    //     $("<li>", {
+    //         text: "我是新增的li"
+    //     }).appendTo(".list");
+    // })
+
+    // $(document).on("click", ".wrap li", function (e) {
+    //     console.log($(this).index());
+    // })
+
+    // $(document).on("click", ".first,.last,.mid", function (e) {
+    //     console.log($(this).index());
+    // })
+
+
+
+    // on 和自定义事件
+
+    // 自定义事件
+    // $(".first").on("haha", function () {
+    //     console.log("嘿嘿");
+    // })
+
+    // $(".wrap h2").click(function () {
+    //     // 触发自定义事件
+    //     $(".first").trigger("haha");
+    // })
+
+
+    // var first = document.getElementsByClassName("first")[0];
+    // // 自定义事件
+    // first.addEventListener("haha", function () {
+    //     console.log("嘿嘿");
+    // })
+
+    // // 事件抛发
+    // var e = new Event("haha");
+    // first.dispatchEvent(e);
+
+
+
+
+</script>
+
+</html>

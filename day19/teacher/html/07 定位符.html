@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 定位符
+
+    // ^   匹配开头   (以...开头)
+    // $   匹配结尾   (以...结尾)
+
+    // 如果只是单独的使用 ^ $ 依旧是包含关系,不会把规则定死
+    //     同时使用^ $ 才会将规则定死
+
+
+    var str = "good good study , day day 123123123123up";
+
+    var startReg = /^a/;  //false
+    var startReg = /^g/;  //true
+    var startReg = /^good/;  //true   以g开头,后面跟ood 
+    var startReg = /^(good)/;  //true   以good开头
+
+    // console.log(startReg.test(str));
+
+    var endReg = /a$/;// false
+    var endReg = /p$/;// true
+    var endReg = /up$/;// true
+
+    // console.log(endReg.test(str));
+
+    var reg = /^good$/; // 以g开头 后面跟oo 随后以d结尾
+    var reg = /^go*d$/; // 以g开头 后面跟o {0,} 随后以d结尾
+
+    var str = "good good study"; //false
+    var str = "good good"; //false
+    var str = "good"; //false
+    console.log(reg.test(str));
+
+    var reg = /^(good)$/; // 以good开头  随后以good结尾
+    var str = "goodgood"; //false
+    console.log(reg.test(str));
+
+
+
+    // 用户名  由 数字(0-9)大小写字母(a-zA-Z) _$
+
+
+
+
+
+</script>
+
+</html>

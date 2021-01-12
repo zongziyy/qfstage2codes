@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数组去重    数组 => set结构  => 数组
+    // 方法1 
+    // var list = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
+
+    // var s = new Set();
+    // list.forEach(item => s.add(item));
+    // console.log(s);
+
+    // var arr = [];
+    // s.forEach(item => arr.push(item));
+
+    // 数组去重    数组 => set结构  => 数组
+
+    // 数组 => set结构
+    var list = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
+    var s = new Set(list); // set接收一个数组  
+    console.log(s);
+
+    // set结构  => 数组
+    // a. Array.from()
+    var arr = Array.from(s);
+    console.log(arr);
+
+    // b. 借助扩展运算符(...)
+    var arr = [...s];
+    console.log(arr);
+
+
+
+
+
+
+</script>
+
+</html>

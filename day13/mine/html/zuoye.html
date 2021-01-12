@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="list one two three">
+            <li class="first">01</li>
+            <li class="list">02</li>
+            <li class="list12">03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+    // 通过传入的class名(字符串),获取对应的元素  放到集合中
+    // 1. 找页面中所有的元素    document.all   /document.getElementsByTagName("*")
+    // 2. 找到含有class属性的元素
+    // 3. 是否有要求的class名   "list one two three"  如何准确查找 
+
+    // var list = document.getElementsByClassName("list");
+    // console.log(list);
+
+    // 通过现有知识 模拟封装一个getElementsByClassName
+   
+    function myGetElementsByClassName(className) {
+        var all = document.all;       //获取文档所有元素
+        // console.log(all);
+
+        var classList = []        //新建数组用于接收含有class属性的元素
+        for (let i = 0; i < all.length; i++) {
+            if (all[i].getAttribute("class")) {
+                classList.push(all[i]);
+            }
+        }
+        // console.log(classList);
+        var result = [];        //新建数组用于接收函数返回值
+        //执行循环遍历含有class属性的元素
+        for (let i = 0; i < classList.length; i++) {
+            //创建变量接收class的属性值   为字符串
+            var classNm = classList[i].getAttribute("class");
+            //如果某个元素含有多个class，用空格切割数组
+            var classNames = classNm.split(' ');
+            //循环遍历接收到的每个class名
+            for (let k = 0; k < classNames.length; k++) {
+                //判断是否与传入的参数相等
+                if (classNames[k] == className) {
+                    result.push(classList[i]);  //相等则往结果数组里面添加这个元素
+                }
+            }
+        }
+        return result;
+    }
+    var a = myGetElementsByClassName("list");
+    console.log(a);
+</script>
+
+</html>

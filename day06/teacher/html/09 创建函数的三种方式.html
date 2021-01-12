@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+</body>
+<script>
+    // 创建函数的三种方式
+    // 1. 命名函数
+
+    // function add(a, b) {
+    //     console.log(a, b);
+    //     return a + b;
+    // }
+    // add()
+
+    // 2. 匿名函数
+    // 注意  js引擎默认以命名函数的形式来解读函数,所以不能直接声明匿名函数..  怎么解决
+    // function(a, b) { //报错
+    //     console.log(a, b);
+    //     return a + b;
+    // }
+
+    // 2.1  用变量/数组/对象等数据将匿名函数存储起来
+
+    // var fn = function (a, b) {
+    //     console.log(a, b);
+    //     return a + b;
+    // }
+
+    // fn(100, 200);  //对应调用
+
+    // var arr = [1, 2, 3, function (a, b) {
+    //     console.log(a, b);
+    //     return a + b;
+    // }];
+
+    // var btn = document.getElementById("btn");  //typeof btn => "object"
+    // btn.onclick = function () {
+    //     alert(1111);
+    // }
+
+    // 2.2 匿名函数的自调用(自执行匿名函数)
+    // 添加 () + - 提升优先级   => 浏览器按匿名函数的语法解读  =>  不报错  => 没有执行
+    // (function () {   //加小括号
+    //     console.log("我是匿名函数");
+    // });
+
+    // +function () {   //加"+"
+    //     console.log("我是匿名函数");
+    // };
+    // -function () {   //加"-"
+    //     console.log("我是匿名函数");
+    // }
+
+    // (function () {   //加小括号
+    //     console.log("我是匿名函数");
+    // })();
+
+    // (function (a, b) {   //加小括号
+    //     console.log("我是匿名函数", a, b);
+    // })(100, 200);
+
+
+    // 3. 构造函数创建函数   了解 (官方提供了专门创建函数的方法 Function)
+    // 现在不用此方法
+    // 1. 创建麻烦
+    // 2. 比较占浏览器内存,运行速度慢
+    var fn = new Function("a", "b", "console.log('我是匿名函数', a, b);");
+    console.log(fn);
+    fn(100, 200);
+
+
+
+
+
+
+
+</script>
+
+</html>

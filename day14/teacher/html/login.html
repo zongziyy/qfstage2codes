@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 数据拆分 解析
+    // 从登录页  获取注册传递的数据  (参数数据)  生成一个对应的对象 
+
+    // "user=a123123&pwd=123123&phone=17386141517&email=1272071495%40qq.com"
+
+    // var data = {
+    //     user: "a123123",
+    //     pwd: "123123",
+    //     phone: "12312312311",
+    //     emial: "123123@qq.com"
+    // }
+
+    var search = location.search;  // 获取参数数据(字符串)
+    console.log(search);
+    if (search) {
+        var str = search.substring(1);  // 将?裁切掉
+        console.log(str);
+        var list = str.split("&");   //分割数组  => 四条数据 
+        console.log(list);
+
+        var data = {};
+        for (var i = 0; i < list.length; i++) {  // 遍历每一条数据  
+            var item = list[i];   // 每一条数据
+            console.log(item);
+            var subList = item.split("=");  // 再次用 = 分割
+            console.log(subList);
+            var key = subList[0]; // "user"  "pwd"  "phone"  键名(字符串)
+            var val = subList[1]; // 键值  
+            console.log(key, val);
+
+            data[key] = val;   // 存到对象中  键名是变量(字符串) => []语法
+        }
+        console.log(data);
+
+    } else {
+        location.href = "register.html"
+    }
+
+
+</script>
+
+</html>

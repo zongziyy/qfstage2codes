@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 传统的对象结构 ,键名只能是字符串,如果是其他类型 会隐式的转化为字符串
+    var obj = {
+        "name": "张三",
+        "age": 18,
+        // "100": 100
+    };
+
+    obj.name;
+    obj["name"];
+
+
+    var a = 100;
+    var a = true;
+
+    var a = { a: 1, b: 2 }
+    // var a = [1, 2, 3];
+
+
+    obj[a] = 100;
+    // console.log(obj);
+
+    // Map 的初识
+    // 为了解决这个问题，ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适
+
+    // 通过构造函数创建
+    var m = new Map();
+    console.log(m);
+
+    // set(key,val)  根据键名设置键值(键名可以是任意类型)   set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键
+
+    // get(key)  根据键名获取对应键值
+
+    // delete(key) 根据键名删除某个键
+    // clear() 删除所有的键
+
+    // has()   has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+
+    // 属性
+    // size   size属性返回 Map 结构的成员总数。
+
+    m.set(1, 1);
+    m.set("hello", "hello");
+    m.set(true, true);
+    m.set(null, null);
+    m.set(undefined, undefined);
+
+    var arr = [1, 2, 3];
+    var obj = { a: 1 }
+    var fn = v => v;
+
+    m.set(arr, arr);
+    m.set(obj, obj);
+    m.set(fn, fn);
+    console.log(m);
+    console.log(m.size);
+
+    // get(key)
+    // console.log(m.get(1));
+    // console.log(m.get("hello"));
+    // console.log(m.get(true));
+    // console.log(m.get(null));
+
+    // console.log(m.get(arr));
+    // console.log(m.get(obj));
+    // console.log(m.get(fn));
+
+    // delete 
+    // m.delete(1);
+    // m.delete("hello");
+    // console.log(m);
+
+    // clear()
+    // m.clear();
+    // console.log(m);
+
+    // has(key)
+    console.log(m.has(1));
+    console.log(m.has("hello"));
+    console.log(m.has(arr));
+
+
+
+
+
+
+
+
+</script>
+
+</html>

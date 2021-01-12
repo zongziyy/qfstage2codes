@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="sub">
+            <div class="list one two three">
+                <li class="first">我是01</li>
+                <li>我是02</li>
+                <li class="li">我是03</li>
+                <li class="li">我是04</li>
+                <li>我是05</li>
+                <li class="last">我是06</li>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // JS兼容
+    // 1. 常规浏览器的属性 和 低版本IE的属性  存放的位置不一样  (属性名不一样) 
+
+    // document.documentElement.clientWidth || document.body.clientWidth;
+
+    // ele.previousSibling || ele.previousElementSibling
+
+    // 2. 低版本没有对应的方法   => 兼容(自己封装  引入别人封装的插件)
+
+    // document.getElementById()
+    // document.getElementsByClassName()
+    // document.getElementsByTagName()
+    // document.getElementsByName()
+
+
+    // 伪数组/类数组 
+    // 有数组的特性(1. length  2. 下标取值 下标的最大值=length-1 3. 可以被循环遍历 (不建议用for...in) )
+
+
+    // 封装一个方法  根据传入的class名 返回对应元素的集合
+    // 1. 获取所有的元素
+    // 2. 找到包含class名的元素 
+    // 3. 将含有特定class名的元素查找出来 放到是数组中
+
+    //!!!!!! 单class名比较  => 不适用于多class
+    // var className = "list"; // 传入的class名
+
+    // var all = document.getElementsByTagName("*");
+    // console.log(all);
+    // var list = [];
+    // for (var i = 0; i < all.length; i++) {
+    //     var ele = all[i];
+    //     // console.log(ele);
+    //     var clsName = ele.getAttribute("class");
+    //     if (clsName) {
+    //         console.log(clsName);
+    //         if (clsName == className) {
+    //             list.push(ele);
+    //         }
+
+    //     }
+    // }
+    // console.log(list);
+
+
+
+
+    // var className = "list"; // 传入的class名
+
+    // var all = document.getElementsByTagName("*");
+    // console.log(all);
+    // var list = [];
+    // for (var i = 0; i < all.length; i++) {
+    //     var ele = all[i];
+    //     // console.log(ele);
+    //     var clsName = ele.getAttribute("class");
+    //     if (clsName) {
+    //         console.log(clsName);
+    //         "alist one two three"  也包含list 
+    //         if (clsName.indexOf(className) != -1) {
+    //             list.push(ele);
+    //         }
+
+    //     }
+    // }
+    // console.log(list);
+
+
+
+    // var className = "list"; // 传入的class名
+
+    // var all = document.getElementsByTagName("*");
+    // console.log(all);
+    // var list = [];
+    // for (var i = 0; i < all.length; i++) {
+    //     var ele = all[i];
+    //     // console.log(ele);
+    //     var clsName = ele.getAttribute("class");
+    //     if (clsName) {
+    //         console.log(clsName);
+    //         var classList = clsName.split(" ");  //将class名用空格拆分成数组(单个class名的数组)
+    //         console.log(classList);  // 
+    //         if (classList.indexOf(className) != -1) {
+    //             list.push(ele);
+    //         }
+
+    //     }
+    // }
+    // console.log(list);
+
+
+    function myGetElementsByClassName(className) {
+        // var className = "list"; // 传入的class名
+        var all = document.getElementsByTagName("*");
+        console.log(all);
+        var list = [];
+        for (var i = 0; i < all.length; i++) {
+            var ele = all[i];
+            // console.log(ele);
+            var clsName = ele.getAttribute("class");
+            if (clsName) {
+                console.log(clsName);
+                var classList = clsName.split(" ");  //将class名用空格拆分成数组(单个class名的数组)
+                console.log(classList);  // 
+                if (classList.indexOf(className) != -1) {
+                    list.push(ele);
+                }
+
+            }
+        }
+        console.log(list);
+        return list;
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

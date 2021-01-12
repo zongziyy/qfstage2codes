@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* 
+                    i    总层数  7    =>  (7-1)/2  =>3     
+         *         -3    空格3      星号: 7- 3*2   
+        ***        -2    空格2      星号: 7- 2*2
+       *****       -1    空格1      星号: 7- 1*2
+      *******       0    空格0      星号: 7- 0*2
+       *****        1    空格1      星号: 7- 1*2
+        ***         2    空格2      星号: 7- 2*2
+         *          3    空格3      星号: 7- 3*2 
+              
+    */
+
+    var n = 21; //总层数
+    var mid = (n - 1) / 2;
+
+    for (var i = -mid; i <= mid; i++) {
+        for (var j = 1; j <= Math.abs(i); j++) {
+            document.write("&emsp;");
+        }
+
+        for (var k = 1; k <= n - Math.abs(i) * 2; k++) {
+            document.write("锋");
+        }
+
+        for (var j = 1; j <= Math.abs(i); j++) {
+            document.write("&emsp;");
+        }
+
+
+        document.write("<br>");
+    }
+
+
+
+</script>
+
+</html>

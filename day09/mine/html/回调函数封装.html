@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var list = [32, 93, 77, 53, 38, 87];
+
+    function mySort(list, fn) {
+        for (var j = 0; j < list.length - 1; j++) {
+
+            
+            for (var i = 0; i < list.length - 1 - j; i++) {
+                var result = fn(list[i], list[i + 1]);
+                if (result > 0) {  // list[i] <  list[i + 1]
+                    var temp = list[i];
+                    list[i] = list[i + 1];
+                    list[i + 1] = temp;
+                }
+            }
+
+        }
+        return list;
+    }
+
+    var result = mySort(list, function (a, b) {
+        return b - a;
+    });
+    console.log(result);
+
+
+
+
+</script>
+
+</html>

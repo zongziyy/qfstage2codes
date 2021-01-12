@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var date = new Date();
+    // date.setDate(date.getDate() + 7);
+
+    // document.cookie = "user=a123123;expires=" + date.toUTCString() + ";path=/";
+    // document.cookie = "pwd=a123123;expires=" + date.toUTCString() + ";path=/";
+    // document.cookie = "phone=a123123;expires=" + date.toUTCString() + ";path=/";
+
+    function setCookie(key, val, day, path = "/") {
+        if (day) {
+            var date = new Date();
+            date.setDate(date.getDate() + day);
+
+            document.cookie = key + "=" + val + ";expires=" + date.toUTCString() + ";path=" + path;
+        } else {
+            document.cookie = key + "=" + val + ";path=" + path;
+        }
+
+    }
+
+    setCookie("user", "a123123", 7);
+    setCookie("pwd", "123123", 7);
+    setCookie("phone", "17386141516", 7);
+    setCookie("email", "123@qq.com", 7);
+
+    // var cookie = document.cookie;
+    // console.log(cookie);
+    // if (cookie) {
+    //     var dataList = cookie.split("; ");
+    //     var obj = {};
+    //     console.log(dataList);
+    //     for (var i = 0; i < dataList.length; i++) {
+    //         var item = dataList[i];  //"user=a123123", "pwd=123123", "phone=17386141516", "email=123@qq.com"
+    //         var attr = item.split("=")[0];  // "user"  "pwd"
+    //         var val = item.split("=")[1];  // "a123123" "123123"
+
+    //         obj[attr] = val;
+    //     }
+    //     console.log(obj);
+    // }
+
+    // 先拆分所有的数据 => 对象 => 找key
+    // function getCookie(key) {
+    //     var cookie = document.cookie;
+    //     if (cookie) {
+    //         var dataList = cookie.split("; ");
+    //         // console.log(dataList);
+    //         var obj = {};
+    //         for (var i = 0; i < dataList.length; i++) {
+    //             var item = dataList[i];  //"user=a123123", "pwd=123123", "phone=17386141516", "email=123@qq.com"
+    //             var attr = item.split("=")[0];  // "user"  "pwd"
+    //             var val = item.split("=")[1];  // "a123123" "123123"
+
+    //             obj[attr] = val;
+    //         }
+    //         // console.log(obj);
+    //         return obj[key] == undefined ? "" : obj[key]
+    //     }
+    //     return "";
+    // }
+
+
+    function getCookie(key) {
+        var cookie = document.cookie;
+        if (cookie) {
+            var dataList = cookie.split("; ");
+            // console.log(dataList);
+            for (var i = 0; i < dataList.length; i++) {
+                var item = dataList[i];  //"user=a123123", "pwd=123123", "phone=17386141516", "email=123@qq.com"
+                var attr = item.split("=")[0];  // "user"  "pwd"
+                var val = item.split("=")[1];  // "a123123" "123123"
+
+                if (key === attr) {
+                    return val;
+                }
+            }
+
+        }
+        return "";
+    }
+
+    var user = getCookie("user");
+    console.log(user);
+    var pwd = getCookie("pwd");
+    console.log(pwd);
+
+
+
+</script>
+
+</html>

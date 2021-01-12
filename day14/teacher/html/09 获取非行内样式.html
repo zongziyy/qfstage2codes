@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box one two three" id="box" title="haha">
+        <span>123123</span>
+    </div>
+</body>
+<script>
+    // HTML DOM  
+    // html元素的增删改查  
+
+    // var box = document.getElementsByClassName("box")[0];
+    var box = document.getElementById("box");
+    // console.log(box); //元素节点  => 对象(对一个或一类事物特征(属性)和行为(方法)的描述)
+
+
+    // style    获取和设置 元素的内样样式
+    // JS操作元素改变样式时,都是通过修改内联样式实现的
+    // console.log(box.style);
+
+    // box.style["background-color"] = "blue";   //设置 (内样样式权重比较高 没什么影响)
+
+    // // 取值  只获取内联样式 
+    // console.log(box.style.backgroundColor);
+    // console.log(box.style.width);
+    // console.log(box.style.height);
+
+    // 如何获取非行内样式 (内部样式,外部样式,默认样式)?
+
+    // 常规浏览器的方法  (IE没有)
+    // window.getComputedStyle(ele)  => 返回对应元素所有css属性的对象
+
+    console.log(window.getComputedStyle);
+    // console.log(window.getComputedStyle(box));
+    // console.log(window.getComputedStyle(box).width);
+    // console.log(window.getComputedStyle(box).height);
+    // console.log(window.getComputedStyle(box)["background-color"]);
+
+    // 低版本IE  把所有css属性的对象存到元素节点的属性值(currentStyle)
+    // console.log(box.currentStyle)
+    // console.log(box.currentStyle.width)
+    // console.log(box.currentStyle.height)
+    // console.log(box.currentStyle["background-color"])
+
+    // 兼容
+
+    // if (window.getComputedStyle) {// 如果存在此方法  => 常规浏览器
+    //     console.log(window.getComputedStyle(box).width);
+    // } else {
+    //     console.log(box.currentStyle.width)
+    // }
+
+    function getStyle(ele, attr) {//attr="width"
+        if (window.getComputedStyle) {// 如果存在此方法  => 常规浏览器
+            return window.getComputedStyle(ele)[attr];
+        } else {
+            return ele.currentStyle[attr];
+        }
+    }
+
+    var result = getStyle(box, "width");
+    console.log(result);
+    var result = getStyle(box, "height");
+    console.log(result);
+    var result = getStyle(box, "background-color");
+    console.log(result);
+
+
+
+</script>
+
+</html>

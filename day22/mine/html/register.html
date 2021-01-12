@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <script src="../js/cookie.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f0f000;
+        }
+
+        form {
+            width: 400px;
+            height: 200px;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 50px;
+            padding: 50px 50px 50px;
+        }
+
+        input {
+            outline: none;
+        }
+
+        span {
+            display: block;
+            height: 24px;
+            font-size: 14px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="javascript:;" id="form">
+        <p>
+            <label for="user">用户名：</label>
+            <input type="text" name="" id="user" placeholder="请输入用户名">
+            <span id="userSpan"></span>
+        </p>
+        <p>
+            <label for="pwd">密&emsp;码：</label>
+            <input type="text" name="" id="pwd" placeholder="请输入密码">
+            <span id="pwdSpan"></span>
+        </p>
+        <p>
+            <label for="phone">手机号：</label>
+            <input type="text" name="" id="phone" placeholder="请输入手机号">
+            <span id="phoneSpan"></span>
+        </p>
+        <p>
+            <label for="email">邮&emsp;箱：</label>
+            <input type="text" name="" id="email" placeholder="请输入邮箱">
+            <span id="emailSpan"></span>
+        </p>
+        <button type="submit" id="btn">注册</button>
+        <button type="reset">取消</button>
+    </form>
+</body>
+<script>
+    var form = document.getElementById("form");
+    var btn = document.getElementById("btn");
+
+    var userFlag = false;
+    var pwdFlag = false;
+    var phoneFlag = false;
+    var emailFlag = false;
+
+    var cookies = new Map(); //新建一个Map对象用来存储Cookie
+
+    function randomColor() {
+        var colorlist = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+        var color = "#";
+        for (let i = 0; i < 6; i++) {
+            var randomChar = Math.round(Math.random() * 15);
+            color += colorlist[randomChar];
+        }
+        return color;
+    }
+    document.body.style.backgroundColor = randomColor();
+
+    form.oninput = function (e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+
+        // 用户名验证
+        if (target.id == "user") {
+            var user = target.value;
+            var userReg = /^[a-zA-Z_][\w]{5,11}$/
+
+            if (userReg.test(user)) {
+                next(target).className = "green";
+                next(target).textContent = "用户名格式通过";
+                cookies.set("user", target.value);
+                userFlag = true;
+            } else {
+                next(target).className = "red"
+                next(target).textContent = "用户名由6-12位中英文 数字 _组成，且不能以数字开头";
+                userFlag = false;
+            }
+        }
+
+        // 密码验证
+        if (target.id == "pwd") {
+            var pwd = target.value;
+            var pwdReg = /^[\w]{6,12}$/
+
+            if (pwdReg.test(pwd)) {
+                var smallReg = /[a-z]/;
+                var bigReg = /[A-Z]/;
+                var numReg = /\d/
+                var smallFlag = false;
+                var bigFlag = false;
+                var numFlag = false;
+                if (smallReg.test(pwd)) {
+                    smallFlag = true;
+                }
+                if (bigReg.test(pwd)) {
+                    bigFlag = true;
+                }
+                if (numReg.test(pwd)) {
+                    numFlag = true;
+                }
+                let flag = smallFlag + bigFlag + numFlag;
+                next(target).className = "green";
+                switch (flag) {
+                    case 1:
+                        next(target).textContent = "密码强度：弱";
+                        break;
+                    case 2:
+                        next(target).textContent = "密码强度：中";
+                        break;
+                    case 3:
+                        next(target).textContent = "密码强度：强";
+                        break;
+
+                }
+                pwdFlag = true;
+                cookies.set("pwd", target.value);
+
+            } else {
+                next(target).className = "red"
+                next(target).textContent = "密码由6-12位中英文 数字 _组成";
+                pwdFlag = false;
+            }
+        }
+
+        //手机号验证
+        if (target.id == "phone") {
+            var phone = target.value;
+            var phoneReg = /^1(3|5|6|7|8|9)\d{9}$/
+
+            if (phoneReg.test(phone)) {
+                next(target).className = "green";
+                next(target).textContent = "手机号格式通过";
+                phoneFlag = true;
+                cookies.set("phone", target.value);
+            } else {
+                next(target).className = "red"
+                next(target).textContent = "请输入正确的手机号";
+                phoneFlag = false;
+            }
+        }
+
+        //邮箱验证
+        if (target.id == "email") {
+            var email = target.value;
+            var emailReg = /^[\w]{6,12}@[\da-zA-Z]{2,8}\.(com|cn|net)$/
+
+            if (emailReg.test(email)) {
+                next(target).className = "green";
+                next(target).textContent = "邮箱格式通过";
+                emailFlag = true;
+                cookies.set("email", target.value);
+
+            } else {
+                next(target).className = "red"
+                next(target).textContent = "请输入正确的邮箱";
+                emailFlag = false;
+            }
+        }
+    }
+
+    //点击提交
+    btn.onclick = function () {
+        if (userFlag && pwdFlag && phoneFlag && emailFlag) {
+            cookies.forEach((value, key) => {
+                setCookies(key, value, 7);
+            });
+            location.href = "login.html";
+        } else {
+            alert("请确认输入是否都正确！");
+            return false;
+        }
+    }
+
+    function next(ele) {
+        if (ele.nextElementSibling) {
+            return ele.nextElementSibling;
+        } else {
+            return ele.nextSibling;
+        }
+    }
+</script>
+
+</html>

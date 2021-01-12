@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2170186_89plkf4k6l.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/goodsDitail.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/cookie.js"></script>
+    <script src="../js/request.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="w cl">
+                <ul class="xiaomiLinks">
+                    <li><a href="javascript:;">小米商城</a></li>
+                    <li><a href="javascript:;">MIUI</a></li>
+                    <li><a href="javascript:;">IoT</a></li>
+                    <li><a href="javascript:;">云服务</a></li>
+                    <li><a href="javascript:;">天星数科</a></li>
+                    <li><a href="javascript:;">有品</a></li>
+                    <li><a href="javascript:;">小爱开放平台</a></li>
+                    <li><a href="javascript:;">企业团购</a></li>
+                    <li><a href="javascript:;">资质证照</a></li>
+                    <li><a href="javascript:;">协议规则</a></li>
+                    <li class="code-reference">
+                        <a href="javascript:;">下载app</a>
+                        <div class="code">
+                            <img src="../images/qqcode.png" alt="">
+                            <p>小米商城APP</p>
+                        </div>
+                    </li>
+                    <li><a href="javascript:;">智能生活</a></li>
+                    <li><a href="javascript:;">Select Location</a></li>
+                </ul>
+                <div class="cart">
+                    <a href="./shoppingCar.html"><i class="iconfont icon-gouwuchekong"></i> 购物车（0）</a>
+                    <div class="shopping-cart">
+                        <p>购物车中还没有商品，赶紧选购吧！</p>
+                    </div>
+                </div>
+                <ul class="loginOrRegister">
+                    <li><a href="./login.html">登录</a></li>
+                    <li><a href="./register.html">注册</a></li>
+                    <li><a href="javascript:;">消息通知</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- header e  -->
+
+    <!-- navbar s  -->
+    <div class="navbar">
+        <div class="w">
+            <h1>
+                <a href="../html/index.html">
+                    <img src="../images/mi-logo.png" alt="" class="mi-logo">
+                    <img src="../images/mi-home.png" alt="" class="mi-home">
+                </a>
+            </h1>
+            <ul class="items">
+                <li class="items-first">
+                    <a href="javascript:;"><span>小米手机</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>Redmi 红米</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>电视</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>笔记本</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>2
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>家电</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>笔记本</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>路由器</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>智能硬件</span></a>
+                    <div class="items-hole">
+                        <ul class="items-child w">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item1.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="li-w">
+                                        <img src="../images/item2.png" alt="">
+                                    </div>
+                                    <p>小米10至尊纪念版</p>
+                                    <p>5999元起</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>服务</span></a>
+                </li>
+                </li>
+                <li class="items-first">
+                    <a href="javascript:;"><span>社区</span></a>
+                </li>
+            </ul>
+            <form action="javascript:;" class="searchBar">
+                <input type="text" name="" class="search" id="search" placeholder="黑鲨" autocomplete="off">
+                <input type="submit" name="" id="submit" class="submit" value="" autocomplete="off">
+            </form>
+        </div>
+    </div>
+    <!-- navbar e  -->
+
+    <div class="goodsDitail cl w">
+        <div class="preview-intro">
+            <div class="preview-wrap left">
+                <div class="preview">
+                    <div class="shadow"></div>
+                    <img class="smallImg" src="../images/xiaomi11bigimg1.jpg" alt="">
+                </div>
+                <div class="preview-scale">
+                    <img class="bigImg" src="../images/xiaomi11bigimg1.jpg" alt="">
+                </div>
+                <ul class="previewList">
+                    <li class="thumbnail"><img src="../images/xiaomi11bigimg1.jpg" imgNum="0" alt="图片加载失败"></li>
+                    <li class="thumbnail"><img src="../images/xiaomi11bigimg1.jpg" imgNum="1" alt="图片加载失败"></li>
+                    <li class="thumbnail"><img src="../images/xiaomi11bigimg1.jpg" imgNum="2" alt="图片加载失败"></li>
+                    <li class="thumbnail"><img src="../images/xiaomi11bigimg1.jpg" imgNum="3" alt="图片加载失败"></li>
+                </ul>
+            </div>
+            <!-- <div class="itemInfo right"></div> -->
+        </div>
+
+        <div class="goodsMsgs">
+            <div class="msg">
+                <h2 class="goodsName">小米11</h2>
+                <p class="goodsMsg s3">骁龙888｜2K AMOLED 四曲面柔性屏｜1亿像素三摄｜时尚轻薄机身｜55W 有线闪充｜50W 无线闪充｜10W 无线反充｜LPDDR5｜WiFi6（增强版）｜视频「超级夜景」｜哈曼卡顿音频认证｜立体声双扬声器</p>
+                <p class="xiaomiziying">小米自营</p>
+                <p class="goodsPrice">1999</p>
+            </div>
+            <div class="selects">
+                <div class="colors">
+                    <h3>选择颜色</h3>
+                    <div class="flex">
+                        <p>
+                            <input type="radio" name="colors" value="" id="colors" hidden checked>
+                            <label for="colors">
+                                全部
+                            </label>
+                        </p>
+                        <p>
+                            <input type="radio" name="colors" value="" id="colors1" hidden>
+                            <label for="colors1">
+                                全部
+                            </label>
+                        </p>
+                        <p>
+                            <input type="radio" name="colors" value="" id="colors2" hidden>
+                            <label for="colors2">
+                                全部
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div class="editions">
+                    <h3>选择版本</h3>
+                    <div class="flex">
+                        <p>
+                            <input type="radio" name="editions" value="" id="editions" hidden checked>
+                            <label for="editions">
+                                全部
+                            </label>
+                        </p>
+                        <p>
+                            <input type="radio" name="editions" value="" id="editions1" hidden>
+                            <label for="editions1">
+                                全部
+                            </label>
+                        </p>
+                        <p>
+                            <input type="radio" name="editions" value="" id="editions2" hidden>
+                            <label for="editions2">
+                                全部
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heji">
+                <p class="description cl">
+                    <span class="name">小米10至尊纪念版 8GB+128GB 透明版</span>
+                    <span class="price">5299元</span>
+                </p>
+                <p class="allPrice">总计：5299元</p>
+            </div>
+            <div class="addToShoppingCar">
+                加入购物车
+            </div>
+        </div>
+    </div>
+
+
+    <!-- foot s -->
+    <footer>
+        <div class="site-footer">
+            <div class="w footer-service">
+                <ul class="list-service">
+                    <li><a href="javascript:;"><i class="iconfont icon-banshou"></i>&ensp;预约维修服务</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-7tiantuihuanhuo"></i>&ensp;7天无理由退货</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-15tianwuliyoutuihuo"></i>
+                            &ensp;15天免费换货</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-liwu"></i>&ensp;满99元包邮</a>
+                    </li>
+                    <li><a href="javascript:;"><i class="iconfont icon-weizhi"></i>&ensp;520余家售后网点</a></li>
+                </ul>
+            </div>
+            <div class="footer-links w cl">
+                <dl class="col-links">
+                    <dt>帮助中心</dt>
+                    <dd><a href="javascript:;">账户管理</a></dd>
+                    <dd><a href="javascript:;">购物指南</a></dd>
+                    <dd><a href="javascript:;">订单操作</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>服务支持</dt>
+                    <dd><a href="javascript:;">售后政策</a></dd>
+                    <dd><a href="javascript:;">自助服务</a></dd>
+                    <dd><a href="javascript:;">相关下载</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>线下门店</dt>
+                    <dd><a href="javascript:;">小米之家</a></dd>
+                    <dd><a href="javascript:;">服务网点</a></dd>
+                    <dd><a href="javascript:;">授权体验店</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关于小米</dt>
+                    <dd><a href="javascript:;">了解小米</a></dd>
+                    <dd><a href="javascript:;">加入小米</a></dd>
+                    <dd><a href="javascript:;">投资者关系</a></dd>
+                    <dd><a href="javascript:;">企业社会责任</a></dd>
+                    <dd><a href="javascript:;">廉洁举报</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关注我们</dt>
+                    <dd><a href="javascript:;">新浪微博</a></dd>
+                    <dd><a href="javascript:;">官方微信</a></dd>
+                    <dd><a href="javascript:;">联系我们</a></dd>
+                    <dd><a href="javascript:;">公益基金会</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>特色服务</dt>
+                    <dd><a href="javascript:;">F码通道</a></dd>
+                    <dd><a href="javascript:;">礼物码</a></dd>
+                    <dd><a href="javascript:;">防伪查询</a></dd>
+                </dl>
+                <div class="col-contact">
+                    <p class="phone">400-100-5678</p>
+                    <p>8:00-18:00（仅收市话费）</p>
+                    <a href="javascript:void(0);" class="btn btn-line-primary btn-small J_contactBtn"><i class="iconfont icon-kefu"></i> 人工客服</a>
+                    <div class="follow">关注小米：<i class="iconfont icon-weibo"></i><i class="iconfont icon-weixin"></i><img src="//cdn.cnbj1.fds.api.mi-img.com/staticsfile/global/wx-img.png" id="J_followWxImg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- foot e -->
+</body>
+<script>
+    var cookie = document.cookie;
+    var index = 1;
+    var timer = null;
+    if (cookie) {
+        var logUser = getCookie("logUser");
+        if (logUser) {
+            $(".loginOrRegister").html(
+                `<li class="loginUser">
+                        <a href="javascript:;"  class="userName">${logUser}&ensp;<i class="iconfont icon-jiantou-copy"></i></a>
+                        <div class="userInfo">
+                            <p><a href="javascript:;">个人中心</a></p>
+                            <p><a href="javascript:;">评价晒单</a></p>
+                            <p><a href="javascript:;">我的喜欢</a></p>
+                            <p><a href="javascript:;">小米账户</a></p>
+                            <p class="loginOut">退出登录</p>
+                        </div>
+                    </li>
+                    <li><a href="javascript:;">消息通知</a></li>
+                    <li><a href="javascript:;">订单中心</a></li>`
+            );
+        }
+    }
+
+    $(".loginOrRegister").on("mouseenter", ".loginUser", function() {
+        $(this).addClass("bgcActive").css({ overflow: "visible" }).find("p").height(30).end().children(".userInfo").height(150);
+    }).on("mouseleave", ".loginUser", function() {
+        $(this).removeClass("bgcActive").css({ overflow: "hidden" }).find("p").height(0).end().children(".userInfo").height(0);
+    }).on("click", ".loginOut", function() {
+        $(".loginOrRegister").html(
+            `<li><a href="./login.html">登录</a></li>
+            <li><a href="./register.html">注册</a></li>
+            <li><a href="javascript:;">消息通知</a></li>`
+        );
+        delCookie("logUser");
+    })
+
+    var search = location.search;
+    if (search) {
+        var gid = search.split("=")[1];
+        searchGoodsByGoodsId({ gid }).then(({ goodsId, goodsName, goodsPrices, goodsPrice, bigPicList, goodsMsg, colors, editions }) => {
+            // 商品图片
+            var defaultImg = bigPicList[0];
+            var html = "";
+            html += `<div class="preview-wrap left">
+                                <div class="preview">
+                                    <div class="shadow"></div>
+                                    <img class="smallImg" imgList="${bigPicList}" src="${defaultImg}" index="0" alt="">
+                                </div>
+                                <div class="preview-scale">
+                                    <img class="bigImg"  imgList="${bigPicList}" src="${defaultImg}" alt="">
+                                </div>
+                                <ul class="previewList">`
+            bigPicList.forEach((item, index) => {
+                if (index == 0) {
+                    html += ` <li class="thumbnail active"><img src="${item}" imgNum="${index}" alt="图片加载失败"></li>`
+                } else {
+                    html += ` <li class="thumbnail"><img src="${item}"" alt="图片加载失败"></li>`
+                }
+
+            })
+            html += `</ul>
+                        </div>`
+            $(".preview-intro").html(html);
+
+
+
+
+            // 商品详情
+            var html = "";
+            html += `<h2 class="goodsName">${goodsName}</h2>
+                <p class="goodsMsg s3">${goodsMsg}</p>
+                <p class="xiaomiziying">小米自营</p>
+                <p class="goodsPrice">${goodsPrice}</p>
+                <div class="selects">
+                            <div class="colors">
+                                <h3>选择颜色</h3>
+                                <div class="flex">`
+            colors.forEach((item, index) => {
+                if (index == 0) {
+                    html += `<p>
+                            <input type="radio" name="colors" value="" id="colors-${index}" hidden checked color="${item}">
+                            <label for="colors-${index}">
+                                ${item}
+                            </label>
+                        </p>`;
+                } else {
+                    html += `<p>
+                            <input type="radio" name="colors" value="" id="colors-${index}" hidden color="${item}">
+                            <label for="colors-${index}">
+                                ${item}
+                            </label>
+                        </p>`;
+                }
+            })
+            html += `</div>
+                </div>
+                <div class="editions">
+                    <h3>选择版本</h3>
+                    <div class="flex">`;
+
+            editions.forEach((item, index) => {
+                if (index == 0) {
+                    html += `<p>
+                                    <input type="radio" name="editions" value="" id="editions-${index}" hidden checked edition="${item}" price="${goodsPrices[index]}">
+                                    <label for="editions-${index}">
+                                        ${item}
+                                    </label>
+                                </p>`
+                } else {
+                    html += `<p>
+                                    <input type="radio" name="editions" value="" id="editions-${index}" hidden edition="${item}" price="${goodsPrices[index]}">
+                                    <label for="editions-${index}">
+                                        ${item}
+                                    </label>
+                                </p>`
+                }
+            })
+
+            html += `</div>
+                            </div>
+                        </div>
+                        <div class="heji">
+                            <p class="description cl">
+                                <span class="name">${goodsName} ${editions[0]} ${colors[0]}</span>
+                                <span class="price">${goodsPrice}</span>
+                            </p>
+                            <p class="allPrice">总计：${goodsPrice}</p>
+                        </div>
+                        <div class="addToShoppingCar" data-id=${goodsId}>
+                            加入购物车
+                        </div>
+                    </div>`
+
+            $(".goodsMsgs").html(html)
+
+
+
+            $(document).on("click", ".thumbnail", function(e) {
+                $(this).addClass("active").siblings().removeClass("active");
+                index = $(this).index(".previewList li");
+                $(".smallImg").prop("src", `${bigPicList[index]}`);
+                $(".bigImg").prop("src", `${bigPicList[index]}`);
+                clearInterval(timer);
+                autoplay(index);
+            }).on("mouseenter", ".preview", function(e) {
+                $(".shadow,.preview-scale").css({
+                    display: "block",
+                })
+                clearInterval(timer);
+            }).on("mousemove", ".preview", function(e) {
+                var scale = $(".preview-scale").width() / $(".shadow").width();
+
+                var x = e.pageX - $(this).offset().left - $(".shadow").width() / 2;
+                var y = e.pageY - $(this).offset().top - $(".shadow").width() / 2;
+
+                $(".shadow").css({
+                    left: x >= 0 ? (x <= $(this).width() - $(".shadow").width() ? x : $(this).width() - $(".shadow").width()) : 0,
+                    top: y >= 0 ? (y <= $(this).height() - $(".shadow").height() ? y : $(this).height() - $(".shadow").height()) : 0,
+                })
+                $(".bigImg").css({
+                    left: -(x >= 0 ? (x <= $(this).width() - $(".shadow").width() ? x : $(this).width() - $(".shadow").width()) : 0) * scale,
+                    top: -(y >= 0 ? (y <= $(this).height() - $(".shadow").height() ? y : $(this).height() - $(".shadow").height()) : 0) * scale,
+                })
+            }).on("mouseleave", ".preview", function(e) {
+                $(".shadow,.preview-scale").css({
+                    display: "none",
+                });
+                index = $(this).children("img").prop("index");
+                autoplay(index);
+            }).on("click", ".editions input", function() {
+                setHeji(goodsName);
+            }).on("click", ".colors input", function() {
+                setHeji(goodsName);
+            }).on("click", ".addToShoppingCar", function() {
+                var gid = $(this).attr("data-id");
+                var phone = getCookie("logUser");
+                var buyPrice = $(".selects").find(".editions input:checked").attr("price");
+                var buyColor = $(".selects").find(".colors input:checked").attr("color");
+                var buyEdition = $(".selects").find(".editions input:checked").attr("edition");
+                if (phone) {
+                    addToShoppingCar({
+                        phone,
+                        gid,
+                        buyNum: 1,
+                        buyPrice,
+                        buyColor,
+                        buyEdition
+                    }).then(result => {
+                        if (result.status) {
+                            if (confirm("商品添加成功,是否进入购物车")) {
+                                location.href = "./shoppingCar.html";
+                            }
+                        } else {
+                            console.log(result.msg);
+                        }
+                    })
+
+                } else {
+                    var url = encodeURIComponent(location.href);
+                    location.href = "./login.html?returnUrl=" + url;
+                }
+
+            })
+
+
+            autoplay();
+
+        }).catch(err => {
+            console.log(2)
+            throw err;
+        })
+    } else {
+        location.href = "./index.html"
+    }
+
+
+    $(function() {
+        $(".searchBar").children("input").css({ outline: "none" }).eq(0).focus(function() {
+            $(".searchBar").children("input").css({ borderColor: "#FF6700" })
+        }).blur(function() {
+            $(".searchBar").children("input").css({ borderColor: "#e0e0e0" })
+        }).next().click(function() {
+            var keyWords = $(this).prev().val();
+            if (keyWords == "") {
+                keyWords = $(this).prev().prop("placeholder");
+            }
+            keyWords = encodeURIComponent(keyWords);
+            location.href = "search.html?keyWords=" + keyWords;
+        })
+
+
+
+        $(".cart").click(function() {
+            location.href = "../html/shoppingCar.html"
+        })
+
+
+    })
+
+
+
+    function autoplay(index) {
+        var maxLength = $(".previewList li").length;
+        var bigPicList = $(".smallImg").attr("imgList").split(",");
+        index = index == undefined ? 0 : index;
+        timer = setInterval(function() {
+            index++;
+            index = index > maxLength - 1 ? 0 : index;
+            $(".smallImg").prop("src", `${bigPicList[index]}`).prop("index", index);
+            $(".bigImg").prop("src", `${bigPicList[index]}`);
+            $(".thumbnail").eq(index > maxLength - 1 ? 0 : index).addClass("active").siblings().removeClass("active");
+        }, 2000)
+    }
+
+    function setHeji(goodsName) {
+        var thisPrice = $(".selects").find(".editions input:checked").attr("price");
+        var thisColor = $(".selects").find(".colors input:checked").attr("color");
+        var thisEdition = $(".selects").find(".editions input:checked").attr("edition");
+        $(".goodsPrice").text(thisPrice);
+        $(".heji").html(`
+                <p class="description cl">
+                                <span class="name">${goodsName} ${thisEdition} ${thisColor}</span>
+                                <span class="price">${thisPrice}</span>
+                            </p>
+                            <p class="allPrice">总计：${thisPrice}</p>
+                        </div>
+                `)
+    }
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="stop">stop</button>
+</body>
+<script>
+    // 延时器  延迟一段时间执行特定的操作(只执行一次) 
+    // setTimeout(callback,interval,arg1,arg2...argN)
+
+    // 返回值  延时器的编号
+
+    // 清除延时器  
+    // clearTimeout(id) 
+
+    // 注意:计时器不能嵌套计时器, 如果遇到需要计时器嵌套的情况, 可以把延时器改为计时器  
+    var stop = document.getElementsByClassName("stop")[0];
+    var timer = null;
+
+    stop.onclick = function () {
+        clearTimeout(timer);
+    }
+
+    // 利用递归的特性 => 将延时器改为计时器  
+    function fn() {
+        timer = setTimeout(function () {
+            console.log(1111);
+            fn();
+        }, 1000);
+    }
+
+    fn();
+
+
+</script>
+
+</html>

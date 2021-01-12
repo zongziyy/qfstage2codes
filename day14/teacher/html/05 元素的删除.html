@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn">删除</button>
+        <div class="list">
+            <li>01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </div>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var list = document.getElementsByClassName("list")[0];
+    var second = document.getElementsByClassName("second")[0];
+    // console.log(btn);
+
+
+    // 自删
+    // ele.remove();   => 返回值 undefined   (可以重复删除)
+
+    // 父删
+    // parent.removeChild()    返回值 被删除的元素  (一旦被删除之后 无法再删除了)
+
+
+    btn.onclick = function () {
+        // 自删
+        // var result = second.remove();
+        // console.log(result);
+
+        // 父删
+        if (second) {
+            list.removeChild(second);
+            second = null;
+        }
+
+    }
+
+
+
+</script>
+
+</html>

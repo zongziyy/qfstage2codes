@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马泽亮作业</title>
+</head>
+
+<body>
+    <h2>第一、二题:</h2>
+    <label for="year">输入年：</label>
+    <input type="text" name="" id="year" placeholder="输入年份(1000-9999)">
+    <br>
+    <label for="month">输入月：</label>
+    <input type="text" name="" id="month" placeholder="输入月份">
+    <br>
+    <label for="day">输入日：</label>
+    <input type="text" name="" id="day" placeholder="输入日期">
+    <br>
+    <button onclick="check()">判断是否合理</button>
+    <br>
+    <label for="result">结果为：</label>
+    <input type="text" id="result" disabled>
+    <br>
+    <button disabled id="btn2" onclick="calc()">计算第多少天</button>
+    <br>
+    <label for="days">第几天：</label>
+    <input type="text" id="days" disabled>
+    <br>
+    <br>
+    <br>
+    <i>说明：只有当输入正确才能进行天数计算，否者将关闭计算按钮</i>
+</body>
+
+<script>
+    function calc() { //声明计算函数
+        var year = document.getElementById("year").value;
+        var month = document.getElementById("month").value;
+        var day = document.getElementById("day").value;
+        var day1 = day * 1;
+        var month1 = month * 1;
+        var days;
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            switch (month1) {
+                case 1:
+                    days = day1;
+                    break;
+                case 2:
+                    days = day1 + 31;
+                    break;
+                case 3:
+                    days = day1 + 31 + 29;
+                    break;
+                case 4:
+                    days = day1 + 31 * 2 + 29;
+                    break;
+                case 5:
+                    days = day1 + 31 * 2 + 30 + 29;
+                    break;
+                case 6:
+                    days = day1 + 31 * 3 + 30 + 29;
+                    break;
+                case 7:
+                    days = day1 + 31 * 3 + 30 * 2 + 29;
+                    break;
+                case 8:
+                    days = day1 + 31 * 4 + 30 * 2 + 29;
+                    break;
+                case 9:
+                    days = day1 + 31 * 5 + 30 * 2 + 29;
+                    break;
+                case 10:
+                    days = day1 + 31 * 5 + 30 * 3 + 29;
+                    break;
+                case 11:
+                    days = day1 + 31 * 6 + 30 * 3 + 29;
+                    break;
+                case 12:
+                    days = day1 + 31 * 6 + 30 * 4 + 29;
+                    break;
+                default:
+                    alert("系统错误");
+                    break;
+            }
+            console.log(days);
+        } else {
+            switch (month1) {
+                case 1:
+                    days = day1;
+                    break;
+                case 2:
+                    days = day1 + 31;
+                    break;
+                case 3:
+                    days = day1 + 31 + 28;
+                    break;
+                case 4:
+                    days = day1 + 31 * 2 + 28;
+                    break;
+                case 5:
+                    days = day1 + 31 * 2 + 30 + 28;
+                    break;
+                case 6:
+                    days = day1 + 31 * 3 + 30 + 28;
+                    break;
+                case 7:
+                    days = day1 + 31 * 3 + 30 * 2 + 28;
+                    break;
+                case 8:
+                    days = day1 + 31 * 4 + 30 * 2 + 28;
+                    break;
+                case 9:
+                    days = day1 + 31 * 5 + 30 * 2 + 28;
+                    break;
+                case 10:
+                    days = day1 + 31 * 5 + 30 * 3 + 28;
+                    break;
+                case 11:
+                    days = day1 + 31 * 6 + 30 * 3 + 28;
+                    break;
+                case 12:
+                    days = day1 + 31 * 6 + 30 * 4 + 28;
+                    break;
+                default:
+                    alert("系统错误");
+                    break;
+            }
+            console.log(days);
+        }
+        document.getElementById("days").value = days;
+    }
+
+    function check() {
+        var year = document.getElementById("year").value;
+        var month = document.getElementById("month").value;
+        var day = document.getElementById("day").value;
+        // var result = document.getElementById("result").value;
+        if (isNaN(year) || year > 9999 || year < 1000) { //判断年份是否正确
+            document.getElementById("result").value = "不合法的年份";
+        } else {
+            // var btn = document.getElementById("btn2");
+            if (month < 1 || month > 12 || isNaN(month)) { //判断月份是否正确
+                document.getElementById("result").value = "不合法的月份";
+            } else {
+                if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month ==
+                    12) {
+                    if (day > 31 || day < 0 || isNaN(day) || day == "") {
+                        document.getElementById("result").value = "不合法的日期";
+                    } else {
+                        document.getElementById("result").value = "输入合法";
+                    }
+                } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+                    if (day > 30 || day < 0 || isNaN(day) || day == "") {
+                        document.getElementById("result").value = "不合法的日期";
+                    } else {
+                        document.getElementById("result").value = "输入合法";
+                    }
+                } else if (month == 2) {
+                    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                        if (day > 29 || day < 0 || isNaN(day) || day == "") {
+                            document.getElementById("result").value = "不合法的日期";
+                        } else {
+                            document.getElementById("result").value = "输入合法";
+                        }
+                    } else {
+                        if (day > 28 || day < 0 || isNaN(day) || day == "") {
+                            document.getElementById("result").value = "不合法的日期";
+                        } else {
+                            document.getElementById("result").value = "输入合法";
+                        }
+                    }
+                }
+            }
+        }
+        var on = document.getElementById("result").value;
+        console.log(on);
+        if (on == "输入合法") {
+            document.getElementById("btn2").disabled = false;
+        } else {
+            document.getElementById("btn2").disabled = "disabled";
+            document.getElementById("days").value = null;
+        }
+    }
+</script>
+
+</html>

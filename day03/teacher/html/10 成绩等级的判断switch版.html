@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <li>case 01:</li>
+    <li>case 02:</li>
+    <li>case 03:</li>
+    <li>case 04:</li>
+    <li>case 05:</li>
+    <li>case 06:</li>
+    <li>case 07:</li>
+    <li>case 08:</li>
+    <li>case 09:</li>
+    <li>case 10:</li>
+    <li>case 11:</li>
+    <li>case 12:</li>
+    <li>case 13:</li>
+    <li>case 14:</li>
+    <li>case 15:</li>
+    <li>case 16:</li>
+    <li>case 17:</li>
+    <li>case 18:</li>
+    <li>case 19:</li>
+    <li>case 20:</li>
+    <li>case 21:</li>
+    <li>case 22:</li>
+    <li>case 23:</li>
+    <li>case 24:</li>
+    <li>case 25:</li>
+    <li>case 26:</li>
+    <li>case 27:</li>
+    <li>case 28:</li>
+    <li>case 29:</li>
+    <li>case 30:</li>
+    <li>case 31:</li>
+    <li>case 32:</li>
+    <li>case 33:</li>
+    <li>case 34:</li>
+    <li>case 35:</li>
+    <li>case 36:</li>
+    <li>case 37:</li>
+    <li>case 38:</li>
+    <li>case 39:</li>
+    <li>case 40:</li>
+    <li>case 41:</li>
+    <li>case 42:</li>
+    <li>case 43:</li>
+    <li>case 44:</li>
+    <li>case 45:</li>
+    <li>case 46:</li>
+    <li>case 47:</li>
+    <li>case 48:</li>
+    <li>case 49:</li>
+    <li>case 50:</li>
+    <li>case 51:</li>
+    <li>case 52:</li>
+    <li>case 53:</li>
+    <li>case 54:</li>
+    <li>case 55:</li>
+    <li>case 56:</li>
+    <li>case 57:</li>
+    <li>case 58:</li>
+    <li>case 59:</li>
+    <li>case 60:</li>
+    <li>case 61:</li>
+    <li>case 62:</li>
+    <li>case 63:</li>
+    <li>case 64:</li>
+    <li>case 65:</li>
+    <li>case 66:</li>
+    <li>case 67:</li>
+    <li>case 68:</li>
+    <li>case 69:</li>
+    <li>case 70:</li>
+    <li>case 71:</li>
+    <li>case 72:</li>
+    <li>case 73:</li>
+    <li>case 74:</li>
+    <li>case 75:</li>
+    <li>case 76:</li>
+    <li>case 77:</li>
+    <li>case 78:</li>
+    <li>case 79:</li>
+    <li>case 80:</li>
+    <li>case 81:</li>
+    <li>case 82:</li>
+    <li>case 83:</li>
+    <li>case 84:</li>
+    <li>case 85:</li>
+    <li>case 86:</li>
+    <li>case 87:</li>
+    <li>case 88:</li>
+    <li>case 89:</li>
+    <li>case 90:</li>
+    <li>case 91:</li>
+    <li>case 92:</li>
+    <li>case 93:</li>
+    <li>case 94:</li>
+    <li>case 95:</li>
+    <li>case 96:</li>
+    <li>case 97:</li>
+    <li>case 98:</li>
+    <li>case 99:</li>
+    <li>case 100:</li> -->
+</body>
+<script>
+    // var grade = Math.round(Math.random() * 100);
+    // if (grade >= 90) {
+    //     document.write(grade + "分,优秀<br>");
+    // } else if (grade >= 80) {   //  grade >= 80 && grade < 90
+    //     document.write(grade + "分,良好<br>");
+    // } else if (grade >= 70) {   //  grade >= 70 && grade < 80
+    //     document.write(grade + "分,一般<br>");
+    // } else if (grade >= 60) {   //  grade >= 70 && grade < 80
+    //     document.write(grade + "分,危险<br>");
+    // } else {
+    //     document.write(grade + "分,赠送免费回城券一张<br>");
+    // }
+
+    // switch中可以使用条件表达式  => switch(true)  即可  只有一个条件为true
+
+    var grade = Math.round(Math.random() * 100); // 0-100    80
+
+    switch (true) {
+        case grade >= 90 && grade <= 100:
+            document.write(grade + "分,优秀<br>");
+            break;
+        case grade >= 80: //true
+            document.write(grade + "分,良好<br>");
+            break;
+        case grade >= 70:
+            document.write(grade + "分,一般<br>");
+            break;
+        case grade >= 60:
+            document.write(grade + "分,危险<br>");
+            break;
+        case grade >= 0 && grade < 60:
+            document.write(grade + "分,不及格<br>");
+            break;
+        default:
+            document.write("系统有误");
+            break;
+    }
+
+</script>
+
+</html>

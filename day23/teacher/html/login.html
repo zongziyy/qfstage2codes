@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/common.js"></script>
+    <script src="../js/cookie.js"></script>
+    <style>
+        .right {
+            color: green;
+            font-size: 12px;
+        }
+
+        .err {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            <label for="">用户名:</label>
+            <input type="text" id="user">
+            <span id="user_span"></span>
+        </p>
+        <p>
+            <label for="">密&emsp;码:</label>
+            <input type="password" id="pwd">
+            <span id="pwd_span"></span>
+        </p>
+        <p>
+            <label>
+                <input class="isRem" type="checkbox" name="" id="">
+                记住当前用户?
+            </label>
+        </p>
+        <p>
+            <input id="btn" type="submit" value="登录">
+        </p>
+    </div>
+</body>
+<script>
+    // 用户名
+    // 由数字 大小写字母 _ $ 组成 , 6-12位,且不能以数字开头
+
+    // 判断的流程  从易到难的顺序 
+    // a. 长度  6-12位 
+    // b. 不能以数字开头
+    // c. 由数字 大小写字母 _ $ 组成  (所有的字符都必须在合法字符的范围内,只要有一个不是合法的字符 报错   => 判断字符串中是否能含有非法字符)
+
+
+    // 密码
+    // 由数字 大小写字母 _ $   6-12位 
+
+    // 判断密码强度
+    // 数字,大写,小写,特殊字符  中 只出现一种   11111   aaaaaa  AAAAAA   弱
+    // 数字,大写,小写,特殊字符  中 出现2种      中
+    // 数字,大写,小写,特殊字符  中 出现3种      强
+    // 数字,大写,小写,特殊字符  中 出现4种      超强
+
+    // true + true + true + false  => 3 
+
+    // 确认密码  
+    // 和密码相同  
+
+    // 验证码
+    // 1. 页面加载时,随机生成四个不重复的验证码 (0-9 a-z A-Z )  
+    // 2. 点击 验证码 进行切换
+    // 3. 验证码输入判断  (输入的  随机生成的  保持一致)
+
+
+    var userInp = document.getElementById("user");
+    var pwdInp = document.getElementById("pwd");
+
+    var isRem = document.getElementsByClassName("isRem")[0];
+
+    // 在规则都正确的情况下  提交注册
+    btn.onclick = function () {
+        // 用户输入的
+        var user = userInp.value;
+        var pwd = pwdInp.value;
+
+        // 获取cookie中存的
+        var realUser = getCookie("user");
+        var realPwd = getCookie("pwd");
+
+        // 模拟账号验证
+        if (user == realUser) {
+            if (pwd == realPwd) {
+
+                // 存储登录的用户(标识用户身份)
+                if (isRem.checked) {
+                    setCookie("logUser", user, 7);
+                } else {
+                    setCookie("logUser", user);
+                }
+
+
+                location.href = "index.html";
+            } else {
+                alert("用户名或密码有误");
+            }
+        } else {
+            alert("该用户不存在");
+        }
+
+    }
+
+    function judgeRuler(con, reg, tipsSpan, tips, fn) {
+        if (con) {
+            if (reg.test(con)) {
+                tipsSpan.textContent = "√";
+                tipsSpan.className = "right";
+                if (fn) {  // 如果传入了函数 就执行
+                    fn();
+                }
+            } else {
+                tipsSpan.textContent = tips;
+                tipsSpan.className = "err";
+            }
+        } else {
+            tipsSpan.textContent = "*";
+            tipsSpan.className = "err";
+        }
+    }
+
+
+
+    function next(ele) {
+        return ele.nextElementSibling || ele.nextSibling;
+    }
+
+
+</script>
+
+
+</html>

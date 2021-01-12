@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <ul class="one two" id="ul">
+            <li class="first">01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    // var ul = document.querySelector(".one");
+    // var first = document.querySelector(".one .first");
+    var ul = document.getElementById("ul");
+
+
+    // 层级关系
+
+    // 子节点(元素节点,文本节点,注释节点) / 子元素
+    // ele.childNodes   子节点(元素节点,文本节点,注释节点)
+    // ele.children     子元素(元素节点)
+    // 常规浏览器两个属性都有
+    // text  换行产生的文本节点 
+
+    // IE 低版本 换行是不会产生文本节点的 , 导致两个属性是基本一致的 (ele.childNodes 就相当于 子元素的集合)
+
+    console.log(ul.childNodes);   //子节点(元素节点,文本节点,注释节点)
+    console.log(ul.children);     //子元素(元素节点)
+
+
+    // 第一个子节点 / 第一个子元素
+    // ele.firstChild   第一个子节点
+    // ele.firstElementChild 第一个子元素
+
+    // 常规浏览器两个属性都有
+    // IE 低版本  没有  ele.firstElementChild  =>   undefined    =>但是 ele.firstChild  就是第一个子元素 
+
+    console.log(ul.firstChild);
+    console.log(ul.firstElementChild);
+
+
+    // function first(ele) {
+    //     if (ele.firstElementChild) {  //如果存在 firstElementChild 属性 =>常规浏览器
+    //         return ele.firstElementChild;
+    //     } else {
+    //         return ele.firstChild;
+    //     }
+    // }
+
+    function first(ele) {
+        return ele.firstElementChild || ele.firstChild;
+    }
+
+
+    // 最后一个子节点 /最后一个子元素
+    // ele.lastChild   第一个子节点
+    // ele.lastElementChild 第一个子元素
+
+    console.log(ul.lastChild)
+    console.log(ul.lastElementChild);
+
+    function last(ele) {
+        return ele.lastElementChild || ele.lastChild;
+    }
+
+
+
+    // 父节点和父元素
+
+
+
+
+
+
+
+</script>
+
+</html>

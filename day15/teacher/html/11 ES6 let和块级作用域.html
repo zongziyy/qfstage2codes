@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var  和 let 的  共同点和区别
+
+    // 共同点  
+    // 都是用来声明变量(局部变量和全局变量)
+
+    // 区别
+    // 1. var 声明的变量可以重复声明,但是let声明变量不能重复声明
+    // 2. var 声明的变量有变量提升, 但是let没有变量提升
+    // 3. 块级作用域中 let声明的变量是局部变量,块级作用域对var没有影响 (该是全局的就是全局的,该是局部的就是局部的)
+
+    // console.log(a, b);   // b 报错 Cannot access 'b' before initialization
+
+    // 全局变量
+    var a = 10;
+    // var a = "10"; //  重复声明   Cannot access 'b' before initialization
+    let b = 20;
+    // let b = "20";  // 重复声明  报错 Identifier 'b' has already been declared
+    b = "20";     //重新赋值
+
+    console.log(a, b);
+
+    function fn() {
+        var a = 100;
+        let b = 200;
+        console.log(a, b);
+    }
+    fn()
+
+    console.log(a, b);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

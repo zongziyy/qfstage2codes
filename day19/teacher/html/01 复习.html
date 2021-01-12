@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 父子元素绑定相同类型的事件
+
+    // 事件捕获 (由外到内)
+    // 事件冒泡 (由内到外)
+
+    // =>  事件冒泡   
+
+    // dom 一级事件 btn.onclick 只能冒泡
+
+    // 事件流
+    // 1. 捕获阶段
+    // 2. 目标阶段 
+    // 3. 冒泡阶段
+
+    // 事件冒泡的缺点
+
+    // if (e.stopPropagation) {
+    //     e.stopPropagation()
+    // } else {
+    //     e.cancelBubble = true;
+    // }
+
+    // if (e.preventDefault) {
+    //     e.preventDefault();
+    // } else {
+    //     e.returnValue = false;   //return false
+    // }
+
+    // 如果不加修饰符 g  默认匹配第一个
+    // var reg = /day/i;
+
+    // // test()
+
+    // var str = "hello everyday ,day day up"
+
+    // console.log(reg.test(str));
+    // console.log(reg.test(str));
+    // console.log(reg.test(str));
+    // console.log(reg.test(str));
+    // console.log(reg.test(str));
+
+
+
+    // test()
+
+    // 如果添加了修饰符g,表示全局匹配 ()
+    // lastIndex 记录下次查询开始时的下标 (没有修饰符g 始终都是0)
+
+
+    var reg = /day/ig;
+    var str = new String("hello everyday ,day day up");
+    console.log(str);
+
+    console.log(reg.lastIndex);  // 0
+    console.log(reg.test(str)); //true
+
+    console.log(reg.lastIndex); //14
+    console.log(reg.test(str)); //true
+
+    console.log(reg.lastIndex); //19
+    console.log(reg.test(str));  //true
+
+    console.log(reg.lastIndex); //23
+    console.log(reg.test(str));  //false
+
+    console.log(reg.lastIndex); //0
+
+
+
+
+</script>
+
+</html>

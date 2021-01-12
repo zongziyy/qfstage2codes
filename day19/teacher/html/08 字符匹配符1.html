@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 字符匹配符   匹配集合中的任意一个字符
+
+    // [xyz]    匹配xyz中的任意一个字符
+    // [0-9] [0123456789]   匹配0-9中的任意一个
+    // [a-z] [qwertyuiopasdfghjklzxcvbnm] 匹配小写字母
+    // [A-Z] [QWERTYUIOPASDFGHJKLZXCVBNM] 匹配大写字母
+
+    // [0-9a-zA-Z_$]  匹配 数字 大小写字母 _ $ 
+
+    // 取反 ^ 
+    // [^0-9]  匹配除了0-9以外的任意一个字符 (非数字)
+    // [^a-z]  匹配非小写字母
+    // [^A-Z]  匹配非大写字母
+    // [^0-9a-zA-Z_$]  匹配 非 数字大小写字母 _ $ 
+
+    // 字符簇  
+    // \d    匹配数字 [0-9]
+    // \D    匹配非数字  [^0-9]
+    // \w    匹配 数字,大小写字母,_   [0-9a-zA-Z_]
+    // \W    匹配 非 数字,大小写字母,_   [^0-9a-zA-Z_]
+    // \s    匹配空白字符  (空格 换行符 回车符)
+    // \S    匹配非空白字符
+    // .     除了换行符以外的任意字符
+    // [\u4e00-\u9fa5];  匹配中文
+
+
+    // (2)
+    // 用户名  由数字(0-9) 大小写字母(a-zA-Z) _$, 6-12位,且不能以数字开头 
+
+    // var userReg = /^[^0-9][0-9a-zA-Z_$]{5,11}$/;   //不行  
+    // var user = " aaaaaaaa";    // [^0-9] 非数字范围太大
+
+    // var userReg = /^[a-zA-Z_$][0-9a-zA-Z_$]{5,11}$/; 
+    var userReg = /^[a-zA-Z_$][\w$]{5,11}$/;
+    // var user = "aaaaaaaa";
+
+    var userReg = /^[a-zA-Z_$\u4e00-\u9fa5][\w$\u4e00-\u9fa5]{5,11}$/;
+
+    var user = "哈哈哈哈哈哈";
+
+    console.log(userReg.test(user));
+
+
+
+</script>
+
+</html>

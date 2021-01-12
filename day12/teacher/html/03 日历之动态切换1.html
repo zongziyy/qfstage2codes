@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/common.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap_rl {
+            width: 400px;
+            margin: 100px auto;
+            background-color: grey;
+            line-height: 45px;
+        }
+
+        .wrap_rl .tips {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .wrap_rl .tips .left,
+        .wrap_rl .tips .right {
+            width: calc(100% / 7);
+            text-align: center;
+            /* border: 1px solid #000; */
+            box-sizing: border-box;
+            border-bottom: 0;
+        }
+
+        .wrap_rl ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrap_rl li {
+            width: calc(100% / 7);
+            box-sizing: border-box;
+            border: 1px solid #333;
+            text-align: center;
+            border-bottom: 0;
+            color: #333;
+        }
+
+        .wrap_rl li:not(:last-child) {
+            border-right: 0;
+        }
+
+        .showRl li {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap_rl">
+        <div class="tips">
+            <div class="left">&lt;</div>
+            <div class="center">2020年9月</div>
+            <div class="right">&gt;</div>
+        </div>
+        <ul class="title">
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+            <li>日</li>
+        </ul>
+        <ul class="showRl">
+            <!-- <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+            <li>05</li>
+            <li>06</li>
+            <li>07</li>
+            <li>08</li>
+            <li>09</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li>30</li>
+            <li>31</li>
+            <li>32</li>
+            <li>33</li>
+            <li>34</li>
+            <li>35</li>
+            <li>36</li>
+            <li>37</li>
+            <li>38</li>
+            <li>39</li>
+            <li>40</li>
+            <li>41</li>
+            <li>42</li> -->
+        </ul>
+    </div>
+</body>
+<script>
+
+    var left = document.getElementsByClassName("left")[0];
+    var right = document.getElementsByClassName("right")[0];
+    var center = document.getElementsByClassName("center")[0];
+    var showRl = document.getElementsByClassName("showRl")[0];
+
+    var date = new Date("2020-5-31"); // 任意日期 => date贯穿全局 (上下月切换都会影响原日期)
+    // var date = new Date();
+
+    createRl();
+
+    left.onclick = function () {
+        date.setDate(1);
+        date.setMonth(date.getMonth() - 1);
+        createRl()
+    }
+    right.onclick = function () {
+        date.setDate(1);
+        date.setMonth(date.getMonth() + 1);
+        createRl();
+    }
+
+
+    function createRl() {
+        // 日期对应的年和月
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        center.innerHTML = `${year}年${month}月`;
+
+        // 1. 找到本月的第一天是星期几
+        var week = getFirstDayWeek(date);
+        week = week == 0 ? 7 : week;
+        // console.log(week);
+
+        var lastMonthDays = getLastMonthDays(date);
+        // console.log(lastMonthDays);
+
+        var thisMonthDays = getThisMonthDays(date);
+        // console.log(thisMonthDays);
+
+        var html = "";
+
+        // 上个月
+        for (var i = lastMonthDays - (week - 1) + 1; i <= lastMonthDays; i++) {
+            html += `<li style="color:#333;">${i}</li>`
+        }
+
+        // 当前月
+        for (var i = 1; i <= thisMonthDays; i++) {
+            html += `<li>${i}</li>`
+        }
+
+        // 下个月
+        for (var i = 1; i <= 42 - (week - 1) - thisMonthDays; i++) {
+            html += `<li style="color:#333;">${i}</li>`
+        }
+
+        showRl.innerHTML = html;
+    }
+
+
+</script>
+
+</html>

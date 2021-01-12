@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var list = [32, 93, 77, 53, 38, 87];
+    // console.log("原数组", list);
+
+    // forEach  遍历数组,每次循环中执行传入的回调函数 
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+    // var res = list.forEach(function (item, index, array) {
+    //     console.log(item, index, array);
+    // })
+    // console.log(res);
+
+    // var sum = 0;
+    // list.forEach(function (item) {
+    //     console.log(item);
+    //     sum += item;
+    // })
+    // console.log(sum);
+
+    // map  遍历数组, 每次循环时执行传入的回调函数,根据回调函数的返回值,生成一个新的数组
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+    // var list = [32, 93, 77, 53, 38, 87];
+    // console.log("原数组", list);
+
+    // var res = list.map(function (item, index, array) {
+    //     // console.log(item, index, array);
+    //     // return "haha";
+    //     return (item + 5) * 2 / 3;
+    // })
+    // console.log(res);
+
+
+    // filter  遍历数组, 每次循环时执行传入的回调函数,回调函数返回一个条件,把满足条件的元素筛选出来放到新数组中
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+
+    var list = [32, 93, 77, 53, 38, 87];
+    var resList = list.filter(function (item, index, array) {
+        console.log(item, index, array);
+        return item >= 60; // true || false
+    })
+
+    console.log(resList);
+
+
+    // some  遍历数组, 每次循环时执行传入的回调函数,回调函数返回一个条件,只要有一个元素满足条件就返回true,都不满足返回false   => 判断数组中是否存在,满足某个条件的元素 
+
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+    // var list = [32, 93, 77, 53, 38, 87];
+    // var result = list.some(function (item, index, array) {
+    //     console.log(item, index, array);
+    //     return item >= 100;
+    // })
+
+    // console.log(result);
+
+
+    // every  遍历数组, 每次循环时执行传入的回调函数,回调函数返回一个条件,全都满足返回true  只要有一个不满足 返回false   => 判断数组中所有的元素是否满足某个条件 
+
+    // item  每次循环的当前元素
+    // index  每次循环的当前下标
+    // array  原数组
+
+    var list = [32, 93, 77, 53, 38, 87];
+    var result = list.every(function (item, index, array) {
+        console.log(item, index, array);
+        return item >= 10;
+    });
+    console.log(result);
+
+    // forEach, map, filter, some,every
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马泽亮第一天作业</title>
+    <style>
+        p{
+            line-height: 20px;
+            font-size: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>第二、三题：</h2>
+    <button id="" onclick="generate()">点此随机生成一个三位数</button>
+    <p id="pid"></p>
+    <p id="bai"></p>
+    <p id="shi"></p>
+    <p id="ge"></p>
+    <br>
+    <br>
+    <br>
+
+    <h2>拓展题：</h2>
+    <input type="text" id="inpid" placeholder="请输入一个秒数" name="a1">
+    <button onclick="getTime()">点此换算</button>
+    <p id="snd"></p>
+    <p id="change"></p>
+</body>
+
+<script>
+    function generate(){
+        var x = parseInt(Math.random()*900+100);
+        document.getElementById("pid").innerHTML = "生成的三位数：" + x;
+        console.log("生成的三位数：" + x);
+        var b = parseInt(x / 100);
+        var c = parseInt((x % 100) / 10);
+        var d = parseInt((x % 100) % 10);
+        document.getElementById("bai").innerHTML = "百位数为：" + b;
+        console.log("百位数为：" + b);
+        document.getElementById("shi").innerHTML = "十位数为：" + c;
+        console.log("十位数为：" + c);
+        document.getElementById("ge").innerHTML = "个位数为：" + d;
+        console.log("个位数为：" + d + " \n ");
+    }
+
+
+    function getTime(){
+        var snd = document.getElementById("inpid").value;
+        if(snd < 0 || isNaN(snd) || snd == ""){
+            alert("请输入正确秒数...");
+        }
+        else{
+            document.getElementById("snd").innerHTML = "输入的秒数为：" + snd + "秒";
+            var day = parseInt(snd / 86400);
+            var hour = parseInt((snd % 86400) / 3600);
+            var minute = parseInt(((snd % 86400) % 3600) / 60);
+            var second = parseInt(((snd % 86400) % 3600) % 60);
+            console.log(day + "天");
+            console.log(hour + "小时");
+            console.log(minute + "分钟");
+            console.log(second + "秒" + " \n ");
+            if(day >=1){
+                document.getElementById("change").innerHTML = "一共是" + day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+            }
+            else if(day < 1 & hour >= 1 & hour < 24){
+                document.getElementById("change").innerHTML = "一共是" + hour + "小时" + minute + "分钟" + second + "秒";
+            }
+            else if(day < 1 & hour < 1 & minute >= 1){
+                document.getElementById("change").innerHTML = "一共是" + minute + "分钟" + second + "秒";
+            }
+            else{
+                document.getElementById("change").innerHTML = "一共是" + second + "秒";
+            }
+        }
+    }
+
+
+    var input = document.getElementById("inpid");
+    input.addEventListener("keyup",function(event){
+        event.preventDefault();
+        if (event.keyCode === 13){
+            getTime();
+        }
+    })
+</script>
+</html>

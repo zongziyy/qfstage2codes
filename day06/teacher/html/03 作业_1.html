@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    function createDiamond(n) {
+        // var n = 21; //总层数
+        var mid = (n - 1) / 2;
+
+        for (var i = -mid; i <= mid; i++) {
+            for (var j = 1; j <= Math.abs(i); j++) {
+                document.write("&emsp;");
+            }
+
+            for (var k = 1; k <= n - Math.abs(i) * 2; k++) {
+                document.write("锋");
+            }
+
+            for (var j = 1; j <= Math.abs(i); j++) {
+                document.write("&emsp;");
+            }
+
+
+            document.write("<br>");
+        }
+
+    }
+
+    // createDiamond(11);
+    // createDiamond(21);
+    // createDiamond(31);
+    // createDiamond(41);
+
+
+
+    // var salary = 2000;
+    // for (var i = 1; i <= 20; i++) {
+    //     salary *= (1 + 0.05);
+    // }
+    // console.log(salary);
+
+    // var salary = 2000;
+    // salary = salary * Math.pow(1 + 0.05, 20);
+    // console.log(salary);
+
+    function getSalaryAfter(salary, year) {
+        // var salary = 2000;
+        for (var i = 1; i <= year; i++) {
+            salary *= (1 + 0.05);
+        }
+        // console.log(salary);
+        return salary.toFixed(2);
+    }
+
+    // var result = getSalaryAfter(7000, 20);
+    // console.log(result);
+
+    // var result = getSalaryAfter(10000, 20);
+    // console.log(result);
+
+
+    // 
+    // var count = 0;
+    // for (var water = 15; water < 50; water += 5) {
+    //     count++;
+    // }
+    // console.log(count);
+
+    function getWater(nowWater) {
+        var count = 0;
+        // 如果不在正确范围内  报错  (了解)
+        if (nowWater < 0 || nowWater > 50) {
+            var err = new Error("Please enter the correct range of parameters");  //创建一个错误
+            throw err;  //把错误抛出
+        }
+
+        for (var water = nowWater; water < 50; water += 5) {
+            count++;
+        }
+        // console.log(count);
+        return count;
+    }
+
+    var result = getWater(0);
+    console.log(result);
+
+    var result = getWater(49);
+    console.log(result);
+
+    var result = getWater(51);
+    console.log(result);
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap" name="one" id="box">
+        <h2>jquery筛选</h2>
+        <div class="list">
+            <li class="first">01</li>
+            <li>02</li>
+            <li class="mid">03</li>
+            <li>04</li>
+            <li>05</li>
+            <li class="last"><span>06</span></li>
+        </div>
+    </div>
+</body>
+
+<script>
+    var mid = document.getElementsByClassName("mid")[0];
+    var list = document.querySelectorAll(".first,.last");
+
+    // filter(selector|obj|ele|fn)    筛选出与指定表达式匹配的元素集合。
+
+    // 1. selector  接收一个字符串的选择器
+    // $(".list li").filter(".first").css({ background: "red" })
+    // $(".list li").filter(".first,.last").css({ background: "red" })
+
+    // 2. 接收原生dom元素
+    // $(".list li").filter(mid).css({ background: "red" })
+
+    // 3. 接收原生dom元素的集合
+    // $(".list li").filter(list).css({ background: "red" })
+
+    // 4. 接收jquery对象
+    // $(".list li").filter($(".first")).css({ background: "red" })
+
+    // 5. 接收一个回调函数 ,回调函数返回一个条件 把满足条件的元素筛选出来
+    // $(".list li").filter(function (index, ele) {
+    //     return $(this).hasClass("first") || $(this).hasClass("last")
+    // }).css({ background: "red" })
+
+
+    // not(selector|obj|ele|fn)     删除与指定表达式匹配的元素集合。(=>筛选出不匹配的)
+
+    // 1. selector  接收一个字符串的选择器
+    // $(".list li").not(".first").css({ background: "red" })
+    // $(".list li").not(".first,.last").css({ background: "red" })
+
+    // 2. 接收原生dom元素
+    // $(".list li").not(mid).css({ background: "red" })
+
+    // 3. 接收原生dom元素的集合
+    // $(".list li").not(list).css({ background: "red" })
+
+    // 4. 接收jquery对象
+    // $(".list li").not($(".first")).css({ background: "red" })
+
+    // 5. 接收一个回调函数 ,回调函数返回一个条件 把满足条件的元素删除 => 得到不满足条件的元素
+    // $(".list li").not(function (index, ele) {
+    //     return $(this).hasClass("first") || $(this).hasClass("last")
+    // }).css({ background: "red" })
+
+
+    // is(selector|obj|ele|fn)     判断匹配的元素中 是否含有 指定表达式匹配的元素 有=>true  ,没有返回false   
+
+    // 单元素  => 精确判断
+    // 多元素  => 只要有一个元素含有即   some方法 只要有一个满足即为true
+
+    // 1. selector  接收一个字符串的选择器
+    // console.log($(".first").is(".first"))
+    // console.log($(".first").is("li"))
+    // console.log($(".first").is(".list li:first"))
+
+    // console.log($(".list li").is(".first"))
+    // console.log($(".list li").is(".first,.last"))
+
+    // 2. 接收原生dom元素
+    // console.log($(".list li").is(mid))
+
+    // 3. 接收原生dom元素的集合
+    // console.log($(".list li").is(list))
+
+    // 4. 接收jquery对象
+    // console.log($(".list li").is($(".first")))
+
+    // 5. 接收一个回调函数 ,回调函数返回一个条件 只要有一个满足即为true
+    // var result = $(".list li").is(function (index, ele) {
+    //     return $(this).hasClass("first") || $(this).hasClass("last")
+    // })
+    // console.log(result);
+
+    // map()  接收一个回调函数 根据回调函数的返回值 生成一个新的数组(jquery对象)
+    var $list = $(".list li").map(function (index, ele) {
+        return $(this).text();
+    })
+    console.log($list);
+
+    var list = $(".list li").map(function (index, ele) {
+        return $(this).text();
+    }).get()
+    console.log(list);
+
+
+
+
+
+
+</script>
+
+</html>

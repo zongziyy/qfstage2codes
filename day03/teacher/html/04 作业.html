@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    
+        1、随机一个0-100的数,判断一个数是偶数还是奇数；
+        2、随机两个0-100的数,求两个数的最大数；
+        3、随机一个1000-9999的年份是闰年还是平年；
+        4、随机一个 [-100,100]的数x,根据x的范围求出对应的y值
+                x      (x<1)
+            y = 2x+1   (1≤x＜10)
+                5x-17  (x≥10)
+
+        5 预习switch  和 三目运算符
+
+    -->
+</body>
+<script>
+    // 1
+    var num = Math.round(Math.random() * 100);
+    if (num % 2 == 0) {
+        document.write(num + "是偶数<br>");
+    } else {
+        document.write(num + "是奇数<br>");
+    }
+
+    // 2 
+    var a = Math.round(Math.random() * 100);
+    var b = Math.round(Math.random() * 100);
+    console.log(a, b);
+    if (a > b) {
+        document.write("两个数中较大的值是" + a + "<br>");
+    } else {  // a<=b
+        document.write("两个数中较大的值是" + b + "<br>");
+    }
+
+    // 3、随机一个1000-9999的年份是闰年还是平年；
+
+    // 闰年
+    // 普通闰年   能被4整除,但是不能被100整除
+    // 世纪闰年   能被400整除
+
+    var year = 1000 + Math.round(Math.random() * (9999 - 1000));
+    // var year = 2000;
+    // var year = 1000 + Math.floor(Math.random() * (10000 - 1000));
+    // 2*3+1
+    // if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+    //     document.write(year + "是闰年<br>");
+    // } else {
+    //     document.write(year + "是平年<br>");
+    // }
+
+    if (year % 4 == 0 && year % 100 != 0) {
+        document.write(year + "是普通闰年<br>");
+    } else if (year % 400 == 0) {
+        document.write(year + "是世纪闰年<br>");
+    } else {
+        document.write(year + "是平年<br>");
+    }
+
+
+
+    /* 
+        4、随机一个 [-100,100]的数x,根据x的范围求出对应的y值
+                x      (x<1)
+            y = 2x+1   (1≤x＜10)
+                5x-17  (x≥10)
+    
+    
+     */
+
+    var x = -100 + Math.round(Math.random() * 200);
+    console.log(x);
+
+    var y = null;
+    if (x < 1) {
+        y = x;
+    } else if (x >= 1 && x < 10) {
+        y = 2 * x + 1;
+    } else {
+        y = 5 * x - 17;
+    }
+
+    document.write(x + "->" + y);
+
+
+
+
+
+
+
+
+</script>
+
+</html>

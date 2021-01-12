@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrapBox {
+            width: 600px;
+            margin: 50px auto;
+            min-height: 500px;
+            background-color: #6ff;
+        }
+
+        .wrapBox button {
+            padding: 5px;
+            margin-bottom: 50px;
+        }
+
+        .wrapBox table {
+            border-collapse: collapse;
+            width: 100%;
+            line-height: 30px;
+            text-align: center;
+            table-layout: fixed;
+        }
+
+        .wrapBox table,
+        .wrapBox th,
+        .wrapBox td {
+            border: 1px solid #000;
+        }
+
+        /* 遮罩层 */
+        .shadow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .shadow .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: pink;
+            padding: 20px;
+        }
+
+        .shadow .box p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    document.body.innerHTML = `<div class="bigBox">
+        <div class="wrapBox">
+            <button class="add">新增</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>密码</th>
+                        <th>编辑</th>
+                        <th>删除</th>
+                    </tr>
+                </thead>
+                <tbody class="userlist">
+                    <tr>
+                        <!-- <td>a123123</td>
+                    <td>123123</td>
+                    <td><a href="javascript:;">编辑</a></td>
+                    <td><a href="javascript:;">删除</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="shadow">
+            <div class="box">
+                <p><label for="user">用户名:</label><input id="user" type="text"></p>
+                <p><label for="pwd">密&emsp;码:</label><input id="pwd" type="text"></p>
+                <p>
+                    <input class="subBtn" type="submit" value="确定">
+                    <input class="cancelBtn" type="reset" value="取消">
+                </p>
+            </div>
+        </div>
+    </div>`;
+    var bigBox = document.getElementsByClassName("bigBox")[0];
+    var add = document.getElementsByClassName("add")[0];
+    var userlist = document.getElementsByClassName("userlist")[0];
+    var box = document.getElementsByClassName("box")[0];
+    var shadow = document.getElementsByClassName("shadow")[0];
+    var userInp = document.getElementById("user");
+    var pwdInp = document.getElementById("pwd");
+    var subBtn = document.getElementsByClassName("subBtn")[0];
+    var cancelBtn = document.getElementsByClassName("cancelBtn")[0];
+
+    var editTarget = null;
+    var addOrEdit = 0;
+
+
+    bigBox.onclick = function (e) {
+        var e = e || window.event;
+
+        // 事件源(谁触发的事件)
+        var target = e.target || e.srcElement;
+
+
+        // 确定
+        if (target.className == "subBtn") {
+            let user = userInp.value.trim();
+            let pwd = pwdInp.value.trim();
+            let tr = document.createElement("tr");
+            tr.innerHTML = `<td class="yh">${user}</td>
+                    <td class="mm">${pwd}</td>
+                    <td><a class="edit" href="javascript:;">编辑</a></td>
+                    <td><a class="del" href="javascript:;">删除</a></td>`;
+            if (addOrEdit == 1) {
+                if (user && pwd) {
+                    userlist.appendChild(tr);
+                }
+            }
+            if (addOrEdit == 2) {
+                if (user && pwd) {
+                    editTarget.parentElement.parentElement.replaceWith(tr);
+                }
+            }
+            // 重置输入框为空
+            userInp.value = "";
+            pwdInp.value = "";
+            shadow.style.display = "none";
+            addOrEdit = 0;
+        }
+
+
+        // 新增
+        if (target.className == "add") {
+            addOrEdit = 1;
+            shadow.style.display = "block";
+        }
+
+        // 编辑
+        if (target.className == "edit") {
+            addOrEdit = 2;
+            editTarget = target;
+            shadow.style.display = "block";
+            pwdInp.value = target.parentElement.previousElementSibling.textContent;
+            userInp.value = target.parentElement.parentElement.firstChild.textContent;
+
+        }
+
+
+        // 删除
+        if (target.className == "del") {
+            target.parentElement.parentElement.remove();
+        }
+
+        // 取消
+        if (target.className == "cancelBtn") {
+            userInp.value = "";
+            pwdInp.value = "";
+            shadow.style.display = "none";
+        }
+
+
+    }
+</script>
+
+</html>

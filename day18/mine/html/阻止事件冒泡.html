@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .adBox {
+            width: 300px;
+            height: 400px;
+            background-color: #6ff;
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            /* display: none; */
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 5px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="adBox">
+        <div class="title">距离广告关闭还有10秒</div>
+        <div class="close">X</div>
+    </div>
+</body>
+<script>
+    var adBox = document.getElementsByClassName("adBox")[0];
+    var title = document.getElementsByClassName("title")[0];
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    adBox.onclick = function () {
+        location.href = "https://jd.com";
+    }
+    closeBtn.onclick = function (e) {
+        var e = e || window.event;
+        adBox.style.display = "none"
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    }
+</script>
+
+</html>

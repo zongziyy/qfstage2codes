@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // includes() ：返回布尔值，表示是否找到了参数字符串。
+    // startsWith() ：返回布尔值，表示参数字符串是否在原字符串的头部。
+    // endsWith() ：返回布尔值，表示参数字符串是否在原字符串的尾部
+
+    var str = "hello world";
+    var result = str.startsWith("h");
+    console.log(result);
+    var result = str.endsWith("d");
+    console.log(result);
+
+    // repeat方法返回一个新字符串，表示将原字符串重复n次。
+
+    var key = "hello";
+    var str = "*".repeat(key.length);
+    console.log(str);
+
+    // padStart()，padEnd()
+    // padStart()用于头部补全，padEnd()用于尾部补全。
+    // padStart()和padEnd()一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串。
+
+    // 'x'.padStart(5, 'ab') // 'ababx'
+    // 'x'.padStart(4, 'ab') // 'abax'
+
+    // 'x'.padEnd(5, 'ab') // 'xabab'
+    // 'x'.padEnd(4, 'ab') // 'xaba'
+
+    var minute = 1;  // 补0
+    // minute = minute < 10 ? "0" + minute : minute;
+
+    // minute = String(minute).padStart(2, "0");
+    minute = String(minute).padEnd(2, "0");
+    console.log(minute);
+
+    // trimStart()，trimEnd()    去除头部空格 / 尾部空格
+
+
+
+
+
+
+
+</script>
+
+</html>

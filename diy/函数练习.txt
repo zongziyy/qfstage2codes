@@ -1,0 +1,112 @@
+
+
+    // 1.  
+    // var a = 10;
+    // function fn() {
+    //     a = 100;
+    //     console.log("函数内的a:", a);
+    // }
+    // console.log("函数外的a:", a);
+    // fn();
+    // console.log("函数外的a:", a);
+
+
+    // 2.
+    // var a = 10;
+    // function fn() {
+    //     var a = 100;
+    //     console.log(a);
+    // }
+    // fn();
+    // console.log(a);
+
+    // 2.1
+    // var a = 10;
+    // function fn() {
+    //     a = 100; 
+    //     console.log(a);
+
+    //     var a = 1332;
+    // }
+    // fn();
+    // console.log(a);
+
+
+    // 3. 
+    // var a = 10;
+    // function fn(a) {
+    //     a = 100;
+    //     console.log(a);
+    // }
+    // fn(10);
+    // console.log(a);
+
+
+   
+    // console.log(a);
+    // a = 100;
+    // console.log(a);
+
+    // function fn() {
+    //     a = 200;
+    //     console.log("我是函数里的a:", a);
+    // }
+
+    // fn();
+    // console.log("我是函数外的a:", a);
+
+
+    // 4.
+
+    // var a = b = 10;
+
+    // function fn() {
+    //     var a = b = 20;
+
+    //     console.log("函数内：", a, b); 
+    // }
+
+    // fn();
+    // console.log("函数外", a, b);
+
+
+    // var a = 10;
+    // function fn() {
+    //     var a = 100;
+    //     console.log("函数内：", a);
+
+    //     c();
+
+    //     // function b() {
+    //     //     var a = 1000;
+    //     //     c();
+    //     // }
+    //     // b();
+    // }
+
+    // function c() {
+    //     console.log("c里面的a", a);
+    // }
+
+    // fn();
+
+
+    var a = 10;
+    function fn() {
+        var a = 100;
+        console.log("函数内：", a);
+
+        c();
+
+        function c() {
+            console.log("c里面的a", a);
+        }
+    }
+
+    fn();
+
+
+
+    // console.log("函数外：", a);
+
+

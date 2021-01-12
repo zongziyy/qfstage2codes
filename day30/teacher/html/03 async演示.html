@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    function readText(url) {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "text",
+                success(txt) {
+                    resolve(txt);
+                }
+            })
+        })
+    }
+
+    // var str = "";
+    // readText("../data/1.txt").then(function (txt) {  // callback1 可以设置返回值,then方法返回一个新的Promise实例(默认pending状态),根据返回值改变实例的状态
+    //     console.log(txt);
+    //     str += txt;
+    //     return readText("../data/2.txt"); //返回 函数调用 => promise实例 (后面实例的状态,根据当前实例的结果改变)
+    // }).then(function (txt) {
+    //     console.log(txt);
+    //     str += txt;
+    //     return readText("../data/3.txt"); // p
+    // }).then(function (txt) {
+    //     console.log(txt);
+    //     str += txt;
+    //     console.log(str);
+    // }).catch(function (err) {
+    //     throw err;
+    // })
+
+    // 创建一个异步函数  
+    // async function readAllTxt() {
+    //     var txt1 = await readText("../data/1.txt"); // Promise 实例
+    //     console.log(txt1);
+    //     var txt2 = await readText("../data/2.txt"); // Promise 实例
+    //     console.log(txt2);
+    //     var txt3 = await readText("../data/3.txt"); // Promise 实例
+    //     console.log(txt3);
+    //     console.log(txt1, txt2, txt3);
+    // }
+
+    // var p = readAllTxt();
+    // console.log(p);
+
+    var readAllTxt = async function () {
+
+    }
+
+
+    var obj = {
+        readAllTxt: async function () { },
+        async say() { }
+    }
+
+
+
+
+
+
+</script>
+
+</html>

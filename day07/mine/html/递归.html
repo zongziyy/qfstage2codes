@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 尾递归
+    // function fn(i,sum) {
+    //     sum += i;
+    //     if (i <= 1) {
+    //         return sum;
+    //     }
+    //     else{
+    //         return fn(i-1,sum);
+    //     }
+    // }
+    // var r = fn(5,0);
+    // console.log(r);
+
+
+
+
+    // 依赖递归
+    function fn(i) {
+        if (i <= 1) {
+            return 1;
+        } else {
+            return i + fn(i - 1);
+        }
+    }
+    var r = fn(100);
+    console.log(r);
+</script>
+
+</html>

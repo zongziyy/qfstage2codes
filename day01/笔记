@@ -1,0 +1,100 @@
+JS组成  
+    1. ECMAScript   (语法以及语法规范   ES5  ES6)
+    2. BOM  (Browser Object Module浏览器对象模型  浏览器提供了操作浏览器的接口和方法  历史记录  页面跳转 )
+    3. DOM  (Document Object Module   提供了操作文档的接口和方法)
+
+
+    JS是弱类型的语言,数据类型和变量存储的数据有关,存什么类型就是什么类型
+
+    JS的数据类型 
+    number,string,boolean,null,undefined,array,object  (7中常见的数据类型)
+
+    如何判断数据类型?
+    使用关键词  typeof xxx     => 返回对应数据类型的字符串
+
+    undefined 的类型也是undefined
+    null,array  的类型是 object
+
+
+    字符串  (隐式类型转换  )
+    a. 字符串遇到 + 会拼接形成新的字符串      (隐式的转化为字符串)
+    b. 字符串遇到 -  * / % 会隐式的转化为数字,然后在运算   (隐式的转化为数字)
+    纯数字类型的字符串  => 转化为对应的数值
+    非纯数字类型的字符串("a","10px")  => 转化 NaN (not a number)
+
+
+    布尔值  (遇到算术运算符  隐式类型转换)
+    true   =>  1
+    false  =>  0
+
+    null        遇到运算符隐式转换  隐式转化为0
+    undefined   遇到运算符隐式转换  隐式转化为NaN
+
+    JS中的两个特殊值
+    NaN  ,  Infinity   (都是number类型)
+
+
+    关系运算符
+     >  >=  <  <=    ==  ===   !=  !==
+
+    优先级
+    >  >=  <  <=  大于   ==  ===   !=  !==
+    console.log(3 > 5 === false);  //false === false => true
+
+    = 赋值  把等号后的值赋值给 等号前的变量
+
+    ==  相等 (只比较数值  不比较类型)
+    !=  不相等 (只比较数值  不比较类型)
+
+    ===  全等/恒等 (既比较数值  又比较类型)
+    !==  不全等/恒等 (既比较数值  既比较类型)
+
+    关系运算符 一般用来比较两个数据,  也可以作为单个判断条件
+
+
+    // Math.random()  生成一个0-1的随机数  [0,1)   
+
+    // console.log(Math.random());
+
+    var num = Math.random(); // 生成一个0-1的随机数 [0,1)     赋值给变量num
+    var num = Math.random() * 100; // 生成一个0-1的随机数 [0,1)*100  =>[0,100)
+    var num = Math.random() * 100 + 100; // 生成一个0-1的随机数 [0,1)*100 + 100  =>[0,100)+100 =>[100,200)
+
+    console.log(num);
+
+    // Math.ceil(number)   接收一个数值number,对number向上取整并返回
+    // ceil  天花板
+    var upNum = Math.ceil(num);   //对num 向上取整  赋值给变量upNum
+    console.log(upNum);
+
+    // Math.floor(number)   接收一个数值number,对number向下取整并返回
+    // floor  地板
+    var downNum = Math.floor(num);   //对num 向上取整  赋值给变量upNum
+    console.log(downNum);
+
+    // Math.round(number)   接收一个数值number,对number四舍五入并返回
+
+    // Math.abs()     接收一个数值number,返回该数的绝对值
+    var num = Math.abs(-100);
+    console.log(num);
+
+    // Math.min()    接收多个数值(逗号分隔),取最小值
+    var min = Math.min(2, 5, 9, 7, 3, 6, 8, 4, 1);
+    console.log(min);
+
+    // Math.max()    接收多个数值(逗号分隔),取最大值
+    var max = Math.max(2, 5, 9, 7, 3, 6, 8, 4, 1);
+    console.log(max);
+
+    // Math.pow(m,n) 接收两个数值,返回 m^n (m的n次幂)
+    var num = Math.pow(2, 10);
+    console.log(num);
+
+
+    // 属性
+    console.log(Math.PI);    //  返回圆周率  π(3.141592653589793)
+
+    console.log(Math);
+    // 30度   2π/12   => 2*Math.PI/12
+    var sin = Math.sin(2 * Math.PI / 12);
+    console.log(sin);

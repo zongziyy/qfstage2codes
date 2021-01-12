@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var arr = [];
+
+    // arr[0] = "a";
+    // arr[1] = "b";
+    // arr[2] = "c";
+
+    // arr[0] = "a";
+    // arr[50] = "b";
+    // arr[100] = "c";
+
+    // 下标的最大值 = length - 1   => arr.length = 下标的最大值 + 1  =>数组最大下标的后一位
+
+    // 数组的递增赋值  => 在数组尾部(所有元素的最后面)添加一个新的元素
+    // var arr = [];      // length:0 
+    // arr[arr.length] = "a";  // arr[0] = "a";   => length = 1
+    // arr[arr.length] = "b";  // arr[1] = "b";   => length = 2
+    // arr[arr.length] = "c";  // arr[2] = "c";   => length = 3
+    // console.log(arr);
+
+    var list = [];
+    for (var i = 100; i <= 999; i++) {
+
+        var bai = parseInt(i / 100);
+        var shi = parseInt(i % 100 / 10);
+        var ge = parseInt(i % 10);
+
+        // var sum = bai * bai * bai + shi * shi * shi + ge * ge * ge;
+        var sum = Math.pow(bai, 3) + Math.pow(shi, 3) + Math.pow(ge, 3);
+
+        if (i == sum) {
+            // list[i] = i;
+            list[list.length] = i;
+        }
+
+    }
+    console.log(list);
+
+
+
+
+
+
+</script>
+
+</html>

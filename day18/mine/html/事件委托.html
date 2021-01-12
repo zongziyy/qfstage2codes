@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .list {
+            padding: 20px;
+            background-color: #6ff;
+        }
+
+        .list span,
+        .list p {
+            display: block;
+            line-height: 45px;
+            border: 1px dashed #333;
+            background-color: greenyellow;
+            margin: 5px 0;
+        }
+
+        .list>li {
+            display: block;
+            line-height: 45px;
+            border: 1px dashed #333;
+            background-color: pink;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>事件委托</h2>
+        <ul class="list">
+            <span>我是span</span>
+            <p>我是p</p>
+            <li class="first">我是第01个li</li>
+            <li class="first second">我是第02个li</li>
+            <li>我是第03个li</li>
+            <li>我是第04个li</li>
+            <li>我是第05个li</li>
+            <li>我是第06个li</li>
+            <li>我是第07个li</li>
+            <li>我是第08个li</li>
+            <li>我是第09个li</li>
+            <li id="last">我是第10个li</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var list = document.getElementsByClassName("list")[0];
+
+    list.onclick = function (e) {
+        var e = e || window.event;
+        // console.log(e);
+        // console.dir(e.target);
+        var target = e.target || e.srcElement;
+        if (target.tagName == "LI") {
+            // console.log(target);
+        }
+        console.dir(target.classList)
+        var arr = Array.from(target.classList)
+        if (arr.indexOf("first") != -1) {
+            console.log(target);
+
+        }
+    }
+    console.dir(list);
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="token" placeholder="token" value="">
+    <br>
+    <input type="text" class="mail" placeholder="mail" value="">
+    <br>
+    <button>发送</button>
+
+    <script src="./js/pluginUnit.js"></script>
+    <script>
+        document.querySelector('button').addEventListener('click', function() {
+            let data = Array.from(document.querySelectorAll('input')).map(el => el.value)
+            console.log(data);
+            userInfo = JSON.stringify({ token: data[0], username: data[1] })
+            console.log(userInfo);
+
+
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST', 'http://192.168.60.28/api/user/forgetPassword')
+            xhr.setRequestHeader("content-type", "application/json")
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status <= 299) {
+                    alert(xhr.response)
+                } else {
+                    console.log(xhr.response);
+                }
+            }
+            xhr.send(userInfo);
+        })
+    </script>
+</body>
+
+</html>

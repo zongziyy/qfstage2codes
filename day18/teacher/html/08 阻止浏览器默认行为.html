@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <a href="javascript:;"></a> -->
+    <a href="https://www.baidu.com">百度</a>
+    <form action="">
+        <p>
+            <label for="">用户名<input type="text"></label>
+        </p>
+        <p>
+            <button>提交</button>
+        </p>
+    </form>
+</body>
+<script>
+    // 浏览器的默认行为
+    // 1. a标签的默认跳转
+    // 2. form表单默认提交
+    // 3. f5刷新页面
+    // 4. 鼠标右键菜单
+
+    // 浏览器的默认行为
+    // 常规浏览器
+    // e.preventDefault();
+
+    // IE  (常规浏览器)
+    // e.returnValue = false;
+
+    // 兼容
+    // if (e.preventDefault) {
+    //     e.preventDefault();
+    // } else {
+    //     e.returnValue = false;
+    // }
+
+    var a = document.getElementsByTagName("a")[0];
+    var form = document.getElementsByTagName("form")[0];
+
+    // 1. a标签的默认跳转
+    a.onclick = function (e) {
+        var e = e || window.event;
+
+        // 常规浏览器
+        // e.preventDefault();
+
+        // IE  (常规浏览器)
+        // e.returnValue = false;
+
+        // 兼容
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;  // return false
+        }
+
+        // return false;
+    }
+
+    // 2. form表单默认提交
+    form.onsubmit = function (e) {
+        var e = e || window.event;
+
+        // 兼容
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;  // return false
+        }
+
+    }
+
+    // 3. f5刷新页面
+    document.onkeydown = function (e) {
+        var e = e || window.event;
+        var keyCode = e.which || e.keyCode;
+        console.log(keyCode);
+
+        if (keyCode == 116) {  //F5
+            if (e.preventDefault) {
+                e.preventDefault();
+            } else {
+                e.returnValue = false;  // return false
+            }
+        }
+
+    }
+
+    // 4. 鼠标右键菜单
+    document.oncontextmenu = function (e) {
+        var e = e || window.event;
+        // 兼容
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;  // return false
+        }
+    }
+
+
+
+
+</script>
+
+</html>

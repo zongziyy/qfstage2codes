@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .puzzle {
+            width: 400px;
+            border: 1px solid #0befff;
+            background-color: #55ffe3;
+            padding: 5px;
+            margin: 100px auto;
+            /* height: 330px; */
+        }
+
+        .imgBox {
+            width: 400px;
+            height: 300px;
+            background: url(../images/1.gif) no-repeat;
+            background-size: 100%;
+            position: relative;
+        }
+
+        .sliderTop,
+        .randomFix {
+            box-shadow: 0 0 2px 2px #1b212477;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+
+        .sliderTop {
+            z-index: 1;
+            background: url(../images/1.gif) no-repeat;
+        }
+
+        .randomFix {
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        .slide {
+            width: 400px;
+            height: 50px;
+            margin-top: 5px;
+            background-color: #F5FAFF;
+            border-radius: 26px;
+            position: relative;
+            line-height: 45px;
+            user-select: none;
+            box-shadow: 0 0 2px 2px inset #43C3FC;
+            color: #41C2FC;
+            font-size: 25px;
+            text-align: center;
+        }
+
+
+        .sliderBottom {
+            border-radius: 26px;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: url(../images/jd-slide-btn2.png) center center no-repeat;
+            background-size: 65px 70px;
+            box-shadow: 0 0 2px 2px #43C3FC;
+            z-index: 2;
+        }
+
+        .colorShadow {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 50px;
+            background: linear-gradient(#65c0fd, #007bce);
+            border-radius: 26px;
+        }
+
+        .active {
+            background: #e23d3d;
+        }
+
+        .refresh {
+            position: absolute;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            top: -45px;
+            right: -5px;
+            background-color: #43C3FC;
+            user-select: none;
+            width: 80px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="puzzle">
+        <div class="imgBox">
+            <div class="refresh">看不清</div>
+            <div class="sliderTop"></div>
+            <div class="randomFix"></div>
+        </div>
+        <div class="slide">
+            向右滑动完成拼图
+            <div class="colorShadow"></div>
+            <div class="sliderBottom"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var sliderBottom = document.getElementsByClassName("sliderBottom")[0];
+    var imgBox = document.getElementsByClassName("imgBox")[0];
+    var sliderTop = document.getElementsByClassName("sliderTop")[0];
+    var randomFix = document.getElementsByClassName("randomFix")[0];
+    var colorShadow = document.getElementsByClassName("colorShadow")[0];
+    var refresh = document.getElementsByClassName("refresh")[0];
+
+    var maxWidth = imgBox.clientWidth - sliderBottom.clientWidth;
+
+    var randomLeft = 0;
+
+    function randomPosition() {
+        var randomTop = Math.round(Math.random() * 225);
+        randomLeft = Math.round(Math.random() * 250 + 100);
+        randomFix.style.top = randomTop + "px";
+        randomFix.style.left = randomLeft + "px";
+        sliderTop.style.top = randomTop + "px";
+        // console.log(randomTop, randomLeft);
+        // console.dir(sliderTop.style);
+        sliderTop.style.backgroundPosition = `${-randomLeft}px ${-randomTop}px`;
+    }
+
+    randomPosition();
+
+    refresh.onclick = randomPosition;
+
+    sliderBottom.onmousedown = function (e) {
+        // console.log("n");
+        var e = e || window.event;
+
+        var posX = e.offsetX;
+        var posY = e.offsetY;
+
+        var x = 0;
+        document.onmousemove = function (e) {
+            x = e.pageX - imgBox.offsetLeft - posX;
+            if (x > maxWidth) x = maxWidth;
+            if (x < 0) x = 0;
+            sliderBottom.style.left = x + "px";
+            sliderTop.style.left = x + "px";
+            // console.log(sliderTop.style.left)
+
+            colorShadow.style.width = x + 50 + "px";
+        }
+
+        document.onmouseup = function () {
+            var absolute = Math.abs(x - randomLeft);
+            // console.log(absolute);   
+            if (absolute < 5) {
+                alert("即将进入英雄联盟官网")
+                window.location.href = "https://lol.qq.com/";
+
+            } else {
+                colorShadow.classList.add("active");
+                setTimeout(function () {
+                    var timer = setInterval(function () {
+                        if (parseInt(sliderBottom.style.left) <= 0) {
+                            sliderBottom.style.left = 0;
+                            colorShadow.style.width = 0;
+                            clearInterval(timer);
+                            // return false;
+                        }
+                        sliderBottom.style.left = parseInt(sliderBottom.style.left) - 5 + "px";
+                        colorShadow.style.width = parseInt(colorShadow.style.width) - 5 + "px";
+                    }, 3)
+                    sliderTop.style.left = 0;
+                    // colorShadow.style.width = 0;
+                    colorShadow.classList.remove("active");
+                    randomPosition();
+                }, 800)
+            }
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #6ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="start">开始</button>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    // animate(ele,attr,end,aniType,fn)
+
+    $(".start").click(function () {
+
+        // $(".box").animate({ left: 1000 }, "slow");
+        // $(".box").animate({ left: 1000 }, "normal");
+        // $(".box").animate({ left: 1000 }, "fast");
+        // $(".box").animate({ left: 900, top: 500 }, 3000, function () {
+        //     console.log("运动执行完毕");
+        // })
+
+        // 链式运动   老版本
+        // $(".box").animate({ left: 900 }, 2000, function () {
+        //     $(".box").animate({ top: 500 }, 2000, function () {
+        //         $(".box").animate({ left: 0 }, 2000, function () {
+        //             $(".box").animate({ top: 0 }, 2000, function () {
+        //                 console.log("运动执行完毕");
+        //             })
+        //         })
+        //     })
+        // })
+
+        // jquery 链式运动 
+        $(".box").stop().animate({ left: 900 }, 1000).animate({ top: 500 }, 1000).animate({ left: 0 }, 1000).animate({ top: 0 }, 1000);
+
+
+    })
+
+
+
+</script>
+
+</html>

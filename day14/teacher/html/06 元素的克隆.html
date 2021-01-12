@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn">克隆</button>
+        <ul class="list" id="one" title="hello" asd="haha">
+            <li>01</li>
+            <li class="second">02</li>
+            <li>03</li>
+            <li>04</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var list = document.getElementsByClassName("list")[0];
+    var wrap = document.getElementsByClassName("wrap")[0];
+    var second = document.getElementsByClassName("second")[0];
+
+    // 克隆 list 放到wrap中
+    // ele.cloneNode(bool)
+    //  bool 
+    //  false(默认)  只克隆元素及其相关属性,并不克隆子内容
+    //  true         既克隆元素及其相关属性,又克隆子内容
+
+
+    btn.onclick = function () {
+        var cloneList = list.cloneNode(true);
+        console.log(cloneList);
+        console.log(list);
+
+        wrap.appendChild(cloneList);
+    }
+
+
+
+</script>
+
+</html>

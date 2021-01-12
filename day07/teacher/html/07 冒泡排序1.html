@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var list = [];
+
+    // for (var i = 0; i < 10; i++) {
+    //     var num = Math.round(Math.random() * 100);
+    //     list[list.length] = num;
+    // }
+    // console.log(list);
+
+    // 数组中的元素 按照从小到大排序
+    // 冒泡排序  相邻的两个数作比较,大的值放后面  (从小到大)
+
+    // var list = [32, 93, 77, 53, 38, 87];
+
+    // 第一轮  得到最大的数,放在最后的位置
+    // 原数组 [32, 93, 77, 53, 38, 87]
+    // 32 93  [32, 93, 77, 53, 38, 87] 
+    // 93 77  [32, 77, 93, 53, 38, 87] 
+    // 93 53  [32, 77, 53, 93, 38, 87] 
+    // 93 38  [32, 77, 53, 38, 93, 87] 
+    // 93 87  [32, 77, 53, 38, 87, 93] 
+    // 六个数  比五次 
+
+    // 不优化 
+    // 外层循环  控制总的循环次数
+    // var count = 0;
+    // for (var j = 0; j < list.length; j++) {
+
+    //     // 内层循环 控制每层所做的内容 (相邻的两个数作比较,大的值放后面)
+    //     for (var i = 0; i < list.length; i++) {
+    //         // list[i] 对应下标的当前值
+    //         // list[i+1] 对应下标的当前值的 后一个
+    //         if (list[i] > list[i + 1]) {
+    //             var temp = list[i];
+    //             list[i] = list[i + 1];
+    //             list[i + 1] = temp;
+    //         }
+    //         count++;
+    //     }
+    //     console.log("第" + j + "次", list);  // 每一轮执行结束之后的结果
+    // }
+    // console.log("最终结果", list, count);   // 整个排序的结果
+
+
+    // 优化版
+    // 外层循环  控制总的循环次数
+    var list = [32, 93, 77, 53, 38, 87];
+    for (var j = 0; j < list.length - 1; j++) {
+
+        // 内层循环 控制每层所做的内容 (相邻的两个数作比较,大的值放后面)
+        for (var i = 0; i < list.length - 1 - j; i++) {
+            // list[i] 对应下标的当前值
+            // list[i+1] 对应下标的当前值的 后一个
+            if (list[i] > list[i + 1]) {
+                var temp = list[i];
+                list[i] = list[i + 1];
+                list[i + 1] = temp;
+            }
+        }
+        console.log("第" + j + "次", list);  // 每一轮执行结束之后的结果
+    }
+    console.log("最终结果", list);   // 整个排序的结果
+
+    // 第二轮   得到第二大的数, 放在倒数第二的位置
+    // 原数组[32, 77, 53, 38, 87, 93](第一轮的基础上)
+    // 32 77[32, 77, 53, 38, 87, 93]
+    // 77 53[32, 53, 77, 38, 87, 93]
+    // 77 38[32, 53, 38, 77, 87, 93]
+    // 77 87[32, 53, 38, 77, 87, 93]
+    // 87 93[32, 53, 38, 77, 87, 93]    没有必要
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

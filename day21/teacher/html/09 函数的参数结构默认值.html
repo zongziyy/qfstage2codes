@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 函数的参数解构
+    // 函数的参数 也有可能是数组 和 对象
+
+    // a,b是函数的形参   参数的默认值
+    function fn(a = 0, b = 0) {
+        console.log(a, b);
+        return a + b;
+    }
+
+    // obj 形参
+    // a,b  解构构对象得到的变量 
+
+    // 参数的默认值
+    // function fn({ a, b } = obj = { a: 0, b: 0 }) {
+    //     console.log(a, b);
+    //     return a + b;
+    // }
+
+
+    // a = 0, b = 0  变量的默认值
+    // function fn({ a = 0, b = 0 } = obj = {}) {
+    //     console.log(a, b);
+    //     return a + b;
+    // }
+
+    // fn();
+
+
+
+    // 函数的参数解构 配合 扩展运算符(...) 
+    // function fn(a = 0, b = 0) {
+
+    //     return a + b;
+    // }
+
+    // function fn(...args) {   // ...args = 1,2   => args [1,2]
+    //     console.log(args);
+    //     console.log(arguments);
+    // }
+
+    // fn(1, 2);
+
+    function fn(fun, ...args) {
+        // fun = function (a, b) {
+        //     console.log(a, b)
+        // }
+        // ...args = 1,2   => args [1,2]
+
+        fun(...args); //  fun(1,2);
+    }
+
+    fn(function (a, b) {
+        console.log(a, b)
+    }, 1, 2);
+
+
+    // 解构赋值   => 模式匹配
+    // 数组解构   []  = arr
+    // 对象解构   {}  = obj;
+    // 函数的结构  
+    // 1.  参数解构    如果实际参数是数组和对象  => 数组解构,对象解构
+    // 2.  形式参数和实际参数一一对应
+
+
+
+
+</script>
+
+</html>

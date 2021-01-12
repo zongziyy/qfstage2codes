@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <script src=""></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            width: 5000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+</body>
+<script>
+
+    // 属性
+
+    // window.innerWidth   窗口的可视宽高(包含滚动条,但是不包含控制台)
+    // window.innerHeight  窗口的可视宽高
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+
+
+    // 和页面相关的三个方法   
+    // 加载事件
+    window.onload = function () {
+        console.log("等页面所有内容(文档,图片,js,src)加载完毕之后执行此处代码");
+    }
+
+    // 滚动事件
+    window.onscroll = function () {
+        console.log("滚动条滚动时触发此事件");
+    }
+
+    // 窗口大小发生改变
+    window.onresize = function () {
+        console.log("窗口大小发生改变时触发", window.innerWidth, window.innerHeight);
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</html>

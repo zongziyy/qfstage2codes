@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 1.
+
+    // 全局
+    // var a = 10;  // 值类型
+    // var b = {  //引用类型
+    //     num: 10,   //20 
+    // }
+
+
+    // function fn(a, b) {  // 形式参数 => 局部变量( 不影响全局变量 => 只针对值类型,引用类型还是会影响的(浅复制 把引用空间赋值给另一个变量))
+    //     // var a = 10;
+    //     // var b = { num: 10 }
+
+    //     a = 20;    // 不影响全局变量 => 只针对值类型,
+    //     b.num = 20;  // 引用类型还是会影响的
+    //     console.log(a, b.num);   // 20 20 
+    // }
+    // fn(a, b);  //  10  {num:10}
+    // console.log(a, b.num); // 10  20
+
+    // 2. 
+    // var a = { x: 10 };
+    // var b = a;
+    // b.y = 20;
+    // a.z = 30;
+
+    // console.log(b.x, a.y, b.z);   // 10 20 30
+
+    // 3.
+    // var list = [1, 2, 3, 4, 5];
+    // var a = 2;
+    // function fn(list, a) {
+    //     a = list.splice(a, 1)[0];
+    //     console.log(list, a); // [1,2,4,5]  ,3 
+    // }
+    // fn(list, a);
+    // console.log(list, a);  // [1,2,4,5]  ,2
+
+
+
+</script>
+
+</html>
