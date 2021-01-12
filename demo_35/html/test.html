@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/ajax.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 一个服务器    live server
+    // 另一个服务器   apache 
+
+
+    // Access to XMLHttpRequest at 'http://192.168.60.94/2009_php/demo_29/php/searchAllGrade.php' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+    // 同源策略：同源策略（Same origin policy）是一种约定, 它是浏览器最核心也最基本的安全功能, 由客户端访问某一个服务器的文件时，如果发起请求的这个来源与进行响应的目标的源不一致，目标源出于安全的角度，将拒绝这次访问。
+
+    // 同源策略限制了从一个源(网站)加载的文档或脚本如何与来自另一个源(网站)的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
+
+    // 比如，我们网站想从别人网站中拿一些数据，那么默认的时候，别人网站是不会给我们数据的
+
+    // 协议名、域名、端口，这三项都相同，则被称为同源。
+    // 三项中只要有一项不同，则被称为跨源。(跨域)
+
+
+
+
+
+
+    $.ajax({
+        type: "get",
+        url: "http://192.168.60.94/2009_php/demo_29/php/searchAllGrade.php",
+        dataType: "json",
+        success(data) {
+            console.log(data);
+        }
+    })
+
+
+
+</script>
+
+</html>
