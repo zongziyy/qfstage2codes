@@ -15,29 +15,25 @@
     // 1. 普通函数 命名函数/匿名函数  this->window   (严格模式  this-> undefined)
     // 2. 函数在调用时  属于谁就指向谁     事件/对象调用方法
 
-    document.onclick = function () {
-        console.log(this);  //this -> document
+    document.onclick = function() {
+        console.log(this); //this -> document
     }
 
     var obj = {
         name: "张三",
         age: 18,
-        say: function () {
+        say: function() {
             console.log(this);
             console.log(this.name, this.age);
         }
     }
-    obj.say();   // this -> obj
+    obj.say(); // this -> obj
 
-    var { say } = obj;   //var say = obj.say;
+    var { say } = obj; //var say = obj.say;
     // var say = function () {
     //     console.log(this.name, this.age);
     // }
-    say();   //this ->  window
-
-
-
-
+    say(); //this ->  window
 </script>
 
 </html>
